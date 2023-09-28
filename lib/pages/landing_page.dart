@@ -73,7 +73,6 @@ class _LandingPageState extends State<LandingPage> {
               type: BottomNavigationBarType.fixed,
               items: bottomNavItems,
               currentIndex: state.tabIndex,
-              unselectedLabelStyle: const TextStyle(fontFamily: 'PublicSans'),
               selectedItemColor: AppColors.primary,
               unselectedItemColor: Colors.white,
               selectedFontSize: 12.0,

@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
             primaryColor: AppColors.primary,
-            fontFamily: 'PublicSan'
+            fontFamily: 'PublicSans'
           ),
 
           home: LandingPage(),
