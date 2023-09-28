@@ -59,6 +59,7 @@ class _LandingPageState extends State<LandingPage> {
             type: BottomNavigationBarType.fixed,
             items: bottomNavItems,
             currentIndex: state.tabIndex,
+            unselectedLabelStyle: TextStyle(fontFamily: 'PublicSans'),
             selectedItemColor: AppColors.primary,
             unselectedItemColor: Colors.white,
             onTap: (index) {
