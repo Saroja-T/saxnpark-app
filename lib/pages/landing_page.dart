@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:saxnpark_app/reponsive.dart';
 import 'package:saxnpark_app/utils/colors.dart';
 
 import '../bloc/landing/landing_bloc.dart';
@@ -52,22 +53,25 @@ class _LandingPageState extends State<LandingPage> {
     return BlocConsumer<LandingBloc, LandingState>(
       listener: (context, state) {},
       builder: (context, state) {
-        return Scaffold(
-          body: Center(child: bottomNavScreen.elementAt(state.tabIndex)),
-          bottomNavigationBar: BottomNavigationBar(
-            backgroundColor: AppColors.bottomNavigationBg,
-            type: BottomNavigationBarType.fixed,
-            items: bottomNavItems,
-            currentIndex: state.tabIndex,
-            selectedItemColor: AppColors.primary,
-            unselectedItemColor: Colors.white,
-            selectedFontSize: 12.0,
-            unselectedFontSize: 12.0,
-            onTap: (index) {
-              print('LandingPage(Index: $index)');
-              BlocProvider.of<LandingBloc>(context)
-                  .add(TabChangeEvent(tabIndex: index));
-            },
+        return Responsive(
+          tablet: Container(),
+          mobile: Scaffold(
+            body: Center(child: bottomNavScreen.elementAt(state.tabIndex)),
+            bottomNavigationBar: BottomNavigationBar(
+              backgroundColor: AppColors.bottomNavigationBg,
+              type: BottomNavigationBarType.fixed,
+              items: bottomNavItems,
+              currentIndex: state.tabIndex,
+              selectedItemColor: AppColors.primary,
+              unselectedItemColor: Colors.white,
+              selectedFontSize: 12.0,
+              unselectedFontSize: 12.0,
+              onTap: (index) {
+                print('LandingPage(Index: $index)');
+                BlocProvider.of<LandingBloc>(context)
+                    .add(TabChangeEvent(tabIndex: index));
+              },
+            ),
           ),
         );
       },
