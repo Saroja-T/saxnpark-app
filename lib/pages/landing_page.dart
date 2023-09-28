@@ -61,6 +61,8 @@ class _LandingPageState extends State<LandingPage> {
             currentIndex: state.tabIndex,
             selectedItemColor: AppColors.primary,
             unselectedItemColor: Colors.white,
+            selectedFontSize: 12.0,
+            unselectedFontSize: 12.0,
             onTap: (index) {
               print('LandingPage(Index: $index)');
               BlocProvider.of<LandingBloc>(context)
