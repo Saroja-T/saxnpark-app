@@ -4,6 +4,8 @@ import 'package:saxnpark_app/bloc/landing/landing_bloc.dart';
 import 'package:saxnpark_app/pages/landing_page.dart';
 import 'package:saxnpark_app/utils/colors.dart';
 
+import 'utils/strings.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -18,14 +20,13 @@ class MyApp extends StatelessWidget {
       create: (context) => LandingBloc(),
       child: SafeArea(
         child: MaterialApp(
-          title: 'MyCounter Bloc',
+          title: Strings.appName,
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
             primaryColor: AppColors.primary,
             fontFamily: 'PublicSan'
           ),
-
-          home: LandingPage(),
+          home: const LandingPage(),
         ),
       ),
     );

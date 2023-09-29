@@ -2,12 +2,14 @@ part of 'landing_bloc.dart';
 
 class LandingState extends Equatable {
   final int tabIndex;
+  final String tabLabel;
   const LandingState({
     required this.tabIndex,
+    required this.tabLabel,
   });
 
   factory LandingState.initial() {
-    return const LandingState(tabIndex: 0);
+    return LandingState(tabIndex: 0, tabLabel: Strings.home);
   }
 
   @override
@@ -17,10 +19,12 @@ class LandingState extends Equatable {
   String toString() => 'LandingState(tabIndex: $tabIndex)';
 
   LandingState copyWith({
-    int? tabIndex
+    int? tabIndex,
+    String? tabLabel
   }) {
     return LandingState(
       tabIndex: tabIndex ?? this.tabIndex,
+      tabLabel: tabLabel ?? this.tabLabel,
     );
   }
 }

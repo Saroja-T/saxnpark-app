@@ -8,5 +8,8 @@ sealed class LandingEvent extends Equatable {
 }
 class TabChangeEvent extends LandingEvent {
   final int tabIndex;
-  const TabChangeEvent({required this.tabIndex});
+  final String tabLabel;
+  const TabChangeEvent({required this.tabIndex,required this.tabLabel});
 }
+
+
