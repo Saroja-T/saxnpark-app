@@ -72,12 +72,14 @@ class _LocationListState extends State<LocationList> {
             child: Row(
               children: [
 
-                Row(
-                  children: [
-                    IconButton(onPressed: (){}, icon: Image.asset(gridIcon),style: locationInActiveElatedBtnStyle,),
-                  ],
-                ),
-                IconButton(onPressed: (){}, icon: Image.asset(listIcon),style:locationInActiveElatedBtnStyle),
+                Container(
+                  width: 36,
+                  height: 36,
+                  child: IconButton(onPressed: (){}, icon: Image.asset(gridIconSelected))),
+                Container(
+                  width: 36,
+                  height: 36,
+                  child: IconButton(onPressed: (){}, icon: Image.asset(listIcon))),
 
                 Container(
                   width: 91.0,
