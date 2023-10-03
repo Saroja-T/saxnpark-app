@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:saxnpark_app/pages/location_list.dart';
 import 'package:saxnpark_app/pages/location_page.dart';
 import 'package:saxnpark_app/reponsive.dart';
 import 'package:saxnpark_app/utils/colors.dart';
@@ -80,11 +81,15 @@ class _LandingPageState extends State<LandingPage> {
   Widget contentWidget(int tabIndex, String tabLabel) {
     print("tabLabel==>${tabLabel}");
      if (tabIndex==0 && tabLabel==Strings.home){
+<<<<<<< HEAD
         return const NearMePageWidget();
+=======
+        return const LocationPage();
+>>>>>>> 4245501cdcfe423830601a4d158df9a41d4bdc8d
      }else if (tabIndex==0 && tabLabel==Strings.location){
         return const LocationPage();
      }else if (tabIndex== 1) {
-        return Container();
+        return const LocationList();
      }else{
         return Center(child: Text(Strings.home));
      }

@@ -13,10 +13,12 @@ class LocationPage extends StatefulWidget {
 }
 
 class _LocationPageState extends State<LocationPage> {
+
+  TextEditingController searchController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     h = MediaQuery.of(context).size.height;
-    late TextEditingController searchController = TextEditingController();
+    print(h);
     return Scaffold(
       appBar: CustomAppBar(title: Strings.location),
       body: Container(
@@ -37,38 +39,36 @@ class _LocationPageState extends State<LocationPage> {
                 children: [
                   Expanded(
                     child: TextField(
-                      controller: searchController,
-                      decoration: InputDecoration(
-                        hintStyle: const TextStyle(
-                            fontSize: 14, fontWeight: FontWeight.w400),
-                        filled: true,
-                        fillColor: Colors.grey[300],
-                        hintText: Strings.searchHint,
-                        prefixIcon: const Icon(
-                          Icons.search_sharp,
-                          size: 14,
-                        ),
-                        border: OutlineInputBorder(
-                          borderSide: BorderSide.none,
-                          borderRadius: BorderRadius.circular(20.0),
-                        ),
-                      ),
-                      onSubmitted: (value) {
-                        setState(() {
-                          searchController.text = value;
-                        });
-                      },
+                     controller: searchController,
+                    decoration: InputDecoration(
+                      hintStyle: const TextStyle(fontSize: 14,fontWeight: FontWeight.w400),
+                      filled: true,
+                      fillColor: Colors.grey[300],
+                      hintText: Strings.searchHint,
+                      prefixIcon: const Icon(Icons.search_sharp,size: 14,),
+                      border: OutlineInputBorder(
+                      borderSide:BorderSide.none,
+                      borderRadius: BorderRadius.circular(20.0),
+                    ),),
+                      onChanged: (value)
+                    {
+                      setState(() {
+                        searchController.text = value;
+                        //searchedText = value;
+                      });
+                    },
+                    
                     ),
                   ),
-                  if (searchController.text.isNotEmpty)
-                    Expanded(
-                      child: IconButton(
-                        icon: const Icon(Icons.clear),
-                        onPressed: () {
-                          searchController.clear();
-                          // Handle clearing the search input here
-                        },
-                      ),
+                  if(searchController.text.isNotEmpty)
+                    TextButton(child: Text("Cancel",style: customTextStyle(14, FontWeight.w400, AppColors.black5, 0),),
+                      onPressed: () {
+                        setState(() {
+                      searchController.clear();
+                        });
+                       
+                      // Handle clearing the search input here
+                      },
                     )
                 ],
               ),

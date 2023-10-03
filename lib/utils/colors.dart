@@ -17,6 +17,10 @@ class AppColors{
   //Blue
   static Color blue1 = convertToHex("#1980E0");
 
+  //Gray
+
+  static Color gray1 = convertToHex("#767676");
+
   //Grey
   static Color grey1 = convertToHex("#EFEFEF");
   static Color grey2 = convertToHex("#606060");
