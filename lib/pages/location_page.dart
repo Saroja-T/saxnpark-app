@@ -17,149 +17,190 @@ class _LocationPageState extends State<LocationPage> {
   Widget build(BuildContext context) {
     h = MediaQuery.of(context).size.height;
     late TextEditingController searchController = TextEditingController();
-    print(h);
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        shadowColor: AppColors.toolbarShadow,
-        title: Align(
-          alignment: Alignment.bottomCenter,
-          child: Text(
-            Strings.location,
-          style: TextStyle(
-            color: AppColors.black2,fontSize: 12.0,fontWeight: FontWeight.w600),),
-        )),
+      appBar: CustomAppBar(title: Strings.location),
       body: Container(
-        margin: const EdgeInsets.only(left: 16), width: double.infinity,
+        margin: const EdgeInsets.only(left: 16),
+        width: double.infinity,
         child: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-           const SizedBox(height: 24.0,),
+            const SizedBox(
+              height: 24.0,
+            ),
             Container(
               height: 36.0,
               width: 358.0,
-              margin: const EdgeInsets.only(right:16.0),
+              margin: const EdgeInsets.only(right: 16.0),
               child: Row(
-                  children: [
+                children: [
                   Expanded(
                     child: TextField(
-                    controller: searchController,
-                    decoration: InputDecoration(
-                      hintStyle: const TextStyle(fontSize: 14,fontWeight: FontWeight.w400),
-                      filled: true,
-                      fillColor: Colors.grey[300],
-                      hintText: Strings.searchHint,
-                      prefixIcon: const Icon(Icons.search_sharp,size: 14,),
-                      border: OutlineInputBorder(
-                      borderSide:BorderSide.none,
-                      borderRadius: BorderRadius.circular(20.0),
-                    ),),
-                      onSubmitted: (value){
-                      setState(() {
-                        searchController.text=value;
-                        print("fdfffff=>${searchController.text.length}");
-                      });
-                    },
-                    
+                      controller: searchController,
+                      decoration: InputDecoration(
+                        hintStyle: const TextStyle(
+                            fontSize: 14, fontWeight: FontWeight.w400),
+                        filled: true,
+                        fillColor: Colors.grey[300],
+                        hintText: Strings.searchHint,
+                        prefixIcon: const Icon(
+                          Icons.search_sharp,
+                          size: 14,
+                        ),
+                        border: OutlineInputBorder(
+                          borderSide: BorderSide.none,
+                          borderRadius: BorderRadius.circular(20.0),
+                        ),
+                      ),
+                      onSubmitted: (value) {
+                        setState(() {
+                          searchController.text = value;
+                        });
+                      },
                     ),
                   ),
-                  if(searchController.text.length>0)
+                  if (searchController.text.isNotEmpty)
                     Expanded(
                       child: IconButton(
                         icon: const Icon(Icons.clear),
                         onPressed: () {
-                        searchController.clear();
-                        // Handle clearing the search input here
+                          searchController.clear();
+                          // Handle clearing the search input here
                         },
                       ),
                     )
-                  ],
-                ),
-              
-              // 
-              // ),
+                ],
+              ),
             ),
-          const SizedBox(height: 10.0),
-          Row(
-            children: [
-              Container(
-                width: 91.0,
-                height: 34.0,
-                margin: const EdgeInsets.only(right: 16),
-                child: TextButton.icon(
-                    style: locationInActiveElatedBtnStyle,
-                    onPressed: () { },
-                    icon: Image.asset(nearMe,width:12.0,height: 12.0),
-                    label: Text(Strings.nearMe, style: TextStyle(fontSize: 14.0,fontWeight: FontWeight.w400,color: AppColors.black5),),
-                  ),
-                ),
+            const SizedBox(height: 10.0),
+            Row(
+              children: [
                 Container(
-                   width: 91.0,
-                   height: 34.0,
+                  width: 91.0,
+                  height: 34.0,
                   margin: const EdgeInsets.only(right: 16),
                   child: TextButton.icon(
                     style: locationInActiveElatedBtnStyle,
-                    onPressed: () { },
-                    icon: Image.asset(recent,width:12.0,height: 12.0),
-                    label: Text(Strings.recent, style: TextStyle(fontSize: 14.0,fontWeight: FontWeight.w400,color: AppColors.black5),),
+                    onPressed: () {},
+                    icon: Image.asset(nearMe, width: 12.0, height: 12.0),
+                    label: Text(
+                      Strings.nearMe,
+                      style: TextStyle(
+                          fontSize: 14.0,
+                          fontWeight: FontWeight.w400,
+                          color: AppColors.black5),
+                    ),
                   ),
                 ),
-            ],
-          ),
-          const SizedBox(height: 32.0,),
-          Container(margin:const EdgeInsets.only(left: 4), child: Text(Strings.us, style:customTextStyle(20.0,FontWeight.w500,AppColors.black1,0))),
-          const SizedBox(height: 16.0,),
-          Flexible(
-            fit: FlexFit.loose,
-            child: GridView.builder(
-              shrinkWrap: true,
-              physics: const BouncingScrollPhysics(),
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-              ),
-              itemCount: 30,
-              itemBuilder: (BuildContext context, int index) {
-                return Container(
-                  margin: const EdgeInsets.only(right: 16.0),
-                  child: Card(shape: const RoundedRectangleBorder(
-                              borderRadius: BorderRadius.only(bottomLeft: Radius.circular(4.0),bottomRight: Radius.circular(4.0)),
-                            ), 
-                            child: SizedBox(
-                              width: 171.0,
-                              height: 150.0,
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
+                Container(
+                  width: 91.0,
+                  height: 34.0,
+                  margin: const EdgeInsets.only(right: 16),
+                  child: TextButton.icon(
+                    style: locationInActiveElatedBtnStyle,
+                    onPressed: () {},
+                    icon: Image.asset(recent, width: 12.0, height: 12.0),
+                    label: Text(
+                      Strings.recent,
+                      style: TextStyle(
+                          fontSize: 14.0,
+                          fontWeight: FontWeight.w400,
+                          color: AppColors.black5),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 32.0,
+            ),
+            Container(
+                margin: const EdgeInsets.only(left: 4),
+                child: Text(Strings.us,
+                    style: customTextStyle(
+                        20.0, FontWeight.w500, AppColors.black1, 0))),
+            const SizedBox(
+              height: 16.0,
+            ),
+            Flexible(
+              fit: FlexFit.loose,
+              child: GridView.builder(
+                  shrinkWrap: true,
+                  physics: const BouncingScrollPhysics(),
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                  ),
+                  itemCount: 30,
+                  itemBuilder: (BuildContext context, int index) {
+                    return Container(
+                      margin: const EdgeInsets.only(right: 16.0),
+                      child: Card(
+                        shape: const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.only(
+                              bottomLeft: Radius.circular(4.0),
+                              bottomRight: Radius.circular(4.0)),
+                        ),
+                        child: SizedBox(
+                          width: 171.0,
+                          height: 150.0,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              ClipRRect(
+                                borderRadius: const BorderRadius.only(
+                                    topLeft: Radius.circular(4.0),
+                                    topRight: Radius.circular(4.0)),
+                                child: Image.network(
+                                  'https://assets.kpmg.com/is/image/kpmg/statue-of-liberty-front-view-united-states?scl=1',
+                                  height: 96.0,
+                                  width: double.infinity,
+                                  fit: BoxFit.fill,
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(
+                                    left: 8.0, right: 8.0),
+                                child: Text(Strings.us,
+                                    style: customTextStyle(20.0,
+                                        FontWeight.w500, AppColors.black3, 3)),
+                              ),
+                              Row(
                                 children: [
-                                  ClipRRect(
-                                    borderRadius: const BorderRadius.only(topLeft: Radius.circular(4.0),topRight: Radius.circular(4.0)),
-                                    child: Image.network('https://assets.kpmg.com/is/image/kpmg/statue-of-liberty-front-view-united-states?scl=1',
-                                      height:96.0,
-                                      width: double.infinity,
-                                      fit: BoxFit.fill,),
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                        left: 8.0, right: 4.0, bottom: 3),
+                                    child: Text(Strings.dummyText1,
+                                        style: customTextStyle(
+                                            10.0,
+                                            FontWeight.w400,
+                                            AppColors.black3,
+                                            2)),
+                                  ),
+                                  Icon(
+                                    Icons.circle_rounded,
+                                    size: 5.0,
+                                    color: AppColors.black4,
                                   ),
                                   Padding(
-                                    padding: const EdgeInsets.only(left:8.0,right: 8.0),
-                                    child: Text(Strings.us, style:customTextStyle(20.0,FontWeight.w500,AppColors.black3,3)),
+                                    padding: const EdgeInsets.only(
+                                        left: 4.0, right: 4.0, bottom: 3),
+                                    child: Text(Strings.dummyText2,
+                                        style: customTextStyle(
+                                            10.0,
+                                            FontWeight.w400,
+                                            AppColors.black3,
+                                            2)),
                                   ),
-                                  Row(children: [
-                                    Padding(
-                                      padding: const EdgeInsets.only(left:8.0,right : 4.0,bottom: 3),
-                                      child: Text(Strings.dummyText1, style:customTextStyle(10.0,FontWeight.w400,AppColors.black3,2)),
-                                    ),
-                                    Icon(Icons.circle_rounded, size:5.0,color: AppColors.black4,),
-                                    Padding(
-                                      padding: const EdgeInsets.only(left:4.0,right: 4.0,bottom: 3),
-                                      child: Text(Strings.dummyText2, style:customTextStyle(10.0,FontWeight.w400,AppColors.black3,2)),
-                                    ),
-                                  ],)
                                 ],
-                              ),
+                              )
+                            ],
                           ),
                         ),
-                );
-              }
-            ),)
+                      ),
+                    );
+                  }),
+            )
           ],
         ),
       ),

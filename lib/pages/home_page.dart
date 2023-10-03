@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:saxnpark_app/bloc/home/home_bloc.dart';
+import 'package:saxnpark_app/commons/custom_app_bar.dart';
 import 'package:saxnpark_app/utils/colors.dart';
+import 'package:saxnpark_app/utils/custom_widgets.dart';
 
 import '../bloc/landing/landing_bloc.dart';
 import '../utils/constants.dart';
@@ -18,23 +20,10 @@ class HomePage extends StatelessWidget {
         BlocProvider<HomeBloc>(
           create: (context) => HomeBloc(),
         ),
-        
       ],
       child: Scaffold(
-          appBar: AppBar(
-              backgroundColor: Colors.white,
-              shadowColor: AppColors.toolbarShadow,
-              title: Align(
-                alignment: Alignment.bottomCenter,
-                child: Text(
-                  Strings.home,
-                  style: TextStyle(
-                      color: AppColors.black2,
-                      fontSize: 12.0,
-                      fontWeight: FontWeight.w600),
-                ),
-              )),
-          body: HomePageWidget()),
+          appBar: CustomAppBar(title:Strings.home),
+          body: const HomePageWidget()),
     );
   }
 }
@@ -45,7 +34,7 @@ class HomePageWidget extends StatefulWidget {
   State<HomePageWidget> createState() => _HomePageWidgetState();
 }
 
-class _HomePageWidgetState extends State<HomePageWidget> {
+class _HomePageWidgetState extends State<HomePageWidget>{
   @override
   Widget build(BuildContext context) {
     h = MediaQuery.of(context).size.height;

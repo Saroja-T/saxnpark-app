@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 
 import '../utils/colors.dart';
 
-class CustomAppBar extends StatelessWidget {
-  final String name;
+class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
+  final String title;
   const CustomAppBar({
     Key? key,
-    required this.name,
+    required this.title,
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -16,9 +16,13 @@ class CustomAppBar extends StatelessWidget {
         title: Align(
           alignment: Alignment.bottomCenter,
           child: Text(
-            name,
+            title,
           style: TextStyle(
             color: AppColors.black2,fontSize: 12.0,fontWeight: FontWeight.w600),),
         ));
   }
+  
+  @override
+    Size get preferredSize => const Size.fromHeight(50);
+
 }

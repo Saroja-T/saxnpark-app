@@ -9,6 +9,7 @@ import '../commons/bottom_icons.dart';
 import '../utils/constants.dart';
 import '../utils/strings.dart';
 import 'home_page.dart';
+import 'nearme_page.dart';
 
 
 
@@ -79,7 +80,7 @@ class _LandingPageState extends State<LandingPage> {
   Widget contentWidget(int tabIndex, String tabLabel) {
     print("tabLabel==>${tabLabel}");
      if (tabIndex==0 && tabLabel==Strings.home){
-        return const HomePage();
+        return const NearMePageWidget();
      }else if (tabIndex==0 && tabLabel==Strings.location){
         return const LocationPage();
      }else if (tabIndex== 1) {
