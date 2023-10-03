@@ -7,13 +7,13 @@ import '../utils/constants.dart';
 import '../utils/strings.dart';
 import '../utils/styles.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class LocationList extends StatefulWidget {
+  const LocationList({super.key});
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<LocationList> createState() => _LocationListState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _LocationListState extends State<LocationList> {
   @override
   Widget build(BuildContext context) {
     h = MediaQuery.of(context).size.height;
@@ -25,7 +25,7 @@ class _HomePageState extends State<HomePage> {
         title: Align(
           alignment: Alignment.bottomCenter,
           child: Text(
-            "Home",
+            "Location",
           style: TextStyle(
             color: AppColors.black2,fontSize: 12.0,fontWeight: FontWeight.w600),),
         )),

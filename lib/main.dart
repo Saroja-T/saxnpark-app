@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:saxnpark_app/bloc/landing/landing_bloc.dart';
 import 'package:saxnpark_app/pages/landing_page.dart';
 import 'package:saxnpark_app/utils/colors.dart';
+import 'package:saxnpark_app/utils/router.dart';
 
 import 'utils/strings.dart';
 
@@ -26,7 +27,9 @@ class MyApp extends StatelessWidget {
             primaryColor: AppColors.primary,
             fontFamily: 'PublicSans'
           ),
-          home: const LandingPage(),
+          initialRoute: '/',
+          onGenerateRoute: RoutesGenerator.generateRoute,
+         // home: const LandingPage(),
         ),
       ),
     );

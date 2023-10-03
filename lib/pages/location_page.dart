@@ -88,7 +88,8 @@ class _LocationPageState extends State<LocationPage> {
                   margin: EdgeInsets.only(right: 10.0),
                   child: ElevatedButton(
                         style: homeActiveElatedBtnStyle,
-                        onPressed: () { },
+                        onPressed: () { 
+                        },
                         child: Text(Strings.northAmerica, style: 
                         customTextStyle(16.0,FontWeight.w600,AppColors.white,0),),
                       ),
