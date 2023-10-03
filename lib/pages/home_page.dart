@@ -25,7 +25,7 @@ class _HomePageState extends State<HomePage> {
         title: Align(
           alignment: Alignment.bottomCenter,
           child: Text(
-            "Home",
+            Strings.home,
           style: TextStyle(
             color: AppColors.black2,fontSize: 12.0,fontWeight: FontWeight.w600),),
         )),

@@ -82,7 +82,7 @@ class _LandingPageState extends State<LandingPage> {
      if (tabIndex==0 && tabLabel==Strings.home){
         return const HomePage();
      }else if (tabIndex==0 && tabLabel==Strings.location){
-        return Center(child: Text(Strings.location));
+        return const LocationPage();
      }else if (tabIndex== 1) {
         return const LocationList();
      }else{

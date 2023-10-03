@@ -21,5 +21,12 @@ static String appName = "SaxnPark";
   static String dummyText2 =  "40 cities";
   static String northAmerica =  "North America";
   static String us =  "United States";
-  
+
+
+  //Tocationlist Title Text
+  static String carParkName =  "Car park name - 67201";
+  static String weekDayText =  "Monday - Saturday";
+  static String weekEndText =  "Sundays";
+  static String timeFrequencyText =  "For every 5 minutes";
+  static String oneHourText =  "60 minutes";
 }
