@@ -13,7 +13,7 @@ class LandingState extends Equatable {
   }
 
   @override
-  List<Object> get props => [tabIndex];
+  List<Object> get props => [tabIndex,tabLabel];
 
   @override
   String toString() => 'LandingState(tabIndex: $tabIndex)';
@@ -26,5 +26,5 @@ class LandingState extends Equatable {
       tabIndex: tabIndex ?? this.tabIndex,
       tabLabel: tabLabel ?? this.tabLabel,
     );
-  }
+  } 
 }
