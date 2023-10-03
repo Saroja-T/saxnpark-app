@@ -15,6 +15,29 @@ final ButtonStyle homeActiveElatedBtnStyle = ElevatedButton.styleFrom(
     borderRadius: BorderRadius.all(Radius.circular(100)),
   ),
 );
+final ButtonStyle homeInActiveElatedBtnStyle = ElevatedButton.styleFrom(
+  backgroundColor: AppColors.grey3,
+  shape: const RoundedRectangleBorder(
+    borderRadius: BorderRadius.all(Radius.circular(100)),
+  ),
+);
+
+final ButtonStyle locationActiveElatedBtnStyle = ElevatedButton.styleFrom(
+  minimumSize: const Size(double.infinity, 51),
+  backgroundColor: AppColors.grey4,
+  shape: const RoundedRectangleBorder(
+    borderRadius: BorderRadius.all(Radius.circular(12)),
+  ),
+);
+
+final ButtonStyle locationInActiveElatedBtnStyle = TextButton.styleFrom(
+  minimumSize: const Size(double.infinity, 51),
+  backgroundColor: AppColors.grey4,
+  side: BorderSide(color: AppColors.grey5,style: BorderStyle.solid),
+  shape: const RoundedRectangleBorder(
+    borderRadius: BorderRadius.all(Radius.circular(12)),
+  ),
+);
 
 
 
