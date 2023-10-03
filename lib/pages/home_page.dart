@@ -14,7 +14,12 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
-      providers: [],
+      providers: [
+        BlocProvider<HomeBloc>(
+          create: (context) => HomeBloc(),
+        ),
+        
+      ],
       child: Scaffold(
           appBar: AppBar(
               backgroundColor: Colors.white,
@@ -46,9 +51,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
     h = MediaQuery.of(context).size.height;
     w = MediaQuery.of(context).size.width;
     return BlocConsumer<HomeBloc, HomeState>(
-      listener: (context, state) {
-       
-      },
+      listener: (context, state) {},
       builder: (context, state) {
         return SingleChildScrollView(
           child: Container(
