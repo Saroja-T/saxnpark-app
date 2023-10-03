@@ -12,6 +12,9 @@ static String appName = "SaxnPark";
   static String parkNow = "Park now";
   static String findOut = "Find out more";
   static String ourLocation = "Our Locations";
+  static String searchHint = "Search state or city";
+  static String nearMe = "Near me";
+  static String recent = "Recent";
 
 
 

@@ -62,14 +62,48 @@ class _LocationListState extends State<LocationList> {
                       },),
                     ),
                   ),
-                  searchedText.toString().isNotEmpty ?Expanded(child: TextButton(child: Text("Cancel"),onPressed: (){
-
-                  },)):Container(),
 
                 ],
               ),
             ),
+            const SizedBox(height: 10.0),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(16,0,16,0),
+            child: Row(
+              children: [
 
+                Row(
+                  children: [
+                    IconButton(onPressed: (){}, icon: Image.asset(gridIcon),style: locationInActiveElatedBtnStyle,),
+                  ],
+                ),
+                IconButton(onPressed: (){}, icon: Image.asset(listIcon),style:locationInActiveElatedBtnStyle),
+
+                Container(
+                  width: 91.0,
+                  height: 34.0,
+                  margin: const EdgeInsets.only(right: 16),
+                  child: TextButton.icon(
+                      style: locationActiveElatedBtnStyle,
+                      onPressed: () { },
+                      icon: Image.asset(nearMe,width:12.0,height: 12.0,color: AppColors.white,),
+                      label: Text(Strings.nearMe, style: TextStyle(fontSize: 14.0,fontWeight: FontWeight.w400,color: AppColors.white),),
+                    ),
+                  ),
+                  Container(
+                     width: 91.0,
+                     height: 34.0,
+                    margin: const EdgeInsets.only(right: 16),
+                    child: TextButton.icon(
+                      style: locationInActiveElatedBtnStyle,
+                      onPressed: () { },
+                      icon: Image.asset(recent,width:12.0,height: 12.0),
+                      label: Text(Strings.recent, style: TextStyle(fontSize: 14.0,fontWeight: FontWeight.w400,color: AppColors.black5),),
+                    ),
+                  ),
+              ],
+            ),
+          ),
             Flexible(
               fit: FlexFit.loose,
               child: Padding(

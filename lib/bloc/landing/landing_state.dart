@@ -3,6 +3,7 @@ part of 'landing_bloc.dart';
 class LandingState extends Equatable {
   final int tabIndex;
   final String tabLabel;
+
   const LandingState({
     required this.tabIndex,
     required this.tabLabel,
