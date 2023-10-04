@@ -15,7 +15,6 @@ class LocationPage extends StatefulWidget {
 }
 
 class _LocationPageState extends State<LocationPage> {
-
   TextEditingController searchController = TextEditingController();
   @override
   Widget build(BuildContext context) {
@@ -41,31 +40,40 @@ class _LocationPageState extends State<LocationPage> {
                 children: [
                   Expanded(
                     child: SizedBox(
-                      height:36,
+                      height: 36,
                       child: TextField(
-                          controller: searchController,
-                          decoration: InputDecoration(
+                        controller: searchController,
+                        decoration: InputDecoration(
                           contentPadding: const EdgeInsets.all(10.0),
                           border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(24.0),
-                          borderSide: BorderSide.none),
+                              borderRadius: BorderRadius.circular(24.0),
+                              borderSide: BorderSide.none),
                           prefixIcon: Image.asset(searchIcon),
-                          filled: true, 
-                          fillColor:const Color.fromRGBO(239, 239, 239, 1),
-                          hintStyle: const TextStyle(color: Color.fromARGB(96, 96, 96, 1),fontSize: 14.0),
+                          filled: true,
+                          fillColor: const Color.fromRGBO(239, 239, 239, 1),
+                          hintStyle: const TextStyle(
+                              color: Color.fromARGB(96, 96, 96, 1),
+                              fontSize: 14.0),
                           hintText: Strings.searchHint,
-                        ),onChanged: (value){
-                        setState(() {
-                          searchController.text = value;
-                        });
-                      },),
+                        ),
+                        onChanged: (value) {
+                          setState(() {
+                            searchController.text = value;
+                          });
+                        },
+                      ),
                     ),
                   ),
-                  if(searchController.text.isNotEmpty)
-                    TextButton(child: Text("Cancel",style: customTextStyle(14, FontWeight.w400, AppColors.black5, 0),),
+                  if (searchController.text.isNotEmpty)
+                    TextButton(
+                      child: Text(
+                        "Cancel",
+                        style: customTextStyle(
+                            14, FontWeight.w400, AppColors.black5, 0),
+                      ),
                       onPressed: () {
                         setState(() {
-                      searchController.clear();
+                          searchController.clear();
                         });
                       },
                     )
@@ -83,7 +91,7 @@ class _LocationPageState extends State<LocationPage> {
                     style: locationInActiveElatedBtnStyle,
                     onPressed: () {
                       context.read<LandingBloc>().add(TabChangeEvent(
-                                tabIndex: 0, tabLabel: Strings.rNearme));
+                          tabIndex: 0, tabLabel: Strings.rNearme));
                     },
                     icon: Image.asset(nearMe, width: 12.0, height: 12.0),
                     label: Text(
@@ -136,9 +144,9 @@ class _LocationPageState extends State<LocationPage> {
                   itemCount: 30,
                   itemBuilder: (BuildContext context, int index) {
                     return GestureDetector(
-                      onTap: (){
+                      onTap: () {
                         context.read<LandingBloc>().add(TabChangeEvent(
-                                tabIndex: 0, tabLabel: Strings.rLocationList));
+                            tabIndex: 0, tabLabel: Strings.rLocationList));
                       },
                       child: Container(
                         margin: const EdgeInsets.only(right: 16.0),
@@ -169,8 +177,11 @@ class _LocationPageState extends State<LocationPage> {
                                   padding: const EdgeInsets.only(
                                       left: 8.0, right: 8.0),
                                   child: Text(Strings.us,
-                                      style: customTextStyle(20.0,
-                                          FontWeight.w500, AppColors.black3, 2)),
+                                      style: customTextStyle(
+                                          20.0,
+                                          FontWeight.w500,
+                                          AppColors.black3,
+                                          2)),
                                 ),
                                 Row(
                                   children: [

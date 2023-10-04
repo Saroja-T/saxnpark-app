@@ -46,7 +46,8 @@ class _LocationListState extends State<LocationList> {
                           filled: true,
                           fillColor: const Color.fromRGBO(239, 239, 239, 1),
                           hintStyle: const TextStyle(
-                              color: Color.fromARGB(96, 96, 96, 1),fontSize: 14.0),
+                              color: Color.fromARGB(96, 96, 96, 1),
+                              fontSize: 14.0),
                           hintText: Strings.locationHint,
                         ),
                         onChanged: (text) {
@@ -69,8 +70,7 @@ class _LocationListState extends State<LocationList> {
                       width: 36,
                       height: 36,
                       child: IconButton(
-                          onPressed: () {},
-                          icon: Image.asset(gridIcon))),
+                          onPressed: () {}, icon: Image.asset(gridIcon))),
                   SizedBox(
                       width: 36,
                       height: 36,
@@ -126,12 +126,11 @@ class _LocationListState extends State<LocationList> {
                   itemCount: 10,
                   itemBuilder: (BuildContext context, int index) {
                     return GestureDetector(
-                      onTap: () {
-                        context.read<LandingBloc>().add(TabChangeEvent(
-                            tabIndex: 0, tabLabel: Strings.location));
-                      },
-                      child: locationCards()
-                    );
+                        onTap: () {
+                          context.read<LandingBloc>().add(TabChangeEvent(
+                              tabIndex: 0, tabLabel: Strings.location));
+                        },
+                        child: locationCards());
                   },
                   separatorBuilder: (context, index) {
                     return Divider();

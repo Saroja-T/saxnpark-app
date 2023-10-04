@@ -65,12 +65,12 @@ class _NearMePageWidgetState extends State<NearMePageWidget> {
                               border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(24.0),
                                   borderSide: BorderSide.none),
-                              prefixIcon: 
-                              Image.asset(searchIcon),
+                              prefixIcon: Image.asset(searchIcon),
                               filled: true,
                               fillColor: Colors.white,
                               hintStyle: const TextStyle(
-                                  color: Color.fromARGB(96, 96, 96, 1),fontSize: 14.0),
+                                  color: Color.fromARGB(96, 96, 96, 1),
+                                  fontSize: 14.0),
                               hintText: Strings.searchHint,
                             ),
                             onChanged: (value) {
@@ -105,10 +105,10 @@ class _NearMePageWidgetState extends State<NearMePageWidget> {
                     Container(
                       width: 80,
                       height: 34,
-                      margin: const EdgeInsets.only(right:12),
+                      margin: const EdgeInsets.only(right: 12),
                       decoration: const BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.all(Radius.circular(10))),
+                          color: Colors.white,
+                          borderRadius: BorderRadius.all(Radius.circular(10))),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
@@ -117,13 +117,20 @@ class _NearMePageWidgetState extends State<NearMePageWidget> {
                             width: 40,
                             child: IconButton(
                                 onPressed: () {},
-                                icon: Image.asset(gridSelectedIcon,width: 35,)),
+                                icon: Image.asset(
+                                  gridSelectedIcon,
+                                  width: 35,
+                                )),
                           ),
                           SizedBox(
                             width: 35,
                             height: 40,
                             child: IconButton(
-                                onPressed: () {}, icon: Image.asset(listIcon,width: 24,)),
+                                onPressed: () {},
+                                icon: Image.asset(
+                                  listIcon,
+                                  width: 24,
+                                )),
                           ),
                         ],
                       ),
@@ -174,33 +181,34 @@ class _NearMePageWidgetState extends State<NearMePageWidget> {
           ),
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(16,0,0,0),
+          padding: const EdgeInsets.fromLTRB(16, 0, 0, 0),
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
             itemCount: 10,
             itemBuilder: (BuildContext context, int index) {
-                      return Container(
-              alignment: Alignment.bottomCenter,
-              margin: const EdgeInsets.only(bottom: 20),
-              padding: EdgeInsets.only(
-                 // top: MediaQuery.of(context).size.height * .58,
-                  right: 8.0,
-                  left: 0.0),
-              child: Card(
-                shape: RoundedRectangleBorder(
-    borderRadius: BorderRadius.circular(20),
-  ),
-                color: Colors.white,
-                elevation: 4.0,
-                child: Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Container(
-                    width: MediaQuery.of(context).size.width * 0.8,
-                    height: 156,
-                    child: Center(child: locationCards())),
+              return Container(
+                alignment: Alignment.bottomCenter,
+                margin: const EdgeInsets.only(bottom: 20),
+                padding: EdgeInsets.only(
+                    // top: MediaQuery.of(context).size.height * .58,
+                    right: 8.0,
+                    left: 0.0),
+                child: Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  color: Colors.white,
+                  elevation: 4.0,
+                  child: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Container(
+                        width: MediaQuery.of(context).size.width * 0.8,
+                        height: 156,
+                        child: Center(child: locationCards())),
+                  ),
                 ),
-              ),
-            );},
+              );
+            },
           ),
         )
       ],

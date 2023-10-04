@@ -25,7 +25,7 @@ static String appName = "SaxnPark";
   static String rNearme ="nearMe";
   static String rSession ="session";
   static String rPermit ="Permit";
-  static String rAccount ="account";
+  static String rAccount ="nearMe";
 
 
 
