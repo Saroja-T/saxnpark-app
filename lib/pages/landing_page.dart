@@ -64,10 +64,10 @@ class _LandingPageState extends State<LandingPage> {
               unselectedFontSize: 12.0,
               onTap: (index) {
                 switch(index){
-                  case 0:  context.read<LandingBloc>().add(TabChangeEvent(tabIndex: index,tabLabel:Strings.home));
-                  case 1:  context.read<LandingBloc>().add(TabChangeEvent(tabIndex: index,tabLabel:Strings.session));
-                  case 2:  context.read<LandingBloc>().add(TabChangeEvent(tabIndex: index,tabLabel:Strings.permit));
-                  case 3:  context.read<LandingBloc>().add(TabChangeEvent(tabIndex: index,tabLabel:Strings.account));
+                  case 0:  context.read<LandingBloc>().add(TabChangeEvent(tabIndex: index,tabLabel:Strings.rHome));
+                  case 1:  context.read<LandingBloc>().add(TabChangeEvent(tabIndex: index,tabLabel:Strings.rSession));
+                  case 2:  context.read<LandingBloc>().add(TabChangeEvent(tabIndex: index,tabLabel:Strings.rPermit));
+                  case 3:  context.read<LandingBloc>().add(TabChangeEvent(tabIndex: index,tabLabel:Strings.rAccount));
                 }
                 
               },
@@ -80,12 +80,16 @@ class _LandingPageState extends State<LandingPage> {
   
   Widget contentWidget(int tabIndex, String tabLabel) {
     print("tabLabel==>${tabLabel}");
-     if (tabIndex==0 && tabLabel==Strings.home){
-        return const NearMePage();
-     }else if (tabIndex==0 && tabLabel==Strings.location){
+     if (tabIndex==0 && tabLabel==Strings.rHome){
+        return const HomePage();
+     }else if (tabIndex==0 && tabLabel==Strings.rLocation){
         return const LocationPage();
-     }else if (tabIndex== 1) {
+     }else if (tabIndex==0 && tabLabel==Strings.rLocationList){
         return const LocationList();
+     }else if (tabIndex==0 && tabLabel==Strings.rNearme){
+        return const NearMePage();
+     }else if (tabIndex== 1) {
+        return Center(child: Text(Strings.session));
      }else{
         return Center(child: Text(Strings.home));
      }

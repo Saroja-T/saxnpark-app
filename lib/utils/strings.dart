@@ -18,6 +18,14 @@ static String appName = "SaxnPark";
   static String recent = "Recent";
   static String cancel = "Cancel";
 
+  //redirections
+  static String rHome ="home";
+  static String rLocation ="location";
+  static String rLocationList ="locationList";
+  static String rNearme ="nearMe";
+  static String rSession ="session";
+  static String rPermit ="Permit";
+  static String rAccount ="account";
 
 
 

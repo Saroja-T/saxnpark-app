@@ -119,7 +119,7 @@ class _HomePageWidgetState extends State<HomePageWidget>{
                                             12.0,
                                             FontWeight.w400,
                                             AppColors.black3,
-                                            2)),
+                                            1)),
                                   ),
                                   Icon(
                                     Icons.arrow_outward_outlined,
@@ -183,77 +183,74 @@ class _HomePageWidgetState extends State<HomePageWidget>{
                         return GestureDetector(
                           onTap: () {
                             context.read<LandingBloc>().add(TabChangeEvent(
-                                tabIndex: 0, tabLabel: Strings.location));
+                                tabIndex: 0, tabLabel: Strings.rLocation));
                           },
                           child: Container(
-                            margin: const EdgeInsets.only(right: 16.0),
-                            child: Card(
-                              shape: const RoundedRectangleBorder(
-                                borderRadius: BorderRadius.only(
-                                    bottomLeft: Radius.circular(4.0),
-                                    bottomRight: Radius.circular(4.0)),
-                              ),
-                              child: SizedBox(
-                                width: 171.0,
-                                height: 150.0,
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
+                        margin: const EdgeInsets.only(right: 16.0),
+                        child: Card(
+                          shape: const RoundedRectangleBorder(
+                            borderRadius: BorderRadius.only(
+                                bottomLeft: Radius.circular(4.0),
+                                bottomRight: Radius.circular(4.0)),
+                          ),
+                          child: SizedBox(
+                            width: 171.0,
+                            height: 150.0,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                ClipRRect(
+                                  borderRadius: const BorderRadius.only(
+                                      topLeft: Radius.circular(4.0),
+                                      topRight: Radius.circular(4.0)),
+                                  child: Image.network(
+                                    'https://assets.kpmg.com/is/image/kpmg/statue-of-liberty-front-view-united-states?scl=1',
+                                    height: 96.0,
+                                    width: double.infinity,
+                                    fit: BoxFit.fill,
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                      left: 8.0, right: 8.0),
+                                  child: Text(Strings.us,
+                                      style: customTextStyle(20.0,
+                                          FontWeight.w500, AppColors.black3, 2)),
+                                ),
+                                Row(
                                   children: [
-                                    ClipRRect(
-                                      borderRadius: const BorderRadius.only(
-                                          topLeft: Radius.circular(4.0),
-                                          topRight: Radius.circular(4.0)),
-                                      child: Image.network(
-                                        'https://assets.kpmg.com/is/image/kpmg/statue-of-liberty-front-view-united-states?scl=1',
-                                        height: 96.0,
-                                        width: double.infinity,
-                                        fit: BoxFit.fill,
-                                      ),
+                                    Padding(
+                                      padding: const EdgeInsets.only(
+                                          left: 8.0, right: 4.0, bottom: 3),
+                                      child: Text(Strings.dummyText1,
+                                          style: customTextStyle(
+                                              10.0,
+                                              FontWeight.w400,
+                                              AppColors.black3,
+                                              2)),
+                                    ),
+                                    Icon(
+                                      Icons.circle_rounded,
+                                      size: 5.0,
+                                      color: AppColors.black4,
                                     ),
                                     Padding(
                                       padding: const EdgeInsets.only(
-                                          left: 8.0, right: 8.0),
-                                      child: Text(Strings.us,
+                                          left: 4.0, right: 4.0, bottom: 3),
+                                      child: Text(Strings.dummyText2,
                                           style: customTextStyle(
-                                              20.0,
-                                              FontWeight.w500,
+                                              10.0,
+                                              FontWeight.w400,
                                               AppColors.black3,
-                                              3)),
+                                              2)),
                                     ),
-                                    Row(
-                                      children: [
-                                        Padding(
-                                          padding: const EdgeInsets.only(
-                                              left: 8.0, right: 4.0, bottom: 3),
-                                          child: Text(Strings.dummyText1,
-                                              style: customTextStyle(
-                                                  10.0,
-                                                  FontWeight.w400,
-                                                  AppColors.black3,
-                                                  2)),
-                                        ),
-                                        Icon(
-                                          Icons.circle_rounded,
-                                          size: 5.0,
-                                          color: AppColors.black4,
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsets.only(
-                                              left: 4.0, right: 4.0, bottom: 3),
-                                          child: Text(Strings.dummyText2,
-                                              style: customTextStyle(
-                                                  10.0,
-                                                  FontWeight.w400,
-                                                  AppColors.black3,
-                                                  2)),
-                                        ),
-                                      ],
-                                    )
                                   ],
-                                ),
-                              ),
+                                )
+                              ],
                             ),
                           ),
+                        ),
+                      ),
                         );
                       }),
                 )

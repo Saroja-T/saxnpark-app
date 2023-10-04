@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:saxnpark_app/commons/custom_app_bar.dart';
 import 'package:saxnpark_app/utils/colors.dart';
 
+import '../bloc/landing/landing_bloc.dart';
 import '../utils/constants.dart';
 import '../utils/strings.dart';
 import '../utils/styles.dart';
@@ -79,7 +81,10 @@ class _LocationPageState extends State<LocationPage> {
                   margin: const EdgeInsets.only(right: 16),
                   child: TextButton.icon(
                     style: locationInActiveElatedBtnStyle,
-                    onPressed: () {},
+                    onPressed: () {
+                      context.read<LandingBloc>().add(TabChangeEvent(
+                                tabIndex: 0, tabLabel: Strings.rNearme));
+                    },
                     icon: Image.asset(nearMe, width: 12.0, height: 12.0),
                     label: Text(
                       Strings.nearMe,
@@ -130,68 +135,74 @@ class _LocationPageState extends State<LocationPage> {
                   ),
                   itemCount: 30,
                   itemBuilder: (BuildContext context, int index) {
-                    return Container(
-                      margin: const EdgeInsets.only(right: 16.0),
-                      child: Card(
-                        shape: const RoundedRectangleBorder(
-                          borderRadius: BorderRadius.only(
-                              bottomLeft: Radius.circular(4.0),
-                              bottomRight: Radius.circular(4.0)),
-                        ),
-                        child: SizedBox(
-                          width: 171.0,
-                          height: 150.0,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              ClipRRect(
-                                borderRadius: const BorderRadius.only(
-                                    topLeft: Radius.circular(4.0),
-                                    topRight: Radius.circular(4.0)),
-                                child: Image.network(
-                                  'https://assets.kpmg.com/is/image/kpmg/statue-of-liberty-front-view-united-states?scl=1',
-                                  height: 96.0,
-                                  width: double.infinity,
-                                  fit: BoxFit.fill,
+                    return GestureDetector(
+                      onTap: (){
+                        context.read<LandingBloc>().add(TabChangeEvent(
+                                tabIndex: 0, tabLabel: Strings.rLocationList));
+                      },
+                      child: Container(
+                        margin: const EdgeInsets.only(right: 16.0),
+                        child: Card(
+                          shape: const RoundedRectangleBorder(
+                            borderRadius: BorderRadius.only(
+                                bottomLeft: Radius.circular(4.0),
+                                bottomRight: Radius.circular(4.0)),
+                          ),
+                          child: SizedBox(
+                            width: 171.0,
+                            height: 150.0,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                ClipRRect(
+                                  borderRadius: const BorderRadius.only(
+                                      topLeft: Radius.circular(4.0),
+                                      topRight: Radius.circular(4.0)),
+                                  child: Image.network(
+                                    'https://assets.kpmg.com/is/image/kpmg/statue-of-liberty-front-view-united-states?scl=1',
+                                    height: 96.0,
+                                    width: double.infinity,
+                                    fit: BoxFit.fill,
+                                  ),
                                 ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(
-                                    left: 8.0, right: 8.0),
-                                child: Text(Strings.us,
-                                    style: customTextStyle(20.0,
-                                        FontWeight.w500, AppColors.black3, 2)),
-                              ),
-                              Row(
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.only(
-                                        left: 8.0, right: 4.0, bottom: 3),
-                                    child: Text(Strings.dummyText1,
-                                        style: customTextStyle(
-                                            10.0,
-                                            FontWeight.w400,
-                                            AppColors.black3,
-                                            2)),
-                                  ),
-                                  Icon(
-                                    Icons.circle_rounded,
-                                    size: 5.0,
-                                    color: AppColors.black4,
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(
-                                        left: 4.0, right: 4.0, bottom: 3),
-                                    child: Text(Strings.dummyText2,
-                                        style: customTextStyle(
-                                            10.0,
-                                            FontWeight.w400,
-                                            AppColors.black3,
-                                            2)),
-                                  ),
-                                ],
-                              )
-                            ],
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                      left: 8.0, right: 8.0),
+                                  child: Text(Strings.us,
+                                      style: customTextStyle(20.0,
+                                          FontWeight.w500, AppColors.black3, 2)),
+                                ),
+                                Row(
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.only(
+                                          left: 8.0, right: 4.0, bottom: 3),
+                                      child: Text(Strings.dummyText1,
+                                          style: customTextStyle(
+                                              10.0,
+                                              FontWeight.w400,
+                                              AppColors.black3,
+                                              2)),
+                                    ),
+                                    Icon(
+                                      Icons.circle_rounded,
+                                      size: 5.0,
+                                      color: AppColors.black4,
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.only(
+                                          left: 4.0, right: 4.0, bottom: 3),
+                                      child: Text(Strings.dummyText2,
+                                          style: customTextStyle(
+                                              10.0,
+                                              FontWeight.w400,
+                                              AppColors.black3,
+                                              2)),
+                                    ),
+                                  ],
+                                )
+                              ],
+                            ),
                           ),
                         ),
                       ),

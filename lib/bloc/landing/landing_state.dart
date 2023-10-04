@@ -10,7 +10,7 @@ class LandingState extends Equatable {
   });
 
   factory LandingState.initial() {
-    return LandingState(tabIndex: 0, tabLabel: Strings.home);
+    return LandingState(tabIndex: 0, tabLabel: Strings.rHome);
   }
 
   @override
