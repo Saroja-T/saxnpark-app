@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:saxnpark_app/utils/custom_widgets.dart';
 
 import '../commons/custom_app_bar.dart';
 import '../utils/colors.dart';
@@ -170,20 +171,34 @@ class _NearMePageWidgetState extends State<NearMePageWidget> {
             ),
           ),
         ),
-        Container(
-          alignment: Alignment.bottomCenter,
-          margin: const EdgeInsets.only(bottom: 20),
-          padding: EdgeInsets.only(
-              top: MediaQuery.of(context).size.height * .58,
-              right: 20.0,
-              left: 20.0),
-          child: SizedBox(
-            height: 200.0,
-            width: MediaQuery.of(context).size.width,
-            child: const Card(
-              color: Colors.white,
-              elevation: 4.0,
-            ),
+        Padding(
+          padding: const EdgeInsets.fromLTRB(16,0,0,0),
+          child: ListView.builder(
+            scrollDirection: Axis.horizontal,
+            itemCount: 10,
+            itemBuilder: (BuildContext context, int index) {
+                      return Container(
+              alignment: Alignment.bottomCenter,
+              margin: const EdgeInsets.only(bottom: 20),
+              padding: EdgeInsets.only(
+                 // top: MediaQuery.of(context).size.height * .58,
+                  right: 8.0,
+                  left: 0.0),
+              child: Card(
+                shape: RoundedRectangleBorder(
+    borderRadius: BorderRadius.circular(20),
+  ),
+                color: Colors.white,
+                elevation: 4.0,
+                child: Padding(
+                  padding: const EdgeInsets.all(12.0),
+                  child: Container(
+                    width: MediaQuery.of(context).size.width * 0.8,
+                    height: 178,
+                    child: locationCards()),
+                ),
+              ),
+            );},
           ),
         )
       ],
