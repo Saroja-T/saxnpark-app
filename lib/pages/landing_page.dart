@@ -81,11 +81,7 @@ class _LandingPageState extends State<LandingPage> {
   Widget contentWidget(int tabIndex, String tabLabel) {
     print("tabLabel==>${tabLabel}");
      if (tabIndex==0 && tabLabel==Strings.home){
-<<<<<<< HEAD
-        return const NearMePageWidget();
-=======
-        return const LocationPage();
->>>>>>> 4245501cdcfe423830601a4d158df9a41d4bdc8d
+        return const NearMePage();
      }else if (tabIndex==0 && tabLabel==Strings.location){
         return const LocationPage();
      }else if (tabIndex== 1) {

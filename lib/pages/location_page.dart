@@ -38,26 +38,25 @@ class _LocationPageState extends State<LocationPage> {
               child: Row(
                 children: [
                   Expanded(
-                    child: TextField(
-                     controller: searchController,
-                    decoration: InputDecoration(
-                      hintStyle: const TextStyle(fontSize: 14,fontWeight: FontWeight.w400),
-                      filled: true,
-                      fillColor: Colors.grey[300],
-                      hintText: Strings.searchHint,
-                      prefixIcon: const Icon(Icons.search_sharp,size: 14,),
-                      border: OutlineInputBorder(
-                      borderSide:BorderSide.none,
-                      borderRadius: BorderRadius.circular(20.0),
-                    ),),
-                      onChanged: (value)
-                    {
-                      setState(() {
-                        searchController.text = value;
-                        //searchedText = value;
-                      });
-                    },
-                    
+                    child: SizedBox(
+                      height:36,
+                      child: TextField(
+                          controller: searchController,
+                          decoration: InputDecoration(
+                          contentPadding: const EdgeInsets.all(10.0),
+                          border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(24.0),
+                          borderSide: BorderSide.none),
+                          prefixIcon: Image.asset(searchIcon),
+                          filled: true, 
+                          fillColor:const Color.fromRGBO(239, 239, 239, 1),
+                          hintStyle: const TextStyle(color: Color.fromARGB(96, 96, 96, 1)),
+                          hintText: Strings.searchHint,
+                        ),onChanged: (value){
+                        setState(() {
+                          searchController.text = value;
+                        });
+                      },),
                     ),
                   ),
                   if(searchController.text.isNotEmpty)
@@ -66,8 +65,6 @@ class _LocationPageState extends State<LocationPage> {
                         setState(() {
                       searchController.clear();
                         });
-                       
-                      // Handle clearing the search input here
                       },
                     )
                 ],
@@ -163,7 +160,7 @@ class _LocationPageState extends State<LocationPage> {
                                     left: 8.0, right: 8.0),
                                 child: Text(Strings.us,
                                     style: customTextStyle(20.0,
-                                        FontWeight.w500, AppColors.black3, 3)),
+                                        FontWeight.w500, AppColors.black3, 2)),
                               ),
                               Row(
                                 children: [

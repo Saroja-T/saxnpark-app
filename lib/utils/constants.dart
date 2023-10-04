@@ -14,8 +14,11 @@ const String session = 'assets/icons/session.png';
 const String sessionActive = 'assets/icons/session_active.png';
 const String nearMe = 'assets/icons/near_me.png';
 const String recent = 'assets/icons/recent.png';
-const String listIcon = 'assets/icons/row.png';
-const String gridIcon = 'assets/icons/column.png';
-const String listIconSelected = 'assets/icons/row_selected.png';
-const String gridIconSelected = 'assets/icons/column_selected.png';
+const String listSelectedIcon = 'assets/icons/list_view_selected.png';
+const String gridSelectedIcon = 'assets/icons/map_view_selected.png';
+const String listIcon = 'assets/icons/list_view.png';
+const String gridIcon = 'assets/icons/map_view.png';
+const String searchIcon = 'assets/icons/search_icon.png';
+const String info = 'assets/icons/info.png';
+const String star = 'assets/icons/star.png';
 

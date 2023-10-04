@@ -13,8 +13,11 @@ static String appName = "SaxnPark";
   static String findOut = "Find out more";
   static String ourLocation = "Our Locations";
   static String searchHint = "Search state or city";
+  static String locationHint = "Country, city or location number";
   static String nearMe = "Near me";
   static String recent = "Recent";
+  static String cancel = "Cancel";
+
 
 
 
