@@ -46,7 +46,7 @@ class _LocationListState extends State<LocationList> {
                           filled: true,
                           fillColor: const Color.fromRGBO(239, 239, 239, 1),
                           hintStyle: const TextStyle(
-                              color: Color.fromARGB(96, 96, 96, 1)),
+                              color: Color.fromARGB(96, 96, 96, 1),fontSize: 14.0),
                           hintText: Strings.locationHint,
                         ),
                         onChanged: (text) {

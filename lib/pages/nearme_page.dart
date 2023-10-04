@@ -65,11 +65,12 @@ class _NearMePageWidgetState extends State<NearMePageWidget> {
                               border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(24.0),
                                   borderSide: BorderSide.none),
-                              prefixIcon: Image.asset(searchIcon,width: 14,height: 14,),
+                              prefixIcon: 
+                              Image.asset(searchIcon),
                               filled: true,
                               fillColor: Colors.white,
                               hintStyle: const TextStyle(
-                                  color: Color.fromARGB(96, 96, 96, 1)),
+                                  color: Color.fromARGB(96, 96, 96, 1),fontSize: 14.0),
                               hintText: Strings.searchHint,
                             ),
                             onChanged: (value) {
@@ -120,6 +121,7 @@ class _NearMePageWidgetState extends State<NearMePageWidget> {
                           ),
                           SizedBox(
                             width: 35,
+                            height: 40,
                             child: IconButton(
                                 onPressed: () {}, icon: Image.asset(listIcon,width: 24,)),
                           ),
@@ -191,11 +193,11 @@ class _NearMePageWidgetState extends State<NearMePageWidget> {
                 color: Colors.white,
                 elevation: 4.0,
                 child: Padding(
-                  padding: const EdgeInsets.all(12.0),
+                  padding: const EdgeInsets.all(16.0),
                   child: Container(
                     width: MediaQuery.of(context).size.width * 0.8,
-                    height: 178,
-                    child: locationCards()),
+                    height: 156,
+                    child: Center(child: locationCards())),
                 ),
               ),
             );},
