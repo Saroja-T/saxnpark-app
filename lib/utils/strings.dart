@@ -1,5 +1,6 @@
-class Strings{
+import 'package:flutter/material.dart';
 
+class Strings{
 
 static String appName = "SaxnPark";
 //Landing page
@@ -34,13 +35,68 @@ static String appName = "SaxnPark";
   static String dummyText1 =  "204 locations";
   static String dummyText2 =  "40 cities";
   static String northAmerica =  "North America";
+  static String newYork =  "New York";
+  static String countryCount = "204 locations";
   static String us =  "United States";
+  static String locationDetailTitle =  "Heathrow Airport - Terminal 1";
+  static String locationDetailAddress =  "Hounslow, TW6 1EW, United Kingdom";
+  static String operatorText =  "Heathrow Airport";
+  static String notes =  "notes";
+  static String incorrectSearchText =  "Showing all results for “New York\"";
 
 
-  //Tocationlist Title Text
+
+
+
+
+
+  //Locationlist Title Text
   static String carParkName =  "Car park name - 67201";
   static String weekDayText =  "Monday - Saturday";
   static String weekEndText =  "Sundays";
   static String timeFrequencyText =  "For every 5 minutes";
   static String oneHourText =  "60 minutes";
+
+
+  static String temMinText =  "10 minutes";
+  static String thirtyMinText =  "30 minutes";
+  static String extentableText =  "Up to maximum stay";
+  static String cancellationText =  "Up to 15 minutes before";
+  static String fiveMinText =  "5 minutes";
+  static String anyText =  "Any";
+  static String carParkText =  "Car park";
+
+
+
+
+  static String buttonCloseText =  "Close";
+  static String carParkTitle =  "Car park details";
+  static String operatorTitle =  "Operator";
+  static String daysandTimesText =  "Days and times";
+  static String notesText =  "Notes";
+  static String policiesText =  "Policies";
+  static String aboutLocation =  "About location";
+
+
+  static String minimumStay =  "Minimum stay";
+  static String noReturnwithin =  "No return within";
+  static String extentable =  "Extendable";
+  static String minCancellationTime =  "Minimum cancellation time";
+  static String depGap =  "Departure gap";
+  static String permittedVehicles =  "Permitted vehicles";
+  static String locType =  "Location type";
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
 }

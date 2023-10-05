@@ -21,4 +21,6 @@ const String gridIcon = 'assets/icons/map_view.png';
 const String searchIcon = 'assets/icons/search_icon.png';
 const String info = 'assets/icons/info.png';
 const String star = 'assets/icons/star.png';
+const String selectedStar = 'assets/icons/selectedStar.png';
+
 

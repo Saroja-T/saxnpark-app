@@ -50,29 +50,30 @@ class _LandingPageState extends State<LandingPage> {
     return BlocConsumer<LandingBloc, LandingState>(
       listener: (context, state) {
       },
-      builder: (context, state) {
+      builder: (context, state) 
+      {
         return  Scaffold(       
-            body: contentWidget(state.tabIndex,state.tabLabel),
-            bottomNavigationBar: BottomNavigationBar(
-              backgroundColor: AppColors.black2,
-              type: BottomNavigationBarType.fixed,
-              items: bottomNavItems,
-              currentIndex: state.tabIndex,
-              selectedItemColor: AppColors.primary,
-              unselectedItemColor: Colors.white,
-              selectedFontSize: 12.0,
-              unselectedFontSize: 12.0,
-              onTap: (index) {
-                switch(index){
-                  case 0:  context.read<LandingBloc>().add(TabChangeEvent(tabIndex: index,tabLabel:Strings.rHome));
-                  case 1:  context.read<LandingBloc>().add(TabChangeEvent(tabIndex: index,tabLabel:Strings.rSession));
-                  case 2:  context.read<LandingBloc>().add(TabChangeEvent(tabIndex: index,tabLabel:Strings.rPermit));
-                  case 3:  context.read<LandingBloc>().add(TabChangeEvent(tabIndex: index,tabLabel:Strings.rAccount));
-                }
-                
-              },
-            ),
-          );
+              body: contentWidget(state.tabIndex,state.tabLabel),
+              bottomNavigationBar: BottomNavigationBar(
+                backgroundColor: AppColors.black2,
+                type: BottomNavigationBarType.fixed,
+                items: bottomNavItems,
+                currentIndex: state.tabIndex,
+                selectedItemColor: AppColors.primary,
+                unselectedItemColor: Colors.white,
+                selectedFontSize: 12.0,
+                unselectedFontSize: 12.0,
+                onTap: (index) {
+                  switch(index){
+                    case 0:  context.read<LandingBloc>().add(TabChangeEvent(tabIndex: index,tabLabel:Strings.home));
+                    case 1:  context.read<LandingBloc>().add(TabChangeEvent(tabIndex: index,tabLabel:Strings.session));
+                    case 2:  context.read<LandingBloc>().add(TabChangeEvent(tabIndex: index,tabLabel:Strings.permit));
+                    case 3:  context.read<LandingBloc>().add(TabChangeEvent(tabIndex: index,tabLabel:Strings.account));
+                  }
+                  
+                },
+              ),
+        );
       
       },
     ); 
