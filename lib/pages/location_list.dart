@@ -90,7 +90,10 @@ class _LocationListState extends State<LocationList> {
                             height: 40,
                             width: 40,
                             child: IconButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  context.read<LandingBloc>().add(TabChangeEvent(
+                            tabIndex: 0, tabLabel: Strings.rNearMeMapList));
+                                },
                                 icon: Image.asset(gridIcon,width: 35,)),
                           ),
                           SizedBox(

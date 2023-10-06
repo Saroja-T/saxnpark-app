@@ -82,7 +82,7 @@ class _LandingPageState extends State<LandingPage> {
   Widget contentWidget(int tabIndex, String tabLabel) {
     print("tabLabel==>${tabLabel}");
      if (tabIndex==0 && tabLabel==Strings.rHome){
-        return const LocationList();
+        return const HomePage();
      }else if (tabIndex==0 && tabLabel==Strings.rLocationGridList){
         return const LocationPage();
      }else if (tabIndex==0 && (tabLabel==Strings.rLocationList || 
