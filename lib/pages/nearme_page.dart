@@ -28,6 +28,8 @@ class NearMePageWidget extends StatefulWidget {
 class _NearMePageWidgetState extends State<NearMePageWidget> {
   LatLng initialLocation = const LatLng(37.422131, -122.084801);
   TextEditingController searchController = TextEditingController();
+  bool starSelected = false;
+
 
   @override
   Widget build(BuildContext context) {
@@ -204,7 +206,9 @@ class _NearMePageWidgetState extends State<NearMePageWidget> {
                     child: Container(
                         width: MediaQuery.of(context).size.width * 0.8,
                         height: 156,
-                        child: Center(child: locationCards())),
+                        child: Center(child: LocationCards(btnClick: (){
+                          showLocationBottomSheet(context, starSelected);
+                        },))),
                   ),
                 ),
               );
