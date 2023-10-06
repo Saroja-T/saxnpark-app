@@ -149,6 +149,11 @@ Future<void> showLocationBottomSheet(context,starSelected)
             // context and builder are
             // required properties in this widget
             context: context,
+            shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(
+              top: Radius.circular(8),
+            ),
+          ),
      isScrollControlled: true,
      useRootNavigator: true,
             builder: (BuildContext context) {
@@ -165,7 +170,7 @@ Future<void> showLocationBottomSheet(context,starSelected)
                         Container(
                           height: 48,
                           width: MediaQuery.of(context).size.width,
-                          child: Card(
+                          child: Container(
                             child: Stack(
                               children: [
                                 Align(
@@ -189,6 +194,10 @@ Future<void> showLocationBottomSheet(context,starSelected)
                             ),
                             
                           ),
+                        ),
+                        Container(
+                          height: 1,
+                          color: AppColors.grey4,
                         ),
 
                         Padding(
