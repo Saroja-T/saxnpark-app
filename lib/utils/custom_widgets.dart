@@ -157,12 +157,12 @@ Future<void> showLocationBottomSheet(context,starSelected)
           {
               return Padding(
                 padding: const EdgeInsets.all(0.0),
-                child: Container(
+                child: SizedBox(
                   height: MediaQuery.of(context).size.height * 0.8,
                   child:  Center(
                     child: Column(
                       children:  <Widget>[
-                        Container(
+                        SizedBox(
                           height: 48,
                           width: MediaQuery.of(context).size.width,
                           child: Card(
@@ -195,149 +195,143 @@ Future<void> showLocationBottomSheet(context,starSelected)
                           padding: const EdgeInsets.fromLTRB(16,24,16,0),
                           child: Column(
                             children: [
-                              Container(
-                                child: Column(
+                              Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(Strings.locationDetailTitle,
+                                        style: customTextStyle(
+                                            18.0,
+                                            FontWeight.w600,
+                                            AppColors.black1,
+                                            0)),
+                                    InkWell(
+                                      child: Image.asset(starSelected?selectedStar:star),onTap: (){
+                                        setModalState(() {
+                                          starSelected = !starSelected;
+                                        });
+                                      },)
+                                  ],
+                                ),
+                                Text(Strings.locationDetailAddress,
+                                  style: customTextStyle(
+                                      14.0,
+                                      FontWeight.w400,
+                                      AppColors.black5,
+                                      1.5)),
+                                      Row(
+                                        children: [
+                                          Text(Strings.operatorText,
+                                  style: customTextStyle(
+                                      14.0,
+                                      FontWeight.w400,
+                                      AppColors.black5,
+                                      1.5)),
+                                          Text(Strings.operatorTitle,
+                                  style: customTextStyle(
+                                          14.0,
+                                          FontWeight.w400,
+                                          AppColors.black5,
+                                          1.5)),
+                                        ],
+                                      ),
+                                ]),
+                              const SizedBox(height: 12,),
+                              Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
+                                  Text(Strings.daysandTimesText,
+                                      style: customTextStyle(
+                                          16.0,
+                                          FontWeight.w600,
+                                          AppColors.black1,
+                                          0)),
+                                  
+                                 Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text(Strings.weekDayText,
+                                          style: customTextStyle(
+                                              14.0,
+                                              FontWeight.w400,
+                                              AppColors.black5,
+                                              1.5)),
+                                      Text("09:00 - 22:00",
+                                          style: customTextStyle(
+                                              14.0,
+                                              FontWeight.w600,
+                                              AppColors.black5,
+                                              1.5)),
+                                    ],
+                                  ),
                                   Row(
                                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     children: [
-                                      Text(Strings.locationDetailTitle,
+                                      Text(Strings.weekEndText,
                                           style: customTextStyle(
-                                              18.0,
+                                              14.0,
+                                              FontWeight.w400,
+                                              AppColors.black5,
+                                              1.5)),
+                                      Text("11:00 - 18:00",
+                                          style: customTextStyle(
+                                              14.0,
                                               FontWeight.w600,
-                                              AppColors.black1,
-                                              0)),
-                                      InkWell(
-                                        child: Image.asset(starSelected?selectedStar:star),onTap: (){
-                                          setModalState(() {
-                                            starSelected = !starSelected;
-                                          });
-                                        },)
+                                              AppColors.black5,
+                                              1.5)),
                                     ],
                                   ),
-                                  Text(Strings.locationDetailAddress,
-                                    style: customTextStyle(
-                                        14.0,
-                                        FontWeight.w400,
-                                        AppColors.black5,
-                                        1.5)),
-                                        Row(
-                                          children: [
-                                            Text(Strings.operatorText,
-                                    style: customTextStyle(
-                                        14.0,
-                                        FontWeight.w400,
-                                        AppColors.black5,
-                                        1.5)),
-                                            Text(Strings.operatorTitle,
-                                    style: customTextStyle(
-                                            14.0,
-                                            FontWeight.w400,
-                                            AppColors.black5,
-                                            1.5)),
-                                          ],
-                                        ),
-                                  ]),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text(Strings.weekEndText,
+                                          style: customTextStyle(
+                                              14.0,
+                                              FontWeight.w400,
+                                              AppColors.black5,
+                                              1.5)),
+                                      Text("FREE",
+                                          style: customTextStyle(
+                                              14.0,
+                                              FontWeight.w600,
+                                              AppColors.black5,
+                                              1.5)),
+                                    ],
+                                  ),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text(Strings.timeFrequencyText,
+                                          style: customTextStyle(14.0,
+                                              FontWeight.w400, AppColors.black5, 1.5)),
+                                      Text('\$0.14',
+                                          style: customTextStyle(
+                                              14.0,
+                                              FontWeight.w600,
+                                              AppColors.black5,
+                                              1.5)),
+                                    ],
+                                  ),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text(Strings.oneHourText,
+                                          style: customTextStyle(14.0,
+                                              FontWeight.w400, AppColors.black5, 1.5)),
+                                      Text("\$1.40",
+                                          style: customTextStyle(
+                                              14.0,
+                                              FontWeight.w600,
+                                              AppColors.black5,
+                                              1.5)),
+                                    ],
+                                  )
+                                  
+                                ],
                               ),
-                              SizedBox(height: 12,),
-                              Container
-                              (
-                        // height: 157,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(Strings.daysandTimesText,
-                                style: customTextStyle(
-                                    16.0,
-                                    FontWeight.w600,
-                                    AppColors.black1,
-                                    0)),
-                            
-                           Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(Strings.weekDayText,
-                                    style: customTextStyle(
-                                        14.0,
-                                        FontWeight.w400,
-                                        AppColors.black5,
-                                        1.5)),
-                                Text("09:00 - 22:00",
-                                    style: customTextStyle(
-                                        14.0,
-                                        FontWeight.w600,
-                                        AppColors.black5,
-                                        1.5)),
-                              ],
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(Strings.weekEndText,
-                                    style: customTextStyle(
-                                        14.0,
-                                        FontWeight.w400,
-                                        AppColors.black5,
-                                        1.5)),
-                                Text("11:00 - 18:00",
-                                    style: customTextStyle(
-                                        14.0,
-                                        FontWeight.w600,
-                                        AppColors.black5,
-                                        1.5)),
-                              ],
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(Strings.weekEndText,
-                                    style: customTextStyle(
-                                        14.0,
-                                        FontWeight.w400,
-                                        AppColors.black5,
-                                        1.5)),
-                                Text("FREE",
-                                    style: customTextStyle(
-                                        14.0,
-                                        FontWeight.w600,
-                                        AppColors.black5,
-                                        1.5)),
-                              ],
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(Strings.timeFrequencyText,
-                                    style: customTextStyle(14.0,
-                                        FontWeight.w400, AppColors.black5, 1.5)),
-                                Text('\$0.14',
-                                    style: customTextStyle(
-                                        14.0,
-                                        FontWeight.w600,
-                                        AppColors.black5,
-                                        1.5)),
-                              ],
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(Strings.oneHourText,
-                                    style: customTextStyle(14.0,
-                                        FontWeight.w400, AppColors.black5, 1.5)),
-                                Text("\$1.40",
-                                    style: customTextStyle(
-                                        14.0,
-                                        FontWeight.w600,
-                                        AppColors.black5,
-                                        1.5)),
-                              ],
-                            )
-                            
-                          ],
-                        ),
-                      ),
                               SizedBox(height: 12,),
                               Container
                               (
@@ -435,36 +429,32 @@ Future<void> showLocationBottomSheet(context,starSelected)
                         ),
                       ),
 
-                      SizedBox(height: 12,),
-                              Container
-                              (
-                        // height: 157,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(Strings.notesText,
-                                style: customTextStyle(
-                                    16.0,
-                                    FontWeight.w600,
-                                    AppColors.black1,
-                                    0)),
-                            
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(Strings.notes,
-                                    style: customTextStyle(
-                                        14.0,
-                                        FontWeight.w400,
-                                        AppColors.black5,
-                                        1.5)),
-                              ],
-                            ),
-                            
-                          ],
-                        ),
-                      ),
+                      const SizedBox(height: 12,),
+                              Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(Strings.notesText,
+                                      style: customTextStyle(
+                                          16.0,
+                                          FontWeight.w600,
+                                          AppColors.black1,
+                                          0)),
+                                  
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text(Strings.notes,
+                                          style: customTextStyle(
+                                              14.0,
+                                              FontWeight.w400,
+                                              AppColors.black5,
+                                              1.5)),
+                                    ],
+                                  ),
+                                  
+                                ],
+                              ),
                       SizedBox(height: 12,),
                               Container
                               (

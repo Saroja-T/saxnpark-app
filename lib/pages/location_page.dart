@@ -91,7 +91,7 @@ class _LocationPageState extends State<LocationPage> {
                     style: locationInActiveElatedBtnStyle,
                     onPressed: () {
                       context.read<LandingBloc>().add(TabChangeEvent(
-                          tabIndex: 0, tabLabel: Strings.rNearme));
+                          tabIndex: 0, tabLabel: Strings.rNearMeMapList));
                     },
                     icon: Image.asset(nearMe, width: 12.0, height: 12.0),
                     label: Text(
@@ -146,7 +146,7 @@ class _LocationPageState extends State<LocationPage> {
                     return GestureDetector(
                       onTap: () {
                         context.read<LandingBloc>().add(TabChangeEvent(
-                            tabIndex: 0, tabLabel: Strings.rLocationList));
+                            tabIndex: 0, tabLabel: Strings.rNearMeMapList));
                       },
                       child: Container(
                         margin: const EdgeInsets.only(right: 16.0),
@@ -160,6 +160,7 @@ class _LocationPageState extends State<LocationPage> {
                             width: 171.0,
                             height: 150.0,
                             child: Column(
+                              mainAxisSize: MainAxisSize.min,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 ClipRRect(
@@ -176,7 +177,7 @@ class _LocationPageState extends State<LocationPage> {
                                 Padding(
                                   padding: const EdgeInsets.only(
                                       left: 8.0, right: 8.0),
-                                  child: Text(Strings.us,
+                                  child: Text(Strings.newYork,
                                       style: customTextStyle(
                                           20.0,
                                           FontWeight.w500,

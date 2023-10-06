@@ -21,12 +21,19 @@ static String appName = "SaxnPark";
 
   //redirections
   static String rHome ="home";
-  static String rLocation ="location";
+  //Location Page
+  
+  static String rLocationGridList ="locationGridList";
   static String rLocationList ="locationList";
-  static String rNearme ="nearMe";
+  static String rLocationSearchList ="locationSearchList";
+  static String rNearMeList ="nearMeList";
+  static String rNearMeMapList ="nearMeMapList";
+  static String rRecentList ="recentList";
+
+  // Session
   static String rSession ="session";
   static String rPermit ="Permit";
-  static String rAccount ="nearMe";
+  static String rAccount ="account";
 
 
 

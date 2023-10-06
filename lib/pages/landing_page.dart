@@ -65,10 +65,10 @@ class _LandingPageState extends State<LandingPage> {
                 unselectedFontSize: 12.0,
                 onTap: (index) {
                   switch(index){
-                    case 0:  context.read<LandingBloc>().add(TabChangeEvent(tabIndex: index,tabLabel:Strings.home));
-                    case 1:  context.read<LandingBloc>().add(TabChangeEvent(tabIndex: index,tabLabel:Strings.session));
-                    case 2:  context.read<LandingBloc>().add(TabChangeEvent(tabIndex: index,tabLabel:Strings.permit));
-                    case 3:  context.read<LandingBloc>().add(TabChangeEvent(tabIndex: index,tabLabel:Strings.account));
+                    case 0:  context.read<LandingBloc>().add(TabChangeEvent(tabIndex: index,tabLabel:Strings.rHome));
+                    case 1:  context.read<LandingBloc>().add(TabChangeEvent(tabIndex: index,tabLabel:Strings.rSession));
+                    case 2:  context.read<LandingBloc>().add(TabChangeEvent(tabIndex: index,tabLabel:Strings.rPermit));
+                    case 3:  context.read<LandingBloc>().add(TabChangeEvent(tabIndex: index,tabLabel:Strings.rAccount));
                   }
                   
                 },
@@ -82,12 +82,14 @@ class _LandingPageState extends State<LandingPage> {
   Widget contentWidget(int tabIndex, String tabLabel) {
     print("tabLabel==>${tabLabel}");
      if (tabIndex==0 && tabLabel==Strings.rHome){
-        return const NearMePage();
-     }else if (tabIndex==0 && tabLabel==Strings.rLocation){
-        return const LocationPage();
-     }else if (tabIndex==0 && tabLabel==Strings.rLocationList){
         return const LocationList();
-     }else if (tabIndex==0 && tabLabel==Strings.rNearme){
+     }else if (tabIndex==0 && tabLabel==Strings.rLocationGridList){
+        return const LocationPage();
+     }else if (tabIndex==0 && (tabLabel==Strings.rLocationList || 
+      tabLabel==Strings.rNearMeList || tabLabel==Strings.rRecentList ||
+      tabLabel==Strings.rLocationSearchList)){
+        return const LocationList();
+     }else if (tabIndex==0 && tabLabel==Strings.rNearMeMapList){
         return const NearMePage();
      }else if (tabIndex== 1) {
         return Center(child: Text(Strings.session));
