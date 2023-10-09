@@ -33,16 +33,15 @@ class _NearMePageWidgetState extends State<NearMePageWidget> {
   String tabLabel = "";
   bool starSelected = false;
 
-
   @override
   Widget build(BuildContext context) {
     return Stack(
       //fit: StackFit.loose,
-       fit: StackFit.expand,
+      fit: StackFit.expand,
       clipBehavior: Clip.none,
       children: [
         GoogleMap(
-          onTap: (LatLng){
+          onTap: (LatLng) {
             print("dfdfdf");
           },
           initialCameraPosition: CameraPosition(
@@ -50,7 +49,6 @@ class _NearMePageWidgetState extends State<NearMePageWidget> {
             zoom: 14,
           ),
         ),
-        
         Positioned(
           top: 24,
           left: 0,
@@ -59,9 +57,9 @@ class _NearMePageWidgetState extends State<NearMePageWidget> {
           child: Container(
             height: h,
             margin: const EdgeInsets.only(left: 16.0),
-            child: Column(           
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
                 Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
@@ -124,7 +122,8 @@ class _NearMePageWidgetState extends State<NearMePageWidget> {
                           margin: const EdgeInsets.only(right: 12),
                           decoration: const BoxDecoration(
                               color: Colors.white,
-                              borderRadius: BorderRadius.all(Radius.circular(10))),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(10))),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
@@ -139,18 +138,21 @@ class _NearMePageWidgetState extends State<NearMePageWidget> {
                                     )),
                               ),
                               GestureDetector(
-                                onTap: (){
-                                  context.read<LandingBloc>().add(TabChangeEvent(
-                                tabIndex: 0, tabLabel: Strings.rNearMeList));
+                                onTap: () {
+                                  context.read<LandingBloc>().add(
+                                      TabChangeEvent(
+                                          tabIndex: 0,
+                                          tabLabel: Strings.rNearMeList));
                                 },
                                 child: SizedBox(
                                   width: 35,
                                   height: 40,
                                   child: IconButton(
                                       onPressed: () {
-                                        
-                                        context.read<LandingBloc>().add(TabChangeEvent(
-                                  tabIndex: 0, tabLabel: Strings.rNearMeList));
+                                        context.read<LandingBloc>().add(
+                                            TabChangeEvent(
+                                                tabIndex: 0,
+                                                tabLabel: Strings.rNearMeList));
                                       },
                                       icon: Image.asset(
                                         listIcon,
@@ -167,9 +169,7 @@ class _NearMePageWidgetState extends State<NearMePageWidget> {
                           margin: const EdgeInsets.only(right: 16),
                           child: TextButton.icon(
                             style: locationActiveElatedBtnStyle,
-                            onPressed: () {
-                              
-                            },
+                            onPressed: () {},
                             icon: Image.asset(
                               nearMe,
                               width: 12.0,
@@ -194,9 +194,10 @@ class _NearMePageWidgetState extends State<NearMePageWidget> {
                             onPressed: () {
                               print("recent clicked...!!");
                               context.read<LandingBloc>().add(TabChangeEvent(
-                                tabIndex: 0, tabLabel: Strings.rRecentList));
+                                  tabIndex: 0, tabLabel: Strings.rRecentList));
                             },
-                            icon: Image.asset(recent, width: 12.0, height: 12.0),
+                            icon:
+                                Image.asset(recent, width: 12.0, height: 12.0),
                             label: Text(
                               Strings.recent,
                               style: TextStyle(
@@ -208,50 +209,48 @@ class _NearMePageWidgetState extends State<NearMePageWidget> {
                         ),
                       ],
                     ),
-                    
                   ],
                 ),
                 SizedBox(
-          height: 200,
-          child:   ListView.builder(
-            scrollDirection: Axis.horizontal,
-            itemCount: 10,
-            itemBuilder: (BuildContext context, int index) {
-              return Container(
-                alignment: Alignment.bottomCenter,
-                margin: const EdgeInsets.only(bottom: 20),
-                padding: const EdgeInsets.only(
-                    // top: MediaQuery.of(context).size.height * .58,
-                    right: 8.0,
-                    left: 0.0),
-                child: Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20),
+                  height: 200,
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: 10,
+                    itemBuilder: (BuildContext context, int index) {
+                      return Container(
+                        alignment: Alignment.bottomCenter,
+                        margin: const EdgeInsets.only(bottom: 20),
+                        padding: const EdgeInsets.only(
+                            // top: MediaQuery.of(context).size.height * .58,
+                            right: 8.0,
+                            left: 0.0),
+                        child: Card(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          color: Colors.white,
+                          elevation: 4.0,
+                          child: Padding(
+                            padding: const EdgeInsets.all(16.0),
+                            child: Container(
+                                width: MediaQuery.of(context).size.width * 0.8,
+                                height: 156,
+                                child: Center(child: LocationCards(
+                                  btnClick: () {
+                                    showLocationBottomSheet(
+                                        context, starSelected);
+                                  },
+                                ))),
+                          ),
+                        ),
+                      );
+                    },
                   ),
-                  color: Colors.white,
-                  elevation: 4.0,
-                  child: Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: Container(
-                        width: MediaQuery.of(context).size.width * 0.8,
-                        height: 156,
-                        child: Center(child: LocationCards(btnClick: (){
-                          showLocationBottomSheet(context, starSelected);
-                        },))),
-                  ),
-                ),
-              );
-            },
-          ),
-        )
+                )
               ],
             ),
           ),
         ),
-
-        
-
-       
       ],
     );
   }
