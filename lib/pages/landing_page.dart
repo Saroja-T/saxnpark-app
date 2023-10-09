@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:saxnpark_app/pages/accounts_page.dart';
 
 
 import '../pages/location_list.dart';
@@ -103,7 +104,7 @@ class _LandingPageState extends State<LandingPage> {
     } else if (tabIndex == 0 && tabLabel == Strings.rNearMeMapList) {
       return const NearMePage();
     } else if (tabIndex == 1) {
-      return Center(child: Text(Strings.session));
+      return const AccountsPage();
     } else {
       return Center(child: Text(Strings.home));
     }

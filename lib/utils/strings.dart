@@ -50,6 +50,7 @@ static String appName = "SaxnPark";
   static String operatorText =  "Heathrow Airport";
   static String notes =  "notes";
   static String incorrectSearchText =  "Showing all results for “New York\"";
+  static String dummyId = "623478345";
 
 
 
@@ -92,6 +93,28 @@ static String appName = "SaxnPark";
   static String depGap =  "Departure gap";
   static String permittedVehicles =  "Permitted vehicles";
   static String locType =  "Location type";
+
+
+  static String userIdNo =  "User ID number";
+  static String shareText =  "Share";
+  static String myDetails =  "My details";
+  static String myVehicles = "My vehicles";
+  static String myLocation =  "My locations";
+  static String parkingPermits =  "Parking permits";
+  static String settings =  "Settings";
+  static String signOut =  "Sign out";
+  static String help =  "Help";
+  static String back =  "Back";
+
+
+
+
+
+  
+
+  
+  
+
 
 
 

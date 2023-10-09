@@ -22,5 +22,13 @@ const String searchIcon = 'assets/icons/search_icon.png';
 const String info = 'assets/icons/info.png';
 const String star = 'assets/icons/star.png';
 const String selectedStar = 'assets/icons/selectedStar.png';
+const String copy = 'assets/icons/copy.png';
+const String rightArrow = 'assets/icons/right_arrow.png';
+const String help = 'assets/icons/question.png';
+const String signOut = 'assets/icons/sign_out.png';
+
+
+
+
 
 
