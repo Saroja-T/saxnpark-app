@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:saxnpark_app/pages/accounts_page.dart';
+import 'package:saxnpark_app/pages/my_locations.dart';
 
 
 import '../pages/location_list.dart';
@@ -15,6 +16,8 @@ import 'home_page.dart';
 import 'nearme_page.dart';
 
 final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
+ PersistentBottomSheetController? controller;
+
 
 class LandingPage extends StatefulWidget {
   const LandingPage({super.key});
@@ -65,7 +68,12 @@ class _LandingPageState extends State<LandingPage> {
             selectedFontSize: 12.0,
             unselectedFontSize: 12.0,
             onTap: (index) {
-              switch (index) {
+              if (controller != null) {
+    controller?.close();
+   // controller = null;
+  }
+              switch (index) 
+              {
                 case 0:
                   context.read<LandingBloc>().add(
                       TabChangeEvent(tabIndex: index, tabLabel: Strings.rHome));
@@ -91,7 +99,8 @@ class _LandingPageState extends State<LandingPage> {
 
   Widget contentWidget(int tabIndex, String tabLabel) {
     print("tabLabel==>${tabLabel}");
-    if (tabIndex == 0 && tabLabel == Strings.rHome) {
+    if (tabIndex == 0 && tabLabel == Strings.rHome) 
+    {
       return const HomePage();
     } else if (tabIndex == 0 && tabLabel == Strings.rLocationGridList) {
       return const LocationPage();
@@ -103,9 +112,19 @@ class _LandingPageState extends State<LandingPage> {
       return const LocationList();
     } else if (tabIndex == 0 && tabLabel == Strings.rNearMeMapList) {
       return const NearMePage();
-    } else if (tabIndex == 1) {
-      return const AccountsPage();
-    } else {
+    } else if (tabIndex == 1) 
+    {
+      if(tabLabel == Strings.rMyLocation)
+      {
+        return const MyLocation();
+      }
+      else
+      {
+        return const AccountsPage();
+      }
+    }
+    
+     else {
       return Center(child: Text(Strings.home));
     }
   }

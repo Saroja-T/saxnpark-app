@@ -18,6 +18,8 @@ static String appName = "SaxnPark";
   static String nearMe = "Near me";
   static String recent = "Recent";
   static String cancel = "Cancel";
+  static String savedText =  "Saved";
+
 
   //redirections
   static String rHome ="home";
@@ -29,6 +31,8 @@ static String appName = "SaxnPark";
   static String rNearMeList ="nearMeList";
   static String rNearMeMapList ="nearMeMapList";
   static String rRecentList ="recentList";
+  static String rMyLocation ="mylocations";
+
 
   // Session
   static String rSession ="session";
@@ -105,6 +109,10 @@ static String appName = "SaxnPark";
   static String signOut =  "Sign out";
   static String help =  "Help";
   static String back =  "Back";
+
+  static String copiedMsg =  "Copied Successfully";
+
+
 
 
 

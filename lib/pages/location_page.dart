@@ -93,7 +93,7 @@ class _LocationPageState extends State<LocationPage> {
                     onPressed: () {
                       context.read<LandingBloc>().add(TabChangeEvent(
                           tabIndex: 0, tabLabel: Strings.rNearMeMapList));
-                       scaffoldKey.currentState?.showBottomSheet((_) => Container(
+                      controller = scaffoldKey.currentState!.showBottomSheet((_) => Container(
                         child: showBrandsBottomSheet(),
                       ));
                     },

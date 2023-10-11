@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:saxnpark_app/bottomsheets/location_details.dart';
+import 'package:saxnpark_app/bottomsheets/my_locations.dart';
+import 'package:saxnpark_app/pages/landing_page.dart';
 import 'package:saxnpark_app/utils/colors.dart';
 import 'package:saxnpark_app/utils/custom_widgets.dart';
 import 'package:clipboard/clipboard.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:share_plus/share_plus.dart';
 
 import '../bloc/landing/landing_bloc.dart';
 import '../commons/custom_app_bar.dart';
@@ -11,13 +15,15 @@ import '../utils/constants.dart';
 import '../utils/strings.dart';
 import '../utils/styles.dart';
 
-class AccountsPage extends StatefulWidget {
+class AccountsPage extends StatefulWidget 
+{
   const AccountsPage({super.key});
   @override
   State<AccountsPage> createState() => _AccountsPageState();
 }
 
-class _AccountsPageState extends State<AccountsPage> {
+class _AccountsPageState extends State<AccountsPage> 
+{
   var searchedText;
   bool countrySelected = false;
   bool inCorrectSearch = true;
@@ -57,7 +63,7 @@ class _AccountsPageState extends State<AccountsPage> {
                             child: Text(Strings.shareText,style: customTextStyle(14, FontWeight.w400, AppColors.blue1, 0),),
                           ),
                           onTap: (){
-                            // Share.share(Strings.dummyId);
+                             Share.share(Strings.dummyId);
                           },
                         )
                       ],
@@ -69,15 +75,7 @@ class _AccountsPageState extends State<AccountsPage> {
                         Text(Strings.dummyId,style: customTextStyle(14, FontWeight.w400, AppColors.grey6, 1),),
                        InkWell(child: Image.asset(copy),onTap: (){
                         FlutterClipboard.copy(Strings.dummyId).then(( value ) {
-                          Fluttertoast.showToast(
-        msg: "Copied Succesfully",
-        toastLength: Toast.LENGTH_SHORT,
-        gravity: ToastGravity.CENTER,
-        timeInSecForIosWeb: 1,
-        backgroundColor: Colors.red,
-        textColor: Colors.white,
-        fontSize: 16.0
-    );
+                          showPositiveToast(Strings.copiedMsg);
                         });
                        },)
                       ],
@@ -112,12 +110,20 @@ class _AccountsPageState extends State<AccountsPage> {
                       ],
                     ),
                     const SizedBox(height: 24,),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(Strings.myLocation,style: customTextStyle(16, FontWeight.w400, AppColors.black6, 1),),
-                        Image.asset(rightArrow)
-                      ],
+                    InkWell(
+                      onTap: (){
+                            context.read<LandingBloc>().add(TabChangeEvent(
+                                tabIndex: 1, tabLabel: Strings.rMyLocation));
+                       // showLocationBottomSheet(context, starSelected);
+                        // showMylocationsBottomSheet(context);
+                      },
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(Strings.myLocation,style: customTextStyle(16, FontWeight.w400, AppColors.black6, 1),),
+                          Image.asset(rightArrow)
+                        ],
+                      ),
                     ),const SizedBox(height: 24,), 
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -175,8 +181,17 @@ class _AccountsPageState extends State<AccountsPage> {
       ),
     );
   }
-}
   
+}
+showBrandsBottomSheet() 
+{
+    return Container(
+      height:200,
+      width: double.infinity,
+      color: Colors.green,
+      child: Text("test"),
+    );
+} 
 
 
 
