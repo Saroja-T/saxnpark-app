@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:saxnpark_app/pages/landing_page.dart';
 import 'package:saxnpark_app/utils/colors.dart';
 import 'package:saxnpark_app/utils/constants.dart';

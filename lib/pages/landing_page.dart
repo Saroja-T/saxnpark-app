@@ -98,9 +98,7 @@ class _LandingPageState extends State<LandingPage> {
   }
 
   Widget contentWidget(int tabIndex, String tabLabel) {
-    print("tabLabel==>${tabLabel}");
-    if (tabIndex == 0 && tabLabel == Strings.rHome) 
-    {
+    if (tabIndex == 0 && tabLabel == Strings.rHome) {
       return const HomePage();
     } else if (tabIndex == 0 && tabLabel == Strings.rLocationGridList) {
       return const LocationPage();
@@ -112,19 +110,12 @@ class _LandingPageState extends State<LandingPage> {
       return const LocationList();
     } else if (tabIndex == 0 && tabLabel == Strings.rNearMeMapList) {
       return const NearMePage();
-    } else if (tabIndex == 1) 
-    {
-      if(tabLabel == Strings.rMyLocation)
-      {
-        return const MyLocation();
-      }
-      else
-      {
-        return const AccountsPage();
-      }
+    }else if (tabIndex == 3 && tabLabel == Strings.rMyLocation){
+       return const MyLocation();
+    }else if(tabIndex == 3 && tabLabel==Strings.rAccount){
+      return const AccountsPage();
     }
-    
-     else {
+    else {
       return Center(child: Text(Strings.home));
     }
   }

@@ -113,7 +113,7 @@ class _AccountsPageState extends State<AccountsPage>
                     InkWell(
                       onTap: (){
                             context.read<LandingBloc>().add(TabChangeEvent(
-                                tabIndex: 1, tabLabel: Strings.rMyLocation));
+                                tabIndex: 3, tabLabel: Strings.rMyLocation));
                        // showLocationBottomSheet(context, starSelected);
                         // showMylocationsBottomSheet(context);
                       },

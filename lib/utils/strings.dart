@@ -58,10 +58,6 @@ static String appName = "SaxnPark";
 
 
 
-
-
-
-
   //Locationlist Title Text
   static String carParkName =  "Car park name - 67201";
   static String weekDayText =  "Monday - Saturday";
