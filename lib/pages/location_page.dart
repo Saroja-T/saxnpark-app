@@ -93,9 +93,6 @@ class _LocationPageState extends State<LocationPage> {
                     onPressed: () {
                       context.read<LandingBloc>().add(TabChangeEvent(
                           tabIndex: 0, tabLabel: Strings.rNearMeMapList));
-                      controller = scaffoldKey.currentState!.showBottomSheet((_) => Container(
-                        child: showBrandsBottomSheet(),
-                      ));
                     },
                     icon: Image.asset(nearMe, width: 12.0, height: 12.0),
                     label: Text(
@@ -231,12 +228,4 @@ class _LocationPageState extends State<LocationPage> {
     );
   }
 
-  showBrandsBottomSheet() {
-    return Container(
-      height:200,
-      width: double.infinity,
-      color: Colors.green,
-      child: Text("test"),
-    );
-  }
 }

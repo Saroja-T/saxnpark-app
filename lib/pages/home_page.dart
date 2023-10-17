@@ -183,7 +183,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                         return GestureDetector(
                           onTap: () {
                             context.read<LandingBloc>().add(TabChangeEvent(
-                                tabIndex: 0, tabLabel: Strings.rLocationGridList));
+                                tabIndex: 0,
+                                tabLabel: Strings.rLocationGridList));
                           },
                           child: Container(
                             margin: const EdgeInsets.only(right: 16.0),
