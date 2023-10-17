@@ -26,6 +26,13 @@ const String copy = 'assets/icons/copy.png';
 const String rightArrow = 'assets/icons/right_arrow.png';
 const String help = 'assets/icons/question.png';
 const String signOut = 'assets/icons/sign_out.png';
+const String radioSelected = 'assets/icons/radio_selected.png';
+const String radioUnselected = 'assets/icons/radio_unselected.png';
+const String add = 'assets/icons/add.png';
+
+
+
+
 
 
 

@@ -19,6 +19,9 @@ static String appName = "SaxnPark";
   static String recent = "Recent";
   static String cancel = "Cancel";
   static String savedText =  "Saved";
+  static String bookingDetails = "Booking details";
+  static String next =  "Next";
+
 
 
   //redirections
@@ -38,6 +41,12 @@ static String appName = "SaxnPark";
   static String rSession ="session";
   static String rPermit ="Permit";
   static String rAccount ="account";
+
+
+  // Booking
+  static String rPurpose ="purpose";
+  static String rVehicleType ="vehicleType";
+
 
 
 
@@ -107,6 +116,23 @@ static String appName = "SaxnPark";
   static String back =  "Back";
 
   static String copiedMsg =  "Copied Successfully";
+  static String visitPurpose =  "What’s the purpose of your visit?";
+  static String visitVehicle =  "Which vehicle are you parking?";
+
+
+  static String justParking =  "I’m just parking";
+  static String visiting =  "I’m visiting";
+  static String addVehicle =  "Add a new vehicle";
+
+  
+
+  static String dummyvehicle1 =  "Lilo";
+  static String dummyvehicle2 =  "Enzo";
+  static String dummyCategory1 =  "LJ64 XOS";
+  static String dummyCategoey2 =  "HA66 LNP";
+
+
+
 
 
 

@@ -1,4 +1,4 @@
-package com.example.saxnpark_app
+package com.saxnpark.parkingapp
 
 import io.flutter.embedding.android.FlutterActivity
 

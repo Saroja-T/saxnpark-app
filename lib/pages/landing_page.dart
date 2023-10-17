@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:saxnpark_app/pages/accounts_page.dart';
+import 'package:saxnpark_app/pages/bookings/purpose_of_visit.dart';
+import 'package:saxnpark_app/pages/bookings/vehicle_type.dart';
 import 'package:saxnpark_app/pages/my_locations.dart';
 
 
@@ -97,7 +99,8 @@ class _LandingPageState extends State<LandingPage> {
     );
   }
 
-  Widget contentWidget(int tabIndex, String tabLabel) {
+  Widget contentWidget(int tabIndex, String tabLabel) 
+  {
     if (tabIndex == 0 && tabLabel == Strings.rHome) {
       return const HomePage();
     } else if (tabIndex == 0 && tabLabel == Strings.rLocationGridList) {
@@ -115,7 +118,14 @@ class _LandingPageState extends State<LandingPage> {
     }else if(tabIndex == 3 && tabLabel==Strings.rAccount){
       return const AccountsPage();
     }
-    else {
+    else if (tabIndex == 1 && tabLabel == Strings.rVehicleType) {
+      return const VehicleType();
+    }
+    else if (tabIndex == 1) {
+      return const PurposeOfVisit();
+    }
+    else 
+    {
       return Center(child: Text(Strings.home));
     }
   }
