@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:saxnpark_app/bloc/home/home_bloc.dart';
-import 'package:saxnpark_app/commons/custom_app_bar.dart';
-import 'package:saxnpark_app/utils/colors.dart';
-import 'package:saxnpark_app/utils/custom_widgets.dart';
 
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../bloc/home/home_bloc.dart';
 import '../bloc/landing/landing_bloc.dart';
+import '../commons/custom_app_bar.dart';
+import '../utils/colors.dart';
 import '../utils/constants.dart';
 import '../utils/strings.dart';
 import '../utils/styles.dart';
@@ -61,7 +61,10 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                   margin: const EdgeInsets.only(right: 16),
                   child: ElevatedButton(
                     style: borderedButtonStyle,
-                    onPressed: () {},
+                    onPressed: () {
+                      context.read<LandingBloc>().add(TabChangeEvent(
+                      tabIndex: 1, tabLabel: Strings.rPark));
+                    },
                     child: Text(
                       Strings.parkNow,
                       style: TextStyle(

@@ -131,7 +131,7 @@ class _AccountsPageState extends State<AccountsPage> {
                     InkWell(
                       onTap: () {
                         context.read<LandingBloc>().add(TabChangeEvent(
-                            tabIndex: 3, tabLabel: Strings.rMyLocation));
+                            tabIndex: 4, tabLabel: Strings.rMyLocation));
                       },
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,

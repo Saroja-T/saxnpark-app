@@ -21,6 +21,7 @@ static String appName = "SaxnPark";
   static String savedText =  "Saved";
   static String bookingDetails = "Booking details";
   static String next =  "Next";
+  
 
 
 
@@ -39,15 +40,14 @@ static String appName = "SaxnPark";
 
   // Session
   static String rSession ="session";
-  static String rPermit ="Permit";
+  static String rPermit ="permit";
   static String rAccount ="account";
 
 
   // Booking
   static String rPurpose ="purpose";
   static String rVehicleType ="vehicleType";
-
-
+  static String rPark =  "Park";
 
 
   //Dummy Text

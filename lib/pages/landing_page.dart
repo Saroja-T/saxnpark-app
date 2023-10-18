@@ -29,11 +29,22 @@ class LandingPage extends StatefulWidget {
 }
 
 class _LandingPageState extends State<LandingPage> {
-  List<BottomNavigationBarItem> bottomNavItems = <BottomNavigationBarItem>[
+  
+ 
+  late PersistentBottomSheetController _sheetController;
+  @override
+  Widget build(BuildContext context) {
+     List<BottomNavigationBarItem> bottomNavItems = <BottomNavigationBarItem>[
     BottomNavigationBarItem(
       icon: const BottomIcons(name: home),
       activeIcon: const BottomIcons(name: homeActive),
       label: Strings.home,
+      //label: context.watch<LandingBloc>().state.tabLabel==Strings.rPark?Strings.rPark:Strings.home,
+    ),
+    BottomNavigationBarItem(
+      icon: const BottomIcons(name: home),
+      activeIcon: const BottomIcons(name: homeActive),
+      label: Strings.rPark,
     ),
     BottomNavigationBarItem(
       icon: const BottomIcons(name: session),
@@ -51,9 +62,6 @@ class _LandingPageState extends State<LandingPage> {
       label: Strings.account,
     ),
   ];
-  late PersistentBottomSheetController _sheetController;
-  @override
-  Widget build(BuildContext context) {
     return BlocConsumer<LandingBloc, LandingState>(
       listener: (context, state) {},
       builder: (context, state) {
@@ -71,26 +79,30 @@ class _LandingPageState extends State<LandingPage> {
             unselectedFontSize: 12.0,
             onTap: (index) {
               if (controller != null) {
-    controller?.close();
-   // controller = null;
-  }
+                controller?.close();
+              // controller = null;
+              }
               switch (index) 
               {
                 case 0:
                   context.read<LandingBloc>().add(
                       TabChangeEvent(tabIndex: index, tabLabel: Strings.rHome));
-                case 1:
+                 case 1:
+                  context.read<LandingBloc>().add(TabChangeEvent(
+                      tabIndex: index, tabLabel: Strings.rPark));
+                case 2:
                   context.read<LandingBloc>().add(TabChangeEvent(
                       tabIndex: index, tabLabel: Strings.rSession));
                 // case 1:  { _scaffoldKey.currentState?.showBottomSheet((_) => Container(
                 //     child: showBrandsBottomSheet(),
                 //   ))};
-                case 2:
-                  context.read<LandingBloc>().add(TabChangeEvent(
-                      tabIndex: index, tabLabel: Strings.rPermit));
                 case 3:
                   context.read<LandingBloc>().add(TabChangeEvent(
+                      tabIndex: index, tabLabel: Strings.rPermit));
+                case 4:
+                  context.read<LandingBloc>().add(TabChangeEvent(
                       tabIndex: index, tabLabel: Strings.rAccount));
+                
               }
             },
           ),
@@ -105,6 +117,8 @@ class _LandingPageState extends State<LandingPage> {
       return const HomePage();
     } else if (tabIndex == 0 && tabLabel == Strings.rLocationGridList) {
       return const LocationPage();
+    }else if (tabIndex == 0 && tabLabel == Strings.rPark) {
+      return const VehicleType();
     } else if (tabIndex == 0 &&
         (tabLabel == Strings.rLocationList ||
             tabLabel == Strings.rNearMeList ||
@@ -113,9 +127,9 @@ class _LandingPageState extends State<LandingPage> {
       return const LocationList();
     } else if (tabIndex == 0 && tabLabel == Strings.rNearMeMapList) {
       return const NearMePage();
-    }else if (tabIndex == 3 && tabLabel == Strings.rMyLocation){
+    }else if (tabIndex == 4 && tabLabel == Strings.rMyLocation){
        return const MyLocation();
-    }else if(tabIndex == 3 && tabLabel==Strings.rAccount){
+    }else if(tabIndex == 4 && tabLabel==Strings.rAccount){
       return const AccountsPage();
     }
     else if (tabIndex == 1 && tabLabel == Strings.rVehicleType) {
