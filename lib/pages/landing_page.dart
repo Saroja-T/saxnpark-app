@@ -137,11 +137,10 @@ class _LandingPageState extends State<LandingPage> {
       return const VehicleType();
     }
     else if (tabIndex == 1) {
-<<<<<<< HEAD
-      return const BookingConfirmation();
-=======
       return const ParkingTime();
->>>>>>> 4b7668f (parking time)
+    }
+    else if (tabIndex == 1) {
+      return const PurposeOfVisit();
     }
     else 
     {

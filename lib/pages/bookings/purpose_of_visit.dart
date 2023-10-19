@@ -31,7 +31,7 @@ class _PurposeOfVisitState extends State<PurposeOfVisit>
     h = MediaQuery.of(context).size.height;
     tabLabel = context.watch<LandingBloc>().state.tabLabel;
     return Scaffold(
-      appBar: CustomAppBarWithBack(title: Strings.bookingDetails,backText: Strings.back),
+      appBar: CustomAppBarWithBack(title: Strings.bookingDetails,backText: Strings.back,tabIndex: 0,redirectionKey: Strings.rHome,),
       body:  Container(
         child:Padding(
           padding: EdgeInsets.fromLTRB(16, 24, 16, 24),

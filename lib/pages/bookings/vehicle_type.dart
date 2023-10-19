@@ -39,7 +39,7 @@ class _VehicleTypeState extends State<VehicleType>
     h = MediaQuery.of(context).size.height;
     tabLabel = context.watch<LandingBloc>().state.tabLabel;
     return Scaffold(
-      appBar: CustomAppBarWithBack(title: Strings.bookingDetails,backText: Strings.back),
+      appBar: CustomAppBarWithBack(title: Strings.bookingDetails,backText: Strings.back,redirectionKey: Strings.rPurpose,tabIndex: 1,),
       body:  Padding(
         padding: const EdgeInsets.fromLTRB(16, 24, 16, 24),
         child: SingleChildScrollView(
@@ -123,7 +123,8 @@ class _VehicleTypeState extends State<VehicleType>
                      borderRadius: BorderRadius.circular(12.0),
                    ))),
                   onPressed: (){
-                                 
+                    context.read<LandingBloc>().add(TabChangeEvent(
+                      tabIndex: 1, tabLabel: Strings.rParkTime));
                                              }, child: Row(
                                               mainAxisAlignment: MainAxisAlignment.center,
                                                children: [

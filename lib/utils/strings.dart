@@ -68,7 +68,9 @@ static String appName = "SaxnPark";
   // Booking
   static String rPurpose ="purpose";
   static String rVehicleType ="vehicleType";
-  static String rPark =  "Park";
+  static String rPark =  "park";
+  static String rParkTime =  "parkTime";
+
 
 
   //Dummy Text
@@ -143,7 +145,14 @@ static String appName = "SaxnPark";
   static String visiting =  "I’m visiting";
   static String addVehicle =  "Add a new vehicle";
   static String driveInTime =  "Drive-in date and time";
-  static String driveOutTime =  "Drive-out date and time";  
+  static String driveOutTime =  "Drive-out date and time";
+  static String todayText =  "Today";
+  static String tomorrowText =  "Tommorrow";
+  static String slotUnavailableWarning =  "The car park will have limited availability at your selected date and time.";
+  static String viewPrices =  "View prices";
+
+
+  
 
 
   
