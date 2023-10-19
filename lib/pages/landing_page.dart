@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:saxnpark_app/pages/accounts_page.dart';
+import 'package:saxnpark_app/pages/bookings/parking_time.dart';
 import 'package:saxnpark_app/pages/bookings/purpose_of_visit.dart';
 import 'package:saxnpark_app/pages/bookings/vehicle_type.dart';
 import 'package:saxnpark_app/pages/my_locations.dart';
@@ -136,7 +137,11 @@ class _LandingPageState extends State<LandingPage> {
       return const VehicleType();
     }
     else if (tabIndex == 1) {
+<<<<<<< HEAD
       return const BookingConfirmation();
+=======
+      return const ParkingTime();
+>>>>>>> 4b7668f (parking time)
     }
     else 
     {

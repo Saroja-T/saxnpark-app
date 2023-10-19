@@ -142,6 +142,9 @@ static String appName = "SaxnPark";
   static String justParking =  "I’m just parking";
   static String visiting =  "I’m visiting";
   static String addVehicle =  "Add a new vehicle";
+  static String driveInTime =  "Drive-in date and time";
+  static String driveOutTime =  "Drive-out date and time";  
+
 
   
 
