@@ -29,6 +29,11 @@ const String signOut = 'assets/icons/sign_out.png';
 const String radioSelected = 'assets/icons/radio_selected.png';
 const String radioUnselected = 'assets/icons/radio_unselected.png';
 const String add = 'assets/icons/add.png';
+const String clock = 'assets/icons/clock.png';
+const String coins = 'assets/icons/coins.png';
+const String duration = 'assets/icons/duration.png';
+const String mapPin = 'assets/icons/map_pin.png';
+const String cardHolder = 'assets/icons/card_holder.png';
 
 
 

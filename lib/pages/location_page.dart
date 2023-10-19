@@ -22,7 +22,7 @@ class _LocationPageState extends State<LocationPage> {
     h = MediaQuery.of(context).size.height;
     print(h);
     return Scaffold(
-      appBar: CustomAppBar(title: Strings.location),
+      appBar: CustomAppBar(title: Strings.locations),
       body: Container(
         margin: const EdgeInsets.only(left: 16),
         width: double.infinity,

@@ -113,10 +113,9 @@ class _VehicleTypeState extends State<VehicleType>
                   ],
                 ),
                ),
-             Container(
+             SizedBox(
               height: 51,
                child: SizedBox.expand(
-             
                  child: ElevatedButton(
                   style: ButtonStyle(backgroundColor: MaterialStateProperty.all<Color>(AppColors.black6),
                   shape: MaterialStateProperty.all<RoundedRectangleBorder>(
@@ -144,9 +143,7 @@ class _VehicleTypeState extends State<VehicleType>
 }
 class VehicleDetails{
   String? vehicleName;
-  String? vehicleCategory;
-    
-    
+  String? vehicleCategory;    
   VehicleDetails({required this.vehicleName, required this.vehicleCategory});
 }
 

@@ -31,7 +31,7 @@ class _LocationListState extends State<LocationList> {
     h = MediaQuery.of(context).size.height;
     tabLabel = context.watch<LandingBloc>().state.tabLabel;
     return Scaffold(
-      appBar: CustomAppBar(title: Strings.location),
+      appBar: CustomAppBar(title: Strings.locations),
       body: Container(
         child: Column(
           mainAxisSize: MainAxisSize.min,

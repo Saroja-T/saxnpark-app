@@ -8,7 +8,7 @@ static String appName = "SaxnPark";
   static String home = "Home";
   static String permit = "Permit";
   static String session = "Session";
-  static String location = "Locations";
+  static String locations = "Locations";
   static String homeContent = "Park smart, with Saxnpark";
   static String parkNow = "Park now";
   static String findOut = "Find out more";
@@ -19,8 +19,29 @@ static String appName = "SaxnPark";
   static String recent = "Recent";
   static String cancel = "Cancel";
   static String savedText =  "Saved";
+
+  //Booking
   static String bookingDetails = "Booking details";
+  static String bookingConfirmation = "Booking confirmation";
+  static String bookingConfirmationTitle = "Are these details correct?";
+  static String bookingConfirmed = "Your booking is confirmed";
   static String next =  "Next";
+  static String getDirections =  "Get directions";
+  static String vehicle =  "Vehicle";
+  static String driveIn =  "Drive-in date and time";
+  static String driveOut =  "Drive-out date and time";
+  static String duration =  "Duration";
+  static String location =  "Location";
+  static String change =  "Change";
+  static String today =  "Today";
+  static String minutes =  "minutes";
+  static String hours =  "hours";
+  static String days =  "days";
+  static String cost =  "Cost";
+  static String paymentMethod =  "Payment method";
+  static String space =  "Space";
+  static String confirmAndPay =  "Confirm and pay";
+  static String setRemainder =  "Set a remainder";
   
 
 
@@ -118,8 +139,6 @@ static String appName = "SaxnPark";
   static String copiedMsg =  "Copied Successfully";
   static String visitPurpose =  "What’s the purpose of your visit?";
   static String visitVehicle =  "Which vehicle are you parking?";
-
-
   static String justParking =  "I’m just parking";
   static String visiting =  "I’m visiting";
   static String addVehicle =  "Add a new vehicle";
@@ -130,6 +149,18 @@ static String appName = "SaxnPark";
   static String dummyvehicle2 =  "Enzo";
   static String dummyCategory1 =  "LJ64 XOS";
   static String dummyCategoey2 =  "HA66 LNP";
+  static String dummyBookingLocation =  "Heathrow Airport - Terminal 1";
+  static String dummyBookingLocation1 =  "Hounslow, TW6 1EW, United Kingdom";
+  static String dummyTime =  "16:00";
+  static String dummyTime1 =  "17:00";
+  static String dummyDuration =  "60";
+  static String dummyCost =  "\$1.20";
+  static String dummySpace =  "2B, Level 2, Aisle 6";
+  static String dummyPaymentMethod =  "ending 3544";
+  static String dummyBookingMsg =  "Your space is 2B, Level 2, Aisle 6 at Heathrow Airport - Terminal 1";
+  
+
+
 
 
 

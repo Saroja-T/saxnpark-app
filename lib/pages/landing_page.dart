@@ -14,12 +14,12 @@ import '../commons/bottom_icons.dart';
 import '../utils/constants.dart';
 import '../utils/strings.dart';
 
+import 'bookings/booking_confirmation.dart';
 import 'home_page.dart';
 import 'nearme_page.dart';
 
 final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
  PersistentBottomSheetController? controller;
-
 
 class LandingPage extends StatefulWidget {
   const LandingPage({super.key});
@@ -136,7 +136,7 @@ class _LandingPageState extends State<LandingPage> {
       return const VehicleType();
     }
     else if (tabIndex == 1) {
-      return const PurposeOfVisit();
+      return const BookingConfirmation();
     }
     else 
     {

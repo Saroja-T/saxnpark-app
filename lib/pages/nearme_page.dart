@@ -16,7 +16,7 @@ class NearMePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(title: Strings.location),
+      appBar: CustomAppBar(title: Strings.locations),
       body: const NearMePageWidget(),
     );
   }

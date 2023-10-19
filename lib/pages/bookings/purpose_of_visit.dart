@@ -1,16 +1,10 @@
 import 'package:flutter/material.dart';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:saxnpark_app/bottomsheets/location_details.dart';
-import 'package:saxnpark_app/bottomsheets/my_locations.dart';
-import 'package:saxnpark_app/pages/landing_page.dart';
-import 'package:saxnpark_app/utils/colors.dart';
-import 'package:saxnpark_app/utils/custom_widgets.dart';
-import 'package:clipboard/clipboard.dart';
-import 'package:fluttertoast/fluttertoast.dart';
-import 'package:share_plus/share_plus.dart';
 
 import '../../bloc/landing/landing_bloc.dart';
 import '../../commons/custom_app_bar.dart';
+import '../../utils/colors.dart';
 import '../../utils/constants.dart';
 import '../../utils/strings.dart';
 import '../../utils/styles.dart';
@@ -92,7 +86,7 @@ class _PurposeOfVisitState extends State<PurposeOfVisit>
                        borderRadius: BorderRadius.circular(12.0),
                      ))),
                     onPressed: (){
-                                   context.read<LandingBloc>().add(TabChangeEvent(
+                      context.read<LandingBloc>().add(TabChangeEvent(
                       tabIndex: 1, tabLabel: Strings.rVehicleType));
                                                }, child: Row(
                                                 mainAxisAlignment: MainAxisAlignment.center,
