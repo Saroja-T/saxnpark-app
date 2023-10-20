@@ -18,6 +18,10 @@ static String appName = "SaxnPark";
   static String nearMe = "Near me";
   static String recent = "Recent";
   static String cancel = "Cancel";
+  static String attention = "Attention";
+  static String openSettings = "Open Settings";
+
+  
   static String savedText =  "Saved";
 
   //Booking
@@ -197,6 +201,7 @@ static String appName = "SaxnPark";
   static String dummyPaymentMethod =  "ending 3544";
   static String dummyBookingMsg =  "Your space is 2B, Level 2, Aisle 6 at Heathrow Airport - Terminal 1";
   
+  static String locationEnableMessage = "Kindly enable location to get information about your nearby parking spaces";
 
 
 

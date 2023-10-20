@@ -1,8 +1,11 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:saxnpark_app/bottomsheets/location_details.dart';
 import 'package:saxnpark_app/utils/custom_widgets.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 import '../bloc/landing/landing_bloc.dart';
 import '../commons/custom_app_bar.dart';
@@ -33,6 +36,28 @@ class _NearMePageWidgetState extends State<NearMePageWidget> {
   TextEditingController searchController = TextEditingController();
   String tabLabel = "";
   bool starSelected = false;
+  Permission? permission;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getPermissions();
+  }
+
+  getPermissions() async 
+  {
+    PermissionStatus status = await Permission.location.request();
+    print(status);
+    if(status.isDenied)
+    {
+     status = await Permission.location.request();
+    } 
+    else if(status.isPermanentlyDenied)
+    {
+      showLocationDisabledAlertDialog(context);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
