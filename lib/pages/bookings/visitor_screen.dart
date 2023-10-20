@@ -9,14 +9,14 @@ import '../../utils/constants.dart';
 import '../../utils/strings.dart';
 import '../../utils/styles.dart';
 
-class PurposeOfVisit extends StatefulWidget 
+class VisitorScreen extends StatefulWidget 
 {
-  const PurposeOfVisit({super.key});
+  const VisitorScreen({super.key});
   @override
-  State<PurposeOfVisit> createState() => _PurposeOfVisitState();
+  State<VisitorScreen> createState() => _VisitorScreenState();
 }
 
-class _PurposeOfVisitState extends State<PurposeOfVisit> 
+class _VisitorScreenState extends State<VisitorScreen> 
 {
   var searchedText;
   bool countrySelected = false;
@@ -25,6 +25,17 @@ class _PurposeOfVisitState extends State<PurposeOfVisit>
   bool starSelected = false;
   String tabLabel = "";
   List<String> titleList = [Strings.justParking,Strings.visiting];
+  // Initial Selected Value 
+  String? dropdownvalue;    
+  
+  // List of items in our dropdown menu 
+  var items = [     
+    'Father', 
+    'Mother', 
+    'Friend', 
+    'Brother', 
+    'Sister', 
+  ]; 
   
   @override
   Widget build(BuildContext context) {
@@ -40,45 +51,43 @@ class _PurposeOfVisitState extends State<PurposeOfVisit>
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-              Text(Strings.visitPurpose,style: customTextStyle(20, FontWeight.w500, AppColors.black1, 1),),
+              Text(Strings.visitorTitle,style: customTextStyle(20, FontWeight.w500, AppColors.black1, 1),),
                const SizedBox(height: 16),
-               ListView.builder(
-                physics: const NeverScrollableScrollPhysics(),
-                      shrinkWrap: true,
-                      scrollDirection: Axis.vertical,
-                      itemCount: 2,
-                      itemBuilder: (BuildContext context, int index) => 
-               InkWell(
-                onTap: (){
-                  setState(() {
-                    selectedIndex = index;
-                  });
-                },
-                 child: Container(
+               Text(Strings.hostText,style: customTextStyle(16, FontWeight.w400, AppColors.black6, 1),),
+              const SizedBox(height: 8),
+               Container(
+                height: 50,
                   padding: EdgeInsets.all(16),
                   margin:const EdgeInsets.only(bottom: 16),
                   decoration:  BoxDecoration(
                             borderRadius:const BorderRadius.all(Radius.circular(8)),
-                            border: Border.all(color: selectedIndex == index? AppColors.black1:AppColors.grey4)
+                            border: Border.all(color:AppColors.grey4)
                   ),
-                  child: Column(
-                    children: [
-                      Row(
-                        children: [
-                          Image.asset(selectedIndex == index?radioSelected:radioUnselected),
-                          const SizedBox(width: 16),
-                          Text(titleList[index],style: customTextStyle(16, FontWeight.w400, AppColors.black6, 1),)
-                          // Text(Strings.myDetails,style: customTextStyle(16, FontWeight.w400, AppColors.black6, 1),),
-                        ],
-                      ),
-                    ],
+                  child: SizedBox.expand(
+                    child: 
+                    DropdownButtonHideUnderline( 
+  child: DropdownButton(
+  hint: Text(Strings.dropDownHint,style: customTextStyle(14, FontWeight.w400, AppColors.grey7, 1),),
+  value: dropdownvalue,
+  onChanged: (String? newValue) { 
+    setState(() { 
+      dropdownvalue = newValue; 
+    });
+ }, 
+  items: items.map<DropdownMenuItem<String>>
+    ((String value) {
+          return DropdownMenuItem<String>( 
+            value: value, 
+            child: Text(value), 
+      ); 
+      }).toList(), 
+    )
+ )
                   ),
                  ),
-               )),
                Container(
                 height: 51,
                  child: SizedBox.expand(
-               
                    child: ElevatedButton(
                     style: ButtonStyle(backgroundColor: MaterialStateProperty.all<Color>(AppColors.black6),
                     shape: MaterialStateProperty.all<RoundedRectangleBorder>(

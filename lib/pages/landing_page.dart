@@ -14,6 +14,9 @@ import '../utils/constants.dart';
 import '../utils/strings.dart';
 
 import 'bookings/booking_confirmation.dart';
+import 'bookings/booking_details.dart';
+import 'bookings/parking_time.dart';
+import 'bookings/purpose_of_visit.dart';
 import 'home_page.dart';
 import 'nearme_page.dart';
 
@@ -132,8 +135,19 @@ class _LandingPageState extends State<LandingPage> {
     else if (tabIndex == 1 && tabLabel == Strings.rVehicleType) {
       return const VehicleType();
     }
-    else if (tabIndex == 1) {
+    else if (tabIndex == 1 && tabLabel == Strings.rParkTime) {
+      return const ParkingTime();
+    }
+    else if (tabIndex == 1 && tabLabel == Strings.rBookingDetails) {
+      return const BookingPreview();
+    }else if (tabIndex == 1 && tabLabel == Strings.rBookingConfirmation) {
       return const BookingConfirmation();
+    }
+    else if (tabIndex == 1) {
+      return const PurposeOfVisit();
+    }
+    else if (tabIndex == 1) {
+      return const PurposeOfVisit();
     }
     else 
     {

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:saxnpark_app/bloc/landing/landing_bloc.dart';
 import 'package:saxnpark_app/utils/styles.dart';
 
 import '../utils/colors.dart';
@@ -29,10 +31,15 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
 class CustomAppBarWithBack extends StatelessWidget implements PreferredSizeWidget {
   final String title;
   final String backText;
+  final String? redirectionKey;
+  final int? tabIndex;
+
   const CustomAppBarWithBack({
     Key? key,
     required this.title,
-    required this.backText
+    required this.backText,
+    this.redirectionKey,
+    this.tabIndex
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -42,9 +49,15 @@ class CustomAppBarWithBack extends StatelessWidget implements PreferredSizeWidge
         shadowColor: AppColors.toolbarShadow,
         leading: Align(
           alignment: Alignment.centerLeft,
-          child: Padding(
-            padding: const EdgeInsets.fromLTRB(16,0,0,0),
-            child: Text(backText,style: customTextStyle(12, FontWeight.w400, AppColors.black5, 1),),
+          child: InkWell(
+            onTap: () {
+              context.read<LandingBloc>().add(TabChangeEvent(
+                      tabIndex: tabIndex ?? 0, tabLabel: redirectionKey ?? ""));
+            },
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(16,0,0,0),
+              child: Text(backText,style: customTextStyle(12, FontWeight.w400, AppColors.black5, 1),),
+            ),
           )),
         title: Text(
           title,

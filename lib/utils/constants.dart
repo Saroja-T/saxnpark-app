@@ -34,6 +34,10 @@ const String coins = 'assets/icons/coins.png';
 const String duration = 'assets/icons/duration.png';
 const String mapPin = 'assets/icons/map_pin.png';
 const String cardHolder = 'assets/icons/card_holder.png';
+const String warning = 'assets/icons/warning.png';
+const String calender = 'assets/icons/calender.png';
+
+
 
 
 
