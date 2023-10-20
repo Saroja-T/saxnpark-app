@@ -1,5 +1,8 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 import '../../bloc/landing/landing_bloc.dart';
 import '../../commons/custom_app_bar.dart';
@@ -8,21 +11,26 @@ import '../../utils/constants.dart';
 import '../../utils/strings.dart';
 import '../../utils/styles.dart';
 
-class BookingPreview extends StatefulWidget {
-  const BookingPreview({super.key});
+class VisitorBookingConfirmation extends StatefulWidget {
+  const VisitorBookingConfirmation({super.key});
 
   @override
-  State<BookingPreview> createState() => BookingPreviewState();
+  State<VisitorBookingConfirmation> createState() => VisitorBookingConfirmationState();
 }
 
-class BookingPreviewState extends State<BookingPreview> {
+class VisitorBookingConfirmationState extends State<VisitorBookingConfirmation> {
   String tabLabel = "";
+  LatLng initialLocation = const LatLng(37.422131, -122.084801);
+  Map<MarkerId, Marker> markers = <MarkerId, Marker>{}; // CLASS MEMBER, MAP OF MARKS
+
+
   @override
   Widget build(BuildContext context) {
     h = MediaQuery.of(context).size.height;
     tabLabel = context.watch<LandingBloc>().state.tabLabel;
+    
     return Scaffold(
-      appBar: CustomAppBar(title: Strings.bookingConfirmation),
+      appBar: CustomAppBar(title: Strings.requestConfirmation),
       body: Padding(
         padding: const EdgeInsets.fromLTRB(16, 24, 16, 24),
         child: SingleChildScrollView(
@@ -31,10 +39,12 @@ class BookingPreviewState extends State<BookingPreview> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                Strings.bookingDetails,
+                Strings.requestConfirmation,
                 style:
                     customTextStyle(20, FontWeight.w500, AppColors.black1, 1),
               ),
+              const SizedBox(height: 8),
+              Text(Strings.notificationMessage,style: customTextStyle(16, FontWeight.w400, AppColors.black5, 1.5),),
               const SizedBox(height: 16),
               Container(
                 width: double.infinity,
@@ -60,11 +70,26 @@ class BookingPreviewState extends State<BookingPreview> {
                             Strings.dummyBookingLocation,
                             style: customTextStyle(
                                 16, FontWeight.w600, AppColors.black6, 0),
-                          ))
-                      
+                          )),
+                          const SizedBox(height: 10,),
+                          Text(
+                        Strings.hostText,
+                        style: customTextStyle(
+                            14, FontWeight.w400, AppColors.black6, 0),
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Flexible(
+                          fit: FlexFit.loose,
+                          child: Text(
+                            Strings.dummyBookingLocation2,
+                            style: customTextStyle(
+                                16, FontWeight.w600, AppColors.black6, 0),
+                          )),
+                         const SizedBox(width: 4,)
                     ]),
               ),
-              const SizedBox(height: 16),
               Container(
                 width: double.infinity,
                 padding: const EdgeInsets.only(left: 16, top: 16, right: 16),
@@ -77,27 +102,12 @@ class BookingPreviewState extends State<BookingPreview> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       customListRow(
-                          home,
-                          Strings.vehicle,
-                          Strings.dummyCategory1,
-                          true,
-                          Strings.dummyvehicle1,
-                          true,
-                          vehicleTypeChange),
-                      customListRow(clock, Strings.driveIn, Strings.today, true,
-                          Strings.dummyTime, true, bookingTimeChange),
-                      customListRow(clock, Strings.driveOut, Strings.today,
-                          true, Strings.dummyTime, true, bookingTimeChange),
-                      customListRow(
-                          duration,
-                          Strings.duration,
-                          "${Strings.dummyDuration} ${Strings.minutes}",
-                          false,
-                          "",
-                          true,
-                          bookingTimeChange),
-                      customListRow(coins, Strings.cost, Strings.dummyCost,
-                          false, "", false, bookingTimeChange),
+                        home,
+                        Strings.vehicle,
+                        Strings.dummyCategory1,
+                        true,
+                        Strings.dummyvehicle1,
+                      ),
                     ]),
               ),
               SizedBox(
@@ -112,15 +122,12 @@ class BookingPreviewState extends State<BookingPreview> {
                                   RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(12.0),
                           ))),
-                      onPressed: () {
-                         context.read<LandingBloc>().add(TabChangeEvent(
-                      tabIndex: 1, tabLabel: Strings.rBookingConfirmation));
-                      },
+                      onPressed: () {},
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            Strings.confirmAndPay,
+                            Strings.gotoSessions,
                             style: customTextStyle(
                                 14, FontWeight.w600, AppColors.white, 1),
                           ),
@@ -135,18 +142,13 @@ class BookingPreviewState extends State<BookingPreview> {
     );
   }
 
-  vehicleTypeChange() {
-    context
-        .read<LandingBloc>()
-        .add(TabChangeEvent(tabIndex: 1, tabLabel: Strings.rVehicleType));
-  }
-
-  bookingTimeChange() {
-    //  context.read<LandingBloc>().add(TabChangeEvent(
-    //                   tabIndex: 1, tabLabel: Strings.rVehicleType));
-  }
-  Widget customListRow(String icon, String title, String text1, bool isCircle,
-      String text2, bool isChangeble, Function() onChangeFunction) {
+  Widget customListRow(
+    String icon,
+    String title,
+    String text1,
+    bool isCircle,
+    String text2,
+  ) {
     return Column(
       children: [
         Row(children: [
@@ -194,14 +196,6 @@ class BookingPreviewState extends State<BookingPreview> {
                   width: 4,
                 ),
               ],
-            ),
-          if (isChangeble)
-            GestureDetector(
-              onTap: onChangeFunction,
-              child: Text(
-                Strings.change,
-                style: customTextStyle(16, FontWeight.w400, AppColors.blue1, 0),
-              ),
             ),
         ]),
         const SizedBox(

@@ -23,6 +23,7 @@ static String appName = "SaxnPark";
   //Booking
   static String bookingDetails = "Booking details";
   static String bookingConfirmation = "Booking confirmation";
+  static String requestConfirmation = "Request confirmation";
   static String bookingConfirmationTitle = "Are these details correct?";
   static String bookingConfirmed = "Your booking is confirmed";
   static String next =  "Next";
@@ -42,6 +43,11 @@ static String appName = "SaxnPark";
   static String space =  "Space";
   static String confirmAndPay =  "Confirm and pay";
   static String setRemainder =  "Set a remainder";
+  static String gotoSessions =  "Go to sessions";
+
+  static String rquestSentMessage = "Your parking request has been sent!";
+
+  
   
 
 
@@ -70,6 +76,9 @@ static String appName = "SaxnPark";
   static String rVehicleType ="vehicleType";
   static String rPark =  "park";
   static String rParkTime =  "parkTime";
+  static String rBookingConfirmation =  "bookingConfirmation";
+  static String rBookingDetails =  "bookingDetails";
+
 
 
 
@@ -87,6 +96,8 @@ static String appName = "SaxnPark";
   static String notes =  "notes";
   static String incorrectSearchText =  "Showing all results for “New York\"";
   static String dummyId = "623478345";
+  static String requestParking = "Request parking";
+  static String notificationMessage = "We will notify you when your booking has been confirmed.";
 
 
 
@@ -150,6 +161,13 @@ static String appName = "SaxnPark";
   static String tomorrowText =  "Tommorrow";
   static String slotUnavailableWarning =  "The car park will have limited availability at your selected date and time.";
   static String viewPrices =  "View prices";
+  static String visitorTitle =  "Who are you visiting?";
+  static String dropDownHint =  "Select host";
+  static String hostText =  "Host";
+
+
+  
+
 
 
   
@@ -162,6 +180,7 @@ static String appName = "SaxnPark";
   static String dummyCategory1 =  "LJ64 XOS";
   static String dummyCategoey2 =  "HA66 LNP";
   static String dummyBookingLocation =  "Heathrow Airport - Terminal 1";
+  static String dummyBookingLocation2 =  "Heathrow Airport";
   static String dummyBookingLocation1 =  "Hounslow, TW6 1EW, United Kingdom";
   static String dummyTime =  "16:00";
   static String dummyTime1 =  "17:00";

@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:saxnpark_app/pages/accounts_page.dart';
+import 'package:saxnpark_app/pages/bookings/booking_details.dart';
 import 'package:saxnpark_app/pages/bookings/parking_time.dart';
 import 'package:saxnpark_app/pages/bookings/purpose_of_visit.dart';
 import 'package:saxnpark_app/pages/bookings/vehicle_type.dart';
+import 'package:saxnpark_app/pages/bookings/visitor_booking_confirmation.dart';
+import 'package:saxnpark_app/pages/bookings/visitor_booking_details.dart';
+import 'package:saxnpark_app/pages/bookings/visitor_screen.dart';
 import 'package:saxnpark_app/pages/my_locations.dart';
 
 
@@ -136,8 +140,16 @@ class _LandingPageState extends State<LandingPage> {
     else if (tabIndex == 1 && tabLabel == Strings.rVehicleType) {
       return const VehicleType();
     }
-    else if (tabIndex == 1) {
+    else if (tabIndex == 1 && tabLabel == Strings.rParkTime) {
       return const ParkingTime();
+    }
+    else if (tabIndex == 1 && tabLabel == Strings.rBookingDetails) {
+      return const BookingPreview();
+    }else if (tabIndex == 1 && tabLabel == Strings.rBookingConfirmation) {
+      return const BookingConfirmation();
+    }
+    else if (tabIndex == 1) {
+      return const PurposeOfVisit();
     }
     else if (tabIndex == 1) {
       return const PurposeOfVisit();

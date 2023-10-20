@@ -237,7 +237,8 @@ static int calculateTimeDifferenceBetween(
                        borderRadius: BorderRadius.circular(12.0),
                      ))),
                     onPressed: (){
-                                   
+                                    context.read<LandingBloc>().add(TabChangeEvent(
+                      tabIndex: 1, tabLabel: Strings.rBookingDetails));
                                                }, child: Row(
                                                 mainAxisAlignment: MainAxisAlignment.center,
                                                  children: [

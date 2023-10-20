@@ -8,21 +8,21 @@ import '../../utils/constants.dart';
 import '../../utils/strings.dart';
 import '../../utils/styles.dart';
 
-class BookingPreview extends StatefulWidget {
-  const BookingPreview({super.key});
+class VisitorBookingDetaills extends StatefulWidget {
+  const VisitorBookingDetaills({super.key});
 
   @override
-  State<BookingPreview> createState() => BookingPreviewState();
+  State<VisitorBookingDetaills> createState() => VisitorBookingDetaillsState();
 }
 
-class BookingPreviewState extends State<BookingPreview> {
+class VisitorBookingDetaillsState extends State<VisitorBookingDetaills> {
   String tabLabel = "";
   @override
   Widget build(BuildContext context) {
     h = MediaQuery.of(context).size.height;
     tabLabel = context.watch<LandingBloc>().state.tabLabel;
     return Scaffold(
-      appBar: CustomAppBar(title: Strings.bookingConfirmation),
+      appBar: CustomAppBarWithBack(title: Strings.bookingConfirmation,backText: Strings.back,tabIndex: 1,redirectionKey: Strings.rParkTime,),
       body: Padding(
         padding: const EdgeInsets.fromLTRB(16, 24, 16, 24),
         child: SingleChildScrollView(
@@ -31,7 +31,7 @@ class BookingPreviewState extends State<BookingPreview> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                Strings.bookingDetails,
+                Strings.bookingConfirmationTitle,
                 style:
                     customTextStyle(20, FontWeight.w500, AppColors.black1, 1),
               ),
@@ -54,14 +54,54 @@ class BookingPreviewState extends State<BookingPreview> {
                       const SizedBox(
                         height: 10,
                       ),
-                      Flexible(
-                          fit: FlexFit.loose,
-                          child: Text(
-                            Strings.dummyBookingLocation,
-                            style: customTextStyle(
-                                16, FontWeight.w600, AppColors.black6, 0),
-                          ))
-                      
+                      Row(
+                        children: [
+                          Flexible(
+                              fit: FlexFit.loose,
+                              child: Text(
+                                Strings.dummyBookingLocation,
+                                style: customTextStyle(
+                                    16, FontWeight.w600, AppColors.black6, 0),
+                              )),
+                              SizedBox(width: 4,),
+                               GestureDetector(
+              onTap: vehicleTypeChange,
+              child: Text(
+                Strings.change,
+                style: customTextStyle(16, FontWeight.w400, AppColors.blue1, 0),
+              ),
+            ),
+                        ],
+                      ),
+                        
+                          const SizedBox(height: 10,),
+                          Text(
+                        Strings.hostText,
+                        style: customTextStyle(
+                            14, FontWeight.w400, AppColors.black6, 0),
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Row(
+                        children: [
+                          Flexible(
+                              fit: FlexFit.loose,
+                              child: Text(
+                                Strings.dummyBookingLocation2,
+                                style: customTextStyle(
+                                    16, FontWeight.w600, AppColors.black6, 0),
+                              )),
+                             const SizedBox(width: 4,),
+                              GestureDetector(
+              onTap: vehicleTypeChange,
+              child: Text(
+                Strings.change,
+                style: customTextStyle(16, FontWeight.w400, AppColors.blue1, 0),
+              ),
+            ),
+                        ],
+                      )
                     ]),
               ),
               const SizedBox(height: 16),
@@ -84,20 +124,6 @@ class BookingPreviewState extends State<BookingPreview> {
                           Strings.dummyvehicle1,
                           true,
                           vehicleTypeChange),
-                      customListRow(clock, Strings.driveIn, Strings.today, true,
-                          Strings.dummyTime, true, bookingTimeChange),
-                      customListRow(clock, Strings.driveOut, Strings.today,
-                          true, Strings.dummyTime, true, bookingTimeChange),
-                      customListRow(
-                          duration,
-                          Strings.duration,
-                          "${Strings.dummyDuration} ${Strings.minutes}",
-                          false,
-                          "",
-                          true,
-                          bookingTimeChange),
-                      customListRow(coins, Strings.cost, Strings.dummyCost,
-                          false, "", false, bookingTimeChange),
                     ]),
               ),
               SizedBox(
@@ -112,15 +138,12 @@ class BookingPreviewState extends State<BookingPreview> {
                                   RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(12.0),
                           ))),
-                      onPressed: () {
-                         context.read<LandingBloc>().add(TabChangeEvent(
-                      tabIndex: 1, tabLabel: Strings.rBookingConfirmation));
-                      },
+                      onPressed: () {},
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            Strings.confirmAndPay,
+                            Strings.requestParking,
                             style: customTextStyle(
                                 14, FontWeight.w600, AppColors.white, 1),
                           ),
