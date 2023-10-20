@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:saxnpark_app/pages/accounts_page.dart';
-import 'package:saxnpark_app/pages/bookings/purpose_of_visit.dart';
-import 'package:saxnpark_app/pages/bookings/vehicle_type.dart';
-import 'package:saxnpark_app/pages/my_locations.dart';
 
-
-import '../pages/location_list.dart';
-import '../pages/location_page.dart';
-import '../utils/colors.dart';
 import '../bloc/landing/landing_bloc.dart';
 import '../commons/bottom_icons.dart';
+import '../pages/accounts_page.dart';
+import '../pages/bookings/vehicle_type.dart';
+import '../pages/location_list.dart';
+import '../pages/location_page.dart';
+import '../pages/my_locations.dart';
+import '../utils/colors.dart';
 import '../utils/constants.dart';
 import '../utils/strings.dart';
 
@@ -21,6 +20,7 @@ import 'nearme_page.dart';
 final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
  PersistentBottomSheetController? controller;
 
+
 class LandingPage extends StatefulWidget {
   const LandingPage({super.key});
 
@@ -29,9 +29,6 @@ class LandingPage extends StatefulWidget {
 }
 
 class _LandingPageState extends State<LandingPage> {
-  
- 
-  late PersistentBottomSheetController _sheetController;
   @override
   Widget build(BuildContext context) {
      List<BottomNavigationBarItem> bottomNavItems = <BottomNavigationBarItem>[
