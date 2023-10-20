@@ -47,6 +47,7 @@ dependencies:
   share_plus: ^7.0.0
   omni_datetime_picker: ^1.0.9
   intl: ^0.18.1
+  permission_handler: ^11.0.1
 
 dev_dependencies:
   flutter_test:

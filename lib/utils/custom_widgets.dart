@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:saxnpark_app/utils/constants.dart';
 import 'package:saxnpark_app/utils/strings.dart';
 import 'package:saxnpark_app/utils/styles.dart';
@@ -29,7 +30,8 @@ class LocationCards extends StatelessWidget {
   final Function() btnClick;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) 
+  {
     return Container(
                         // height: 157,
                         child: Column(
@@ -171,5 +173,42 @@ Future<void> showNegativeToast(toastText)
         fontSize: 16.0
     );
 }
+
+showLocationDisabledAlertDialog(BuildContext context) 
+{
+  // set up the buttons
+  Widget cancelButton = TextButton(
+    child:  Text(Strings.cancel),
+    onPressed:  () {
+      Navigator.pop(context);
+    },
+  );
+  Widget continueButton = TextButton(
+    child:  Text(Strings.openSettings),
+    onPressed:  () {
+      Navigator.pop(context);
+      openAppSettings();
+    },
+  );
+
+  // set up the AlertDialog
+  AlertDialog alert = AlertDialog(
+    title: Text(Strings.attention),
+    content: Text(Strings.locationEnableMessage),
+    actions: [
+      cancelButton,
+      continueButton,
+    ],
+  );
+
+  // show the dialog
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return alert;
+    },
+  );
+}
+
 
 
