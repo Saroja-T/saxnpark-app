@@ -168,7 +168,7 @@ class BookingConfirmationState extends State<BookingConfirmation> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            Strings.setRemainder,
+                            Strings.goToBookings,
                             style: customTextStyle(
                                 14, FontWeight.w600, AppColors.white, 1),
                           ),

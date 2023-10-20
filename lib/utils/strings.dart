@@ -44,6 +44,7 @@ static String appName = "SaxnPark";
   static String confirmAndPay =  "Confirm and pay";
   static String setRemainder =  "Set a remainder";
   static String gotoSessions =  "Go to sessions";
+  static String goToBookings =  "Go to bookings";
 
   static String rquestSentMessage = "Your parking request has been sent!";
 
