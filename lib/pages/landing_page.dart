@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:saxnpark_app/pages/bookings/visitor_booking_confirmation.dart';
+import 'package:saxnpark_app/pages/bookings/visitor_booking_details.dart';
+import 'package:saxnpark_app/pages/bookings/visitor_screen.dart';
 
 import '../bloc/landing/landing_bloc.dart';
 import '../commons/bottom_icons.dart';
