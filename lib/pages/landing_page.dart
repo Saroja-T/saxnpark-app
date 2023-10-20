@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:saxnpark_app/pages/bookings/visitor_booking_confirmation.dart';
-import 'package:saxnpark_app/pages/bookings/visitor_booking_details.dart';
-import 'package:saxnpark_app/pages/bookings/visitor_screen.dart';
 
 import '../bloc/landing/landing_bloc.dart';
 import '../commons/bottom_icons.dart';
@@ -114,16 +111,14 @@ class _LandingPageState extends State<LandingPage> {
     );
   }
 
-  Widget contentWidget(int tabIndex, String tabLabel) 
-  {
+  Widget contentWidget(int tabIndex, String tabLabel) {
     if (tabIndex == 0 && tabLabel == Strings.rHome) {
       return const HomePage();
     } else if (tabIndex == 0 && tabLabel == Strings.rLocationGridList) {
       return const LocationPage();
-    }else if (tabIndex == 0 && tabLabel == Strings.rPark) {
+    } else if (tabIndex == 0 && tabLabel == Strings.rPark) {
       return const VehicleType();
-    } else if (tabIndex == 0 &&
-        (tabLabel == Strings.rLocationList ||
+    } else if (tabIndex == 0 && (tabLabel == Strings.rLocationList ||
             tabLabel == Strings.rNearMeList ||
             tabLabel == Strings.rRecentList ||
             tabLabel == Strings.rLocationSearchList)) {
@@ -134,36 +129,19 @@ class _LandingPageState extends State<LandingPage> {
        return const MyLocation();
     }else if(tabIndex == 4 && tabLabel==Strings.rAccount){
       return const AccountsPage();
-    }
-    else if (tabIndex == 1 && tabLabel == Strings.rVehicleType) {
+    }else if (tabIndex == 1 && tabLabel == Strings.rVehicleType) {
       return const VehicleType();
-    }
-    else if (tabIndex == 1 && tabLabel == Strings.rParkTime) {
+    }else if (tabIndex == 1 && tabLabel == Strings.rParkTime) {
       return const ParkingTime();
-    }
-    else if (tabIndex == 1 && tabLabel == Strings.rBookingDetails) {
+    }else if (tabIndex == 1 && tabLabel == Strings.rBookingDetails) {
       return const BookingPreview();
-    }
-    else if (tabIndex == 1 && tabLabel == Strings.rBookingConfirmation) {
+    }else if (tabIndex == 1 && tabLabel == Strings.rBookingConfirmation) {
       return const BookingConfirmation();
-    }
-    else if (tabIndex == 1 && tabLabel == Strings.rVisitorScreen) {
-      return const VisitorScreen();
-    } 
-    else if (tabIndex == 1 && tabLabel == Strings.rVisitorBookingDetails) {
-      return const VisitorBookingDetaills();
-    }
-    else if (tabIndex == 1 && tabLabel == Strings.rVisitorBookingConfirmation) {
-      return const VisitorBookingConfirmation();
-    } 
-    else if (tabIndex == 1) {
+    }else if (tabIndex == 1) {
       return const PurposeOfVisit();
-    }
-    else if (tabIndex == 1) {
+    }else if (tabIndex == 1) {
       return const PurposeOfVisit();
-    }
-    else 
-    {
+    }else{
       return Center(child: Text(Strings.home));
     }
   }

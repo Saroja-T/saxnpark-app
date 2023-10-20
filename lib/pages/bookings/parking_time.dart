@@ -1,20 +1,16 @@
 import 'package:flutter/material.dart';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:intl/intl.dart';
-import 'package:saxnpark_app/bottomsheets/location_details.dart';
-import 'package:saxnpark_app/bottomsheets/my_locations.dart';
-import 'package:saxnpark_app/pages/landing_page.dart';
-import 'package:saxnpark_app/utils/colors.dart';
-import 'package:saxnpark_app/utils/custom_widgets.dart';
-import 'package:clipboard/clipboard.dart';
-import 'package:fluttertoast/fluttertoast.dart';
-import 'package:share_plus/share_plus.dart';
 import 'package:omni_datetime_picker/omni_datetime_picker.dart';
 
 import '../../bloc/landing/landing_bloc.dart';
+import '../../bottomsheets/location_details.dart';
 import '../../commons/custom_app_bar.dart';
+import '../../utils/colors.dart';
 import '../../utils/constants.dart';
+import '../../utils/custom_widgets.dart';
 import '../../utils/strings.dart';
 import '../../utils/styles.dart';
 
@@ -44,7 +40,6 @@ class _ParkingTimeState extends State<ParkingTime>
 
 static int calculateTimeDifferenceBetween(
       {required DateTime startDate, required DateTime endDate}) {
-    int seconds = endDate.difference(startDate).inSeconds;
           return startDate.difference(endDate).inHours;
 
     // if (seconds < 60)

@@ -31,7 +31,7 @@ class BookingPreviewState extends State<BookingPreview> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                Strings.bookingDetails,
+                Strings.bookingConfirmationTitle,
                 style:
                     customTextStyle(20, FontWeight.w500, AppColors.black1, 1),
               ),
