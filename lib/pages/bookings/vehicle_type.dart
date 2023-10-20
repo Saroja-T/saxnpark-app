@@ -123,8 +123,18 @@ class _VehicleTypeState extends State<VehicleType>
                      borderRadius: BorderRadius.circular(12.0),
                    ))),
                   onPressed: (){
-                    context.read<LandingBloc>().add(TabChangeEvent(
+                    print("identity ${Strings.identity}");
+                    if(Strings.identity == self)
+                    {
+                      context.read<LandingBloc>().add(TabChangeEvent(
                       tabIndex: 1, tabLabel: Strings.rParkTime));
+                    }
+                    else
+                    {
+                        context.read<LandingBloc>().add(TabChangeEvent(
+                      tabIndex: 1, tabLabel: Strings.rVisitorBookingDetails));
+                    }
+                    
                                              }, child: Row(
                                               mainAxisAlignment: MainAxisAlignment.center,
                                                children: [

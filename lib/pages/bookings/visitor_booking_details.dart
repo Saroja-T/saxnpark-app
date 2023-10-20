@@ -22,7 +22,7 @@ class VisitorBookingDetaillsState extends State<VisitorBookingDetaills> {
     h = MediaQuery.of(context).size.height;
     tabLabel = context.watch<LandingBloc>().state.tabLabel;
     return Scaffold(
-      appBar: CustomAppBarWithBack(title: Strings.bookingConfirmation,backText: Strings.back,tabIndex: 1,redirectionKey: Strings.rParkTime,),
+      appBar: CustomAppBarWithBack(title: Strings.bookingConfirmation,backText: Strings.back,tabIndex: 1,redirectionKey: Strings.rVehicleType,),
       body: Padding(
         padding: const EdgeInsets.fromLTRB(16, 24, 16, 24),
         child: SingleChildScrollView(
@@ -138,7 +138,10 @@ class VisitorBookingDetaillsState extends State<VisitorBookingDetaills> {
                                   RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(12.0),
                           ))),
-                      onPressed: () {},
+                      onPressed: () {
+                        context.read<LandingBloc>().add(TabChangeEvent(
+                      tabIndex: 1, tabLabel: Strings.rVisitorBookingConfirmation));
+                      },
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [

@@ -1,6 +1,11 @@
 double? h;
 double? w;
 
+
+const String self = 'self';
+const String others = 'others';
+
+
 //assets-images
 
 const String logo = '';
@@ -36,6 +41,7 @@ const String mapPin = 'assets/icons/map_pin.png';
 const String cardHolder = 'assets/icons/card_holder.png';
 const String warning = 'assets/icons/warning.png';
 const String calender = 'assets/icons/calender.png';
+
 
 
 

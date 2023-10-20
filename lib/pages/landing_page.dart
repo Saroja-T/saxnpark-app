@@ -140,9 +140,19 @@ class _LandingPageState extends State<LandingPage> {
     }
     else if (tabIndex == 1 && tabLabel == Strings.rBookingDetails) {
       return const BookingPreview();
-    }else if (tabIndex == 1 && tabLabel == Strings.rBookingConfirmation) {
+    }
+    else if (tabIndex == 1 && tabLabel == Strings.rBookingConfirmation) {
       return const BookingConfirmation();
     }
+    else if (tabIndex == 1 && tabLabel == Strings.rVisitorScreen) {
+      return const VisitorScreen();
+    } 
+    else if (tabIndex == 1 && tabLabel == Strings.rVisitorBookingDetails) {
+      return const VisitorBookingDetaills();
+    }
+    else if (tabIndex == 1 && tabLabel == Strings.rVisitorBookingConfirmation) {
+      return const VisitorBookingConfirmation();
+    } 
     else if (tabIndex == 1) {
       return const PurposeOfVisit();
     }

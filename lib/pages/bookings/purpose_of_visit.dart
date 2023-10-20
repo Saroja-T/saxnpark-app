@@ -25,6 +25,13 @@ class _PurposeOfVisitState extends State<PurposeOfVisit>
   bool starSelected = false;
   String tabLabel = "";
   List<String> titleList = [Strings.justParking,Strings.visiting];
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    Strings.identity = self;
+  }
   
   @override
   Widget build(BuildContext context) {
@@ -52,6 +59,12 @@ class _PurposeOfVisitState extends State<PurposeOfVisit>
                 onTap: (){
                   setState(() {
                     selectedIndex = index;
+                    if(index == 0)
+                    {Strings.identity = self;}
+                    else{
+                      Strings.identity = others;
+                    }
+                    
                   });
                 },
                  child: Container(
@@ -86,8 +99,9 @@ class _PurposeOfVisitState extends State<PurposeOfVisit>
                        borderRadius: BorderRadius.circular(12.0),
                      ))),
                     onPressed: (){
-                      context.read<LandingBloc>().add(TabChangeEvent(
-                      tabIndex: 1, tabLabel: Strings.rVehicleType));
+
+                          context.read<LandingBloc>().add(TabChangeEvent(
+                          tabIndex: 1, tabLabel: Strings.rVehicleType));
                                                }, child: Row(
                                                 mainAxisAlignment: MainAxisAlignment.center,
                                                  children: [

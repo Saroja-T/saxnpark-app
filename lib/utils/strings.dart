@@ -78,6 +78,13 @@ static String appName = "SaxnPark";
   static String rParkTime =  "parkTime";
   static String rBookingConfirmation =  "bookingConfirmation";
   static String rBookingDetails =  "bookingDetails";
+  static String rVisitorBookingDetails =  "visitorBookingDetails";
+  static String rVisitorBookingConfirmation =  "visitorBookingConfirmation";
+  static String rVisitorScreen =  "visitorScreen";
+  static String? identity;
+
+
+
 
 
 
