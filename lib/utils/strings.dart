@@ -164,6 +164,7 @@ static String appName = "SaxnPark";
   static String copiedMsg =  "Copied Successfully";
   static String visitPurpose =  "What’s the purpose of your visit?";
   static String visitVehicle =  "Which vehicle are you parking?";
+  static String parkingTime =  "When are you parking?";
   static String justParking =  "I’m just parking";
   static String visiting =  "I’m visiting";
   static String addVehicle =  "Add a new vehicle";
@@ -177,15 +178,6 @@ static String appName = "SaxnPark";
   static String dropDownHint =  "Select host";
   static String hostText =  "Host";
 
-
-  
-
-
-
-  
-
-
-  
 
   static String dummyvehicle1 =  "Lilo";
   static String dummyvehicle2 =  "Enzo";

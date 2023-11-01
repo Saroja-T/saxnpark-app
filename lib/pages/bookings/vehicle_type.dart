@@ -30,7 +30,6 @@ class _VehicleTypeState extends State<VehicleType>
   bool inCorrectSearch = true;
   bool starSelected = false;
   String tabLabel = "";
-  List<String> titleList = [Strings.justParking,Strings.visiting];
   List<VehicleDetails> vehicleDetails = [VehicleDetails(vehicleName: Strings.dummyvehicle1,vehicleCategory:Strings.dummyCategory1),VehicleDetails(vehicleCategory: Strings.dummyCategoey2,vehicleName: Strings.dummyvehicle2)];
 
   

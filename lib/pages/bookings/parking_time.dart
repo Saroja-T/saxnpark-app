@@ -91,7 +91,7 @@ static int calculateTimeDifferenceBetween(
                       ],
                     ),
                    ),
-              Text(Strings.visitVehicle,style: customTextStyle(20, FontWeight.w500, AppColors.black1, 1),),
+              Text(Strings.parkingTime,style: customTextStyle(20, FontWeight.w500, AppColors.black1, 1),),
                const SizedBox(height: 16),
               Text(Strings.driveInTime,style: customTextStyle(16, FontWeight.w400, AppColors.black1, 1),),
                const SizedBox(height: 10,),

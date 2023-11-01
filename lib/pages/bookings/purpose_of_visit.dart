@@ -68,7 +68,7 @@ class _PurposeOfVisitState extends State<PurposeOfVisit>
                   });
                 },
                  child: Container(
-                  padding: EdgeInsets.all(16),
+                  padding: const EdgeInsets.all(16),
                   margin:const EdgeInsets.only(bottom: 16),
                   decoration:  BoxDecoration(
                             borderRadius:const BorderRadius.all(Radius.circular(8)),
@@ -91,7 +91,6 @@ class _PurposeOfVisitState extends State<PurposeOfVisit>
                Container(
                 height: 51,
                  child: SizedBox.expand(
-               
                    child: ElevatedButton(
                     style: ButtonStyle(backgroundColor: MaterialStateProperty.all<Color>(AppColors.black6),
                     shape: MaterialStateProperty.all<RoundedRectangleBorder>(

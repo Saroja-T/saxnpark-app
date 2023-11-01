@@ -30,6 +30,7 @@ class BookingPreviewState extends State<BookingPreview> {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+             
               Text(
                 Strings.bookingConfirmationTitle,
                 style:

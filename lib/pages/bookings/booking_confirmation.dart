@@ -21,14 +21,14 @@ class BookingConfirmation extends StatefulWidget {
 class BookingConfirmationState extends State<BookingConfirmation> {
   String tabLabel = "";
   LatLng initialLocation = const LatLng(37.422131, -122.084801);
-  Map<MarkerId, Marker> markers = <MarkerId, Marker>{}; // CLASS MEMBER, MAP OF MARKS
-
+  Map<MarkerId, Marker> markers =
+      <MarkerId, Marker>{}; // CLASS MEMBER, MAP OF MARKS
 
   @override
   Widget build(BuildContext context) {
     h = MediaQuery.of(context).size.height;
     tabLabel = context.watch<LandingBloc>().state.tabLabel;
-    
+
     return Scaffold(
       appBar: CustomAppBar(title: Strings.bookingConfirmation),
       body: Padding(
@@ -51,17 +51,17 @@ class BookingConfirmationState extends State<BookingConfirmation> {
                     borderRadius: BorderRadius.all(Radius.circular(8)),
                     color: Color.fromRGBO(41, 170, 243, 0.1)),
                 child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                  Image.asset(
-                    info,
-                    color: AppColors.black6,
-                  ),
-                  const SizedBox(width: 4,),
-                  Flexible(
-                      child: Text(
-                          Strings.dummyBookingMsg))
-                ]),
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Image.asset(
+                        info,
+                        color: AppColors.black6,
+                      ),
+                      const SizedBox(
+                        width: 4,
+                      ),
+                      Flexible(child: Text(Strings.dummyBookingMsg))
+                    ]),
               ),
               Container(
                 width: double.infinity,
@@ -95,24 +95,23 @@ class BookingConfirmationState extends State<BookingConfirmation> {
                       SizedBox(
                         height: 109,
                         child: GoogleMap(
-          onTap: (LatLng) {
-            print("dfdfdf");
-          },
-          initialCameraPosition: CameraPosition(
-            target: initialLocation,
-            zoom: 14,
-          ),
-        ),
+                          onTap: (LatLng) {
+                            print("dfdfdf");
+                          },
+                          initialCameraPosition: CameraPosition(
+                            target: initialLocation,
+                            zoom: 14,
+                          ),
+                        ),
                       ),
                       const SizedBox(
                         height: 16,
                       ),
                       Text(
-                Strings.getDirections,
-                style: customTextStyle(16, FontWeight.w400, AppColors.blue1, 0),
-              ),
-                      
-                      
+                        Strings.getDirections,
+                        style: customTextStyle(
+                            16, FontWeight.w400, AppColors.blue1, 0),
+                      ),
                     ]),
               ),
               Container(
@@ -143,12 +142,12 @@ class BookingConfirmationState extends State<BookingConfirmation> {
                           "${Strings.dummyDuration} ${Strings.minutes}",
                           false,
                           ""),
-                      customListRow(
-                          duration, Strings.space, Strings.dummySpace, false, ""),
+                      customListRow(duration, Strings.space, Strings.dummySpace,
+                          false, ""),
                       customListRow(
                           coins, Strings.cost, Strings.dummyCost, false, ""),
-                      customListRow(
-                          cardHolder, Strings.paymentMethod, Strings.dummyPaymentMethod, false, ""),
+                      customListRow(cardHolder, Strings.paymentMethod,
+                          Strings.dummyPaymentMethod, false, ""),
                     ]),
               ),
               SizedBox(
