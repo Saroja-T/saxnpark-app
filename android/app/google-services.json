@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1017123491907",
+    "project_id": "saxnpark-d473c",
+    "storage_bucket": "saxnpark-d473c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1017123491907:android:92ead917dc2cca024104f6",
+        "android_client_info": {
+          "package_name": "com.saxnpark.parkingapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCeS8Is2ENnfdxT0s3g5Dw9ZuQEq73bV-k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

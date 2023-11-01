@@ -32,10 +32,14 @@ class NearMePageWidget extends StatefulWidget {
 }
 
 class _NearMePageWidgetState extends State<NearMePageWidget> {
-  LatLng initialLocation = const LatLng(37.422131, -122.084801);
+  LatLng initialLocation = const LatLng(11.0168, 76.9558);
+  Set<Marker> markerSet = Set();
+
+  List<MarkerDetails> markersList = [MarkerDetails(markerID: "1", lat: 11.0178, long: 76.9558),MarkerDetails(markerID: "2", lat: 11.0102, long:76.9504)];
   TextEditingController searchController = TextEditingController();
   String tabLabel = "";
   bool starSelected = false;
+  bool showPlaceList = false;
   Permission? permission;
 
   @override
@@ -43,6 +47,7 @@ class _NearMePageWidgetState extends State<NearMePageWidget> {
     // TODO: implement initState
     super.initState();
     getPermissions();
+    addMarkers();
   }
 
   getPermissions() async 
@@ -58,22 +63,44 @@ class _NearMePageWidgetState extends State<NearMePageWidget> {
       showLocationDisabledAlertDialog(context);
     }
   }
+  addMarkers(){
+    for(var marker in markersList)
+    {
+      Marker resultMarker = Marker(
+        markerId: MarkerId(marker.markerID!),
+        position: LatLng(marker.lat!, marker.long!), onTap: (){
+
+          setState(() {
+              showPlaceList = true;
+          });
+        });
+      markerSet.add(resultMarker);
+    }
+
+    
+  
+  }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) 
+  {
     return Stack(
       //fit: StackFit.loose,
       fit: StackFit.expand,
       clipBehavior: Clip.none,
       children: [
         GoogleMap(
-          onTap: (LatLng) {
-            print("dfdfdf");
+          onTap: (LatLng) 
+          {
+            setState(() {
+                showPlaceList = false;
+            });
           },
           initialCameraPosition: CameraPosition(
             target: initialLocation,
             zoom: 14,
           ),
+          markers: markerSet
         ),
         Positioned(
           top: 24,
@@ -237,6 +264,7 @@ class _NearMePageWidgetState extends State<NearMePageWidget> {
                     ),
                   ],
                 ),
+               if(showPlaceList)
                 SizedBox(
                   height: 200,
                   child: ListView.builder(
@@ -280,4 +308,13 @@ class _NearMePageWidgetState extends State<NearMePageWidget> {
       ],
     );
   }
+
+
+}
+class MarkerDetails{
+String? markerID;
+double? lat;
+double? long;
+
+MarkerDetails({required this.markerID,required this.lat,required this.long});
 }
