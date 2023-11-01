@@ -1,17 +1,28 @@
 import 'dart:async';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_maps_flutter_android/google_maps_flutter_android.dart';
 import 'package:google_maps_flutter_platform_interface/google_maps_flutter_platform_interface.dart';
 
 import 'package:saxnpark_app/bloc/landing/landing_bloc.dart';
+import 'package:saxnpark_app/firebase_options.dart';
 import 'package:saxnpark_app/pages/landing_page.dart';
+import 'package:saxnpark_app/services/firebase_service.dart';
 import 'package:saxnpark_app/utils/colors.dart';
 import 'package:saxnpark_app/utils/router.dart';
 
 import 'utils/strings.dart';
 
-void main() {
+Future<void> main() async 
+{
+  WidgetsFlutterBinding.ensureInitialized();
+  print("before");
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  await FirebaseService().initNotifications();
   final GoogleMapsFlutterPlatform mapsImplementation =
       GoogleMapsFlutterPlatform.instance;
   if (mapsImplementation is GoogleMapsFlutterAndroid) {
@@ -54,6 +65,8 @@ Future<AndroidMapRenderer?> initializeMapRenderer() async {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
+
+  
 
   // This widget is the root of your application.
   @override
