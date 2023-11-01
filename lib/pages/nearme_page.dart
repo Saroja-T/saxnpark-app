@@ -32,10 +32,9 @@ class NearMePageWidget extends StatefulWidget {
 }
 
 class _NearMePageWidgetState extends State<NearMePageWidget> {
-  LatLng initialLocation = const LatLng(11.0168, 76.9558);
-  Set<Marker> markerSet = Set();
+List<MarkerDetails> markersList = [MarkerDetails(markerID: "1", lat: 34.19213557530695, long: -116.53385992677454),MarkerDetails(markerID: "2", lat: 34.1811301832486, long:-116.54183980580939)];
+  LatLng initialLocation = const LatLng(34.19213557530695, -116.53385992677454);  Set<Marker> markerSet = Set();
 
-  List<MarkerDetails> markersList = [MarkerDetails(markerID: "1", lat: 11.0178, long: 76.9558),MarkerDetails(markerID: "2", lat: 11.0102, long:76.9504)];
   TextEditingController searchController = TextEditingController();
   String tabLabel = "";
   bool starSelected = false;
@@ -76,9 +75,6 @@ class _NearMePageWidgetState extends State<NearMePageWidget> {
         });
       markerSet.add(resultMarker);
     }
-
-    
-  
   }
 
   @override
