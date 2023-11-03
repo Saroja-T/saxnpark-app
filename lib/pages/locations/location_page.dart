@@ -3,11 +3,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:saxnpark_app/commons/custom_app_bar.dart';
 import 'package:saxnpark_app/utils/colors.dart';
 
-import '../bloc/landing/landing_bloc.dart';
-import '../utils/constants.dart';
-import '../utils/strings.dart';
-import '../utils/styles.dart';
-import 'landing_page.dart';
+import '../../bloc/landing/landing_bloc.dart';
+import '../../utils/constants.dart';
+import '../../utils/strings.dart';
+import '../../utils/styles.dart';
+import '../landing_page.dart';
 
 class LocationPage extends StatefulWidget {
   const LocationPage({super.key});

@@ -4,11 +4,11 @@ import 'package:saxnpark_app/bottomsheets/location_details.dart';
 import 'package:saxnpark_app/utils/colors.dart';
 import 'package:saxnpark_app/utils/custom_widgets.dart';
 
-import '../bloc/landing/landing_bloc.dart';
-import '../commons/custom_app_bar.dart';
-import '../utils/constants.dart';
-import '../utils/strings.dart';
-import '../utils/styles.dart';
+import '../../bloc/landing/landing_bloc.dart';
+import '../../commons/custom_app_bar.dart';
+import '../../utils/constants.dart';
+import '../../utils/strings.dart';
+import '../../utils/styles.dart';
 
 class LocationList extends StatefulWidget {
   const LocationList({super.key});

@@ -5,11 +5,11 @@ import 'package:saxnpark_app/utils/custom_widgets.dart';
 import 'package:clipboard/clipboard.dart';
 import 'package:share_plus/share_plus.dart';
 
-import '../bloc/landing/landing_bloc.dart';
-import '../commons/custom_app_bar.dart';
-import '../utils/constants.dart';
-import '../utils/strings.dart';
-import '../utils/styles.dart';
+import '../../bloc/landing/landing_bloc.dart';
+import '../../commons/custom_app_bar.dart';
+import '../../utils/constants.dart';
+import '../../utils/strings.dart';
+import '../../utils/styles.dart';
 
 class AccountsPage extends StatefulWidget {
   const AccountsPage({super.key});

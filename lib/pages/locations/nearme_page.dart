@@ -7,12 +7,12 @@ import 'package:saxnpark_app/bottomsheets/location_details.dart';
 import 'package:saxnpark_app/utils/custom_widgets.dart';
 import 'package:permission_handler/permission_handler.dart';
 
-import '../bloc/landing/landing_bloc.dart';
-import '../commons/custom_app_bar.dart';
-import '../utils/colors.dart';
-import '../utils/constants.dart';
-import '../utils/strings.dart';
-import '../utils/styles.dart';
+import '../../bloc/landing/landing_bloc.dart';
+import '../../commons/custom_app_bar.dart';
+import '../../utils/colors.dart';
+import '../../utils/constants.dart';
+import '../../utils/strings.dart';
+import '../../utils/styles.dart';
 
 class NearMePage extends StatelessWidget {
   const NearMePage({super.key});

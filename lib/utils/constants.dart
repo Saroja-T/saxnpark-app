@@ -43,6 +43,10 @@ const String warning = 'assets/icons/warning.png';
 const String calender = 'assets/icons/calender.png';
 
 
+//Dummy Imags
+const String usIcon = 'assets/dummy/us.png';
+
+
 
 
 

@@ -4,11 +4,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../bloc/landing/landing_bloc.dart';
 import '../commons/bottom_icons.dart';
-import '../pages/accounts_page.dart';
+import 'accounts/accounts_page.dart';
 import '../pages/bookings/vehicle_type.dart';
-import '../pages/location_list.dart';
-import '../pages/location_page.dart';
-import '../pages/my_locations.dart';
+import 'locations/location_list.dart';
+import 'locations/location_page.dart';
+import 'locations/my_locations.dart';
 import '../utils/colors.dart';
 import '../utils/constants.dart';
 import '../utils/strings.dart';
@@ -18,7 +18,7 @@ import 'bookings/booking_details.dart';
 import 'bookings/parking_time.dart';
 import 'bookings/purpose_of_visit.dart';
 import 'home_page.dart';
-import 'nearme_page.dart';
+import 'locations/nearme_page.dart';
 
 final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
  PersistentBottomSheetController? controller;

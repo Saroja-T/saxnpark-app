@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:saxnpark_app/pages/landing_page.dart';
-import 'package:saxnpark_app/pages/location_list.dart';
+import 'package:saxnpark_app/pages/locations/location_list.dart';
 
 
 class RoutesGenerator {

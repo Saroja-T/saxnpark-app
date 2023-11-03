@@ -178,6 +178,10 @@ static String appName = "SaxnPark";
   static String dropDownHint =  "Select host";
   static String hostText =  "Host";
 
+  //Authentication
+  static String countryCode = "Country code";
+  static String searchCountry = "Search country";
+
 
   static String dummyvehicle1 =  "Lilo";
   static String dummyvehicle2 =  "Enzo";
