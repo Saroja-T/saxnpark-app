@@ -58,7 +58,7 @@ class _MyLocationState extends State<MyLocation> {
                           child: Column(
                             children: <Widget>[
                               SizedBox(
-                                height: 48,
+                                height: 51,
                                 width: MediaQuery.of(context).size.width,
                                 child: Stack(
                                   children: [
@@ -74,14 +74,14 @@ class _MyLocationState extends State<MyLocation> {
                                                         FontWeight.w400)),
                                             onPressed: () {
                                               context.read<LandingBloc>().add(
-                                                  const TabChangeEvent(
-                                                      tabIndex: 1,
-                                                      tabLabel: ""));
+                                                   TabChangeEvent(
+                                                      tabIndex: 4,
+                                                      tabLabel: Strings.rAccount));
                                             })),
                                     Align(
                                       alignment: Alignment.center,
                                       child: Text(
-                                        Strings.carParkTitle,
+                                        Strings.myLocation,
                                         style: TextStyle(
                                             color: AppColors.black2,
                                             fontSize: 12.0,

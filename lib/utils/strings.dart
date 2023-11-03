@@ -33,6 +33,11 @@ static String appName = "SaxnPark";
   static String forgotPassword = "Forgot password?";
   static String registerWith = "or register with";
   static String loginWith = "or continue with";
+  static String enterPassword = "Enter the password";
+  static String termsAndConditionText = "By continuing, you are agreeing to our ";
+  static String termsAndConditions = "Terms and Conditions";
+  static String and = " and ";
+  static String privacyPolicy = "Privacy Policy.";
 
 
 

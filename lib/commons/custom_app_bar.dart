@@ -4,6 +4,7 @@ import 'package:saxnpark_app/bloc/landing/landing_bloc.dart';
 import 'package:saxnpark_app/utils/styles.dart';
 
 import '../utils/colors.dart';
+import '../utils/strings.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
@@ -50,15 +51,18 @@ class CustomAppBarWithBackAndSkip extends StatelessWidget implements PreferredSi
         shadowColor: AppColors.toolbarShadow,
         leading: Align(
           alignment: Alignment.centerLeft,
-          child: InkWell(
-            onTap: () {
-              context.read<LandingBloc>().add(TabChangeEvent(
-                      tabIndex: tabIndex ?? 0, tabLabel: redirectionKey ?? ""));
-            },
-            child: Padding(
-              padding: const EdgeInsets.fromLTRB(16,0,0,0),
-              child: Text(backText,style: customTextStyle(12, FontWeight.w400, AppColors.black5, 1),),
-            ),
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(6,0,0,0),
+            child: TextButton(
+              onPressed: (){
+                if(title == Strings.signin){
+                  Navigator.pop(context);
+                }else{
+                  context.read<LandingBloc>().add(TabChangeEvent(
+                        tabIndex: tabIndex ?? 0, tabLabel: redirectionKey ?? ""));
+                }
+              },
+              child: Text(backText,style: customTextStyle(12, FontWeight.w400, AppColors.black5, 0),)),
           )),
           title: Text(
           title,
@@ -92,15 +96,18 @@ class CustomAppBarWithBack extends StatelessWidget implements PreferredSizeWidge
         shadowColor: AppColors.toolbarShadow,
         leading: Align(
           alignment: Alignment.centerLeft,
-          child: InkWell(
-            onTap: () {
-              context.read<LandingBloc>().add(TabChangeEvent(
-                      tabIndex: tabIndex ?? 0, tabLabel: redirectionKey ?? ""));
-            },
-            child: Padding(
-              padding: const EdgeInsets.fromLTRB(16,0,0,0),
-              child: Text(backText,style: customTextStyle(12, FontWeight.w400, AppColors.black5, 1),),
-            ),
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(6,0,0,0),
+            child: TextButton(
+              onPressed: (){
+                if(Strings.register==title){
+                  Navigator.pop(context);
+                }else{
+                  context.read<LandingBloc>().add(TabChangeEvent(
+                        tabIndex: tabIndex ?? 0, tabLabel: redirectionKey ?? ""));
+                }
+              },
+              child: Text(backText,style: customTextStyle(12, FontWeight.w400, AppColors.black5, 1),)),
           )),
         title: Text(
           title,

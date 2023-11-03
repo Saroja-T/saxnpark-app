@@ -77,7 +77,7 @@ class _CountryListState extends State<CountryList> {
                                                     fontWeight:
                                                         FontWeight.w400)),
                                             onPressed: () {
-                                              
+                                              Navigator.pop(context);
                                             })),
                                     Align(
                                       alignment: Alignment.center,
@@ -129,7 +129,7 @@ class _CountryListState extends State<CountryList> {
                                   },
                                 ),
                               ),
-                              SizedBox(height: 15,),
+                              const SizedBox(height: 15,),
                               Flexible(
                                 fit: FlexFit.loose,
                                 child: Padding(

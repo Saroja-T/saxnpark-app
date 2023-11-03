@@ -1,10 +1,10 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:saxnpark_app/utils/colors.dart';
 
 import '../../bloc/landing/landing_bloc.dart';
 import '../../commons/custom_app_bar.dart';
+import '../../utils/colors.dart';
 import '../../utils/constants.dart';
 import '../../utils/strings.dart';
 import '../../utils/styles.dart';
@@ -71,28 +71,33 @@ class _RegisterState extends State<Register> {
                         child: Row(
                           children: [
                             GestureDetector(
-                              onTap: () {},
+                              onTap: () {
+                                Navigator.pushNamed(context, '/countrylist');
+                              },
                               child: Row(
                                 children: [
                                   CircleAvatar(
                                     backgroundColor: AppColors.gray1,
                                     radius: 10,
                                   ),
-                                  const Icon(Icons.arrow_drop_down_outlined)
+                                  Icon(Icons.keyboard_arrow_down_outlined,size: 16,color:AppColors.black6)
                                 ],
                               ),
                             ),
+                            const SizedBox(width: 4,),
                             Text(
                               "+1",
                               style: customTextStyle(
-                                  16, FontWeight.w400, AppColors.black5, 1),
+                                  14, FontWeight.w400, AppColors.black5, 1),
                             ),
                             const SizedBox(width: 4),
                             Expanded(
                               child: TextField(
                                 controller: _phoneController,
-                                decoration: const InputDecoration(
+                                decoration: InputDecoration(
                                   border: InputBorder.none,
+                                  hintText: '908 612 422',
+                                  hintStyle: TextStyle(fontSize: 14,color: AppColors.grey10)
                                 ),
                                 onEditingComplete: () {
                                   setState(() {
@@ -140,9 +145,10 @@ class _RegisterState extends State<Register> {
                         Expanded(
                           child: TextField(
                             controller: _passwordController,
-                            decoration: const InputDecoration(
+                            decoration: InputDecoration(
                               border: InputBorder.none,
-                              hintText: 'Enter Password',
+                              hintText: Strings.enterPassword,
+                              hintStyle: TextStyle(fontSize: 14,color: AppColors.grey10)
                             ),
                             obscureText: !_showPassword,
                             onEditingComplete: () {
@@ -165,7 +171,7 @@ class _RegisterState extends State<Register> {
                             },
                             child: Icon(_showPassword
                                 ? Icons.visibility_off_outlined
-                                : Icons.visibility_outlined,size: 18,))
+                                : Icons.visibility_outlined,size: 18, color: AppColors.black5,))
                       ],
                     ),
                   ),
@@ -204,9 +210,10 @@ class _RegisterState extends State<Register> {
                         Expanded(
                           child: TextField(
                             controller: _confirmPasswordController,
-                            decoration: const InputDecoration(
+                            decoration: InputDecoration(
                                 border: InputBorder.none,
-                                hintText: 'Enter Password'),
+                                hintText: Strings.enterPassword,
+                                 hintStyle: TextStyle(fontSize: 14,color: AppColors.grey10)),
                             obscureText: !_showConfirmPassword,
                             onEditingComplete: () {
                               setState(() {
@@ -228,7 +235,7 @@ class _RegisterState extends State<Register> {
                             },
                             child: Icon(_showConfirmPassword
                                 ? Icons.visibility_off_outlined
-                                : Icons.visibility_outlined,size: 18,))
+                                : Icons.visibility_outlined,size: 18,color: AppColors.black5,))
                       ],
                     ),
                   ),
@@ -342,7 +349,9 @@ class _RegisterState extends State<Register> {
                         text: Strings.signin,
                         style: customTextStyleWithUnderline(
                             16, FontWeight.w700, AppColors.black6, 1),
-                        recognizer: TapGestureRecognizer()..onTap = () {}),
+                        recognizer: TapGestureRecognizer()..onTap = () {
+                          Navigator.pushReplacementNamed(context, '/login');
+                        }),
                   ],
                 ),
               ),
@@ -364,14 +373,14 @@ class _RegisterState extends State<Register> {
       text: TextSpan(
         style: defaultStyle,
         children: <TextSpan>[
-          const TextSpan(text: 'By continuing, you are agreeing to our '),
+          TextSpan(text: Strings.termsAndConditionText),
           TextSpan(
-              text: 'Terms and Conditions',
+              text: Strings.termsAndConditions,
               style: linkStyle,
               recognizer: TapGestureRecognizer()..onTap = () {}),
-          const TextSpan(text: ' and'),
+          TextSpan(text: Strings.and),
           TextSpan(
-              text: ' Privacy Policy',
+              text: Strings.privacyPolicy,
               style: linkStyle,
               recognizer: TapGestureRecognizer()..onTap = () {}),
         ],

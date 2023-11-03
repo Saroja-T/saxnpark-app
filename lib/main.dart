@@ -14,6 +14,7 @@ import 'package:saxnpark_app/utils/colors.dart';
 import 'package:saxnpark_app/utils/router.dart';
 
 import 'pages/authentication/country_list.dart';
+import 'pages/authentication/register_home.dart';
 import 'utils/strings.dart';
 
 Future<void> main() async 
@@ -83,7 +84,7 @@ class MyApp extends StatelessWidget {
         ),
         initialRoute: '/',
         onGenerateRoute: RoutesGenerator.generateRoute,
-        home: const LandingPage(),
+        home: const RegisterHome(),
       ),
     );
   }

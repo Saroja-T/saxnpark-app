@@ -29,10 +29,11 @@ class AppColors{
   static Color grey3 = convertToHex("#EBEDEE");
   static Color grey4 = convertToHex("#F1F1F1");
   static Color grey5 = convertToHex("#e6e6e6");
-  static Color  grey6 = convertToHex("#6b6b6b");
-  static Color  grey7 = convertToHex("#858585");
-  static Color  grey8 = convertToHex("#adadad");
-  static Color  grey9 = convertToHex("#d6d6d6");
+  static Color grey6 = convertToHex("#6b6b6b");
+  static Color grey7 = convertToHex("#858585");
+  static Color grey8 = convertToHex("#adadad");
+  static Color grey9 = convertToHex("#d6d6d6");
+  static Color grey10 = convertToHex("#858585");
 
 
 

@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:saxnpark_app/pages/authentication/country_list.dart';
+import 'package:saxnpark_app/pages/authentication/register.dart';
+import 'package:saxnpark_app/pages/authentication/register_home.dart';
+import 'package:saxnpark_app/pages/landing_page.dart';
 
-import 'package:saxnpark_app/pages/locations/location_list.dart';
-
+import '../pages/locations/location_list.dart';
 import '../pages/authentication/login.dart';
 
 
@@ -14,6 +17,16 @@ class RoutesGenerator {
         return MaterialPageRoute(builder: (_) => const Login());
       case '/locationlist':
         return MaterialPageRoute(builder: (_) => const LocationList());
+      case '/registerhome':
+        return MaterialPageRoute(builder: (_) => const RegisterHome());
+      case '/register':
+        return MaterialPageRoute(builder: (_) => const Register());
+      case '/login':
+        return MaterialPageRoute(builder: (_) => const Login());
+      case '/countrylist':
+        return MaterialPageRoute(builder: (_) => const CountryList());
+      case '/landingpage':
+        return MaterialPageRoute(builder: (_) => const LandingPage());
       default:
         return _errorRoute();
     }
