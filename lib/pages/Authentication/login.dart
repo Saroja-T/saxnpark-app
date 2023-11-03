@@ -73,7 +73,9 @@ class _LoginState extends State<Login> {
                           child: Row(
                             children: [
                               GestureDetector(
-                                onTap: () {},
+                                onTap: () {
+                                  Navigator.pushNamed(context, '/countrylist');
+                                },
                                 child: Row(
                                   children: [
                                     CircleAvatar(
