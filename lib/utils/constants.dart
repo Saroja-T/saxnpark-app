@@ -8,7 +8,6 @@ const String others = 'others';
 
 //assets-images
 
-const String logo = '';
 const String account = 'assets/icons/account.png';
 const String accountActive = 'assets/icons/account_active.png';
 const String home = 'assets/icons/home.png';
@@ -41,6 +40,14 @@ const String mapPin = 'assets/icons/map_pin.png';
 const String cardHolder = 'assets/icons/card_holder.png';
 const String warning = 'assets/icons/warning.png';
 const String calender = 'assets/icons/calender.png';
+const String loginBg = 'assets/icons/login_bg.png';
+const String logo = 'assets/icons/logo.png';
+const String google = 'assets/icons/google.png';
+const String apple = 'assets/icons/apple.png';
+const String fb = 'assets/icons/facebook.png';
+
+
+
 
 
 

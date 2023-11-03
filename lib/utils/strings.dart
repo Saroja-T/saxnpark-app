@@ -20,6 +20,35 @@ static String appName = "SaxnPark";
   static String cancel = "Cancel";
   static String attention = "Attention";
   static String openSettings = "Open Settings";
+  static String registerkNow = "Register now";
+
+  static String alreadyHaveAccount = "Already have an account? ";
+  static String signin = "Sign in";
+  static String register = " Register";
+  static String login = "Login";
+  static String dontHaveAnAccount = "Dont have an account? ";
+  static String phoneNumber = "Phone number";
+  static String password = "Password";
+  static String confirmPassword = "Confirm password";
+  static String forgotPassword = "Forgot password?";
+  static String registerWith = "or register with";
+  static String loginWith = "or continue with";
+
+
+
+
+
+  static String passwordError = "Must include at least 8 characters, a capital letter, a number and a special character";
+  static String confirmPasswordError = "Both the passwords should be same";
+  static String numberError = "Phone number should be minimum 10 numbers";
+
+
+
+  
+
+
+
+
 
   
   static String savedText =  "Saved";
