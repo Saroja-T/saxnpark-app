@@ -60,6 +60,12 @@ class CustomAppBarWithBackAndSkip extends StatelessWidget implements PreferredSi
               child: Text(backText,style: customTextStyle(12, FontWeight.w400, AppColors.black5, 1),),
             ),
           )),
+          actions: <Widget>[
+    TextButton(
+      onPressed: () {},
+      child: Text('Skip',style: TextStyle(color: AppColors.black5),),
+    ),
+  ],
           title: Text(
           title,
         style: TextStyle(
