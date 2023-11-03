@@ -74,18 +74,16 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider<LandingBloc>(
       create: (context) => LandingBloc(),
-      child: SafeArea(
-        child: MaterialApp(
-          title: Strings.appName,
-          debugShowCheckedModeBanner: false,
-          theme: ThemeData(
-            primaryColor: AppColors.primary,
-            fontFamily: 'PublicSans'
-          ),
-          initialRoute: '/',
-          onGenerateRoute: RoutesGenerator.generateRoute,
-         home: const CountryList(),
+      child: MaterialApp(
+        title: Strings.appName,
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          primaryColor: AppColors.primary,
+          fontFamily: 'PublicSans'
         ),
+        initialRoute: '/',
+        onGenerateRoute: RoutesGenerator.generateRoute,
+        home: const LandingPage(),
       ),
     );
   }

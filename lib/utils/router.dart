@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:saxnpark_app/pages/landing_page.dart';
+
 import 'package:saxnpark_app/pages/locations/location_list.dart';
+
+import '../pages/authentication/login.dart';
 
 
 class RoutesGenerator {
@@ -9,7 +11,7 @@ class RoutesGenerator {
     switch (settings.name) 
     {
       case '/':
-        return MaterialPageRoute(builder: (_) => const LandingPage());
+        return MaterialPageRoute(builder: (_) => const Login());
       case '/locationlist':
         return MaterialPageRoute(builder: (_) => const LocationList());
       default:

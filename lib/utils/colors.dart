@@ -31,10 +31,16 @@ class AppColors{
   static Color grey5 = convertToHex("#e6e6e6");
   static Color  grey6 = convertToHex("#6b6b6b");
   static Color  grey7 = convertToHex("#858585");
+  static Color  grey8 = convertToHex("#adadad");
+  static Color  grey9 = convertToHex("#d6d6d6");
+
+
 
   //red
   static Color red1 = convertToHex("#eb4d4d");
-  
+
+  //green
+  static Color green1 = convertToHex("#4deb9f");  
  
 
    static Color convertToHex(String hexString) {
