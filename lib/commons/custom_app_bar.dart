@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:saxnpark_app/bloc/landing/landing_bloc.dart';
+import 'package:saxnpark_app/pages/landing_page.dart';
 import 'package:saxnpark_app/utils/styles.dart';
 
 import '../utils/colors.dart';
@@ -66,7 +67,11 @@ class CustomAppBarWithBackAndSkip extends StatelessWidget implements PreferredSi
           )),
           actions: <Widget>[
     TextButton(
-      onPressed: () {},
+      onPressed: () {
+        context.read<LandingBloc>().add(TabChangeEvent(
+                        tabIndex:  0, tabLabel: Strings.rHome));
+                    Navigator.pushReplacementNamed(context, '/landingpage');
+      },
       child: Text('Skip',style: TextStyle(color: AppColors.black5),),
     ),
   ],

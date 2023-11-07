@@ -12,7 +12,20 @@
           "package_name": "com.saxnpark.parkingapp"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "1017123491907-ourr0b8eq45n5t2hlcdk2pdhkotshoet.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.saxnpark.parkingapp",
+            "certificate_hash": "d97f633e224fa4c7fd8a3920239152446c1bd555"
+          }
+        },
+        {
+          "client_id": "1017123491907-n39rjdhncfdidimngt3st42mk3sheri1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyCeS8Is2ENnfdxT0s3g5Dw9ZuQEq73bV-k"
@@ -20,7 +33,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1017123491907-n39rjdhncfdidimngt3st42mk3sheri1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

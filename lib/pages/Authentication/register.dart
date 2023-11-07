@@ -1,6 +1,13 @@
+import 'dart:async';
+import 'dart:convert';
+
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:http/http.dart' as http;
+import 'package:google_sign_in/google_sign_in.dart';
 
 import '../../bloc/landing/landing_bloc.dart';
 import '../../commons/custom_app_bar.dart';
@@ -32,6 +39,127 @@ class _RegisterState extends State<Register> {
     String pattern = r'^(?=.*?[A-Z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$';
     RegExp regExp = RegExp(pattern);
     return regExp.hasMatch(value);
+  }
+
+  List<String> scopes = const <String>[
+    'email',
+    'https://www.googleapis.com/auth/contacts.readonly',
+  ];
+
+  GoogleSignIn googleSignIn = GoogleSignIn(
+    // Optional clientId
+    // clientId: 'your-client_id.apps.googleusercontent.com',
+    scopes: [
+      'email',
+      'https://www.googleapis.com/auth/contacts.readonly',
+    ],
+  );
+  GoogleSignInAccount? _currentUser;
+  bool _isAuthorized = false;
+  String _contactText = '';
+
+  @override
+  void initState() {
+    super.initState();
+
+    googleSignIn.onCurrentUserChanged
+        .listen((GoogleSignInAccount? account) async {
+      // In mobile, being authenticated means being authorized...
+      bool isAuthorized = account != null;
+      // However, in the web...
+      if (kIsWeb && account != null) {
+        isAuthorized = await googleSignIn.canAccessScopes(scopes);
+      }
+
+      setState(() {
+        _currentUser = account;
+        _isAuthorized = isAuthorized;
+      });
+
+      // Now that we know that the user can access the required scopes, the app
+      // can call the REST API.
+      if (isAuthorized) {
+        unawaited(_handleGetContact(account!));
+      }
+    });
+
+    // In the web, _googleSignIn.signInSilently() triggers the One Tap UX.
+    //
+    // It is recommended by Google Identity Services to render both the One Tap UX
+    // and the Google Sign In button together to "reduce friction and improve
+    // sign-in rates" ([docs](https://developers.google.com/identity/gsi/web/guides/display-button#html)).
+    googleSignIn.signInSilently();
+  }
+
+// Calls the People API REST endpoint for the signed-in user to retrieve information.
+  Future<void> _handleGetContact(GoogleSignInAccount user) async {
+    setState(() {
+      _contactText = 'Loading contact info...';
+    });
+    final http.Response response = await http.get(
+      Uri.parse('https://people.googleapis.com/v1/people/me/connections'
+          '?requestMask.includeField=person.names'),
+      headers: await user.authHeaders,
+    );
+    if (response.statusCode != 200) {
+      setState(() {
+        _contactText = 'People API gave a ${response.statusCode} '
+            'response. Check logs for details.';
+      });
+      print('People API ${response.statusCode} response: ${response.body}');
+      return;
+    }
+    final Map<String, dynamic> data =
+        json.decode(response.body) as Map<String, dynamic>;
+    final String? namedContact = _pickFirstNamedContact(data);
+    setState(() {
+      if (namedContact != null) {
+        _contactText = 'I see you know $namedContact!';
+      } else {
+        _contactText = 'No contacts to display.';
+      }
+    });
+  }
+
+  String? _pickFirstNamedContact(Map<String, dynamic> data) {
+    final List<dynamic>? connections = data['connections'] as List<dynamic>?;
+    final Map<String, dynamic>? contact = connections?.firstWhere(
+      (dynamic contact) => (contact as Map<Object?, dynamic>)['names'] != null,
+      orElse: () => null,
+    ) as Map<String, dynamic>?;
+    if (contact != null) {
+      final List<dynamic> names = contact['names'] as List<dynamic>;
+      final Map<String, dynamic>? name = names.firstWhere(
+        (dynamic name) =>
+            (name as Map<Object?, dynamic>)['displayName'] != null,
+        orElse: () => null,
+      ) as Map<String, dynamic>?;
+      if (name != null) {
+        return name['displayName'] as String?;
+      }
+    }
+    return null;
+  }
+
+  Future<void> _handleSignIn() async {
+    final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+
+    if (googleUser == null) {
+      final GoogleSignInAuthentication? googleAuth =
+          await googleUser?.authentication;
+      final credential = GoogleAuthProvider.credential(
+        accessToken: googleAuth?.accessToken,
+        idToken: googleAuth?.idToken,
+      );
+
+      await FirebaseAuth.instance.signInWithCredential(credential);
+    } else {
+      // User is signed in, you can access the user's information
+      print('User ID: ${googleUser.id}');
+      print('Display Name: ${googleUser.displayName}');
+      print('Email: ${googleUser.email}');
+      // ...
+    }
   }
 
   @override
@@ -76,15 +204,22 @@ class _RegisterState extends State<Register> {
                               },
                               child: Row(
                                 children: [
-                                  CircleAvatar(
-                                    backgroundColor: AppColors.gray1,
-                                    radius: 10,
+                                  Image.asset(
+                                    usIcon,
+                                    width: 16,
+                                    height: 16,
                                   ),
-                                  Icon(Icons.keyboard_arrow_down_outlined,size: 16,color:AppColors.black6)
+                                  const SizedBox(
+                                    width: 2,
+                                  ),
+                                  Icon(Icons.keyboard_arrow_down_outlined,
+                                      size: 16, color: AppColors.black6)
                                 ],
                               ),
                             ),
-                            const SizedBox(width: 4,),
+                            const SizedBox(
+                              width: 4,
+                            ),
                             Text(
                               "+1",
                               style: customTextStyle(
@@ -95,10 +230,10 @@ class _RegisterState extends State<Register> {
                               child: TextField(
                                 controller: _phoneController,
                                 decoration: InputDecoration(
-                                  border: InputBorder.none,
-                                  hintText: '908 612 422',
-                                  hintStyle: TextStyle(fontSize: 14,color: AppColors.grey10)
-                                ),
+                                    border: InputBorder.none,
+                                    hintText: '908 612 422',
+                                    hintStyle: TextStyle(
+                                        fontSize: 14, color: AppColors.grey10)),
                                 onEditingComplete: () {
                                   setState(() {
                                     if (_phoneController.text.length >= 10) {
@@ -146,10 +281,10 @@ class _RegisterState extends State<Register> {
                           child: TextField(
                             controller: _passwordController,
                             decoration: InputDecoration(
-                              border: InputBorder.none,
-                              hintText: Strings.enterPassword,
-                              hintStyle: TextStyle(fontSize: 14,color: AppColors.grey10)
-                            ),
+                                border: InputBorder.none,
+                                hintText: Strings.enterPassword,
+                                hintStyle: TextStyle(
+                                    fontSize: 14, color: AppColors.grey10)),
                             obscureText: !_showPassword,
                             onEditingComplete: () {
                               setState(() {
@@ -169,22 +304,26 @@ class _RegisterState extends State<Register> {
                                 _showPassword = !_showPassword;
                               });
                             },
-                            child: Icon(_showPassword
-                                ? Icons.visibility_off_outlined
-                                : Icons.visibility_outlined,size: 18, color: AppColors.black5,))
+                            child: Icon(
+                              _showPassword
+                                  ? Icons.visibility_outlined
+                                  : Icons.visibility_off_outlined,
+                              size: 18,
+                              color: AppColors.black5,
+                            ))
                       ],
                     ),
                   ),
                 ],
               ),
-              if (!_passwordValidationPassed)
-                Padding(
-                    padding: const EdgeInsets.only(top: 8),
-                    child: Text(
-                      Strings.passwordError,
-                      style: customTextStyle(
-                          12, FontWeight.w400, AppColors.black5, 1.2),
-                    )),
+              // if (!_passwordValidationPassed)
+              Padding(
+                  padding: const EdgeInsets.only(top: 8),
+                  child: Text(
+                    Strings.passwordError,
+                    style: customTextStyle(
+                        12, FontWeight.w400, AppColors.black5, 1.2),
+                  )),
               const SizedBox(
                 height: 24,
               ),
@@ -213,7 +352,8 @@ class _RegisterState extends State<Register> {
                             decoration: InputDecoration(
                                 border: InputBorder.none,
                                 hintText: Strings.enterPassword,
-                                 hintStyle: TextStyle(fontSize: 14,color: AppColors.grey10)),
+                                hintStyle: TextStyle(
+                                    fontSize: 14, color: AppColors.grey10)),
                             obscureText: !_showConfirmPassword,
                             onEditingComplete: () {
                               setState(() {
@@ -233,9 +373,13 @@ class _RegisterState extends State<Register> {
                                 _showConfirmPassword = !_showConfirmPassword;
                               });
                             },
-                            child: Icon(_showConfirmPassword
-                                ? Icons.visibility_off_outlined
-                                : Icons.visibility_outlined,size: 18,color: AppColors.black5,))
+                            child: Icon(
+                              _showConfirmPassword
+                                  ? Icons.visibility_outlined
+                                  : Icons.visibility_off_outlined,
+                              size: 18,
+                              color: AppColors.black5,
+                            ))
                       ],
                     ),
                   ),
@@ -259,9 +403,7 @@ class _RegisterState extends State<Register> {
               ),
               ElevatedButton(
                 style: registerBtnStyle,
-                onPressed: () {
-                 
-                },
+                onPressed: () {},
                 child: Text(
                   Strings.register,
                   style: TextStyle(
@@ -299,43 +441,46 @@ class _RegisterState extends State<Register> {
               const SizedBox(
                 height: 16,
               ),
-              Container(
-                  height: 42,
-                  margin: const EdgeInsets.fromLTRB(0, 10, 0, 0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Expanded(
-                        child: Container(
-                          height: 51,
-                          decoration: BoxDecoration(
-                              border: Border.all(color: AppColors.grey8),
-                              borderRadius: BorderRadius.circular(5)),
-                          margin: const EdgeInsets.fromLTRB(0, 0, 10, 0),
-                          child: Image.asset(google),
+              InkWell(
+                onTap: _handleSignIn,
+                child: Container(
+                    height: 42,
+                    margin: const EdgeInsets.fromLTRB(0, 10, 0, 0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Expanded(
+                          child: Container(
+                            height: 51,
+                            decoration: BoxDecoration(
+                                border: Border.all(color: AppColors.grey8),
+                                borderRadius: BorderRadius.circular(5)),
+                            margin: const EdgeInsets.fromLTRB(0, 0, 10, 0),
+                            child: Image.asset(google),
+                          ),
                         ),
-                      ),
-                      Expanded(
-                        child: Container(
-                          height: 51,
-                          decoration: BoxDecoration(
-                              border: Border.all(color: AppColors.grey8),
-                              borderRadius: BorderRadius.circular(5)),
-                          margin: const EdgeInsets.fromLTRB(0, 0, 10, 0),
-                          child: Image.asset(apple),
+                        Expanded(
+                          child: Container(
+                            height: 51,
+                            decoration: BoxDecoration(
+                                border: Border.all(color: AppColors.grey8),
+                                borderRadius: BorderRadius.circular(5)),
+                            margin: const EdgeInsets.fromLTRB(0, 0, 10, 0),
+                            child: Image.asset(apple),
+                          ),
                         ),
-                      ),
-                      Expanded(
-                        child: Container(
-                          height: 51,
-                          decoration: BoxDecoration(
-                              border: Border.all(color: AppColors.grey8),
-                              borderRadius: BorderRadius.circular(5)),
-                          child: Image.asset(fb),
+                        Expanded(
+                          child: Container(
+                            height: 51,
+                            decoration: BoxDecoration(
+                                border: Border.all(color: AppColors.grey8),
+                                borderRadius: BorderRadius.circular(5)),
+                            child: Image.asset(fb),
+                          ),
                         ),
-                      ),
-                    ],
-                  )),
+                      ],
+                    )),
+              ),
               const SizedBox(
                 height: 24,
               ),
@@ -344,14 +489,15 @@ class _RegisterState extends State<Register> {
                   style:
                       customTextStyle(16, FontWeight.w400, AppColors.black6, 1),
                   children: <TextSpan>[
-                   TextSpan(text: Strings.alreadyHaveAccount),
+                    TextSpan(text: Strings.alreadyHaveAccount),
                     TextSpan(
                         text: Strings.signin,
                         style: customTextStyleWithUnderline(
                             16, FontWeight.w700, AppColors.black6, 1),
-                        recognizer: TapGestureRecognizer()..onTap = () {
-                          Navigator.pushReplacementNamed(context, '/login');
-                        }),
+                        recognizer: TapGestureRecognizer()
+                          ..onTap = () {
+                            Navigator.pushReplacementNamed(context, '/login');
+                          }),
                   ],
                 ),
               ),

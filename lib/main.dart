@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_maps_flutter_android/google_maps_flutter_android.dart';
 import 'package:google_maps_flutter_platform_interface/google_maps_flutter_platform_interface.dart';
+// import 'package:awesome_notifications/awesome_notifications.dart';
+
 
 import 'package:saxnpark_app/bloc/landing/landing_bloc.dart';
 import 'package:saxnpark_app/firebase_options.dart';
@@ -15,6 +17,7 @@ import 'package:saxnpark_app/utils/router.dart';
 
 import 'pages/authentication/country_list.dart';
 import 'pages/authentication/register_home.dart';
+import 'services/notification_controller.dart';
 import 'utils/strings.dart';
 
 Future<void> main() async 
@@ -24,6 +27,19 @@ Future<void> main() async
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  // // Always initialize Awesome Notifications
+//  await NotificationController.initializeLocalNotifications();
+  // await NotificationController.initializeIsolateReceivePort();
+
+  
+  FirebaseMessaging.onMessage.listen((RemoteMessage message) {
+      print('Got a message whilst in the foreground!');
+      print('Message data: ${message.data}');
+      if (message.notification != null) {
+       // NotificationController.createNewNotification();
+        print('Message also contained a notification: ${message.notification}');
+      }
+  });
   await FirebaseService().initNotifications();
   final GoogleMapsFlutterPlatform mapsImplementation =
       GoogleMapsFlutterPlatform.instance;
@@ -66,9 +82,7 @@ Future<AndroidMapRenderer?> initializeMapRenderer() async {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  
+  const MyApp({super.key}); 
 
   // This widget is the root of your application.
   @override
@@ -89,5 +103,8 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+
+
 
 

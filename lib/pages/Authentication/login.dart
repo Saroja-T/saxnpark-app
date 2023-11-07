@@ -78,10 +78,8 @@ class _LoginState extends State<Login> {
                                 },
                                 child: Row(
                                   children: [
-                                    CircleAvatar(
-                                      backgroundColor: AppColors.gray1,
-                                      radius: 10,
-                                    ),
+                                    Image.asset(usIcon,width: 16,height: 16,),
+                                    const SizedBox(width: 2,),
                                     Icon(Icons.keyboard_arrow_down_outlined,size: 16,color:AppColors.black6)
                                   ],
                                 ),
@@ -173,8 +171,8 @@ class _LoginState extends State<Login> {
                                 });
                               },
                               child: Icon(_showPassword
-                                  ? Icons.visibility_off_outlined
-                                  : Icons.visibility_outlined,size: 17,color: AppColors.black5,))
+                                  ? Icons.visibility_outlined
+                                  : Icons.visibility_off_outlined,size: 17,color: AppColors.black5,))
                         ],
                       ),
                     ),
@@ -198,9 +196,7 @@ class _LoginState extends State<Login> {
                 ElevatedButton(
                   style: registerBtnStyle,
                   onPressed: () {
-                    context.read<LandingBloc>().add(TabChangeEvent(
-                        tabIndex:  0, tabLabel: Strings.rHome));
-                    Navigator.pushReplacementNamed(context, '/landingpage');
+                    
                   },
                   child: Text(
                     Strings.signin,

@@ -14,6 +14,7 @@ class AppColors{
   static Color black4 =  convertToHex("#6B6B6B");
   static Color black5 =  convertToHex("#2E2E2E");
   static Color black6 =  convertToHex("#1E1E1E");
+  static Color black7 =  convertToHex("#1E222B");
 
   
   //Blue
@@ -34,6 +35,7 @@ class AppColors{
   static Color grey8 = convertToHex("#adadad");
   static Color grey9 = convertToHex("#d6d6d6");
   static Color grey10 = convertToHex("#858585");
+  static Color grey11 = convertToHex("#FDFDFD");
 
 
 

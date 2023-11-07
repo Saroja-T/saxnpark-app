@@ -9,10 +9,10 @@ import '../../utils/styles.dart';
 class CountryList extends StatefulWidget {
   const CountryList({super.key});
   @override
-  State<CountryList> createState() => _CountryListState();
+  State<CountryList> createState() => CountryListState();
 }
 
-class _CountryListState extends State<CountryList> {
+class CountryListState extends State<CountryList> {
   var searchedText;
   bool countrySelected = false;
   int selectedCountryIndex = 0;
@@ -133,9 +133,9 @@ class _CountryListState extends State<CountryList> {
                                     padding:
                                         const EdgeInsets.fromLTRB(16, 16, 16, 0),
                                     child: ListView.builder(
-                                        itemCount:5+ 1,
+                                        itemCount:10+ 1,
                                         itemBuilder: ((context, index) {
-                                          if (index < 5) {
+                                          if (index < 10) {
                                             return GestureDetector(
                                               onTap: (){
                                                 selectedCountryIndex = index;

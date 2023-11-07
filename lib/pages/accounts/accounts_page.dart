@@ -39,7 +39,7 @@ class _AccountsPageState extends State<AccountsPage> {
             Container(
               decoration: BoxDecoration(
                   borderRadius: const BorderRadius.all(Radius.circular(10)),
-                  border: Border.all(color: AppColors.grey3)),
+                  border: Border.all(color: AppColors.grey11)),
               child: Padding(
                 padding: const EdgeInsets.fromLTRB(16, 24, 16, 24),
                 child: Column(

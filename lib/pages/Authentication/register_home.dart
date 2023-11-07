@@ -33,13 +33,13 @@ class _RegisterHomeState extends State<RegisterHome> {
           fit: StackFit.loose,
           children: <Widget>[
             Container(
-              color: Colors.black,
+              color: AppColors.black7,
               height: MediaQuery.of(context).size.height,
               width: MediaQuery.of(context).size.width,
               child: Image.asset(
                 loginBg,
                 fit: BoxFit.fill,
-                opacity: const AlwaysStoppedAnimation(1),
+               // opacity: const AlwaysStoppedAnimation(1),
               ),
             ),
             Align(
