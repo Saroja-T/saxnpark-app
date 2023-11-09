@@ -9,6 +9,7 @@ import 'package:google_maps_flutter_platform_interface/google_maps_flutter_platf
 import 'package:saxnpark_app/bloc/landing/landing_bloc.dart';
 import 'package:saxnpark_app/firebase_options.dart';
 import 'package:saxnpark_app/pages/Authentication/login.dart';
+import 'package:saxnpark_app/pages/Authentication/password_reset.dart';
 import 'package:saxnpark_app/pages/landing_page.dart';
 import 'package:saxnpark_app/services/firebase_service.dart';
 import 'package:saxnpark_app/utils/colors.dart';
@@ -86,7 +87,7 @@ class MyApp extends StatelessWidget {
         ),
         initialRoute: '/',
         onGenerateRoute: RoutesGenerator.generateRoute,
-        home: const Login(),
+        home: const PasswordReset(),
       ),
     );
   }
