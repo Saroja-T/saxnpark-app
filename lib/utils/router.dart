@@ -32,6 +32,8 @@ class RoutesGenerator
         return MaterialPageRoute(builder: (_) => const LandingPage());
       case '/phonenumber':
         return MaterialPageRoute(builder: (_) => const PhoneNumber());
+      case '/passwordreset':
+        return MaterialPageRoute(builder: (_)=> const PasswordReset());
       default:
         return _errorRoute();
     }

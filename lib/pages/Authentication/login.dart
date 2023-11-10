@@ -193,7 +193,11 @@ class _LoginState extends State<Login>
                 ),
                 Align(
                   alignment: Alignment.centerLeft,
-                  child: Text(Strings.forgotPassword,style: customTextStyleWithUnderline(16, FontWeight.w400, AppColors.blue1, 1),)),
+                  child: TextButton(
+                    onPressed: (){
+                      Navigator.pushNamed(context, '/passwordreset');
+                    },
+                    child: Text(Strings.forgotPassword,style: customTextStyleWithUnderline(16, FontWeight.w400, AppColors.blue1, 1),))),
                 const SizedBox(height: 24,),
                 ElevatedButton(
                   style: registerBtnStyle,
