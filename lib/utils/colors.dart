@@ -19,12 +19,11 @@ class AppColors{
   
   //Blue
   static Color blue1 = convertToHex("#1980E0");
-
-  //Gray
-
-  static Color gray1 = convertToHex("#767676");
+  static Color blue4 = convertToHex("#e6f7ff");
 
   //Grey
+  static Color grey = convertToHex("#767676");
+  static Color gray1 = convertToHex("#767676");
   static Color grey1 = convertToHex("#EFEFEF");
   static Color grey2 = convertToHex("#606060");
   static Color grey3 = convertToHex("#EBEDEE");

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:saxnpark_app/pages/Authentication/password_reset.dart';
 import 'package:saxnpark_app/pages/authentication/country_list.dart';
+import 'package:saxnpark_app/pages/authentication/phone_number.dart';
 import 'package:saxnpark_app/pages/authentication/register.dart';
 import 'package:saxnpark_app/pages/authentication/register_home.dart';
 import 'package:saxnpark_app/pages/landing_page.dart';
@@ -29,6 +30,8 @@ class RoutesGenerator
         return MaterialPageRoute(builder: (_) => const CountryList());
       case '/landingpage':
         return MaterialPageRoute(builder: (_) => const LandingPage());
+      case '/phonenumber':
+        return MaterialPageRoute(builder: (_) => const PhoneNumber());
       default:
         return _errorRoute();
     }

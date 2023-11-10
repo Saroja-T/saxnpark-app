@@ -44,6 +44,11 @@ static String appName = "SaxnPark";
   static String termsAndConditions = "Terms and Conditions";
   static String and = " and ";
   static String privacyPolicy = "Privacy Policy.";
+  static String addPhoneNumber =  "Add Phone Number";
+  static String emailId =  "Email : ";
+  static String continueBtn =  "Continue";
+  static String phoneNumberNotes =  "Your mobile number plays a vital role in ensuring a secure and efficient experience. It is used for both account verification and as a means of account recovery when needed.";
+
 
 
 

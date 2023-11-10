@@ -16,7 +16,11 @@ class AuthRepository {
 
   Future<User?> signInWithGoogle() async {
     try {
-      final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+      final GoogleSignInAccount? googleUser = await GoogleSignIn(
+        scopes: [
+          'email'
+        ]
+      ).signIn();
       final GoogleSignInAuthentication? googleAuth =
           await googleUser?.authentication;
       final credential = GoogleAuthProvider.credential(
