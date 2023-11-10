@@ -24,11 +24,17 @@ static String appName = "SaxnPark";
 
   static String alreadyHaveAccount = "Already have an account? ";
   static String signin = "Sign in";
+  static String passwordReset = "Password reset";
   static String register = " Register";
   static String login = "Login";
   static String dontHaveAnAccount = "Dont have an account? ";
   static String phoneNumber = "Phone number";
+  static String resetPassword = "Reset password";
+  static String resetPasswordDescription = "Please enter your phone number and we will send instructions on how to reset your password";
   static String password = "Password";
+  static String sendRestLink = "Send reset link";
+  static String backtoSignIn = "Back to sign in";
+
   static String confirmPassword = "Confirm password";
   static String forgotPassword = "Forgot password?";
   static String registerWith = "or register with";

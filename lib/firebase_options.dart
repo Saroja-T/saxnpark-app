@@ -25,10 +25,7 @@ class DefaultFirebaseOptions {
       case TargetPlatform.iOS:
         return ios;
       case TargetPlatform.macOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for macos - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return macos;
       case TargetPlatform.windows:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for windows - '
@@ -66,10 +63,23 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyDCD8iyUzGIWF1wBf7pBIbgBcYYbZfJNv0',
-    appId: '1:1017123491907:ios:caf31050032112d84104f6',
+    appId: '1:1017123491907:ios:411b117e7e260fb44104f6',
     messagingSenderId: '1017123491907',
     projectId: 'saxnpark-d473c',
     storageBucket: 'saxnpark-d473c.appspot.com',
+    androidClientId: '1017123491907-ourr0b8eq45n5t2hlcdk2pdhkotshoet.apps.googleusercontent.com',
+    iosClientId: '1017123491907-eg3uvrmavsbn2to6tk54inlm78kksgt2.apps.googleusercontent.com',
     iosBundleId: 'com.example.saxnparkApp',
+  );
+
+  static const FirebaseOptions macos = FirebaseOptions(
+    apiKey: 'AIzaSyDCD8iyUzGIWF1wBf7pBIbgBcYYbZfJNv0',
+    appId: '1:1017123491907:ios:033a5f8b4a0bf3a84104f6',
+    messagingSenderId: '1017123491907',
+    projectId: 'saxnpark-d473c',
+    storageBucket: 'saxnpark-d473c.appspot.com',
+    androidClientId: '1017123491907-ourr0b8eq45n5t2hlcdk2pdhkotshoet.apps.googleusercontent.com',
+    iosClientId: '1017123491907-mtlm7frn28h1eq16skoksoipfl1dkb1m.apps.googleusercontent.com',
+    iosBundleId: 'com.example.saxnparkApp.RunnerTests',
   );
 }

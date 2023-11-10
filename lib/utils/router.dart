@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:saxnpark_app/pages/Authentication/password_reset.dart';
 import 'package:saxnpark_app/pages/authentication/country_list.dart';
 import 'package:saxnpark_app/pages/authentication/register.dart';
 import 'package:saxnpark_app/pages/authentication/register_home.dart';
@@ -8,13 +9,14 @@ import '../pages/locations/location_list.dart';
 import '../pages/authentication/login.dart';
 
 
-class RoutesGenerator {
+class RoutesGenerator 
+{
   static Route<dynamic> generateRoute(RouteSettings settings) {
     // final arg = settings.arguments;
     switch (settings.name) 
     {
       case '/':
-        return MaterialPageRoute(builder: (_) => const Login());
+        return MaterialPageRoute(builder: (_) => const PasswordReset());
       case '/locationlist':
         return MaterialPageRoute(builder: (_) => const LocationList());
       case '/registerhome':

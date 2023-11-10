@@ -9,13 +9,15 @@ import '../../utils/constants.dart';
 import '../../utils/strings.dart';
 import '../../utils/styles.dart';
 
-class Login extends StatefulWidget {
+class Login extends StatefulWidget 
+{
   const Login({super.key});
   @override
   State<Login> createState() => _LoginState();
 }
 
-class _LoginState extends State<Login> {
+class _LoginState extends State<Login> 
+{
   bool _showPassword = false;
   bool _numberValidationPassed = true;
   bool _passwordValidationPassed = true;
