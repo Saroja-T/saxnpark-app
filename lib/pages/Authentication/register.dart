@@ -11,6 +11,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 
 import '../../bloc/landing/landing_bloc.dart';
 import '../../commons/custom_app_bar.dart';
+import '../../repositories/authentication.dart';
 import '../../utils/colors.dart';
 import '../../utils/constants.dart';
 import '../../utils/strings.dart';
@@ -143,7 +144,6 @@ class _RegisterState extends State<Register> {
 
   Future<void> _handleSignIn() async {
     final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
-
     if (googleUser == null) {
       final GoogleSignInAuthentication? googleAuth =
           await googleUser?.authentication;
@@ -151,7 +151,6 @@ class _RegisterState extends State<Register> {
         accessToken: googleAuth?.accessToken,
         idToken: googleAuth?.idToken,
       );
-
       await FirebaseAuth.instance.signInWithCredential(credential);
     } else {
       // User is signed in, you can access the user's information
@@ -442,7 +441,11 @@ class _RegisterState extends State<Register> {
                 height: 16,
               ),
               InkWell(
-                onTap: _handleSignIn,
+                onTap: () async{
+                  User? user = await AuthRepository().signInWithGoogle();
+                        print("Email:${user!.email}");
+                        print("Name:${user!.displayName}");
+                },
                 child: Container(
                     height: 42,
                     margin: const EdgeInsets.fromLTRB(0, 10, 0, 0),
