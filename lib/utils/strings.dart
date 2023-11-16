@@ -34,6 +34,16 @@ static String appName = "SaxnPark";
   static String password = "Password";
   static String sendRestLink = "Send reset link";
   static String backtoSignIn = "Back to sign in";
+  static String verification= "Verification";
+  static String enterVerification= "Enter verification code";
+  static String editPhoneNumber= "Edit phone number";
+  static String verificationCode= "Verification code";
+  static String sendAnother= "Send another code";
+  static String iN= " in ";
+  static String verifying = "Verifying";
+  static String passwordUpdated = "Password successfully updated";
+  static String verificationMessage =  "We sent a code to ";
+  static String verificationMessage1 =  "+44 7907 612422 please enter it below so we can verify you";
 
   static String confirmPassword = "Confirm password";
   static String forgotPassword = "Forgot password?";
@@ -47,6 +57,8 @@ static String appName = "SaxnPark";
   static String addPhoneNumber =  "Add Phone Number";
   static String emailId =  "Email : ";
   static String continueBtn =  "Continue";
+  static String createNewPassword =  "Create new password";
+  static String enterNewPassword =  "Please enter your new password";
   static String phoneNumberNotes =  "Your mobile number plays a vital role in ensuring a secure and efficient experience. It is used for both account verification and as a means of account recovery when needed.";
 
 

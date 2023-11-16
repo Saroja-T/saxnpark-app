@@ -44,7 +44,7 @@ class _PasswordResetState extends State<PasswordReset>
         ),
       ],
       child: Scaffold(
-          appBar: CustomAppBarWithBackAndSkip(
+          appBar: CustomAppBarWithBack(
               title: Strings.passwordReset, backText: Strings.back),
           body: SingleChildScrollView(
               child: Padding(
@@ -58,10 +58,13 @@ class _PasswordResetState extends State<PasswordReset>
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
+                        const SizedBox(
+                          height: 16,
+                        ),
                         Text(Strings.resetPassword,style: customTextStyle(20, FontWeight.w500, AppColors.black1,1),),
                        const SizedBox(height: 16,),
                         Text(Strings.resetPasswordDescription,style: customTextStyle(16, FontWeight.w400, AppColors.black5, 1.2),),
-                        const  SizedBox(height: 16,),
+                        const  SizedBox(height: 32,),
                         Text(
                           Strings.phoneNumber,
                           style: customTextStyle(
@@ -79,8 +82,7 @@ class _PasswordResetState extends State<PasswordReset>
                           child: Row(
                             children: [
                               GestureDetector(
-                                onTap: () 
-                                {
+                                onTap: () {
                                   Navigator.pushNamed(context, '/countrylist');
                                 },
                                 child: Row(
@@ -131,7 +133,7 @@ class _PasswordResetState extends State<PasswordReset>
                 ElevatedButton(
                   style: registerBtnStyle,
                   onPressed: () {
-                    
+                    Navigator.pushNamed(context, '/otpVerification');
                   },
                   child: Text(
                     Strings.sendRestLink,
@@ -142,13 +144,18 @@ class _PasswordResetState extends State<PasswordReset>
                   ),
                 ),
                const SizedBox(height: 16,),
-                  Container(
-                    height: 51,
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                    borderRadius: const BorderRadius.all(Radius.circular(12)),
-                    border: Border.all(color: AppColors.black6)),
-                    child: Center(child: Text(Strings.backtoSignIn,style: customTextStyle(16, FontWeight.w700, AppColors.black6, 1),)),),
+                  GestureDetector(
+                    onTap: (){
+                       Navigator.pop(context);
+                    },
+                    child: Container(
+                      height: 51,
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                      borderRadius: const BorderRadius.all(Radius.circular(12)),
+                      border: Border.all(color: AppColors.black6)),
+                      child: Center(child: Text(Strings.backtoSignIn,style: customTextStyle(16, FontWeight.w700, AppColors.black6, 1),)),),
+                  ),
                 const SizedBox(
                   height: 24,
                 ),

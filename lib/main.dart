@@ -9,6 +9,7 @@ import 'package:saxnpark_app/bloc/landing/landing_bloc.dart';
 import 'package:saxnpark_app/firebase_options.dart';
 import 'package:saxnpark_app/pages/Authentication/login.dart';
 import 'package:saxnpark_app/pages/Authentication/password_reset.dart';
+import 'package:saxnpark_app/pages/authentication/new_password.dart';
 import 'package:saxnpark_app/pages/authentication/register_home.dart';
 import 'package:saxnpark_app/repositories/authentication.dart';
 import 'package:saxnpark_app/services/firebase_service.dart';
@@ -17,6 +18,7 @@ import 'package:saxnpark_app/utils/router.dart';
 
 import 'bloc/google/google_bloc.dart';
 import 'pages/authentication/country_list.dart';
+import 'pages/authentication/otp_verification.dart';
 import 'utils/strings.dart';
 
 Future<void> main() async {
@@ -93,6 +95,7 @@ class MyApp extends StatelessWidget {
         initialRoute: '/',
         onGenerateRoute: RoutesGenerator.generateRoute,
         home: const RegisterHome(),
+        //home: const OTPVerification(),
       ),
     );
   }

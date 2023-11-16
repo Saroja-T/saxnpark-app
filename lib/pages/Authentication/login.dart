@@ -58,6 +58,20 @@ class _LoginState extends State<Login>
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
+                        // Container(
+                        //   height: 50,   
+                        //   decoration: BoxDecoration(color: const Color.fromRGBO(36, 207, 125, 0.1),
+                        //   borderRadius: BorderRadius.circular(5)),
+                        //   child: Row(children: [
+                        //     const SizedBox(width: 15,),
+                        //     const Icon(Icons.check_circle_outline,size: 16,),
+                        //     const SizedBox(width: 10,),
+                        //     Text(Strings.passwordUpdated)
+                        //   ]),
+                        // ),
+                        // const SizedBox(
+                        //   height: 30,
+                        // ),
                         Text(
                           Strings.phoneNumber,
                           style: customTextStyle(

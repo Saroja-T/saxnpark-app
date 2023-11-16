@@ -111,7 +111,8 @@ class CustomAppBarWithBack extends StatelessWidget implements PreferredSizeWidge
             padding: const EdgeInsets.fromLTRB(6,0,0,0),
             child: TextButton(
               onPressed: (){
-                if(Strings.register==title){
+                if(Strings.register==title || Strings.passwordReset==title
+                 || Strings.signin==title || Strings.verification==title){
                   Navigator.pop(context);
                 }else{
                   context.read<LandingBloc>().add(TabChangeEvent(

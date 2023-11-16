@@ -1,9 +1,12 @@
+import 'dart:ffi';
+
 double? h;
 double? w;
 
 
 const String self = 'self';
 const String others = 'others';
+bool isOtpEntered = false;
 
 
 //assets-images
