@@ -1,4 +1,3 @@
-
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -10,6 +9,7 @@ import '../../utils/colors.dart';
 import '../../utils/constants.dart';
 import '../../utils/strings.dart';
 import '../../utils/styles.dart';
+import '../../utils/validations.dart';
 
 class Register extends StatefulWidget {
   const Register({super.key});
@@ -23,18 +23,54 @@ class _RegisterState extends State<Register> {
   bool _numberValidationPassed = true;
   bool _passwordValidationPassed = true;
   bool _confirmPasswordValidationPassed = true;
+  bool? _initialScreen;
 
   String tabLabel = "";
   final TextEditingController _phoneController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _confirmPasswordController =
       TextEditingController();
+  Validations validate = Validations();
 
-  bool validatePassword(String value) {
-    String pattern = r'^(?=.*?[A-Z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$';
-    RegExp regExp = RegExp(pattern);
-    return regExp.hasMatch(value);
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _initialScreen = true;
   }
+
+  validateFeilds() {
+//phonenumber validation
+    if (_phoneController.text.isEmpty) {
+      _numberValidationPassed = false;
+    } else {
+      _numberValidationPassed = true;
+    }
+
+    //password validations
+    if (validate.validatePassword(_passwordController.text)) {
+      _passwordValidationPassed = true;
+      if (_confirmPasswordController.text == _passwordController.text) {
+        _confirmPasswordValidationPassed = true;
+        Strings.passwordChanged = true;
+        Navigator.pushNamed(context, '/login');
+      } else {
+        _confirmPasswordValidationPassed = false;
+      }
+    } else {
+      _confirmPasswordValidationPassed = true;
+      _passwordValidationPassed = false;
+    }
+
+    //confirm password checking
+    if (_passwordController.text == _confirmPasswordController.text) {
+      _confirmPasswordValidationPassed = true;
+    } else {
+      _confirmPasswordValidationPassed = false;
+    }
+  }
+
+  
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +79,7 @@ class _RegisterState extends State<Register> {
     tabLabel = context.watch<LandingBloc>().state.tabLabel;
     return BlocConsumer<GoogleBloc, GoogleState>(
       listener: (context, state) {
-        if(state.googleUserEmail!=''){
+        if (state.googleUserEmail != '') {
           print("mail123");
           Navigator.pushReplacementNamed(context, '/phonenumber');
         }
@@ -118,10 +154,9 @@ class _RegisterState extends State<Register> {
                                         hintStyle: TextStyle(
                                             fontSize: 14,
                                             color: AppColors.grey10)),
-                                    onEditingComplete: () {
+                                    onChanged: (val) {
                                       setState(() {
-                                        if (_phoneController.text.length >=
-                                            10) {
+                                        if (_phoneController.text.isNotEmpty) {
                                           _numberValidationPassed = true;
                                         } else {
                                           _numberValidationPassed = false;
@@ -139,9 +174,9 @@ class _RegisterState extends State<Register> {
                         Padding(
                             padding: const EdgeInsets.only(top: 8),
                             child: Text(
-                              Strings.numberError,
+                              Strings.emptyNumberError,
                               style: customTextStyle(
-                                  12, FontWeight.w400, AppColors.black5, 1.2),
+                                  12, FontWeight.w400, AppColors.red1, 1.2),
                             )),
                       const SizedBox(
                         height: 24,
@@ -171,12 +206,14 @@ class _RegisterState extends State<Register> {
                                     hintStyle: TextStyle(
                                         fontSize: 14, color: AppColors.grey10)),
                                 obscureText: !_showPassword,
-                                onEditingComplete: () {
+                                onChanged: (val) {
                                   setState(() {
-                                    if (validatePassword(
+                                    _initialScreen = false;
+                                    if (validate.validatePassword(
                                         _passwordController.text)) {
                                       _passwordValidationPassed = true;
                                     } else {
+                                      _confirmPasswordValidationPassed = true;
                                       _passwordValidationPassed = false;
                                     }
                                   });
@@ -202,13 +239,25 @@ class _RegisterState extends State<Register> {
                     ],
                   ),
                   // if (!_passwordValidationPassed)
-                  Padding(
-                      padding: const EdgeInsets.only(top: 8),
-                      child: Text(
-                        Strings.passwordError,
-                        style: customTextStyle(
-                            12, FontWeight.w400, AppColors.black5, 1.2),
-                      )),
+                  Align(
+                    alignment: Alignment.bottomLeft,
+                    child: Padding(
+                        padding: const EdgeInsets.only(top: 8),
+                        child: Text(
+                          _initialScreen!
+                              ? Strings.passwordError
+                              : (_passwordController.text.isEmpty
+                                  ? Strings.emptyPasswordError
+                                  : Strings.passwordError),
+                          style: customTextStyle(
+                              12,
+                              FontWeight.w400,
+                              !_passwordValidationPassed
+                                  ? AppColors.red1
+                                  : AppColors.black5,
+                              1.2),
+                        )),
+                  ),
                   const SizedBox(
                     height: 24,
                   ),
@@ -240,7 +289,7 @@ class _RegisterState extends State<Register> {
                                     hintStyle: TextStyle(
                                         fontSize: 14, color: AppColors.grey10)),
                                 obscureText: !_showConfirmPassword,
-                                onEditingComplete: () {
+                                onChanged: (val) {
                                   setState(() {
                                     if (_confirmPasswordController.text ==
                                         _passwordController.text) {
@@ -277,9 +326,11 @@ class _RegisterState extends State<Register> {
                       child: Padding(
                           padding: const EdgeInsets.only(top: 8),
                           child: Text(
-                            Strings.confirmPasswordError,
+                            _passwordController.text.isEmpty
+                                ? Strings.emptyPasswordError
+                                : Strings.confirmPasswordError,
                             style: customTextStyle(
-                                12, FontWeight.w400, AppColors.black5, 1.2),
+                                12, FontWeight.w400, AppColors.red1, 1.2),
                           )),
                     ),
                   const SizedBox(height: 24),
@@ -289,7 +340,12 @@ class _RegisterState extends State<Register> {
                   ),
                   ElevatedButton(
                     style: registerBtnStyle,
-                    onPressed: () {},
+                    onPressed: () {
+                      setState(() {
+                        _initialScreen = false;
+                        validateFeilds();
+                      });
+                    },
                     child: Text(
                       Strings.register,
                       style: TextStyle(

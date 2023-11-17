@@ -65,6 +65,23 @@ static String appName = "SaxnPark";
   static String passwordError = "Must include at least 8 characters, a capital letter, a number and a special character";
   static String confirmPasswordError = "Both the passwords should be same";
   static String numberError = "Phone number should be minimum 10 numbers";
+  static String emptyPasswordError = "Password should not be empty";
+  static String emptyNumberError = "Number should not be empty";
+
+
+
+    static bool passwordChanged = false;
+
+
+
+
+  
+
+
+
+
+
+  
   static String savedText =  "Saved";
 
 

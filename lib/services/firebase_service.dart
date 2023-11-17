@@ -12,13 +12,6 @@ class FirebaseService{
     _firebaseMessaging.getToken().then((value) {
       fcmToken = value;
     print("FCM Token $value");
-
     });
-    
-    
-
-  
   }
-  
-  
 }

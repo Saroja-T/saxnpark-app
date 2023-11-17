@@ -1,6 +1,9 @@
+import 'dart:async';
+
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:saxnpark_app/utils/validations.dart';
 
 import '../../bloc/landing/landing_bloc.dart';
 import '../../commons/custom_app_bar.dart';
@@ -21,16 +24,45 @@ class _LoginState extends State<Login>
   bool _showPassword = false;
   bool _numberValidationPassed = true;
   bool _passwordValidationPassed = true;
+  
 
   String tabLabel = "";
   final TextEditingController _phoneController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-
-  bool validatePassword(String value) {
-    String pattern = r'^(?=.*?[A-Z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$';
-    RegExp regExp = RegExp(pattern);
-    return regExp.hasMatch(value);
+  Validations validate = Validations();
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    Timer.periodic(const Duration(seconds: 5), (timer) { 
+      setState(() {
+        Strings.passwordChanged = false;
+      });
+    });
   }
+
+  validateFeilds()
+  {   //phonenumber validation
+      if(_phoneController.text.isEmpty)
+      {
+         _numberValidationPassed = false;
+      }
+      else
+      {
+        _numberValidationPassed = true;
+      }
+
+      //password validations
+      if(_passwordController.text.isEmpty)
+      {
+         _passwordValidationPassed = false;
+      }
+      else
+      {
+        _passwordValidationPassed = true;
+      }
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -58,20 +90,22 @@ class _LoginState extends State<Login>
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        // Container(
-                        //   height: 50,   
-                        //   decoration: BoxDecoration(color: const Color.fromRGBO(36, 207, 125, 0.1),
-                        //   borderRadius: BorderRadius.circular(5)),
-                        //   child: Row(children: [
-                        //     const SizedBox(width: 15,),
-                        //     const Icon(Icons.check_circle_outline,size: 16,),
-                        //     const SizedBox(width: 10,),
-                        //     Text(Strings.passwordUpdated)
-                        //   ]),
-                        // ),
-                        // const SizedBox(
-                        //   height: 30,
-                        // ),
+                        if(Strings.passwordChanged)
+                        Container(
+                          height: 50,   
+                          decoration: BoxDecoration(color: const Color.fromRGBO(36, 207, 125, 0.1),
+                          borderRadius: BorderRadius.circular(5)),
+                          child: Row(children: [
+                            const SizedBox(width: 15,),
+                            const Icon(Icons.check_circle_outline,size: 16,),
+                            const SizedBox(width: 10,),
+                            Text(Strings.passwordUpdated)
+                          ]),
+                        ),
+                      if(Strings.passwordChanged)
+                        const SizedBox(
+                          height: 30,
+                        ),
                         Text(
                           Strings.phoneNumber,
                           style: customTextStyle(
@@ -116,9 +150,9 @@ class _LoginState extends State<Login>
                                     hintText: '908 612 422',
                                     hintStyle: TextStyle(fontSize: 14,color: AppColors.grey10)
                                   ),
-                                  onEditingComplete: () {
+                                  onChanged: (val) {
                                     setState(() {
-                                      if (_phoneController.text.length >= 10) {
+                                      if (_phoneController.text.isNotEmpty) {
                                         _numberValidationPassed = true;
                                       } else {
                                         _numberValidationPassed = false;
@@ -136,9 +170,9 @@ class _LoginState extends State<Login>
                       Padding(
                           padding: const EdgeInsets.only(top: 8),
                           child: Text(
-                            Strings.numberError,
+                            Strings.emptyNumberError,
                             style: customTextStyle(
-                                12, FontWeight.w400, AppColors.black5, 1.2),
+                                12, FontWeight.w400, AppColors.red1, 1.2),
                           )),
                     const SizedBox(
                       height: 24,
@@ -168,16 +202,16 @@ class _LoginState extends State<Login>
                                 hintStyle: TextStyle(color: AppColors.grey10)
                               ),
                               obscureText: !_showPassword,
-                              onEditingComplete: () {
+                              onChanged: (val){
                                 setState(() {
-                                  if (validatePassword(
-                                      _passwordController.text)) {
-                                    _passwordValidationPassed = true;
-                                  } else {
-                                    _passwordValidationPassed = false;
-                                  }
-                                });
-                              },
+                                      if (_passwordController.text.isNotEmpty) {
+                                        _passwordValidationPassed = true;
+                                      } else {
+                                        _passwordValidationPassed = false;
+                                      }
+                                    });
+                              }
+                              ,
                             ),
                           ),
                           InkWell(
@@ -195,13 +229,16 @@ class _LoginState extends State<Login>
                   ],
                 ),
                 if (!_passwordValidationPassed)
-                  Padding(
-                      padding: const EdgeInsets.only(top: 8),
-                      child: Text(
-                        Strings.passwordError,
-                        style: customTextStyle(
-                            12, FontWeight.w400, AppColors.black5, 1.2),
-                      )),
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Padding(
+                        padding: const EdgeInsets.only(top: 8),
+                        child: Text(
+                          Strings.emptyPasswordError,
+                          style: customTextStyle(
+                              12, FontWeight.w400, AppColors.red1, 1.2),
+                        )),
+                  ),
                 const SizedBox(
                   height: 12,
                 ),
@@ -216,7 +253,9 @@ class _LoginState extends State<Login>
                 ElevatedButton(
                   style: registerBtnStyle,
                   onPressed: () {
-                    
+                    setState(() {
+                    validateFeilds();
+                    });
                   },
                   child: Text(
                     Strings.signin,
