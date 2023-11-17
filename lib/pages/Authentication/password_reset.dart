@@ -26,11 +26,7 @@ class _PasswordResetState extends State<PasswordReset>
   final TextEditingController _phoneController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
-  bool validatePassword(String value) {
-    String pattern = r'^(?=.*?[A-Z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$';
-    RegExp regExp = RegExp(pattern);
-    return regExp.hasMatch(value);
-  }
+  
 
   @override
   Widget build(BuildContext context) {

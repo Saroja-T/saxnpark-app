@@ -1,15 +1,14 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:saxnpark_app/utils/validations.dart';
 
-import '../../bloc/google/google_bloc.dart';
 import '../../bloc/landing/landing_bloc.dart';
 import '../../commons/custom_app_bar.dart';
 import '../../utils/colors.dart';
 import '../../utils/constants.dart';
 import '../../utils/strings.dart';
 import '../../utils/styles.dart';
-
 
 class NewPassword extends StatefulWidget {
   const NewPassword({super.key});
@@ -22,17 +21,43 @@ class NewPasswordState extends State<NewPassword> {
   bool _showConfirmPassword = false;
   bool _passwordValidationPassed = true;
   bool _confirmPasswordValidationPassed = true;
+  bool? _initialScreen;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _initialScreen = true;
+  }
+
+  validateFeilds() {
+    if (validate.validatePassword(_passwordController.text)) {
+      _passwordValidationPassed = true;
+      if (_confirmPasswordController.text == _passwordController.text) {
+        _confirmPasswordValidationPassed = true;
+        Strings.passwordChanged = true;
+        Navigator.pushNamed(context, '/login');
+      } else {
+        _confirmPasswordValidationPassed = false;
+      }
+    } else {
+      _confirmPasswordValidationPassed = true;
+      _passwordValidationPassed = false;
+    }
+
+    //confirm password checking
+    if (_passwordController.text == _confirmPasswordController.text) {
+      _confirmPasswordValidationPassed = true;
+    } else {
+      _confirmPasswordValidationPassed = false;
+    }
+  }
 
   String tabLabel = "";
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _confirmPasswordController =
       TextEditingController();
-
-  bool validatePassword(String value) {
-    String pattern = r'^(?=.*?[A-Z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$';
-    RegExp regExp = RegExp(pattern);
-    return regExp.hasMatch(value);
-  }
+  Validations validate = Validations();
 
   @override
   Widget build(BuildContext context) {
@@ -54,14 +79,14 @@ class NewPasswordState extends State<NewPassword> {
                 ),
                 Text(
                   Strings.createNewPassword,
-                  style: customTextStyle(
-                      20, FontWeight.w500, AppColors.black1, 1),
+                  style:
+                      customTextStyle(20, FontWeight.w500, AppColors.black1, 1),
                 ),
                 const SizedBox(
                   height: 6,
                 ),
                 Text(
-                  Strings.enterNewPassword ,
+                  Strings.enterNewPassword,
                   style: customTextStyle(
                       16, FontWeight.w400, AppColors.black5, 1.2),
                 ),
@@ -70,8 +95,8 @@ class NewPasswordState extends State<NewPassword> {
                 ),
                 Text(
                   Strings.password,
-                  style: customTextStyle(
-                      16, FontWeight.w400, AppColors.black1, 1),
+                  style:
+                      customTextStyle(16, FontWeight.w400, AppColors.black1, 1),
                 ),
                 const SizedBox(
                   height: 8,
@@ -79,8 +104,7 @@ class NewPasswordState extends State<NewPassword> {
                 Container(
                   padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
                   decoration: BoxDecoration(
-                      borderRadius:
-                          const BorderRadius.all(Radius.circular(4)),
+                      borderRadius: const BorderRadius.all(Radius.circular(4)),
                       border: Border.all(color: AppColors.grey3)),
                   child: Row(
                     children: [
@@ -93,12 +117,14 @@ class NewPasswordState extends State<NewPassword> {
                               hintStyle: TextStyle(
                                   fontSize: 14, color: AppColors.grey10)),
                           obscureText: !_showPassword,
-                          onEditingComplete: () {
+                          onChanged: (val) {
                             setState(() {
-                              if (validatePassword(
-                                  _passwordController.text)) {
+                              _initialScreen = false;
+                              if (validate
+                                  .validatePassword(_passwordController.text)) {
                                 _passwordValidationPassed = true;
                               } else {
+                                _confirmPasswordValidationPassed = true;
                                 _passwordValidationPassed = false;
                               }
                             });
@@ -123,13 +149,24 @@ class NewPasswordState extends State<NewPassword> {
                 ),
               ],
             ),
-            // if (!_passwordValidationPassed)
             Padding(
                 padding: const EdgeInsets.only(top: 8),
-                child: Text(
-                  Strings.passwordError,
-                  style: customTextStyle(
-                      12, FontWeight.w400, AppColors.black5, 1.2),
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    _initialScreen!
+                        ? Strings.passwordError
+                        : (_passwordController.text.isEmpty
+                            ? Strings.emptyPasswordError
+                            : Strings.passwordError),
+                    style: customTextStyle(
+                        12,
+                        FontWeight.w400,
+                        !_passwordValidationPassed
+                            ? AppColors.red1
+                            : AppColors.black5,
+                        1.2),
+                  ),
                 )),
             const SizedBox(
               height: 24,
@@ -139,8 +176,8 @@ class NewPasswordState extends State<NewPassword> {
               children: [
                 Text(
                   Strings.confirmPassword,
-                  style: customTextStyle(
-                      16, FontWeight.w400, AppColors.black1, 1),
+                  style:
+                      customTextStyle(16, FontWeight.w400, AppColors.black1, 1),
                 ),
                 const SizedBox(
                   height: 8,
@@ -148,8 +185,7 @@ class NewPasswordState extends State<NewPassword> {
                 Container(
                   padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
                   decoration: BoxDecoration(
-                      borderRadius:
-                          const BorderRadius.all(Radius.circular(4)),
+                      borderRadius: const BorderRadius.all(Radius.circular(4)),
                       border: Border.all(color: AppColors.grey3)),
                   child: Row(
                     children: [
@@ -162,7 +198,7 @@ class NewPasswordState extends State<NewPassword> {
                               hintStyle: TextStyle(
                                   fontSize: 14, color: AppColors.grey10)),
                           obscureText: !_showConfirmPassword,
-                          onEditingComplete: () {
+                          onChanged: (val) {
                             setState(() {
                               if (_confirmPasswordController.text ==
                                   _passwordController.text) {
@@ -177,8 +213,7 @@ class NewPasswordState extends State<NewPassword> {
                       InkWell(
                           onTap: () {
                             setState(() {
-                              _showConfirmPassword =
-                                  !_showConfirmPassword;
+                              _showConfirmPassword = !_showConfirmPassword;
                             });
                           },
                           child: Icon(
@@ -199,16 +234,22 @@ class NewPasswordState extends State<NewPassword> {
                 child: Padding(
                     padding: const EdgeInsets.only(top: 8),
                     child: Text(
-                      Strings.confirmPasswordError,
+                      _passwordController.text.isEmpty
+                          ? Strings.emptyPasswordError
+                          : Strings.confirmPasswordError,
                       style: customTextStyle(
-                          12, FontWeight.w400, AppColors.black5, 1.2),
+                          12, FontWeight.w400, AppColors.red1, 1.2),
                     )),
               ),
             const SizedBox(height: 24),
-
             ElevatedButton(
               style: registerBtnStyle,
-              onPressed: () {},
+              onPressed: () {
+                setState(() {
+                  _initialScreen = false;
+                  validateFeilds();
+                });
+              },
               child: Text(
                 Strings.resetPassword,
                 style: TextStyle(
