@@ -10,6 +10,8 @@ import '../utils/constants.dart';
 import '../utils/strings.dart';
 
 import 'accounts/accounts_page.dart';
+import 'accounts/my_vehicles.dart';
+import 'accounts/settings.dart';
 import 'bookings/booking_confirmation.dart';
 import 'bookings/booking_details.dart';
 import 'bookings/parking_time.dart';
@@ -93,9 +95,6 @@ class _LandingPageState extends State<LandingPage> {
                 case 2:
                   context.read<LandingBloc>().add(TabChangeEvent(
                       tabIndex: index, tabLabel: Strings.rSession));
-                // case 1:  { _scaffoldKey.currentState?.showBottomSheet((_) => Container(
-                //     child: showBrandsBottomSheet(),
-                //   ))};
                 case 3:
                   context.read<LandingBloc>().add(TabChangeEvent(
                       tabIndex: index, tabLabel: Strings.rPermit));
@@ -127,6 +126,10 @@ class _LandingPageState extends State<LandingPage> {
       return const NearMePage();
     }else if (tabIndex == 4 && tabLabel == Strings.rMyLocation){
        return const MyLocation();
+    }else if (tabIndex == 4 && tabLabel == Strings.rMyVehicles){
+       return const MyVehicles();
+    }else if (tabIndex == 4 && tabLabel == Strings.rMySettings){
+       return const Settings();
     }else if(tabIndex == 4 && tabLabel==Strings.rAccount){
       return const AccountsPage();
     }else if (tabIndex == 1 && tabLabel == Strings.rVehicleType) {
@@ -143,6 +146,16 @@ class _LandingPageState extends State<LandingPage> {
       return const PurposeOfVisit();
     }else{
       return Center(child: Text(Strings.home));
+    }
+  }
+  
+  onBackPressed(int tabIndex) {
+    if(tabIndex!=0){
+      context.read<LandingBloc>().add(TabChangeEvent(
+                        tabIndex:0, tabLabel: Strings.rHome));
+    }else{
+      Navigator.pop(context);
+      Navigator.pop(context);
     }
   }
 }

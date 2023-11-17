@@ -114,9 +114,15 @@ class CustomAppBarWithBack extends StatelessWidget implements PreferredSizeWidge
                 if(Strings.register==title || Strings.passwordReset==title
                  || Strings.signin==title || Strings.verification==title){
                   Navigator.pop(context);
+                }else if(Strings.myVehicles == title){
+                  context.read<LandingBloc>().add(TabChangeEvent(
+                        tabIndex:4, tabLabel: Strings.rAccount));
+                }else if(Strings.settings == title){
+                  context.read<LandingBloc>().add(TabChangeEvent(
+                        tabIndex:4, tabLabel: Strings.rAccount));
                 }else{
                   context.read<LandingBloc>().add(TabChangeEvent(
-                        tabIndex: tabIndex ?? 0, tabLabel: redirectionKey ?? ""));
+                        tabIndex:0, tabLabel: Strings.rHome));
                 }
               },
               child: Text(backText,style: customTextStyle(12, FontWeight.w400, AppColors.black5, 1),)),
@@ -131,3 +137,4 @@ class CustomAppBarWithBack extends StatelessWidget implements PreferredSizeWidge
     Size get preferredSize => const Size.fromHeight(50);
 
 }
+

@@ -6,7 +6,7 @@ double? w;
 
 const String self = 'self';
 const String others = 'others';
-bool isOtpEntered = false;
+
 
 
 //assets-images
@@ -49,6 +49,10 @@ const String google = 'assets/icons/google.png';
 const String apple = 'assets/icons/apple.png';
 const String fb = 'assets/icons/facebook.png';
 
+
+//Images
+
+const String groupX = 'assets/images/group_x.png';
 
 
 

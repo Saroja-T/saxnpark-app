@@ -208,7 +208,9 @@ class NewPasswordState extends State<NewPassword> {
 
             ElevatedButton(
               style: registerBtnStyle,
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamedAndRemoveUntil(context, '/generalHome', (route) => false);
+              },
               child: Text(
                 Strings.resetPassword,
                 style: TextStyle(

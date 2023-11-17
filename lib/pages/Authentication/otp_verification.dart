@@ -5,7 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../bloc/landing/landing_bloc.dart';
 import '../../commons/custom_app_bar.dart';
-import '../../commons/otp_screen.dart';
+import '../../commons/otp_textfield.dart';
 import '../../utils/colors.dart';
 import '../../utils/constants.dart';
 import '../../utils/strings.dart';
@@ -21,6 +21,7 @@ class OTPVerificationState extends State<OTPVerification> {
   int secondsRemaining = 30;
   bool enableResend = false;
   Timer? timer;
+  bool isOtpEntered = false;
 
   @override
   initState() {
@@ -121,7 +122,15 @@ class OTPVerificationState extends State<OTPVerification> {
                         const SizedBox(
                           height: 6,
                         ),
-                        SizedBox(height: 60, child: OTPScreen()),
+                        SizedBox(height: 60, child: OTPTextField(
+                          isVerified: (isAllFieldsFilled) {
+                            isOtpEntered = isAllFieldsFilled;
+                            if(isAllFieldsFilled){
+                              Navigator.pushReplacementNamed(context,  '/newPassword');
+                             // Navigator.pushNamedAndRemoveUntil(context, '/newPassword', ModalRoute.withName('/login'));
+                            }
+                          },
+                        )),
                         const SizedBox(
                           height: 8,
                         ),

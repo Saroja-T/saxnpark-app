@@ -62,24 +62,17 @@ static String appName = "SaxnPark";
   static String phoneNumberNotes =  "Your mobile number plays a vital role in ensuring a secure and efficient experience. It is used for both account verification and as a means of account recovery when needed.";
 
 
-
-
-
-
   static String passwordError = "Must include at least 8 characters, a capital letter, a number and a special character";
   static String confirmPasswordError = "Both the passwords should be same";
   static String numberError = "Phone number should be minimum 10 numbers";
-
-
-
-  
-
-
-
-
-
-  
   static String savedText =  "Saved";
+
+
+  //General
+  static String createAccount = "Create account";
+  static String seeParkingLocations = "See parking locations";
+  static String letsGet = "Let's get";
+  static String started = "Started";
 
   //Booking
   static String bookingDetails = "Booking details";
@@ -124,7 +117,11 @@ static String appName = "SaxnPark";
   static String rNearMeList ="nearMeList";
   static String rNearMeMapList ="nearMeMapList";
   static String rRecentList ="recentList";
+
+  //Accounts
   static String rMyLocation ="mylocations";
+  static String rMyVehicles ="myVehicles";
+  static String rMySettings ="mySettings";
 
 
   // Session
@@ -215,6 +212,7 @@ static String appName = "SaxnPark";
   static String parkingPermits =  "Parking permits";
   static String settings =  "Settings";
   static String signOut =  "Sign out";
+  static String deleteAccount =  "Delete account";
   static String help =  "Help";
   static String back =  "Back";
 

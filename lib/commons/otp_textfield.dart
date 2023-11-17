@@ -6,13 +6,16 @@ import 'package:flutter/services.dart';
 import '../utils/colors.dart';
 import '../utils/constants.dart';
 
-class OTPScreen extends StatefulWidget {
+typedef callBackForOtp = void Function(bool isAllFieldsFilled);
+class OTPTextField extends StatefulWidget {
+  callBackForOtp isVerified;
+  OTPTextField({super.key, required this.isVerified});
 
   @override
-  OTPScreenState createState() => OTPScreenState();
+  OTPTextFieldState createState() => OTPTextFieldState();
 }
 
-class OTPScreenState extends State<OTPScreen> {
+class OTPTextFieldState extends State<OTPTextField> {
   late List<TextEditingController> _controllers;
 
 
@@ -64,20 +67,16 @@ class OTPScreenState extends State<OTPScreen> {
             if (value.isEmpty && first == false) {
               FocusScope.of(context).previousFocus();
             }
-            setState(() {
-              isOtpEntered = isAllFieldsFilled();
-            });
-
+            
             if(last==true && value.isNotEmpty){
               FocusScope.of(context).unfocus();
             }
-            if (isOtpEntered) {
-                Timer.periodic(const Duration(seconds: 3), (timer) {
-                 // Navigator.pop(context);
-                  isOtpEntered = false;
-                  Navigator.pushReplacementNamed(context, '/newPassword');
-                });
-              }
+            Timer.periodic(const Duration(seconds: 3), (timer) {
+              setState(() {
+                widget.isVerified(isAllFieldsFilled());
+              });
+            });
+                          
           },
           showCursor: true,
           readOnly: false,

@@ -48,7 +48,7 @@ class _MyLocationState extends State<MyLocation> {
                   bottom: 0,
                   child: Container(
                       decoration: const BoxDecoration(
-                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                        borderRadius: BorderRadius.only(topLeft:Radius.circular(10),topRight:Radius.circular(10)),
                         color: Colors.white,
                       ),
                       child: Padding(

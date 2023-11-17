@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:saxnpark_app/pages/Authentication/password_reset.dart';
+import 'package:saxnpark_app/pages/accounts/settings.dart';
 import 'package:saxnpark_app/pages/authentication/country_list.dart';
 import 'package:saxnpark_app/pages/authentication/otp_verification.dart';
 import 'package:saxnpark_app/pages/authentication/phone_number.dart';
@@ -7,9 +8,11 @@ import 'package:saxnpark_app/pages/authentication/register.dart';
 import 'package:saxnpark_app/pages/authentication/register_home.dart';
 import 'package:saxnpark_app/pages/landing_page.dart';
 
+import '../pages/accounts/my_vehicles.dart';
 import '../pages/authentication/new_password.dart';
 import '../pages/locations/location_list.dart';
 import '../pages/authentication/login.dart';
+import '../pages/drive_account/general_home.dart';
 
 
 class RoutesGenerator 
@@ -40,6 +43,13 @@ class RoutesGenerator
         return MaterialPageRoute(builder: (_)=> const OTPVerification());
       case '/newPassword':
       return MaterialPageRoute(builder: (_) => const NewPassword());
+      case '/generalHome':
+      return MaterialPageRoute(builder: (_) => const GeneralHome());
+      case '/settings':
+      return MaterialPageRoute(builder: (_) => const Settings());
+      case '/myVehicles':
+      return MaterialPageRoute(builder: (_) => const MyVehicles());
+      
       default:
         return _errorRoute();
     }
