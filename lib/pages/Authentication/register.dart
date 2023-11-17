@@ -1,5 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:saxnpark_app/bloc/google/google_bloc.dart';
 
@@ -69,8 +70,6 @@ class _RegisterState extends State<Register> {
       _confirmPasswordValidationPassed = false;
     }
   }
-
-  
 
   @override
   Widget build(BuildContext context) {
@@ -148,6 +147,10 @@ class _RegisterState extends State<Register> {
                                 Expanded(
                                   child: TextField(
                                     controller: _phoneController,
+                                    inputFormatters: <TextInputFormatter>[
+                                      FilteringTextInputFormatter.digitsOnly
+                                    ],
+                                    keyboardType: TextInputType.number,
                                     decoration: InputDecoration(
                                         border: InputBorder.none,
                                         hintText: '908 612 422',
