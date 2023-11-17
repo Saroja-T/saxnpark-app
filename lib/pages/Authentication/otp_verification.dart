@@ -39,17 +39,16 @@ class OTPVerificationState extends State<OTPVerification> {
     });
   }
 
-
   void resendCode() {
     //Api call for resending OTP
-    setState((){
+    setState(() {
       secondsRemaining = 30;
       enableResend = false;
     });
   }
-  
-   @override
-  dispose(){
+
+  @override
+  dispose() {
     timer!.cancel();
     super.dispose();
   }
@@ -122,18 +121,28 @@ class OTPVerificationState extends State<OTPVerification> {
                         const SizedBox(
                           height: 6,
                         ),
-                        SizedBox(height: 60, child: OTPTextField(
-                          isVerified: (isAllFieldsFilled) {
-                            isOtpEntered = isAllFieldsFilled;
-                            if(isAllFieldsFilled){
-                              if(!Strings.shouldRedirectToHome){
-                                Navigator.pushNamedAndRemoveUntil(context, '/generalHome', (route) => false);
-                              }else{
-                                Navigator.pushReplacementNamed(context,  '/newPassword');
-                              }
-                            }
-                          },
-                        )),
+                        SizedBox(
+                            height: 60,
+                            child: OTPTextField(
+                              isVerified: (isAllFieldsFilled) {
+                                setState(() {
+                                   isOtpEntered = isAllFieldsFilled;
+                                });
+                               
+                                if (isAllFieldsFilled) {
+                                  Timer.periodic(const Duration(seconds: 2),
+                                      (timer) {
+                                    if (!Strings.shouldRedirectToHome) {
+                                      Navigator.pushNamedAndRemoveUntil(context,
+                                          '/generalHome', (route) => false);
+                                    } else {
+                                      Navigator.pushReplacementNamed(
+                                          context, '/newPassword');
+                                    }
+                                  });
+                                }
+                              },
+                            )),
                         const SizedBox(
                           height: 8,
                         ),
@@ -144,53 +153,51 @@ class OTPVerificationState extends State<OTPVerification> {
                     )
                   ],
                 ),
-
-                if(!isOtpEntered && enableResend)
-                TextButton(
-                  onPressed: (){
-                    resendCode();
-                  },
-                  child: Text(
-                    Strings.sendAnother,
-                    style:
-                        customTextStyle(16, FontWeight.w400, AppColors.blue1, 1),
-                  ),
-                ),
-                if(isOtpEntered)
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SizedBox(
-                      height: 18,
-                      width: 18,
-                      child: CircularProgressIndicator(
-                        strokeWidth: 2,
-                        color: AppColors.grey10,
-                      ),
-                    ),
-                    const SizedBox(
-                      width: 7,
-                    ),
-                    Text(
-                      Strings.verifying,
+                if (!isOtpEntered && enableResend)
+                  TextButton(
+                    onPressed: () {
+                      resendCode();
+                    },
+                    child: Text(
+                      Strings.sendAnother,
                       style: customTextStyle(
-                          16, FontWeight.w400, AppColors.grey10, 1),
+                          16, FontWeight.w400, AppColors.blue1, 1),
                     ),
-                  ],
-                ),
-
-                if(!isOtpEntered && !enableResend)
-                RichText(
-                  text: TextSpan(
-                    style: customTextStyle(
-                        16, FontWeight.w400, AppColors.grey10, 1),
-                    children: <TextSpan>[
-                      TextSpan(text: Strings.sendAnother),
-                      TextSpan(text: Strings.iN),
-                      TextSpan(text: secondsRemaining.toString()),
+                  ),
+                if (isOtpEntered)
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      SizedBox(
+                        height: 18,
+                        width: 18,
+                        child: CircularProgressIndicator(
+                          strokeWidth: 2,
+                          color: AppColors.grey10,
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 7,
+                      ),
+                      Text(
+                        Strings.verifying,
+                        style: customTextStyle(
+                            16, FontWeight.w400, AppColors.grey10, 1),
+                      ),
                     ],
                   ),
-                ),
+                if (!isOtpEntered && !enableResend)
+                  RichText(
+                    text: TextSpan(
+                      style: customTextStyle(
+                          16, FontWeight.w400, AppColors.grey10, 1),
+                      children: <TextSpan>[
+                        TextSpan(text: Strings.sendAnother),
+                        TextSpan(text: Strings.iN),
+                        TextSpan(text: secondsRemaining.toString()),
+                      ],
+                    ),
+                  ),
               ]),
             ),
           ))),

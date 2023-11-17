@@ -71,11 +71,10 @@ class OTPTextFieldState extends State<OTPTextField> {
             if(last==true && value.isNotEmpty){
               FocusScope.of(context).unfocus();
             }
-            Timer.periodic(const Duration(seconds: 3), (timer) {
-              setState(() {
+             setState(() {
                 widget.isVerified(isAllFieldsFilled());
               });
-            });
+            
                           
           },
           showCursor: true,
