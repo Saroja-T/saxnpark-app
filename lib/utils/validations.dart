@@ -1,6 +1,4 @@
 
-
-
 class Validations
 {
   bool validatePassword(String value)

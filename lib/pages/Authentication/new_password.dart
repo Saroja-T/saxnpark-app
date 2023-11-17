@@ -31,6 +31,7 @@ class NewPasswordState extends State<NewPassword> {
   }
 
   validateFeilds() {
+    //check password format
     if (validate.validatePassword(_passwordController.text)) {
       _passwordValidationPassed = true;
       if (_confirmPasswordController.text == _passwordController.text) {

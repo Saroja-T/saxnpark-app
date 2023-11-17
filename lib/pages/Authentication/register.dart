@@ -63,21 +63,14 @@ class _RegisterState extends State<Register> {
     }
 
     //confirm password checking
-    if(_passwordController.text == _confirmPasswordController.text)
-    {
+    if (_passwordController.text == _confirmPasswordController.text) {
       _confirmPasswordValidationPassed = true;
-    }
-    else
-    {
+    } else {
       _confirmPasswordValidationPassed = false;
     }
   }
 
-  bool validatePassword(String value) {
-    String pattern = r'^(?=.*?[A-Z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$';
-    RegExp regExp = RegExp(pattern);
-    return regExp.hasMatch(value);
-  }
+  
 
   @override
   Widget build(BuildContext context) {
