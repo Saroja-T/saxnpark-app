@@ -71,6 +71,12 @@ static String appName = "SaxnPark";
 
 
     static bool passwordChanged = false;
+    /**  
+     * After OTP verification,
+     * false - redirect to general home 
+     * true - redirect to login
+    */
+    static bool shouldRedirectToHome = false;
 
 
 

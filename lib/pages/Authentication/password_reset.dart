@@ -25,6 +25,12 @@ class _PasswordResetState extends State<PasswordReset> {
   final TextEditingController _passwordController = TextEditingController();
 
   @override
+  void initState() {
+    Strings.shouldRedirectToHome = true;
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     h = MediaQuery.of(context).size.height;
     w = MediaQuery.of(context).size.width;

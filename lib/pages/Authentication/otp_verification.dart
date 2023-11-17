@@ -126,8 +126,11 @@ class OTPVerificationState extends State<OTPVerification> {
                           isVerified: (isAllFieldsFilled) {
                             isOtpEntered = isAllFieldsFilled;
                             if(isAllFieldsFilled){
-                              Navigator.pushReplacementNamed(context,  '/newPassword');
-                             // Navigator.pushNamedAndRemoveUntil(context, '/newPassword', ModalRoute.withName('/login'));
+                              if(!Strings.shouldRedirectToHome){
+                                Navigator.pushNamedAndRemoveUntil(context, '/generalHome', (route) => false);
+                              }else{
+                                Navigator.pushReplacementNamed(context,  '/newPassword');
+                              }
                             }
                           },
                         )),

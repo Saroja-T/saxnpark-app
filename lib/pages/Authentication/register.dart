@@ -34,9 +34,9 @@ class _RegisterState extends State<Register> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     _initialScreen = true;
+    Strings.shouldRedirectToHome = false;
   }
 
   validateFeilds() {
@@ -53,7 +53,7 @@ class _RegisterState extends State<Register> {
       if (_confirmPasswordController.text == _passwordController.text) {
         _confirmPasswordValidationPassed = true;
         Strings.passwordChanged = true;
-        Navigator.pushNamed(context, '/login');
+        Navigator.pushReplacementNamed(context, '/otpVerification');
       } else {
         _confirmPasswordValidationPassed = false;
       }

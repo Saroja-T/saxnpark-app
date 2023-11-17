@@ -98,8 +98,8 @@ class MyApp extends StatelessWidget {
             primaryColor: AppColors.primary, fontFamily: 'PublicSans'),
         initialRoute: '/',
         onGenerateRoute: RoutesGenerator.generateRoute,
-        //home: const RegisterHome(),
-         home: const LandingPage(),
+        home: const RegisterHome(),
+       //  home: const LandingPage(),
       ),
     );
   }
