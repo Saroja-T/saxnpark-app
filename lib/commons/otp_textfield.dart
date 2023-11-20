@@ -1,14 +1,11 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import '../utils/colors.dart';
-import '../utils/constants.dart';
 
-typedef callBackForOtp = void Function(bool isAllFieldsFilled);
+typedef CallBackForOtp = void Function(bool isAllFieldsFilled);
 class OTPTextField extends StatefulWidget {
-  callBackForOtp isVerified;
+  CallBackForOtp isVerified;
   OTPTextField({super.key, required this.isVerified});
 
   @override

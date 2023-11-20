@@ -118,7 +118,7 @@ class MyVehiclesState extends State<MyVehicles> {
                             height: 24,
                           ),
                           Container(
-                            color: AppColors.grey3,
+                            color: AppColors.grey12,
                             height: 1,
                           ),
                         ],
