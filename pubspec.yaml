@@ -53,6 +53,7 @@ dependencies:
   # flutter_facebook_auth: ^6.0.2
   google_sign_in: ^6.1.5
   firebase_auth: ^4.12.1
+  url_launcher: ^6.2.1
   #awesome_notifications: ^0.8.2
 
 dev_dependencies:

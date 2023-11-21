@@ -120,6 +120,9 @@ class CustomAppBarWithBack extends StatelessWidget implements PreferredSizeWidge
                 }else if(Strings.settings == title){
                   context.read<LandingBloc>().add(TabChangeEvent(
                         tabIndex:4, tabLabel: Strings.rAccount));
+                }else if(Strings.faq == title){
+                  context.read<LandingBloc>().add(TabChangeEvent(
+                        tabIndex:4, tabLabel: Strings.rHelp));
                 }else{
                   context.read<LandingBloc>().add(TabChangeEvent(
                         tabIndex:0, tabLabel: Strings.rHome));

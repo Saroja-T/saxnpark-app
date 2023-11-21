@@ -146,6 +146,9 @@ class Strings {
   static String rVisitorBookingDetails = "visitorBookingDetails";
   static String rVisitorBookingConfirmation = "visitorBookingConfirmation";
   static String rVisitorScreen = "visitorScreen";
+  static String rFaq = "Faq";
+  static String rHelp = "help";
+
   static String? identity;
 
   //Locationlist Title Text
@@ -281,4 +284,16 @@ class Strings {
       "Your space is 2B, Level 2, Aisle 6 at Heathrow Airport - Terminal 1";
   static String locationEnableMessage =
       "Kindly enable location to get information about your nearby parking spaces";
+
+  
+  static String faq = "FAQs";
+  static String cancellationPolicy = "Cancellation policy";
+  static String contactUs = "Contact us";
+  static String helpfulArticles = "Most helpful articles";
+  static String allTopics = "All topics";
+  static String topic = "Topic";
+  static String findInfo = "Find information";
+
+
+
 }

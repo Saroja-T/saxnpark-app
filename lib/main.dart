@@ -10,6 +10,8 @@ import 'package:saxnpark_app/firebase_options.dart';
 import 'package:saxnpark_app/pages/Authentication/login.dart';
 import 'package:saxnpark_app/pages/Authentication/password_reset.dart';
 import 'package:saxnpark_app/pages/accounts/accounts_page.dart';
+import 'package:saxnpark_app/pages/accounts/faq.dart';
+import 'package:saxnpark_app/pages/accounts/help.dart';
 import 'package:saxnpark_app/pages/authentication/new_password.dart';
 import 'package:saxnpark_app/pages/authentication/register_home.dart';
 import 'package:saxnpark_app/pages/landing_page.dart';
@@ -98,7 +100,7 @@ class MyApp extends StatelessWidget {
             primaryColor: AppColors.primary, fontFamily: 'PublicSans'),
         initialRoute: '/',
         onGenerateRoute: RoutesGenerator.generateRoute,
-        home: const RegisterHome(),
+        home: const LandingPage(),
        //  home: const LandingPage(),
       ),
     );

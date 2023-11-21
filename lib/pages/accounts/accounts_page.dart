@@ -205,16 +205,22 @@ class _AccountsPageState extends State<AccountsPage> {
                 padding: const EdgeInsets.fromLTRB(16, 24, 16, 24),
                 child: Column(
                   children: [
-                    Row(
-                      children: [
-                        Image.asset(help),
-                        const SizedBox(width: 8),
-                        Text(
-                          Strings.help,
-                          style: customTextStyle(
-                              14, FontWeight.w400, AppColors.grey6, 1),
-                        ),
-                      ],
+                    InkWell(
+                      onTap: (){
+                            context.read<LandingBloc>().add(TabChangeEvent(
+                            tabIndex: 4, tabLabel: Strings.rHelp));
+                      },
+                      child: Row(
+                        children: [
+                          Image.asset(help),
+                          const SizedBox(width: 8),
+                          Text(
+                            Strings.help,
+                            style: customTextStyle(
+                                14, FontWeight.w400, AppColors.grey6, 1),
+                          ),
+                        ],
+                      ),
                     ),
                     const SizedBox(
                       height: 24,
