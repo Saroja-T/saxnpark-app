@@ -6,6 +6,9 @@ import 'package:saxnpark_app/pages/authentication/otp_verification.dart';
 import 'package:saxnpark_app/pages/authentication/phone_number.dart';
 import 'package:saxnpark_app/pages/authentication/register.dart';
 import 'package:saxnpark_app/pages/authentication/register_home.dart';
+import 'package:saxnpark_app/pages/drive_account/create_account.dart';
+import 'package:saxnpark_app/pages/drive_account/vehicle_details.dart';
+import 'package:saxnpark_app/pages/drive_account/vehicle_number_search.dart';
 import 'package:saxnpark_app/pages/landing_page.dart';
 
 import '../pages/accounts/my_vehicles.dart';
@@ -49,6 +52,12 @@ class RoutesGenerator
       return MaterialPageRoute(builder: (_) => const Settings());
       case '/myVehicles':
       return MaterialPageRoute(builder: (_) => const MyVehicles());
+      case '/createAccount':
+      return MaterialPageRoute(builder: (_) => const CreateAccount());
+      case '/vehicleNumberSearch':
+      return MaterialPageRoute(builder: (_) => const VehicleNumberSearch());
+      case '/vehicleDetails':
+      return MaterialPageRoute(builder: (_) => const VehicleDetails());
       
       default:
         return _errorRoute();

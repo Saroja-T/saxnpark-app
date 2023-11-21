@@ -6,6 +6,8 @@ double? w;
 
 const String self = 'self';
 const String others = 'others';
+const bool searchResultNotAvailable = false;
+const bool isFromBookingPage = false;
 
 
 

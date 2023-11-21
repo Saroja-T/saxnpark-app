@@ -234,6 +234,7 @@ class Strings {
   static String vehicleType = "Vehicle type";
   static String vehicleModel = "Vehicle model";
   static String vehicleMake = "Vehicle make";
+  static String vehicleNick = "Vehicle nickname";
   static String selectVehicleMake = "Select vehicle make";
   static String selectVehicleModel = "Selct vehicle model";
   static String selectVehicleType = "Select vehicle type";
@@ -244,7 +245,16 @@ class Strings {
   static String searchVehicleType = "Search vehicle type";
   static String searchVehicleMake = "Search vehicle make";
   static String searchVehicleModel = "Search vehicle model";
-
+  static String title = "Title";
+  //Error message
+  static String errorName = "Name cannot be empty.";
+  static String errorNameLength = "Name length should be at least 3 characters and not exceed 70 characters.";
+  static String errorCountry = "Please choose a country before proceeding.";
+  static String errorState = "State selection is required.";
+  static String errorVehicleNumber = "Please provide a valid vehicle number.";
+  static String errorVehicleType = "We couldn’t find your vehicle type";
+  static String errorVehicleMake = "Vehicle make is required. Please choose one.";
+  static String errorVehicleModel = "Oops! It looks like you forgot to select a vehicle model.";
 //Dummy Text
   static String dummyText = "Saxnpark for carpark owners";
   static String dummyText1 = "204 locations";

@@ -63,7 +63,7 @@ class _PhoneNumberState extends State<PhoneNumber> {
                               child: Text(
                                 Strings.phoneNumberNotes,
                                 style: customTextStyle(
-                                    12, FontWeight.w400, AppColors.grey7, 1.2),
+                                    12, FontWeight.w400, AppColors.grey10, 1.2),
                               ),
                             ),
                           ),

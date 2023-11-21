@@ -58,7 +58,7 @@ class GeneralHomeState extends State<GeneralHome>
     return WillPopScope(
       onWillPop: () => showExitPopup(context),
       child: Container(
-        color: AppColors.black7,
+        color: AppColors.black1,
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
         child: Stack(
@@ -129,7 +129,7 @@ class GeneralHomeState extends State<GeneralHome>
                           child: ElevatedButton(
                             style: registerButtonStyle,
                             onPressed: () {
-                              Navigator.pushNamed(context, '/register');
+                              Navigator.pushNamed(context, '/createAccount');
                             },
                             child: Text(
                               Strings.createAccount,

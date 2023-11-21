@@ -280,7 +280,7 @@ class _LoginState extends State<Login>
                     Text(
                       Strings.loginWith,
                       style: customTextStyle(
-                          12, FontWeight.w400, AppColors.grey7, 1),
+                          12, FontWeight.w400, AppColors.grey10, 1),
                     ),
                     Expanded(
                       child: Container(

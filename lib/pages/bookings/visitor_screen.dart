@@ -67,7 +67,7 @@ class _VisitorScreenState extends State<VisitorScreen>
                     child: 
                     DropdownButtonHideUnderline( 
   child: DropdownButton(
-  hint: Text(Strings.dropDownHint,style: customTextStyle(14, FontWeight.w400, AppColors.grey7, 1),),
+  hint: Text(Strings.dropDownHint,style: customTextStyle(14, FontWeight.w400, AppColors.grey10, 1),),
   value: dropdownvalue,
   onChanged: (String? newValue) { 
     setState(() { 

@@ -16,125 +16,187 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      centerTitle: true,
+        centerTitle: true,
         backgroundColor: Colors.white,
         shadowColor: AppColors.toolbarShadow,
         title: Text(
           title,
-        style: TextStyle(
-          color: AppColors.black2,fontSize: 12.0,fontWeight: FontWeight.w600),));
+          style: TextStyle(
+              color: AppColors.black2,
+              fontSize: 12.0,
+              fontWeight: FontWeight.w600),
+        ));
   }
-  
-  @override
-    Size get preferredSize => const Size.fromHeight(50);
 
+  @override
+  Size get preferredSize => const Size.fromHeight(50);
 }
 
-class CustomAppBarWithBackAndSkip extends StatelessWidget implements PreferredSizeWidget 
-{
+class CustomAppBarWithBackAndSkip extends StatelessWidget
+    implements PreferredSizeWidget {
   final String title;
   final String backText;
   final String? redirectionKey;
   final int? tabIndex;
 
-  const CustomAppBarWithBackAndSkip({
-    Key? key,
-    required this.title,
-    required this.backText,
-    this.redirectionKey,
-    this.tabIndex
-  }) : super(key: key);
+  const CustomAppBarWithBackAndSkip(
+      {Key? key,
+      required this.title,
+      required this.backText,
+      this.redirectionKey,
+      this.tabIndex})
+      : super(key: key);
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      centerTitle: true,
+        centerTitle: true,
         backgroundColor: Colors.white,
         shadowColor: AppColors.toolbarShadow,
         leading: Align(
-          alignment: Alignment.centerLeft,
-          child: Padding(
-            padding: const EdgeInsets.fromLTRB(6,0,0,0),
-            child: TextButton(
-              onPressed: (){
-                if(title == Strings.signin){
-                  Navigator.pop(context);
-                }else{
-                  context.read<LandingBloc>().add(TabChangeEvent(
-                        tabIndex: tabIndex ?? 0, tabLabel: redirectionKey ?? ""));
-                }
-              },
-              child: Text(backText,style: customTextStyle(12, FontWeight.w400, AppColors.black5, 0),)),
-          )),
-          actions: <Widget>[
-    TextButton(
-      onPressed: () {
-        context.read<LandingBloc>().add(TabChangeEvent(
-                        tabIndex:  0, tabLabel: Strings.rHome));
-                    Navigator.pushReplacementNamed(context, '/landingpage');
-      },
-      child: Text('Skip',style: TextStyle(color: AppColors.black5),),
-    ),
-  ],
-          title: Text(
+            alignment: Alignment.centerLeft,
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(6, 0, 0, 0),
+              child: TextButton(
+                  onPressed: () {
+                    if (title == Strings.signin ||
+                        title == Strings.createAccount) {
+                      Navigator.pop(context);
+                    }
+                  },
+                  child: Text(
+                    backText,
+                    style: customTextStyle(
+                        12, FontWeight.w400, AppColors.black5, 0),
+                  )),
+            )),
+        actions: <Widget>[
+          TextButton(
+            onPressed: () {
+              if (title == Strings.createAccount) {
+                context
+                    .read<LandingBloc>()
+                    .add(TabChangeEvent(tabIndex: 0, tabLabel: Strings.rHome));
+                Navigator.pushNamedAndRemoveUntil(
+                              context, '/landingpage', (route) => false);
+              }
+            },
+            child: Text(
+              'Skip',
+              style: TextStyle(color: AppColors.black5),
+            ),
+          ),
+        ],
+        title: Text(
           title,
-        style: TextStyle(
-          color: AppColors.black6,fontSize: 14.0,fontWeight: FontWeight.w600),));
+          style: TextStyle(
+              color: AppColors.black6,
+              fontSize: 14.0,
+              fontWeight: FontWeight.w600),
+        ));
   }
-  
-  @override
-    Size get preferredSize => const Size.fromHeight(50);
 
+  @override
+  Size get preferredSize => const Size.fromHeight(50);
 }
-class CustomAppBarWithBack extends StatelessWidget implements PreferredSizeWidget 
-{
+
+class CustomAppBarWithBack extends StatelessWidget
+    implements PreferredSizeWidget {
   final String title;
   final String backText;
   final String? redirectionKey;
   final int? tabIndex;
 
-  const CustomAppBarWithBack({
-    Key? key,
-    required this.title,
-    required this.backText,
-    this.redirectionKey,
-    this.tabIndex
-  }) : super(key: key);
+  const CustomAppBarWithBack(
+      {Key? key,
+      required this.title,
+      required this.backText,
+      this.redirectionKey,
+      this.tabIndex})
+      : super(key: key);
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      centerTitle: true,
+        centerTitle: true,
         backgroundColor: Colors.white,
         shadowColor: AppColors.toolbarShadow,
         leading: Align(
-          alignment: Alignment.centerLeft,
-          child: Padding(
-            padding: const EdgeInsets.fromLTRB(6,0,0,0),
-            child: TextButton(
-              onPressed: (){
-                if(Strings.register==title || Strings.passwordReset==title
-                 || Strings.signin==title || Strings.verification==title){
-                  Navigator.pop(context);
-                }else if(Strings.myVehicles == title){
-                  context.read<LandingBloc>().add(TabChangeEvent(
-                        tabIndex:4, tabLabel: Strings.rAccount));
-                }else if(Strings.settings == title){
-                  context.read<LandingBloc>().add(TabChangeEvent(
-                        tabIndex:4, tabLabel: Strings.rAccount));
-                }else{
-                  context.read<LandingBloc>().add(TabChangeEvent(
-                        tabIndex:0, tabLabel: Strings.rHome));
-                }
-              },
-              child: Text(backText,style: customTextStyle(12, FontWeight.w400, AppColors.black5, 1),)),
-          )),
+            alignment: Alignment.centerLeft,
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(6, 0, 0, 0),
+              child: TextButton(
+                  onPressed: () {
+                    if (Strings.register == title ||
+                        Strings.passwordReset == title ||
+                        Strings.signin == title ||
+                        Strings.verification == title) {
+                      Navigator.pop(context);
+                    } else if (Strings.myVehicles == title) {
+                      context.read<LandingBloc>().add(TabChangeEvent(
+                          tabIndex: 4, tabLabel: Strings.rAccount));
+                    } else if (Strings.settings == title) {
+                      context.read<LandingBloc>().add(TabChangeEvent(
+                          tabIndex: 4, tabLabel: Strings.rAccount));
+                    } else {
+                      context.read<LandingBloc>().add(
+                          TabChangeEvent(tabIndex: 0, tabLabel: Strings.rHome));
+                    }
+                  },
+                  child: Text(
+                    backText,
+                    style: customTextStyle(
+                        12, FontWeight.w400, AppColors.black5, 1),
+                  )),
+            )),
         title: Text(
           title,
-        style: TextStyle(
-          color: AppColors.black6,fontSize: 14.0,fontWeight: FontWeight.w600),));
+          style: TextStyle(
+              color: AppColors.black6,
+              fontSize: 14.0,
+              fontWeight: FontWeight.w600),
+        ));
   }
-  
-  @override
-    Size get preferredSize => const Size.fromHeight(50);
 
+  @override
+  Size get preferredSize => const Size.fromHeight(50);
 }
 
+class CustomAppBarWithSkip extends StatelessWidget
+    implements PreferredSizeWidget {
+  final String title;
+  final String? redirectionKey;
+  final int? tabIndex;
+
+  const CustomAppBarWithSkip(
+      {Key? key, required this.title, this.redirectionKey, this.tabIndex})
+      : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return AppBar(
+        centerTitle: true,
+        backgroundColor: Colors.white,
+        shadowColor: AppColors.toolbarShadow,
+        actions: <Widget>[
+          TextButton(
+            onPressed: () {
+              if (title == Strings.createAccount) {
+                Navigator.pushReplacementNamed(context, '/generalHome');
+              }
+            },
+            child: Text(
+              'Skip',
+              style: TextStyle(color: AppColors.black5),
+            ),
+          ),
+        ],
+        title: Text(
+          title,
+          style: TextStyle(
+              color: AppColors.black6,
+              fontSize: 14.0,
+              fontWeight: FontWeight.w600),
+        ));
+  }
+
+  @override
+  Size get preferredSize => const Size.fromHeight(50);
+}

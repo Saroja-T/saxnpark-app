@@ -21,7 +21,10 @@ import 'package:saxnpark_app/utils/router.dart';
 import 'bloc/google/google_bloc.dart';
 import 'pages/authentication/country_list.dart';
 import 'pages/authentication/otp_verification.dart';
+import 'pages/drive_account/create_account.dart';
 import 'pages/drive_account/general_home.dart';
+import 'pages/drive_account/vehicle_details.dart';
+import 'pages/drive_account/vehicle_number_search.dart';
 import 'utils/strings.dart';
 
 Future<void> main() async {
@@ -98,7 +101,7 @@ class MyApp extends StatelessWidget {
             primaryColor: AppColors.primary, fontFamily: 'PublicSans'),
         initialRoute: '/',
         onGenerateRoute: RoutesGenerator.generateRoute,
-        home: const RegisterHome(),
+        home: const VehicleDetails(),
        //  home: const LandingPage(),
       ),
     );

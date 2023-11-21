@@ -372,7 +372,7 @@ class _RegisterState extends State<Register> {
                       Text(
                         Strings.registerWith,
                         style: customTextStyle(
-                            12, FontWeight.w400, AppColors.grey7, 1),
+                            12, FontWeight.w400, AppColors.grey10, 1),
                       ),
                       Expanded(
                         child: Container(

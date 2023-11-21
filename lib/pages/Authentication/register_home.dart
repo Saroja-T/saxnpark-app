@@ -33,7 +33,7 @@ class _RegisterHomeState extends State<RegisterHome> {
           fit: StackFit.loose,
           children: <Widget>[
             Container(
-              color: AppColors.black7,
+              color: AppColors.black1,
               height: MediaQuery.of(context).size.height,
               width: MediaQuery.of(context).size.width,
               child: Image.asset(

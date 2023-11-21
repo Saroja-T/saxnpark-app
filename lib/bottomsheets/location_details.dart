@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:saxnpark_app/pages/landing_page.dart';
-import 'package:saxnpark_app/utils/colors.dart';
-import 'package:saxnpark_app/utils/constants.dart';
-import 'package:saxnpark_app/utils/strings.dart';
-import 'package:saxnpark_app/utils/styles.dart';
+
+import '../pages/landing_page.dart';
+import '../utils/colors.dart';
+import '../utils/constants.dart';
+import '../utils/strings.dart';
+import '../utils/styles.dart';
 
 
 
