@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:saxnpark_app/pages/accounts/faq.dart';
+import 'package:saxnpark_app/pages/accounts/help.dart';
 
 import '../bloc/landing/landing_bloc.dart';
 import '../commons/bottom_icons.dart';
@@ -140,9 +142,12 @@ class _LandingPageState extends State<LandingPage> {
       return const BookingPreview();
     }else if (tabIndex == 1 && tabLabel == Strings.rBookingConfirmation) {
       return const BookingConfirmation();
-    }else if (tabIndex == 1) {
-      return const PurposeOfVisit();
-    }else if (tabIndex == 1) {
+    }else if (tabIndex == 4 && tabLabel == Strings.rHelp) {
+      return const HelpPage();
+    }else if (tabIndex == 4 && tabLabel == Strings.rFaq) {
+      return const FAQPage();
+    }
+    else if (tabIndex == 1) {
       return const PurposeOfVisit();
     }else{
       return Center(child: Text(Strings.home));
