@@ -14,6 +14,7 @@ import 'package:saxnpark_app/pages/accounts/faq.dart';
 import 'package:saxnpark_app/pages/accounts/help.dart';
 import 'package:saxnpark_app/pages/authentication/new_password.dart';
 import 'package:saxnpark_app/pages/authentication/register_home.dart';
+import 'package:saxnpark_app/pages/home_page.dart';
 import 'package:saxnpark_app/pages/landing_page.dart';
 import 'package:saxnpark_app/repositories/authentication.dart';
 import 'package:saxnpark_app/services/firebase_service.dart';
@@ -64,7 +65,6 @@ Future<AndroidMapRenderer?> initializeMapRenderer() async {
   _initializedRendererCompleter = completer;
 
   WidgetsFlutterBinding.ensureInitialized();
-
   final GoogleMapsFlutterPlatform mapsImplementation =
       GoogleMapsFlutterPlatform.instance;
   if (mapsImplementation is GoogleMapsFlutterAndroid) {
@@ -85,8 +85,7 @@ class MyApp extends StatelessWidget {
 
   // This widget is the root of your application.
   @override
-  Widget build(BuildContext context) 
-  {
+  Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
         BlocProvider<LandingBloc>(
@@ -103,7 +102,7 @@ class MyApp extends StatelessWidget {
             primaryColor: AppColors.primary, fontFamily: 'PublicSans'),
         initialRoute: '/',
         onGenerateRoute: RoutesGenerator.generateRoute,
-        home: const LandingPage(),
+        home: const RegisterHome(),
        //  home: const LandingPage(),
       ),
     );

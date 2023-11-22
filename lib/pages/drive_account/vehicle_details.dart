@@ -438,7 +438,7 @@ class VehicleDetailsState extends State<VehicleDetails> {
       ),
       builder: (BuildContext context) {
         return SearchBottomSheet(
-          selectedCountry: chosenVehicleModel,
+          selectedItem: chosenVehicleModel,
           dataList: vehicleModelList,
           title: Strings.vehicleModel,
           hint: Strings.searchVehicleModel,
@@ -465,7 +465,7 @@ class VehicleDetailsState extends State<VehicleDetails> {
       ),
       builder: (BuildContext context) {
         return SearchBottomSheet(
-          selectedCountry: selectedVehicleMake,
+          selectedItem: selectedVehicleMake,
           dataList: vehicleMakeList,
           title: Strings.vehicleMake,
           hint: Strings.searchVehicleMake,

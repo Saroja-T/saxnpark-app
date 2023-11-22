@@ -8,14 +8,14 @@ import '../utils/styles.dart';
 
 class SearchBottomSheet extends StatefulWidget {
   final Function(String) onItemSelected;
-  final String selectedCountry;
+  final String selectedItem;
   final String title;
   final String hint;
   final List<String> dataList;
   const SearchBottomSheet(
       {super.key,
       required this.onItemSelected,
-      required this.selectedCountry,
+      required this.selectedItem,
       required this.dataList, required this.title, required this.hint});
 
   @override
@@ -133,7 +133,7 @@ class SearchBottomSheetState extends State<SearchBottomSheet> {
                                 filteredItems[index],
                                 style: customTextStyle(
                                     14,
-                                    widget.selectedCountry ==
+                                    widget.selectedItem ==
                                             filteredItems[index]
                                         ? FontWeight.w600
                                         : FontWeight.w400,
@@ -141,7 +141,7 @@ class SearchBottomSheetState extends State<SearchBottomSheet> {
                                     0),
                               ),
                               const Spacer(),
-                              if (widget.selectedCountry ==
+                              if (widget.selectedItem ==
                                   filteredItems[index])
                                 Icon(
                                   Icons.check,

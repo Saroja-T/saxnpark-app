@@ -289,26 +289,31 @@ class _CreateAccountState extends State<CreateAccount> {
                           ],
                         ),
                       driverAccountCreationLabel(Strings.state, h),
-                      Container(
-                        height: (h! * 0.062).ceil().toDouble(),
-                        padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
-                        decoration: BoxDecoration(
-                            borderRadius:
-                                const BorderRadius.all(Radius.circular(4)),
-                            border: Border.all(color: AppColors.grey3)),
-                        child: Row(
-                          children: [
-                            SizedBox(
-                              width: (w! * 0.01).ceil().toDouble(),
-                            ),
-                            Text(
-                              Strings.selectState,
-                              style: customTextStyle(
-                                  14, FontWeight.w400, AppColors.black5, 1),
-                            ),
-                            const Spacer(),
-                            arrowDownIcon(),
-                          ],
+                      InkWell(
+                        onTap: () {
+                           showStateSearchBottomSheet(context);
+                        },
+                        child: Container(
+                          height: (h! * 0.062).ceil().toDouble(),
+                          padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
+                          decoration: BoxDecoration(
+                              borderRadius:
+                                  const BorderRadius.all(Radius.circular(4)),
+                              border: Border.all(color: AppColors.grey3)),
+                          child: Row(
+                            children: [
+                              SizedBox(
+                                width: (w! * 0.01).ceil().toDouble(),
+                              ),
+                              Text(
+                                selectedState==""?Strings.selectState:selectedState,
+                                style: customTextStyle(
+                                    14, FontWeight.w400, AppColors.black5, 1),
+                              ),
+                              const Spacer(),
+                              arrowDownIcon(),
+                            ],
+                          ),
                         ),
                       ),
                       if (hasSelectedState)
@@ -361,13 +366,40 @@ class _CreateAccountState extends State<CreateAccount> {
       ),
       builder: (BuildContext context) {
         return SearchBottomSheet(
-          selectedCountry: selectedCountry,
+          selectedItem: selectedCountry,
           dataList: countryList,
           title: Strings.country,
           hint: Strings.searchCountry,
           onItemSelected: (item) {
             setState(() {
               selectedCountry =
+                  item; // Update the selected item in the main widget
+            });
+          },
+        );
+      },
+    );
+  }
+
+  void showStateSearchBottomSheet(BuildContext context) {
+    showModalBottomSheet(
+      isScrollControlled: true,
+      context: context,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(20.0), // Adjust the radius as needed
+          topRight: Radius.circular(20.0), // Adjust the radius as needed
+        ),
+      ),
+      builder: (BuildContext context) {
+        return SearchBottomSheet(
+          selectedItem: selectedState,
+          dataList: countryList,
+          title: Strings.country,
+          hint: Strings.searchCountry,
+          onItemSelected: (item) {
+            setState(() {
+              selectedState =
                   item; // Update the selected item in the main widget
             });
           },
