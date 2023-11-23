@@ -12,11 +12,11 @@ import '../../utils/styles.dart';
 class MyLocation extends StatefulWidget {
   const MyLocation({super.key});
   @override
-  State<MyLocation> createState() => _MyLocationState();
+  State<MyLocation> createState() => MyLocationState();
 }
 
-class _MyLocationState extends State<MyLocation> {
-  var searchedText;
+class MyLocationState extends State<MyLocation> {
+ 
   bool countrySelected = false;
   bool inCorrectSearch = true;
   bool starSelected = false;

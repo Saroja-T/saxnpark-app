@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../bloc/landing/landing_bloc.dart';
-import '../../bottomsheets/country_list_bottom_sheet.dart';
+import '../../bottomsheets/search_bottom_sheet.dart';
 import '../../bottomsheets/list_view_bottom_sheet.dart';
 import '../../commons/custom_app_bar.dart';
 import '../../utils/colors.dart';

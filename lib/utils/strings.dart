@@ -6,7 +6,7 @@ class Strings {
   static String account = "Account";
   static String home = "Home";
   static String permit = "Permit";
-  static String session = "Session";
+  static String sessions = "Sessions";
   static String locations = "Locations";
   static String homeContent = "Park smart, with Saxnpark";
   static String parkNow = "Park now";
@@ -215,6 +215,8 @@ class Strings {
   //Authentication
   static String countryCode = "Country code";
   static String searchCountry = "Search country";
+    static String searchState =  "Search State";
+
 
   // Driver Account Creation
   static String driverDetails = "Driver details";
@@ -258,6 +260,31 @@ class Strings {
   static String errorVehicleType = "We couldn’t find your vehicle type";
   static String errorVehicleMake = "Vehicle make is required. Please choose one.";
   static String errorVehicleModel = "Oops! It looks like you forgot to select a vehicle model.";
+
+
+// Help
+  static String faq = "FAQs";
+  static String cancellationPolicy = "Cancellation policy";
+  static String contactUs = "Contact us";
+  static String helpfulArticles = "Most helpful articles";
+  static String allTopics = "All topics";
+  static String topic = "Topic";
+  static String findInfo = "Find information";
+
+
+// Sessions
+  static String activeSessions = "Active sessions";
+  static String pastSessions = "Past sessions";
+  static String confirmed = "Confirmed";
+  static String complete = "Complete";
+  static String approved = "Approved";
+  static String pending = "Pending";
+  static String noActiveSessions = "You have no active sessions";
+  static String noPastSessions = "You have no past sessions";
+  static String parkAgain = "Park again";
+  static String getReceipt = "Get receipt";
+  static String viewMore = "View more";
+
 //Dummy Text
   static String dummyText = "Saxnpark for carpark owners";
   static String dummyText1 = "204 locations";
@@ -286,6 +313,8 @@ class Strings {
   static String dummyBookingLocation1 = "Hounslow, TW6 1EW, United Kingdom";
   static String dummyTime = "16:00";
   static String dummyTime1 = "17:00";
+  static String dummyDate = "08/03/2023";
+  static String dummyDate1 = "08/03/2023";
   static String dummyDuration = "60";
   static String dummyCost = "\$1.20";
   static String dummySpace = "2B, Level 2, Aisle 6";
@@ -296,13 +325,6 @@ class Strings {
       "Kindly enable location to get information about your nearby parking spaces";
 
   
-  static String faq = "FAQs";
-  static String cancellationPolicy = "Cancellation policy";
-  static String contactUs = "Contact us";
-  static String helpfulArticles = "Most helpful articles";
-  static String allTopics = "All topics";
-  static String topic = "Topic";
-  static String findInfo = "Find information";
 
 
 

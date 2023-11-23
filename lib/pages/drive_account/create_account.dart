@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../bloc/landing/landing_bloc.dart';
-import '../../bottomsheets/country_list_bottom_sheet.dart';
+import '../../bottomsheets/search_bottom_sheet.dart';
 import '../../bottomsheets/list_view_bottom_sheet.dart';
 import '../../commons/custom_app_bar.dart';
 import '../../utils/colors.dart';
@@ -138,9 +138,15 @@ class _CreateAccountState extends State<CreateAccount> {
                                     hintStyle: TextStyle(
                                         fontSize: 14, color: AppColors.grey10)),
                                 onChanged: (val) {
-                                  setState(() {
-                                    if (driverNameController.text.isNotEmpty) {}
-                                  });
+                                  if (driverNameController.text.isNotEmpty) {
+                                    setState(() {
+                                        isNameEntered = false;
+                                      });
+                                  }else{
+                                     setState(() {
+                                        isNameEntered = true;
+                                      });
+                                  }
                                 },
                               ),
                             )
@@ -148,7 +154,7 @@ class _CreateAccountState extends State<CreateAccount> {
                         ),
                       ),
                       verticalSizedWidget10(h),
-                      if (isNameEntered)
+                      if (isNameEntered || isNameWithinLimit)
                         Column(
                           children: [
                             Text(
@@ -265,9 +271,9 @@ class _CreateAccountState extends State<CreateAccount> {
                                 width: w! * 0.03,
                               ),
                               Text(
-                                selectedCountry,
+                                selectedCountry==""?Strings.selectCountry:selectedCountry,
                                 style: customTextStyle(
-                                    14, FontWeight.w400, AppColors.black5, 1),
+                                    14, FontWeight.w400, selectedCountry==""?AppColors.grey10:AppColors.black6, 1),
                               ),
                               const Spacer(),
                               arrowDownIcon(),
@@ -308,7 +314,7 @@ class _CreateAccountState extends State<CreateAccount> {
                               Text(
                                 selectedState==""?Strings.selectState:selectedState,
                                 style: customTextStyle(
-                                    14, FontWeight.w400, AppColors.black5, 1),
+                                    14, FontWeight.w400, selectedState==""?AppColors.grey10:AppColors.black6, 1),
                               ),
                               const Spacer(),
                               arrowDownIcon(),
@@ -395,8 +401,8 @@ class _CreateAccountState extends State<CreateAccount> {
         return SearchBottomSheet(
           selectedItem: selectedState,
           dataList: countryList,
-          title: Strings.country,
-          hint: Strings.searchCountry,
+          title: Strings.state,
+          hint: Strings.searchState,
           onItemSelected: (item) {
             setState(() {
               selectedState =

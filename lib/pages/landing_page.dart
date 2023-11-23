@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:saxnpark_app/pages/accounts/faq.dart';
 import 'package:saxnpark_app/pages/accounts/help.dart';
+import 'package:saxnpark_app/pages/sessions/my_sessions.dart';
 
 import '../bloc/landing/landing_bloc.dart';
 import '../commons/bottom_icons.dart';
@@ -53,7 +54,7 @@ class _LandingPageState extends State<LandingPage> {
     BottomNavigationBarItem(
       icon: const BottomIcons(name: session),
       activeIcon: const BottomIcons(name: sessionActive),
-      label: Strings.session,
+      label: Strings.sessions,
     ),
     BottomNavigationBarItem(
       icon: const BottomIcons(name: permit),
@@ -142,14 +143,16 @@ class _LandingPageState extends State<LandingPage> {
       return const BookingPreview();
     }else if (tabIndex == 1 && tabLabel == Strings.rBookingConfirmation) {
       return const BookingConfirmation();
+    }else if (tabIndex == 1) {
+      return const PurposeOfVisit();
     }else if (tabIndex == 4 && tabLabel == Strings.rHelp) {
       return const HelpPage();
     }else if (tabIndex == 4 && tabLabel == Strings.rFaq) {
       return const FAQPage();
+    }else if (tabIndex == 2) {
+      return const MySessions();
     }
-    else if (tabIndex == 1) {
-      return const PurposeOfVisit();
-    }else{
+    else{
       return Center(child: Text(Strings.home));
     }
   }
