@@ -314,7 +314,7 @@ class Strings {
   static String dummyTime = "16:00";
   static String dummyTime1 = "17:00";
   static String dummyDate = "08/03/2023";
-  static String dummyDate1 = "08/03/2023";
+  static String dummyDate1 = "09/03/2023";
   static String dummyDuration = "60";
   static String dummyCost = "\$1.20";
   static String dummySpace = "2B, Level 2, Aisle 6";
