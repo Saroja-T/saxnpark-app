@@ -12,19 +12,16 @@ import '../../utils/constants.dart';
 import '../../utils/strings.dart';
 import '../../utils/styles.dart';
 
-class Login extends StatefulWidget 
-{
+class Login extends StatefulWidget {
   const Login({super.key});
   @override
   State<Login> createState() => _LoginState();
 }
 
-class _LoginState extends State<Login> 
-{
+class _LoginState extends State<Login> {
   bool _showPassword = false;
   bool _numberValidationPassed = true;
   bool _passwordValidationPassed = true;
-  
 
   String tabLabel = "";
   final TextEditingController _phoneController = TextEditingController();
@@ -34,35 +31,24 @@ class _LoginState extends State<Login>
   void initState() {
     // TODO: implement initState
     super.initState();
-    Timer.periodic(const Duration(seconds: 5), (timer) { 
-      setState(() {
-        Strings.passwordChanged = false;
-      });
-    });
+    initialTimer();
   }
 
-  validateFeilds()
-  {   //phonenumber validation
-      if(_phoneController.text.isEmpty)
-      {
-         _numberValidationPassed = false;
-      }
-      else
-      {
-        _numberValidationPassed = true;
-      }
+  validateFeilds() {
+    //phonenumber validation
+    if (_phoneController.text.isEmpty) {
+      _numberValidationPassed = false;
+    } else {
+      _numberValidationPassed = true;
+    }
 
-      //password validations
-      if(_passwordController.text.isEmpty)
-      {
-         _passwordValidationPassed = false;
-      }
-      else
-      {
-        _passwordValidationPassed = true;
-      }
+    //password validations
+    if (_passwordController.text.isEmpty) {
+      _passwordValidationPassed = false;
+    } else {
+      _passwordValidationPassed = true;
+    }
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -70,7 +56,7 @@ class _LoginState extends State<Login>
     w = MediaQuery.of(context).size.width;
     tabLabel = context.watch<LandingBloc>().state.tabLabel;
     return MultiBlocProvider(
-       providers: [
+      providers: [
         BlocProvider<LandingBloc>(
           create: (context) => LandingBloc(),
         ),
@@ -90,22 +76,30 @@ class _LoginState extends State<Login>
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        if(Strings.passwordChanged)
-                        Container(
-                          height: 50,   
-                          decoration: BoxDecoration(color: const Color.fromRGBO(36, 207, 125, 0.1),
-                          borderRadius: BorderRadius.circular(5)),
-                          child: Row(children: [
-                            const SizedBox(width: 15,),
-                            const Icon(Icons.check_circle_outline,size: 16,),
-                            const SizedBox(width: 10,),
-                            Text(Strings.passwordUpdated)
-                          ]),
-                        ),
-                      if(Strings.passwordChanged)
-                        const SizedBox(
-                          height: 30,
-                        ),
+                        if (Strings.passwordChanged)
+                          Container(
+                            height: 50,
+                            decoration: BoxDecoration(
+                                color: const Color.fromRGBO(36, 207, 125, 0.1),
+                                borderRadius: BorderRadius.circular(5)),
+                            child: Row(children: [
+                              const SizedBox(
+                                width: 15,
+                              ),
+                              const Icon(
+                                Icons.check_circle_outline,
+                                size: 16,
+                              ),
+                              const SizedBox(
+                                width: 10,
+                              ),
+                              Text(Strings.passwordUpdated)
+                            ]),
+                          ),
+                        if (Strings.passwordChanged)
+                          const SizedBox(
+                            height: 30,
+                          ),
                         Text(
                           Strings.phoneNumber,
                           style: customTextStyle(
@@ -128,13 +122,22 @@ class _LoginState extends State<Login>
                                 },
                                 child: Row(
                                   children: [
-                                    Image.asset(usIcon,width: 16,height: 16,),
-                                    const SizedBox(width: 2,),
-                                    Icon(Icons.keyboard_arrow_down_outlined,size: 16,color:AppColors.black6)
+                                    Image.asset(
+                                      usIcon,
+                                      width: 16,
+                                      height: 16,
+                                    ),
+                                    const SizedBox(
+                                      width: 2,
+                                    ),
+                                    Icon(Icons.keyboard_arrow_down_outlined,
+                                        size: 16, color: AppColors.black6)
                                   ],
                                 ),
                               ),
-                              const SizedBox(width: 4,),
+                              const SizedBox(
+                                width: 4,
+                              ),
                               Text(
                                 "+1",
                                 style: customTextStyle(
@@ -146,10 +149,11 @@ class _LoginState extends State<Login>
                                   keyboardType: TextInputType.phone,
                                   controller: _phoneController,
                                   decoration: InputDecoration(
-                                    border: InputBorder.none,
-                                    hintText: '908 612 422',
-                                    hintStyle: TextStyle(fontSize: 14,color: AppColors.grey10)
-                                  ),
+                                      border: InputBorder.none,
+                                      hintText: '908 612 422',
+                                      hintStyle: TextStyle(
+                                          fontSize: 14,
+                                          color: AppColors.grey10)),
                                   onChanged: (val) {
                                     setState(() {
                                       if (_phoneController.text.isNotEmpty) {
@@ -196,22 +200,21 @@ class _LoginState extends State<Login>
                           Expanded(
                             child: TextField(
                               controller: _passwordController,
-                              decoration:  InputDecoration(
-                                border: InputBorder.none,
-                                hintText: Strings.enterPassword,
-                                hintStyle: TextStyle(color: AppColors.grey10)
-                              ),
+                              decoration: InputDecoration(
+                                  border: InputBorder.none,
+                                  hintText: Strings.enterPassword,
+                                  hintStyle:
+                                      TextStyle(color: AppColors.grey10)),
                               obscureText: !_showPassword,
-                              onChanged: (val){
+                              onChanged: (val) {
                                 setState(() {
-                                      if (_passwordController.text.isNotEmpty) {
-                                        _passwordValidationPassed = true;
-                                      } else {
-                                        _passwordValidationPassed = false;
-                                      }
-                                    });
-                              }
-                              ,
+                                  if (_passwordController.text.isNotEmpty) {
+                                    _passwordValidationPassed = true;
+                                  } else {
+                                    _passwordValidationPassed = false;
+                                  }
+                                });
+                              },
                             ),
                           ),
                           InkWell(
@@ -220,9 +223,13 @@ class _LoginState extends State<Login>
                                   _showPassword = !_showPassword;
                                 });
                               },
-                              child: Icon(_showPassword
-                                  ? Icons.visibility_outlined
-                                  : Icons.visibility_off_outlined,size: 17,color: AppColors.black5,))
+                              child: Icon(
+                                _showPassword
+                                    ? Icons.visibility_outlined
+                                    : Icons.visibility_off_outlined,
+                                size: 17,
+                                color: AppColors.black5,
+                              ))
                         ],
                       ),
                     ),
@@ -243,18 +250,24 @@ class _LoginState extends State<Login>
                   height: 12,
                 ),
                 Align(
-                  alignment: Alignment.centerLeft,
-                  child: TextButton(
-                    onPressed: (){
-                      Navigator.pushNamed(context, '/passwordreset');
-                    },
-                    child: Text(Strings.forgotPassword,style: customTextStyleWithUnderline(16, FontWeight.w400, AppColors.blue1, 1),))),
-                const SizedBox(height: 24,),
+                    alignment: Alignment.centerLeft,
+                    child: TextButton(
+                        onPressed: () {
+                          Navigator.pushNamed(context, '/passwordreset');
+                        },
+                        child: Text(
+                          Strings.forgotPassword,
+                          style: customTextStyleWithUnderline(
+                              16, FontWeight.w400, AppColors.blue1, 1),
+                        ))),
+                const SizedBox(
+                  height: 24,
+                ),
                 ElevatedButton(
                   style: registerBtnStyle,
                   onPressed: () {
                     setState(() {
-                    validateFeilds();
+                      validateFeilds();
                     });
                   },
                   child: Text(
@@ -336,17 +349,19 @@ class _LoginState extends State<Login>
                 ),
                 RichText(
                   text: TextSpan(
-                    style:
-                        customTextStyle(16, FontWeight.w400, AppColors.black6, 1),
+                    style: customTextStyle(
+                        16, FontWeight.w400, AppColors.black6, 1),
                     children: <TextSpan>[
-                       TextSpan(text: Strings.dontHaveAnAccount),
+                      TextSpan(text: Strings.dontHaveAnAccount),
                       TextSpan(
                           text: Strings.register,
                           style: customTextStyleWithUnderline(
                               16, FontWeight.w700, AppColors.black6, 1),
-                          recognizer: TapGestureRecognizer()..onTap = () {
-                            Navigator.pushReplacementNamed(context, '/register');
-                          }),
+                          recognizer: TapGestureRecognizer()
+                            ..onTap = () {
+                              Navigator.pushReplacementNamed(
+                                  context, '/register');
+                            }),
                     ],
                   ),
                 ),
@@ -354,5 +369,15 @@ class _LoginState extends State<Login>
             ),
           ))),
     );
+  }
+
+  void initialTimer() {
+    Timer.periodic(const Duration(seconds: 5), (timer) {
+      if (this.mounted) {
+        setState(() {
+          Strings.passwordChanged = false;
+        });
+      }
+    });
   }
 }
