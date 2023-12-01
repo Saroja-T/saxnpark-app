@@ -28,7 +28,7 @@ class _FAQPageState extends State<FAQPage> {
     tabLabel = context.watch<LandingBloc>().state.tabLabel;
     return Scaffold(
       appBar: CustomAppBarWithBack(
-          title: Strings.faq, backText: Strings.back),
+          title: Strings.faq, backText: Strings.back,tabIndex: 4,redirectionKey: Strings.rHelp,),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.fromLTRB(16, 24, 16, 24),

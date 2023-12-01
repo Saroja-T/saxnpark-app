@@ -26,7 +26,7 @@ class _HelpPageState extends State<HelpPage> {
     tabLabel = context.watch<LandingBloc>().state.tabLabel;
     return Scaffold(
       appBar:
-          CustomAppBarWithBack(title: Strings.help, backText: Strings.buttonCloseText),
+          CustomAppBarWithBack(title: Strings.help, backText: Strings.buttonCloseText,tabIndex: 4,redirectionKey: Strings.rAccount,),
       body: Padding(
         padding: const EdgeInsets.fromLTRB(16, 24, 16, 24),
         child: Column(

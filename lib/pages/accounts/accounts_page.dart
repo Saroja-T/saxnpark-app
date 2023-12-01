@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:saxnpark_app/utils/colors.dart';
-import 'package:saxnpark_app/utils/custom_widgets.dart';
 import 'package:clipboard/clipboard.dart';
 import 'package:share_plus/share_plus.dart';
 
 import '../../bloc/landing/landing_bloc.dart';
 import '../../commons/custom_app_bar.dart';
+import '../../utils/colors.dart';
 import '../../utils/constants.dart';
+import '../../utils/custom_widgets.dart';
 import '../../utils/strings.dart';
 import '../../utils/styles.dart';
 
@@ -29,13 +29,32 @@ class _AccountsPageState extends State<AccountsPage> {
     tabLabel = context.watch<LandingBloc>().state.tabLabel;
     return Scaffold(
       appBar:
-          CustomAppBarWithBack(title: Strings.account, backText: Strings.back),
+          CustomAppBarWithBack(title: Strings.account, backText: Strings.back,tabIndex: 0,redirectionKey: Strings.rHome,),
       body: Padding(
         padding: const EdgeInsets.fromLTRB(16, 24, 16, 24),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            Container(
+                padding: const EdgeInsets.all(16),
+                margin: const EdgeInsets.only(bottom: 16),
+                decoration: const BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(8)),
+                    color: Color.fromRGBO(41, 170, 243, 0.1)),
+                child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Image.asset(
+                        info,
+                        color: AppColors.black6,
+                      ),
+                      const SizedBox(
+                        width: 4,
+                      ),
+                      Flexible(child: Text(Strings.updateDriverDetailsMsg))
+                    ]),
+              ),
             Container(
               decoration: BoxDecoration(
                   borderRadius: const BorderRadius.all(Radius.circular(10)),
@@ -44,6 +63,7 @@ class _AccountsPageState extends State<AccountsPage> {
                 padding: const EdgeInsets.fromLTRB(16, 24, 16, 24),
                 child: Column(
                   children: [
+                    
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [

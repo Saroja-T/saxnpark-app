@@ -136,6 +136,13 @@ class Strings {
   static String rPermit = "permit";
   static String rAccount = "account";
 
+  //Permit
+ static String rAddPermit = "addPermit";
+ static String rDriversDetails = "driversDetails";
+ static String rConfirmedDriversDetails = "confirmedDriversDetails";
+ static String rVehicleDetails = "vehicleDetails";
+ static String rUpdateDriverDetails = "updateDriverDetails";
+
   // Booking
   static String rPurpose = "purpose";
   static String rVehicleType = "vehicleType";
@@ -148,6 +155,7 @@ class Strings {
   static String rVisitorScreen = "visitorScreen";
   static String rFaq = "Faq";
   static String rHelp = "help";
+  static String rSessionTransfer = "sessionTransfer";
 
   static String? identity;
 
@@ -251,6 +259,9 @@ class Strings {
   static String searchVehicleMake = "Search vehicle make";
   static String searchVehicleModel = "Search vehicle model";
   static String title = "Title";
+  static String enterVehicleType = "Enter vehicle type";
+  static String enterVehicleNumber = "Enter vehicle number";
+  static String enterVehicleMake = "Enter vehicle make";
   //Error message
   static String errorName = "Name cannot be empty.";
   static String errorNameLength = "Name length should be at least 3 characters and not exceed 70 characters.";
@@ -260,6 +271,8 @@ class Strings {
   static String errorVehicleType = "We couldn’t find your vehicle type";
   static String errorVehicleMake = "Vehicle make is required. Please choose one.";
   static String errorVehicleModel = "Oops! It looks like you forgot to select a vehicle model.";
+  static String errorVehicleType1 = "We couldn’t find your vehicle type";
+  static String errorVehicleMake1 = "Vehicle make is required.";
 
 
 // Help
@@ -284,6 +297,43 @@ class Strings {
   static String parkAgain = "Park again";
   static String getReceipt = "Get receipt";
   static String viewMore = "View more";
+  static String timeLeft = "Time left";
+  static String transferSession = "Transfer session";
+  static String extendSession = "Extend session";
+  static String dontWorry = "Don’t worry, you have a 5 minute grace period";
+  static String viewDetails = "View details";
+  static String submitChanges = "Submit changes";
+  static String sessionTransfer = "Session transfer";
+  static String enterUserIdNo = "Enter User ID number";
+  static String userIdNotFound = "The User ID number you entered cannot be found";
+  static String sessionTransferred = "Session successfully transferred";
+  static String sessionTransferMsg = "You are transferring the remaining time on your permit to another Saxnpark user.";
+  static String sendingParking = "User 8176392 is sending you their parking session at Heathrow Airport - Terminal 1.";
+  static String updateDriverDetailsMsg = "Your details have been submitted. We will notify you when your request has been approved.";
+
+//Permits
+  static String permits = "Permits";
+  static String activePermits = "Active permits";
+  static String noActivePermits = "You have no parking permits";
+  static String expiredPermits = "Expired permits";
+  static String expires = "Expires";
+  static String active = "Active";
+  static String addPermit = "Add parking permit";
+  static String permitAccount = "You are about to add a aprking permit";
+  static String permitAccount1 = "to your account";
+  static String finishedPermit = "When you’ve finished you will be able to find";
+  static String finishedPermit1 = "your permits in the permit tab of the app.";
+  static String companyCode = "Company code";
+  static String enterCompanyCode = "Enter company code";
+  static String companyCodeDes = "You should have received a code from your employer to add your parking permit to your Saxnpark account.";
+  static String driversDetails = "Driver's details";
+  static String companyCodeNotEntered = "The Company code number you entered cannot be found";
+  static String theseRCorrect = "Yes, these are correct";
+  static String driversName = "Driver's name";
+  static String contactNumber = "Contact number";
+  static String vehicleRegistration = "Vehicle registration";
+  static String confirm = "Confirm";
+  static String noMakeChanges = "No, I need to make changes";
 
 //Dummy Text
   static String dummyText = "Saxnpark for carpark owners";
@@ -319,10 +369,17 @@ class Strings {
   static String dummyCost = "\$1.20";
   static String dummySpace = "2B, Level 2, Aisle 6";
   static String dummyPaymentMethod = "ending 3544";
+  static String dummyTimeLeft = "58m 01s";
+  static String dummyDriversName = "Shaun Johnson";
+  static String dummyContactNumber = "056 865 7949";
+  static String dummyVehicleMake = "Ford";
+  static String dummyVehicleModel = "Fiesta";
+
   static String dummyBookingMsg =
       "Your space is 2B, Level 2, Aisle 6 at Heathrow Airport - Terminal 1";
   static String locationEnableMessage =
       "Kindly enable location to get information about your nearby parking spaces";
+  
 
   
 

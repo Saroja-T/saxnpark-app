@@ -18,7 +18,7 @@ class SettingsState extends State<Settings> {
     h = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: CustomAppBarWithBack(
-          title: Strings.settings, backText: Strings.buttonCloseText),
+          title: Strings.settings, backText: Strings.buttonCloseText,tabIndex: 4,redirectionKey: Strings.rAccount,),
       body: Padding(
         padding: const EdgeInsets.fromLTRB(16, 24, 16, 24),
         child: Column(

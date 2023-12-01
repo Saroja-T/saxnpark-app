@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../bloc/landing/landing_bloc.dart';
@@ -10,15 +9,15 @@ import '../../utils/custom_widgets.dart';
 import '../../utils/strings.dart';
 import '../../utils/styles.dart';
 
-class VehicleNumberSearch extends StatefulWidget {
-  const VehicleNumberSearch({super.key});
+class AddPermit extends StatefulWidget {
+  const AddPermit({super.key});
   @override
-  State<VehicleNumberSearch> createState() => VehicleNumberSearchState();
+  State<AddPermit> createState() => AddPermitState();
 }
 
-class VehicleNumberSearchState extends State<VehicleNumberSearch> {
-  final TextEditingController vehicleNumberController = TextEditingController();
-  bool isVehicleNumberEntered = false;
+class AddPermitState extends State<AddPermit> {
+  final TextEditingController companyCodeController = TextEditingController();
+  bool isCompanyCodeEntered = false;
 
   @override
   void initState() {
@@ -34,9 +33,11 @@ class VehicleNumberSearchState extends State<VehicleNumberSearch> {
       listener: (context, state) {},
       builder: (context, state) {
         return Scaffold(
-            appBar: CustomAppBarWithBackAndSkip(
-              title: Strings.createAccount,
+            appBar: CustomAppBarWithBack(
+              title: Strings.permits,
               backText: Strings.back,
+              tabIndex: 4,
+              redirectionKey: Strings.rAccount,
             ),
             body: SingleChildScrollView(
                 child: Padding(
@@ -47,13 +48,24 @@ class VehicleNumberSearchState extends State<VehicleNumberSearch> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        Strings.vehicleDetails,
+                        Strings.enterCompanyCode,
                         style: TextStyle(
                             color: AppColors.black1,
                             fontSize: 20.0,
                             fontWeight: FontWeight.w500),
                       ),
-                      driverAccountCreationLabel(Strings.vehicleNumber, h),
+                      verticalSizedWidget10(h),
+                      verticalSizedWidget5(h),
+                      Text(
+                        Strings.companyCodeDes,
+                        style: TextStyle(
+                            color: AppColors.black1,
+                            fontSize: 16.0,
+                            fontWeight: FontWeight.w400,
+                            height: 1.5),
+                      ),
+                      verticalSizedWidget5(h),
+                      driverAccountCreationLabel(Strings.companyCode, h),
                       Container(
                         padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
                         decoration: BoxDecoration(
@@ -64,11 +76,10 @@ class VehicleNumberSearchState extends State<VehicleNumberSearch> {
                           children: [
                             Expanded(
                               child: TextField(
-                                controller: vehicleNumberController,
-                                keyboardType: TextInputType.emailAddress,
+                                controller: companyCodeController,
                                 decoration: InputDecoration(
                                     border: InputBorder.none,
-                                    hintText: Strings.example,
+                                    hintText: Strings.enterCompanyCode,
                                     hintStyle: TextStyle(
                                         fontSize: 14, color: AppColors.grey10)),
                                 onChanged: (val) {
@@ -79,17 +90,27 @@ class VehicleNumberSearchState extends State<VehicleNumberSearch> {
                           ],
                         ),
                       ),
-
-                      if (isVehicleNumberEntered)
+                      if (isCompanyCodeEntered)
                         Column(
                           children: [
                             const SizedBox(
                               height: 5,
                             ),
-                            Text(
-                              Strings.errorVehicleNumber,
-                              style: customTextStyle(
-                                  12, FontWeight.w400, AppColors.red1, 1),
+                            Row(
+                              children: [
+                                Image.asset(
+                                  info,
+                                  color: AppColors.red1,
+                                ),
+                                const SizedBox(
+                                  width: 5,
+                                ),
+                                Text(
+                                  Strings.companyCodeNotEntered,
+                                  style: customTextStyle(
+                                      12, FontWeight.w400, AppColors.red1, 1),
+                                ),
+                              ],
                             ),
                           ],
                         ),
@@ -100,23 +121,33 @@ class VehicleNumberSearchState extends State<VehicleNumberSearch> {
                         style: registerBtnStyle,
                         onPressed: () {
                           setState(() {
-                            if(vehicleNumberController.text.isNotEmpty){
+                            if (companyCodeController.text.isNotEmpty) {
                               print("vehicle number is not empty");
-                              vehicleDetailsFrom = Strings.createAccount;
-                              Navigator.pushNamed(context, '/vehicleDetails');
-                            }else{
+                              context.read<LandingBloc>().add(TabChangeEvent(
+                                  tabIndex: 4,
+                                  tabLabel: Strings.rDriversDetails));
+                            } else {
                               setState(() {
-                                isVehicleNumberEntered = true;
+                                isCompanyCodeEntered = true;
                               });
                             }
                           });
                         },
-                        child: Text(
-                          Strings.searchText,
-                          style: TextStyle(
-                              fontSize: 16.0,
-                              fontWeight: FontWeight.w700,
-                              color: AppColors.white),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              Strings.next,
+                              style: TextStyle(
+                                  fontSize: 16.0,
+                                  fontWeight: FontWeight.w700,
+                                  color: AppColors.white),
+                            ),
+                            const SizedBox(
+                              width: 5,
+                            ),
+                            const Icon(Icons.arrow_forward)
+                          ],
                         ),
                       ),
                     ]),

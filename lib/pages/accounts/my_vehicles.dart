@@ -29,7 +29,7 @@ class MyVehiclesState extends State<MyVehicles> {
     tabLabel = context.watch<LandingBloc>().state.tabLabel;
     return Scaffold(
       appBar: CustomAppBarWithBack(
-          title: Strings.myVehicles, backText: Strings.back),
+          title: Strings.myVehicles, backText: Strings.back,tabIndex: 4,redirectionKey: Strings.rAccount,),
       body: Padding(
         padding: const EdgeInsets.fromLTRB(16, 24, 16, 24),
         child: Column(

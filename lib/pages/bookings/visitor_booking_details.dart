@@ -22,7 +22,12 @@ class VisitorBookingDetaillsState extends State<VisitorBookingDetaills> {
     h = MediaQuery.of(context).size.height;
     tabLabel = context.watch<LandingBloc>().state.tabLabel;
     return Scaffold(
-      appBar: CustomAppBarWithBack(title: Strings.bookingConfirmation,backText: Strings.back,tabIndex: 1,redirectionKey: Strings.rVehicleType,),
+      appBar: CustomAppBarWithBack(
+        title: Strings.bookingConfirmation,
+        backText: Strings.back,
+        tabIndex: 1,
+        redirectionKey: Strings.rVehicleType,
+      ),
       body: Padding(
         padding: const EdgeInsets.fromLTRB(16, 24, 16, 24),
         child: SingleChildScrollView(
@@ -63,19 +68,23 @@ class VisitorBookingDetaillsState extends State<VisitorBookingDetaills> {
                                 style: customTextStyle(
                                     16, FontWeight.w600, AppColors.black6, 0),
                               )),
-                              SizedBox(width: 4,),
-                               GestureDetector(
-              onTap: vehicleTypeChange,
-              child: Text(
-                Strings.change,
-                style: customTextStyle(16, FontWeight.w400, AppColors.blue1, 0),
-              ),
-            ),
+                          SizedBox(
+                            width: 4,
+                          ),
+                          GestureDetector(
+                            onTap: vehicleTypeChange,
+                            child: Text(
+                              Strings.change,
+                              style: customTextStyle(
+                                  16, FontWeight.w400, AppColors.blue1, 0),
+                            ),
+                          ),
                         ],
                       ),
-                        
-                          const SizedBox(height: 10,),
-                          Text(
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Text(
                         Strings.hostText,
                         style: customTextStyle(
                             14, FontWeight.w400, AppColors.black6, 0),
@@ -92,14 +101,17 @@ class VisitorBookingDetaillsState extends State<VisitorBookingDetaills> {
                                 style: customTextStyle(
                                     16, FontWeight.w600, AppColors.black6, 0),
                               )),
-                             const SizedBox(width: 4,),
-                              GestureDetector(
-              onTap: vehicleTypeChange,
-              child: Text(
-                Strings.change,
-                style: customTextStyle(16, FontWeight.w400, AppColors.blue1, 0),
-              ),
-            ),
+                          const SizedBox(
+                            width: 4,
+                          ),
+                          GestureDetector(
+                            onTap: vehicleTypeChange,
+                            child: Text(
+                              Strings.change,
+                              style: customTextStyle(
+                                  16, FontWeight.w400, AppColors.blue1, 0),
+                            ),
+                          ),
                         ],
                       )
                     ]),
@@ -140,7 +152,8 @@ class VisitorBookingDetaillsState extends State<VisitorBookingDetaills> {
                           ))),
                       onPressed: () {
                         context.read<LandingBloc>().add(TabChangeEvent(
-                      tabIndex: 1, tabLabel: Strings.rVisitorBookingConfirmation));
+                            tabIndex: 1,
+                            tabLabel: Strings.rVisitorBookingConfirmation));
                       },
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,

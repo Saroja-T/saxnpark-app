@@ -28,6 +28,7 @@ import 'pages/drive_account/create_account.dart';
 import 'pages/drive_account/general_home.dart';
 import 'pages/drive_account/vehicle_details.dart';
 import 'pages/drive_account/vehicle_number_search.dart';
+import 'pages/permits/permit_home.dart';
 import 'utils/strings.dart';
 
 Future<void> main() async {
@@ -103,7 +104,7 @@ class MyApp extends StatelessWidget {
         initialRoute: '/',
         onGenerateRoute: RoutesGenerator.generateRoute,
         //home: const RegisterHome(),
-        home: const LandingPage(),
+         home: const LandingPage(),
       ),
     );
   }

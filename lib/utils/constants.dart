@@ -1,4 +1,5 @@
 import 'dart:ffi';
+import 'strings.dart';
 
 double? h;
 double? w;
@@ -8,6 +9,7 @@ const String self = 'self';
 const String others = 'others';
 const bool searchResultNotAvailable = false;
 const bool isFromBookingPage = false;
+String vehicleDetailsFrom = Strings.createAccount;
 
 
 

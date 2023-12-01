@@ -83,10 +83,38 @@ class VehicleDetailsState extends State<VehicleDetails> {
       listener: (context, state) {},
       builder: (context, state) {
         return Scaffold(
-            appBar: CustomAppBarWithBackAndSkip(
-              title: Strings.createAccount,
-              backText: Strings.back,
-            ),
+            appBar: vehicleDetailsFrom == Strings.createAccount
+                ? CustomAppBarWithBackAndSkip(
+                    title: Strings.createAccount,
+                    backText: Strings.back,
+                  )
+                : AppBar(
+                    centerTitle: true,
+                    backgroundColor: Colors.white,
+                    shadowColor: AppColors.toolbarShadow,
+                    leading: Align(
+                        alignment: Alignment.centerLeft,
+                        child: Padding(
+                          padding: const EdgeInsets.fromLTRB(6, 0, 0, 0),
+                          child: TextButton(
+                              onPressed: () {
+                                context.read<LandingBloc>().add(TabChangeEvent(
+                                    tabIndex: 4,
+                                    tabLabel: Strings.rDriversDetails));
+                              },
+                              child: Text(
+                                Strings.back,
+                                style: customTextStyle(
+                                    12, FontWeight.w400, AppColors.black5, 1),
+                              )),
+                        )),
+                    title: Text(
+                      Strings.vehicleDetails,
+                      style: TextStyle(
+                          color: AppColors.black6,
+                          fontSize: 14.0,
+                          fontWeight: FontWeight.w600),
+                    )),
             body: SingleChildScrollView(
                 child: Padding(
               padding: const EdgeInsets.fromLTRB(16, 24, 16, 24),
@@ -145,7 +173,7 @@ class VehicleDetailsState extends State<VehicleDetails> {
                             fontSize: 20.0,
                             fontWeight: FontWeight.w500),
                       ),
-                      driverAccountCreationLabel(Strings.vehicleNumber, h),
+                      driverAccountCreationLabel(vehicleDetailsFrom == Strings.rDriversDetails?Strings.vehicleRegistration:Strings.vehicleNumber, h),
                       Container(
                         padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
                         decoration: BoxDecoration(
@@ -384,10 +412,17 @@ class VehicleDetailsState extends State<VehicleDetails> {
                           if (isFromBookingPage) {
                             validation();
                           }
-                          context.read<LandingBloc>().add(TabChangeEvent(
-                              tabIndex: 0, tabLabel: Strings.rHome));
+                          if (vehicleDetailsFrom == Strings.rDriversDetails){
+                            context.read<LandingBloc>().add(TabChangeEvent(
+                              tabIndex: 4, tabLabel: Strings.rConfirmedDriversDetails));
+                          }else{
+                            
                           Navigator.pushNamedAndRemoveUntil(
                               context, '/landingpage', (route) => false);
+                          context.read<LandingBloc>().add(TabChangeEvent(
+                              tabIndex: 0, tabLabel: Strings.rHome));
+                          }
+                          
                         },
                         child: Text(
                           Strings.saveAndContinue,
@@ -400,25 +435,26 @@ class VehicleDetailsState extends State<VehicleDetails> {
                       SizedBox(
                         height: (h! * 0.02).ceilToDouble(),
                       ),
-                      GestureDetector(
-                        onTap: () {},
-                        child: SizedBox(
-                          width: MediaQuery.of(context).size.width,
-                          child: Container(
-                            height: (h! * 0.06).ceilToDouble(),
-                            decoration: BoxDecoration(
-                                borderRadius:
-                                    const BorderRadius.all(Radius.circular(12)),
-                                border: Border.all(color: AppColors.black6)),
-                            child: Center(
-                                child: Text(
-                              Strings.enterManually,
-                              style: customTextStyle(
-                                  16, FontWeight.w700, AppColors.black6, 1),
-                            )),
+                      if (vehicleDetailsFrom == Strings.createAccount)
+                        GestureDetector(
+                          onTap: () {},
+                          child: SizedBox(
+                            width: MediaQuery.of(context).size.width,
+                            child: Container(
+                              height: (h! * 0.06).ceilToDouble(),
+                              decoration: BoxDecoration(
+                                  borderRadius: const BorderRadius.all(
+                                      Radius.circular(12)),
+                                  border: Border.all(color: AppColors.black6)),
+                              child: Center(
+                                  child: Text(
+                                Strings.enterManually,
+                                style: customTextStyle(
+                                    16, FontWeight.w700, AppColors.black6, 1),
+                              )),
+                            ),
                           ),
                         ),
-                      ),
                     ]),
               ),
             )));

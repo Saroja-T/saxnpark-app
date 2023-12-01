@@ -125,21 +125,13 @@ class CustomAppBarWithBack extends StatelessWidget
             padding: const EdgeInsets.fromLTRB(6,0,0,0),
             child: TextButton(
               onPressed: (){
+                // print(context.watch<LandingBloc>().state.tabLabel);
                 if(Strings.register==title || Strings.passwordReset==title
                  || Strings.signin==title || Strings.verification==title){
                   Navigator.pop(context);
-                }else if(Strings.myVehicles == title){
-                  context.read<LandingBloc>().add(TabChangeEvent(
-                        tabIndex:4, tabLabel: Strings.rAccount));
-                }else if(Strings.settings == title){
-                  context.read<LandingBloc>().add(TabChangeEvent(
-                        tabIndex:4, tabLabel: Strings.rAccount));
-                }else if(Strings.faq == title){
-                  context.read<LandingBloc>().add(TabChangeEvent(
-                        tabIndex:4, tabLabel: Strings.rHelp));
                 }else{
                   context.read<LandingBloc>().add(TabChangeEvent(
-                        tabIndex:0, tabLabel: Strings.rHome));
+                        tabIndex:tabIndex!, tabLabel: redirectionKey!));
                 }
               },
               child: Text(backText,style: customTextStyle(12, FontWeight.w400, AppColors.black5, 1),)),

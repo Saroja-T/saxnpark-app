@@ -10,6 +10,7 @@ import 'package:saxnpark_app/pages/drive_account/create_account.dart';
 import 'package:saxnpark_app/pages/drive_account/vehicle_details.dart';
 import 'package:saxnpark_app/pages/drive_account/vehicle_number_search.dart';
 import 'package:saxnpark_app/pages/landing_page.dart';
+import 'package:saxnpark_app/pages/permits/permit_home.dart';
 
 import '../pages/accounts/my_vehicles.dart';
 import '../pages/authentication/new_password.dart';
@@ -58,6 +59,8 @@ class RoutesGenerator
       return MaterialPageRoute(builder: (_) => const VehicleNumberSearch());
       case '/vehicleDetails':
       return MaterialPageRoute(builder: (_) => const VehicleDetails());
+      case '/permitHome':
+      return MaterialPageRoute(builder: (_) => const PermitHome());
       
       default:
         return _errorRoute();

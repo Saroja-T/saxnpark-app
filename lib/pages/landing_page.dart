@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:saxnpark_app/pages/accounts/faq.dart';
-import 'package:saxnpark_app/pages/accounts/help.dart';
-import 'package:saxnpark_app/pages/sessions/my_sessions.dart';
 
 import '../bloc/landing/landing_bloc.dart';
 import '../commons/bottom_icons.dart';
@@ -13,6 +10,8 @@ import '../utils/constants.dart';
 import '../utils/strings.dart';
 
 import 'accounts/accounts_page.dart';
+import 'accounts/faq.dart';
+import 'accounts/help.dart';
 import 'accounts/my_vehicles.dart';
 import 'accounts/settings.dart';
 import 'bookings/booking_confirmation.dart';
@@ -24,6 +23,13 @@ import 'locations/location_list.dart';
 import 'locations/location_page.dart';
 import 'locations/my_locations.dart';
 import 'locations/nearme_page.dart';
+import 'permits/add_permit.dart';
+import 'permits/my_permits.dart';
+import 'permits/permit_driver_details.dart';
+import 'permits/update_driver_details.dart';
+import 'sessions/my_sessions.dart';
+import 'sessions/session_transfer.dart';
+import 'drive_account/vehicle_details.dart' as drive_account;
 
 final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
  PersistentBottomSheetController? controller;
@@ -135,6 +141,14 @@ class _LandingPageState extends State<LandingPage> {
        return const Settings();
     }else if(tabIndex == 4 && tabLabel==Strings.rAccount){
       return const AccountsPage();
+    }else if(tabIndex == 4 && tabLabel==Strings.rAddPermit){
+      return const AddPermit();
+    }else if(tabIndex == 4 && (tabLabel==Strings.rDriversDetails || tabLabel==Strings.rConfirmedDriversDetails)){
+      return const PermitDriversDetaills();
+    }else if(tabIndex == 4 && tabLabel==Strings.rVehicleDetails){
+      return const drive_account.VehicleDetails();
+    }else if(tabIndex == 4 && tabLabel==Strings.rUpdateDriverDetails){
+      return const UpdateDriverDetails();
     }else if (tabIndex == 1 && tabLabel == Strings.rVehicleType) {
       return const VehicleType();
     }else if (tabIndex == 1 && tabLabel == Strings.rParkTime) {
@@ -149,8 +163,12 @@ class _LandingPageState extends State<LandingPage> {
       return const HelpPage();
     }else if (tabIndex == 4 && tabLabel == Strings.rFaq) {
       return const FAQPage();
-    }else if (tabIndex == 2) {
+    }else if(tabIndex == 2 && tabLabel == Strings.rSessionTransfer){
+      return const SessionTransfer();
+    }else if (tabIndex == 2 && tabLabel == Strings.rSession) {
       return const MySessions();
+    }else if(tabIndex == 3 && tabLabel == Strings.rPermit){
+      return const MyPermits();
     }
     else{
       return Center(child: Text(Strings.home));
