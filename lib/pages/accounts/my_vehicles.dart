@@ -29,7 +29,11 @@ class MyVehiclesState extends State<MyVehicles> {
     tabLabel = context.watch<LandingBloc>().state.tabLabel;
     return Scaffold(
       appBar: CustomAppBarWithBack(
-          title: Strings.myVehicles, backText: Strings.back,tabIndex: 4,redirectionKey: Strings.rAccount,),
+        title: Strings.myVehicles,
+        backText: Strings.back,
+        tabIndex: 4,
+        redirectionKey: Strings.rAccount,
+      ),
       body: Padding(
         padding: const EdgeInsets.fromLTRB(16, 24, 16, 24),
         child: Column(
@@ -46,8 +50,15 @@ class MyVehiclesState extends State<MyVehicles> {
                 child: ListView(
                   shrinkWrap: true,
                   children: [
-                    vehiclesItem(Strings.dummyvehicle1,Strings.dummyCategory1),
-                    vehiclesItem(Strings.dummyvehicle2,Strings.dummyCategoey2),
+                    InkWell(
+                      onTap: () {
+                        context.read<LandingBloc>().add(TabChangeEvent(
+                            tabIndex: 4, tabLabel: Strings.rDeleteVehicle));
+                      },
+                      child: vehiclesItem(
+                          Strings.dummyvehicle1, Strings.dummyCategory1),
+                    ),
+                    vehiclesItem(Strings.dummyvehicle2, Strings.dummyCategoey2),
                     const SizedBox(
                       height: 24,
                     ),
@@ -56,18 +67,17 @@ class MyVehiclesState extends State<MyVehicles> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                           Image.asset(add),
-                        const SizedBox(width: 16),
+                          Image.asset(add),
+                          const SizedBox(width: 16),
                           Text(
                             Strings.addVehicle,
                             style: customTextStyle(
                                 16, FontWeight.w400, AppColors.black6, 1),
                           ),
-                          
                         ],
                       ),
                     ),
-                     const SizedBox(
+                    const SizedBox(
                       height: 24,
                     ),
                   ],
@@ -75,54 +85,53 @@ class MyVehiclesState extends State<MyVehicles> {
               ),
             ),
             const SizedBox(height: 16),
-            
           ],
         ),
       ),
     );
   }
-  
+
   vehiclesItem(String title, String category) {
     return Expanded(
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          const SizedBox(
-                            height: 24,
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    title,
-                                    style: customTextStyle(16, FontWeight.w400,
-                                        AppColors.black6, 1),
-                                  ),
-                                  SizedBox(
-                                    height: 10,
-                                  ),
-                                  Text(
-                                    category,
-                                    style: customTextStyle(16, FontWeight.w400,
-                                        AppColors.grey6, 1),
-                                  ),
-                                ],
-                              ),
-                              Image.asset(rightArrow),
-                            ],
-                          ),
-                          const SizedBox(
-                            height: 24,
-                          ),
-                          Container(
-                            color: AppColors.grey12,
-                            height: 1,
-                          ),
-                        ],
-                      ),
-                    );
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          const SizedBox(
+            height: 24,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    title,
+                    style: customTextStyle(
+                        16, FontWeight.w400, AppColors.black6, 1),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Text(
+                    category,
+                    style: customTextStyle(
+                        16, FontWeight.w400, AppColors.grey6, 1),
+                  ),
+                ],
+              ),
+              Image.asset(rightArrow),
+            ],
+          ),
+          const SizedBox(
+            height: 24,
+          ),
+          Container(
+            color: AppColors.grey12,
+            height: 1,
+          ),
+        ],
+      ),
+    );
   }
 }

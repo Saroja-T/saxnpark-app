@@ -26,6 +26,11 @@ final ButtonStyle transparentBtnWithBorderStyle = ElevatedButton.styleFrom(
   ),
 );
 
+final ButtonStyle transparentBtnStyle = ElevatedButton.styleFrom(
+  minimumSize: const Size(double.infinity, 51),
+  backgroundColor: Colors.transparent,
+);
+
 final ButtonStyle homeActiveElatedBtnStyle = ElevatedButton.styleFrom(
   backgroundColor: AppColors.black1,
   shape: const RoundedRectangleBorder(

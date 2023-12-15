@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:saxnpark_app/pages/accounts/delete_vehicle.dart';
+import 'package:saxnpark_app/pages/accounts/my_details.dart';
+import 'package:saxnpark_app/pages/authentication/signout.dart';
+import 'package:saxnpark_app/pages/bookings/visitor_booking_confirmation.dart';
+import 'package:saxnpark_app/pages/bookings/visitor_booking_details.dart';
+import 'package:saxnpark_app/pages/bookings/visitor_screen.dart';
 
 import '../bloc/landing/landing_bloc.dart';
 import '../commons/bottom_icons.dart';
@@ -133,12 +139,16 @@ class _LandingPageState extends State<LandingPage> {
       return const LocationList();
     } else if (tabIndex == 0 && tabLabel == Strings.rNearMeMapList) {
       return const NearMePage();
+    }else if (tabIndex == 4 && tabLabel == Strings.rDeleteVehicle){
+       return const DeleteVehicle();
     }else if (tabIndex == 4 && tabLabel == Strings.rMyLocation){
        return const MyLocation();
     }else if (tabIndex == 4 && tabLabel == Strings.rMyVehicles){
        return const MyVehicles();
     }else if (tabIndex == 4 && tabLabel == Strings.rMySettings){
        return const Settings();
+    }else if(tabIndex == 4 && tabLabel==Strings.rMyDetails){
+      return const MyDetails();
     }else if(tabIndex == 4 && tabLabel==Strings.rAccount){
       return const AccountsPage();
     }else if(tabIndex == 4 && tabLabel==Strings.rAddPermit){
@@ -157,6 +167,12 @@ class _LandingPageState extends State<LandingPage> {
       return const BookingPreview();
     }else if (tabIndex == 1 && tabLabel == Strings.rBookingConfirmation) {
       return const BookingConfirmation();
+    }else if (tabIndex == 1 && tabLabel == Strings.rVisitorScreen) {
+      return const VisitorScreen();
+    }else if (tabIndex == 1 && tabLabel == Strings.rVisitorBookingDetails) {
+      return const VisitorBookingDetaills();
+    }else if (tabIndex == 1 && tabLabel == Strings.rVisitorBookingConfirmation) {
+      return const VisitorBookingConfirmation();
     }else if (tabIndex == 1) {
       return const PurposeOfVisit();
     }else if (tabIndex == 4 && tabLabel == Strings.rHelp) {
@@ -166,7 +182,8 @@ class _LandingPageState extends State<LandingPage> {
     }else if(tabIndex == 2 && tabLabel == Strings.rSessionTransfer){
       return const SessionTransfer();
     }else if (tabIndex == 2 && tabLabel == Strings.rSession) {
-      return const MySessions();
+     // return const MySessions();
+      return const SignOut();
     }else if(tabIndex == 3 && tabLabel == Strings.rPermit){
       return const MyPermits();
     }

@@ -7,6 +7,7 @@ import '../../utils/colors.dart';
 import '../../utils/constants.dart';
 import '../../utils/strings.dart';
 import '../../utils/styles.dart';
+import '../payment/payment_page.dart';
 
 class BookingPreview extends StatefulWidget {
   const BookingPreview({super.key});
@@ -114,8 +115,11 @@ class BookingPreviewState extends State<BookingPreview> {
                             borderRadius: BorderRadius.circular(12.0),
                           ))),
                       onPressed: () {
-                         context.read<LandingBloc>().add(TabChangeEvent(
-                      tabIndex: 1, tabLabel: Strings.rBookingConfirmation));
+                      //    context.read<LandingBloc>().add(TabChangeEvent(
+                      // tabIndex: 1, tabLabel: Strings.rBookingConfirmation));
+                      
+                      Navigator.push(context, MaterialPageRoute(builder: (_) =>const PaymentPage()));
+
                       },
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,

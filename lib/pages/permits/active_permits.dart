@@ -67,12 +67,10 @@ class ActivePermitsState extends State<ActivePermits> {
                         height: 10,
                       ),
                       Text(
-                            Strings.carParkName,
-                            style: customTextStyle(
-                                16, FontWeight.w600, AppColors.black6, 0),
-                          ),
-                      
-                      
+                        Strings.carParkName,
+                        style: customTextStyle(
+                            16, FontWeight.w600, AppColors.black6, 0),
+                      ),
                       Column(
                         children: [
                           const SizedBox(
@@ -113,7 +111,7 @@ class ActivePermitsState extends State<ActivePermits> {
                                   style: customTextStyle(
                                       14, FontWeight.w400, AppColors.black6, 0),
                                 ),
-                                 const SizedBox(
+                                const SizedBox(
                                   width: 5,
                                 ),
                                 Text(
@@ -121,15 +119,11 @@ class ActivePermitsState extends State<ActivePermits> {
                                   style: customTextStyle(
                                       14, FontWeight.w400, AppColors.black6, 0),
                                 ),
-                               
-                                
-                                
                               ],
                             ),
                           )
                         ],
                       ),
-                      
                       const SizedBox(
                         height: 15,
                       ),
@@ -183,6 +177,4 @@ class ActivePermitsState extends State<ActivePermits> {
       )
     ]);
   }
-
-  
 }

@@ -39,7 +39,7 @@ class VisitorBookingConfirmationState extends State<VisitorBookingConfirmation> 
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                Strings.requestConfirmation,
+                Strings.rquestSentMessage,
                 style:
                     customTextStyle(20, FontWeight.w500, AppColors.black1, 1),
               ),
@@ -122,7 +122,11 @@ class VisitorBookingConfirmationState extends State<VisitorBookingConfirmation> 
                                   RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(12.0),
                           ))),
-                      onPressed: () {},
+                      onPressed: () {
+                         context.read<LandingBloc>().add(TabChangeEvent(
+                              tabIndex: 2,
+                              tabLabel: Strings.rSession));
+                      },
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [

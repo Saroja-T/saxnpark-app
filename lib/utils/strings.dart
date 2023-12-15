@@ -83,6 +83,7 @@ class Strings {
 
   //General
   static String createAccount = "Create account";
+  static String createAnAccount = "Create an account";
   static String seeParkingLocations = "See parking locations";
   static String letsGet = "Let's get";
   static String started = "Started";
@@ -115,6 +116,11 @@ class Strings {
 
   static String rquestSentMessage = "Your parking request has been sent!";
 
+  //Payment
+  static String methodToPay="How would you like to pay?";
+  static String reviewAndPay="Review and pay";
+
+
   //redirections
   static String rHome = "home";
 
@@ -130,6 +136,8 @@ class Strings {
   static String rMyLocation = "mylocations";
   static String rMyVehicles = "myVehicles";
   static String rMySettings = "mySettings";
+  static String rMyDetails = "myDetails";
+  static String rDeleteVehicle = "deleteVehicle";
 
   // Session
   static String rSession = "session";
@@ -202,6 +210,9 @@ class Strings {
   static String help = "Help";
   static String back = "Back";
 
+  static String signInToContinue = "Sign in to continue";
+  static String saveYourInfo = "Create an account and save your info in a few simple steps for faster parking in the future.";
+
   static String copiedMsg = "Copied Successfully";
   static String visitPurpose = "What’s the purpose of your visit?";
   static String visitVehicle = "Which vehicle are you parking?";
@@ -229,6 +240,8 @@ class Strings {
   // Driver Account Creation
   static String driverDetails = "Driver details";
   static String driverName = "Driver name";
+  static String name = "Name";
+  static String details = "Details";
   static String enterDriverName = "Enter full name";
   static String driverLicenseMsg =
       "Please enter as shown on your drivers license.";
@@ -241,6 +254,7 @@ class Strings {
   static String state = "State";
   static String selectState = "Select state";
   static String saveAndContinue = "Save and continue";
+  static String saveChanges = "Save changes";
   static String vehicleDetails = "Vehicle details";
   static String vehicleNumber = "Vehicle registration number";
   static String searchText = "Search";
@@ -262,6 +276,8 @@ class Strings {
   static String enterVehicleType = "Enter vehicle type";
   static String enterVehicleNumber = "Enter vehicle number";
   static String enterVehicleMake = "Enter vehicle make";
+  static String enterVehicleModel = "Enter vehicle model";
+  static String enterVehicleNick = "Enter vehicle nick name";
   //Error message
   static String errorName = "Name cannot be empty.";
   static String errorNameLength = "Name length should be at least 3 characters and not exceed 70 characters.";
@@ -272,7 +288,9 @@ class Strings {
   static String errorVehicleMake = "Vehicle make is required. Please choose one.";
   static String errorVehicleModel = "Oops! It looks like you forgot to select a vehicle model.";
   static String errorVehicleType1 = "We couldn’t find your vehicle type";
-  static String errorVehicleMake1 = "Vehicle make is required.";
+  static String errorVehicleMake1 = "Vehicle make is required."; 
+  static String errorVehicleModel1 = "Oops! It looks like you forgot to add a vehicle model.";
+
 
 
 // Help
@@ -374,6 +392,7 @@ class Strings {
   static String dummyContactNumber = "056 865 7949";
   static String dummyVehicleMake = "Ford";
   static String dummyVehicleModel = "Fiesta";
+  static String dummyVehicle = "Car";
 
   static String dummyBookingMsg =
       "Your space is 2B, Level 2, Aisle 6 at Heathrow Airport - Terminal 1";

@@ -36,25 +36,25 @@ class _AccountsPageState extends State<AccountsPage> {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Container(
-                padding: const EdgeInsets.all(16),
-                margin: const EdgeInsets.only(bottom: 16),
-                decoration: const BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(8)),
-                    color: Color.fromRGBO(41, 170, 243, 0.1)),
-                child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Image.asset(
-                        info,
-                        color: AppColors.black6,
-                      ),
-                      const SizedBox(
-                        width: 4,
-                      ),
-                      Flexible(child: Text(Strings.updateDriverDetailsMsg))
-                    ]),
-              ),
+            // Container(
+            //     padding: const EdgeInsets.all(16),
+            //     margin: const EdgeInsets.only(bottom: 16),
+            //     decoration: const BoxDecoration(
+            //         borderRadius: BorderRadius.all(Radius.circular(8)),
+            //         color: Color.fromRGBO(41, 170, 243, 0.1)),
+            //     child: Row(
+            //         crossAxisAlignment: CrossAxisAlignment.start,
+            //         children: [
+            //           Image.asset(
+            //             info,
+            //             color: AppColors.black6,
+            //           ),
+            //           const SizedBox(
+            //             width: 4,
+            //           ),
+            //           Flexible(child: Text(Strings.updateDriverDetailsMsg))
+            //         ]),
+            //   ),
             Container(
               decoration: BoxDecoration(
                   borderRadius: const BorderRadius.all(Radius.circular(10)),
@@ -63,7 +63,6 @@ class _AccountsPageState extends State<AccountsPage> {
                 padding: const EdgeInsets.fromLTRB(16, 24, 16, 24),
                 child: Column(
                   children: [
-                    
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -112,107 +111,113 @@ class _AccountsPageState extends State<AccountsPage> {
               ),
             ),
             const SizedBox(height: 16),
-            Container(
-              decoration: BoxDecoration(
-                  borderRadius: const BorderRadius.all(Radius.circular(10)),
-                  border: Border.all(color: AppColors.grey3)),
-              child: Padding(
-                padding: const EdgeInsets.fromLTRB(16, 24, 16, 24),
-                child: Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          Strings.myDetails,
-                          style: customTextStyle(
-                              16, FontWeight.w400, AppColors.black6, 1),
+            InkWell(
+              onTap: () {
+                        context.read<LandingBloc>().add(TabChangeEvent(
+                            tabIndex: 4, tabLabel: Strings.rMyDetails));
+                      },
+              child: Container(
+                decoration: BoxDecoration(
+                    borderRadius: const BorderRadius.all(Radius.circular(10)),
+                    border: Border.all(color: AppColors.grey3)),
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(16, 24, 16, 24),
+                  child: Column(
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            Strings.myDetails,
+                            style: customTextStyle(
+                                16, FontWeight.w400, AppColors.black6, 1),
+                          ),
+                          Image.asset(rightArrow)
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 24,
+                      ),
+                      InkWell(
+                         onTap: () {
+                          context.read<LandingBloc>().add(TabChangeEvent(
+                              tabIndex: 4, tabLabel: Strings.rMyVehicles));
+                        },
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              Strings.myVehicles,
+                              style: customTextStyle(
+                                  16, FontWeight.w400, AppColors.black6, 1),
+                            ),
+                            Image.asset(rightArrow)
+                          ],
                         ),
-                        Image.asset(rightArrow)
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 24,
-                    ),
-                    InkWell(
-                       onTap: () {
-                        context.read<LandingBloc>().add(TabChangeEvent(
-                            tabIndex: 4, tabLabel: Strings.rMyVehicles));
-                      },
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            Strings.myVehicles,
-                            style: customTextStyle(
-                                16, FontWeight.w400, AppColors.black6, 1),
-                          ),
-                          Image.asset(rightArrow)
-                        ],
                       ),
-                    ),
-                    const SizedBox(
-                      height: 24,
-                    ),
-                    InkWell(
-                      onTap: () {
-                        context.read<LandingBloc>().add(TabChangeEvent(
-                            tabIndex: 4, tabLabel: Strings.rMyLocation));
-                      },
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            Strings.myLocation,
-                            style: customTextStyle(
-                                16, FontWeight.w400, AppColors.black6, 1),
-                          ),
-                          Image.asset(rightArrow)
-                        ],
+                      const SizedBox(
+                        height: 24,
                       ),
-                    ),
-                    const SizedBox(
-                      height: 24,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          Strings.parkingPermits,
-                          style: customTextStyle(
-                              16, FontWeight.w400, AppColors.black6, 1),
+                      InkWell(
+                        onTap: () {
+                          context.read<LandingBloc>().add(TabChangeEvent(
+                              tabIndex: 4, tabLabel: Strings.rMyLocation));
+                        },
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              Strings.myLocation,
+                              style: customTextStyle(
+                                  16, FontWeight.w400, AppColors.black6, 1),
+                            ),
+                            Image.asset(rightArrow)
+                          ],
                         ),
-                        Image.asset(rightArrow)
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 24,
-                    ),
-                    Container(
-                      color: AppColors.grey3,
-                      height: 1,
-                    ),
-                    const SizedBox(
-                      height: 24,
-                    ),
-                    InkWell(
-                      onTap: (){
-                        context.read<LandingBloc>().add(TabChangeEvent(
-                            tabIndex: 4, tabLabel: Strings.rMySettings));
-                      },
-                      child: Row(
+                      ),
+                      const SizedBox(
+                        height: 24,
+                      ),
+                      Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            Strings.settings,
+                            Strings.parkingPermits,
                             style: customTextStyle(
                                 16, FontWeight.w400, AppColors.black6, 1),
                           ),
                           Image.asset(rightArrow)
                         ],
                       ),
-                    ),
-                  ],
+                      const SizedBox(
+                        height: 24,
+                      ),
+                      Container(
+                        color: AppColors.grey3,
+                        height: 1,
+                      ),
+                      const SizedBox(
+                        height: 24,
+                      ),
+                      InkWell(
+                        onTap: (){
+                          context.read<LandingBloc>().add(TabChangeEvent(
+                              tabIndex: 4, tabLabel: Strings.rMySettings));
+                        },
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              Strings.settings,
+                              style: customTextStyle(
+                                  16, FontWeight.w400, AppColors.black6, 1),
+                            ),
+                            Image.asset(rightArrow)
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),

@@ -2,6 +2,8 @@ import 'dart:async';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:google_maps_flutter_android/google_maps_flutter_android.dart';
 import 'package:google_maps_flutter_platform_interface/google_maps_flutter_platform_interface.dart';
 
@@ -12,6 +14,7 @@ import 'package:saxnpark_app/pages/Authentication/password_reset.dart';
 import 'package:saxnpark_app/pages/accounts/accounts_page.dart';
 import 'package:saxnpark_app/pages/accounts/faq.dart';
 import 'package:saxnpark_app/pages/accounts/help.dart';
+import 'package:saxnpark_app/pages/accounts/my_vehicles.dart';
 import 'package:saxnpark_app/pages/authentication/new_password.dart';
 import 'package:saxnpark_app/pages/authentication/register_home.dart';
 import 'package:saxnpark_app/pages/home_page.dart';
@@ -22,8 +25,11 @@ import 'package:saxnpark_app/utils/colors.dart';
 import 'package:saxnpark_app/utils/router.dart';
 
 import 'bloc/google/google_bloc.dart';
+import 'pages/accounts/delete_vehicle.dart';
+import 'pages/accounts/my_details.dart';
 import 'pages/authentication/country_list.dart';
 import 'pages/authentication/otp_verification.dart';
+import 'pages/authentication/signout.dart';
 import 'pages/drive_account/create_account.dart';
 import 'pages/drive_account/general_home.dart';
 import 'pages/drive_account/vehicle_details.dart';
@@ -41,6 +47,13 @@ Future<void> main() async {
     print("catch");
   }
   await FirebaseService().initNotifications();
+  
+    //Assign publishable key to flutter_stripe
+  Stripe.publishableKey =
+      "pk_test_51MVKSOGMjQOu6aBZSW2JPTfZJu7gWE9EsuawjiNYKBLfG4WRfM2osHhCN9kMIchLweBrtw9u1VQQ12KfGmGJwO1T00zVh2Rmdy";
+
+  //Load our .env file that contains our Stripe Secret key
+  await dotenv.load(fileName: "assets/.env");
   final GoogleMapsFlutterPlatform mapsImplementation =
       GoogleMapsFlutterPlatform.instance;
   if (mapsImplementation is GoogleMapsFlutterAndroid) {
