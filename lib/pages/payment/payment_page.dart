@@ -82,31 +82,29 @@ class _PaymentPageState extends State<PaymentPage> {
             // Displays Google button
             Padding(
               padding: const EdgeInsets.only(bottom: 16.0),
-              child: Expanded(
-                child: pay.GooglePayButton(
-                  height: 50,
-                  width: w! * 0.95,
-                  paymentConfiguration: pay.PaymentConfiguration.fromJsonString(
-                    _paymentProfile,
-                  ),
-                  paymentItems: paymentItems,
-                  margin: const EdgeInsets.only(top: 15),
-                  onPaymentResult: onGooglePayResult,
-                  loadingIndicator: const Center(
-                    child: CircularProgressIndicator(),
-                  ),
-                  onPressed: () async {},
-                  childOnError:
-                      const Text('Google Pay is not available in this device'),
-                  onError: (e) {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(
-                        content: Text(
-                            'There was an error while trying to perform the payment'),
-                      ),
-                    );
-                  },
+              child: pay.GooglePayButton(
+                height: 50,
+                width: w! * 0.95,
+                paymentConfiguration: pay.PaymentConfiguration.fromJsonString(
+                  _paymentProfile,
                 ),
+                paymentItems: paymentItems,
+                margin: const EdgeInsets.only(top: 15),
+                onPaymentResult: onGooglePayResult,
+                loadingIndicator: const Center(
+                  child: CircularProgressIndicator(),
+                ),
+                onPressed: () async {},
+                childOnError:
+                    const Text('Google Pay is not available in this device'),
+                onError: (e) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text(
+                          'There was an error while trying to perform the payment'),
+                    ),
+                  );
+                },
               ),
             )
 

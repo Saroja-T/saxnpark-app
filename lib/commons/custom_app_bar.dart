@@ -119,10 +119,11 @@ class CustomAppBarWithBack extends StatelessWidget
         centerTitle: true,
         backgroundColor: Colors.white,
         shadowColor: AppColors.toolbarShadow,
+        elevation: 0.5,
         leading: Align(
           alignment: Alignment.centerLeft,
           child: Padding(
-            padding: const EdgeInsets.fromLTRB(6,0,0,0),
+            padding: const EdgeInsets.fromLTRB(0,0,0,0),
             child: TextButton(
               onPressed: (){
                 // print(context.watch<LandingBloc>().state.tabLabel);
@@ -134,7 +135,7 @@ class CustomAppBarWithBack extends StatelessWidget
                         tabIndex:tabIndex!, tabLabel: redirectionKey!));
                 }
               },
-              child: Text(backText,style: customTextStyle(12, FontWeight.w400, AppColors.black5, 1),)),
+              child: Text(backText,style: customTextStyle(12, FontWeight.w400, AppColors.black5, 0),)),
           )),
         title: Text(
           title,

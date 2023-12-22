@@ -15,7 +15,7 @@ class SignoutBottomSheet extends StatelessWidget {
     h = MediaQuery.of(context).size.height;
     return Container(
       padding: const EdgeInsets.all(16.0),
-      height: h! * 0.35,
+      height: h! * 0.38,
       child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.start,

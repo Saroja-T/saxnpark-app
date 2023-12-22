@@ -31,7 +31,6 @@ class BookingPreviewState extends State<BookingPreview> {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-             
               Text(
                 Strings.bookingConfirmationTitle,
                 style:
@@ -63,7 +62,6 @@ class BookingPreviewState extends State<BookingPreview> {
                             style: customTextStyle(
                                 16, FontWeight.w600, AppColors.black6, 0),
                           ))
-                      
                     ]),
               ),
               const SizedBox(height: 16),
@@ -115,11 +113,13 @@ class BookingPreviewState extends State<BookingPreview> {
                             borderRadius: BorderRadius.circular(12.0),
                           ))),
                       onPressed: () {
-                      //    context.read<LandingBloc>().add(TabChangeEvent(
-                      // tabIndex: 1, tabLabel: Strings.rBookingConfirmation));
-                      
-                      Navigator.push(context, MaterialPageRoute(builder: (_) =>const PaymentPage()));
+                        //    context.read<LandingBloc>().add(TabChangeEvent(
+                        // tabIndex: 1, tabLabel: Strings.rBookingConfirmation));
 
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (_) => const PaymentPage()));
                       },
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,

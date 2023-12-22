@@ -1,6 +1,8 @@
 import 'dart:async';
-import 'package:firebase_core/firebase_core.dart';
+
 import 'package:flutter/material.dart';
+
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
@@ -24,7 +26,10 @@ import 'package:saxnpark_app/services/firebase_service.dart';
 import 'package:saxnpark_app/utils/colors.dart';
 import 'package:saxnpark_app/utils/router.dart';
 
+import '.env.example.dart';
+
 import 'bloc/google/google_bloc.dart';
+import 'bloc/payment/payment_bloc.dart';
 import 'pages/accounts/delete_vehicle.dart';
 import 'pages/accounts/my_details.dart';
 import 'pages/authentication/country_list.dart';
@@ -47,11 +52,10 @@ Future<void> main() async {
     print("catch");
   }
   await FirebaseService().initNotifications();
-  
-    //Assign publishable key to flutter_stripe
-  Stripe.publishableKey =
-      "pk_test_51MVKSOGMjQOu6aBZSW2JPTfZJu7gWE9EsuawjiNYKBLfG4WRfM2osHhCN9kMIchLweBrtw9u1VQQ12KfGmGJwO1T00zVh2Rmdy";
 
+  //Assign publishable key to flutter_stripe
+  Stripe.publishableKey = stripePublishableKey;
+ // await Stripe.instance.applySettings();
   //Load our .env file that contains our Stripe Secret key
   await dotenv.load(fileName: "assets/.env");
   final GoogleMapsFlutterPlatform mapsImplementation =
@@ -108,6 +112,9 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => GoogleBloc(authRepository),
         ),
+         BlocProvider(
+          create: (context) => PaymentBloc(),
+        ),
       ],
       child: MaterialApp(
         title: Strings.appName,
@@ -117,7 +124,7 @@ class MyApp extends StatelessWidget {
         initialRoute: '/',
         onGenerateRoute: RoutesGenerator.generateRoute,
         //home: const RegisterHome(),
-         home: const LandingPage(),
+        home: const LandingPage(),
       ),
     );
   }

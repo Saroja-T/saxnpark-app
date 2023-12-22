@@ -109,16 +109,18 @@ class _MyDetailsState extends State<MyDetails> {
                             Expanded(
                               child: TextField(
                                 controller: driverNameController,
+                                textAlign: TextAlign.left,
                                 inputFormatters: [
                                   FilteringTextInputFormatter.allow(
                                       RegExp(r'[a-zA-Z\s]'))
                                 ],
                                 keyboardType: TextInputType.text,
                                 decoration: InputDecoration(
+                                  contentPadding: const EdgeInsets.fromLTRB(0, 0, 0, 3),
                                     border: InputBorder.none,
                                     hintText: Strings.enterDriverName,
                                     hintStyle: TextStyle(
-                                        fontSize: 14, color: AppColors.grey10)),
+                                        fontSize: 14, color: AppColors.grey10 )),
                                 onChanged: (val) {
                                   if (driverNameController.text.isNotEmpty) {
                                     setState(() {
@@ -186,6 +188,7 @@ class _MyDetailsState extends State<MyDetails> {
                                 keyboardType: TextInputType.number,
                                 readOnly: true,
                                 decoration: InputDecoration(
+                                  contentPadding: const EdgeInsets.fromLTRB(0, 0, 0, 4),
                                     border: InputBorder.none,
                                     hintText: '908 612 422',
                                     hintStyle: TextStyle(
@@ -218,6 +221,7 @@ class _MyDetailsState extends State<MyDetails> {
                                 controller: emailController,
                                 keyboardType: TextInputType.emailAddress,
                                 decoration: InputDecoration(
+                                  contentPadding: const EdgeInsets.fromLTRB(0, 0, 0, 3),
                                     border: InputBorder.none,
                                     hintText: Strings.enterEmailAddress,
                                     hintStyle: TextStyle(
