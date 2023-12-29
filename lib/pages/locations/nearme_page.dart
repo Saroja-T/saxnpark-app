@@ -235,7 +235,7 @@ List<MarkerDetails> markersList = [MarkerDetails(markerID: "1", lat: 34.19213557
                           ),
                         ),
                         Container(
-                          width: 91.0,
+                          width: 100.0,
                           height: 34.0,
                           margin: const EdgeInsets.only(right: 16),
                           child: TextButton.icon(
