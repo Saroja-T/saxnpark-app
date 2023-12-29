@@ -10,6 +10,7 @@ import 'package:google_maps_flutter_android/google_maps_flutter_android.dart';
 import 'package:google_maps_flutter_platform_interface/google_maps_flutter_platform_interface.dart';
 
 import 'package:saxnpark_app/bloc/landing/landing_bloc.dart';
+import 'package:saxnpark_app/bloc/location/location_bloc.dart';
 import 'package:saxnpark_app/firebase_options.dart';
 import 'package:saxnpark_app/pages/Authentication/login.dart';
 import 'package:saxnpark_app/pages/Authentication/password_reset.dart';
@@ -114,6 +115,9 @@ class MyApp extends StatelessWidget {
         ),
          BlocProvider(
           create: (context) => PaymentBloc(),
+        ),
+        BlocProvider(
+          create: (context) => LocationBloc(),
         ),
       ],
       child: MaterialApp(
