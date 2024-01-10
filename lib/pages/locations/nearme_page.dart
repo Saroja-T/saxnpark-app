@@ -43,7 +43,6 @@ List<MarkerDetails> markersList = [MarkerDetails(markerID: "1", lat: 34.19213557
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     getPermissions();
     addMarkers();

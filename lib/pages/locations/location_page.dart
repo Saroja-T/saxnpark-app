@@ -105,7 +105,7 @@ class _LocationPageState extends State<LocationPage> {
                   ),
                 ),
                 Container(
-                  width: 91.0,
+                  width: 100.0,
                   height: 34.0,
                   margin: const EdgeInsets.only(right: 16),
                   child: TextButton.icon(
