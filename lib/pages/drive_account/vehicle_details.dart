@@ -173,7 +173,11 @@ class VehicleDetailsState extends State<VehicleDetails> {
                             fontSize: 20.0,
                             fontWeight: FontWeight.w500),
                       ),
-                      driverAccountCreationLabel(vehicleDetailsFrom == Strings.rDriversDetails?Strings.vehicleRegistration:Strings.vehicleNumber, h),
+                      driverAccountCreationLabel(
+                          vehicleDetailsFrom == Strings.rDriversDetails
+                              ? Strings.vehicleRegistration
+                              : Strings.vehicleNumber,
+                          h),
                       Container(
                         padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
                         decoration: BoxDecoration(
@@ -406,55 +410,62 @@ class VehicleDetailsState extends State<VehicleDetails> {
                       SizedBox(
                         height: (h! * 0.04).ceilToDouble(),
                       ),
-                      ElevatedButton(
-                        style: registerBtnStyle,
-                        onPressed: () {
-                          if (isFromBookingPage) {
-                            validation();
-                          }
-                          if (vehicleDetailsFrom == Strings.rDriversDetails){
-                            context.read<LandingBloc>().add(TabChangeEvent(
-                              tabIndex: 4, tabLabel: Strings.rConfirmedDriversDetails));
-                          }else{
-                            
-                          Navigator.pushNamedAndRemoveUntil(
-                              context, '/landingpage', (route) => false);
-                          context.read<LandingBloc>().add(TabChangeEvent(
-                              tabIndex: 0, tabLabel: Strings.rHome));
-                          }
-                          
-                        },
-                        child: Text(
-                          Strings.saveAndContinue,
-                          style: TextStyle(
-                              fontSize: 16.0,
-                              fontWeight: FontWeight.w700,
-                              color: AppColors.white),
+                      Container(
+                        height: 51,
+                        child: SizedBox.expand(
+                          child: ElevatedButton(
+                              style: ButtonStyle(
+                                  backgroundColor:
+                                      MaterialStateProperty.all<Color>(
+                                          AppColors.black6),
+                                  shape: MaterialStateProperty.all<
+                                          RoundedRectangleBorder>(
+                                      RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(12.0),
+                                  ))),
+                              onPressed: () {
+                                if (isFromBookingPage) {
+                                  validation();
+                                }
+                                if (vehicleDetailsFrom ==
+                                    Strings.rDriversDetails) {
+                                  context.read<LandingBloc>().add(
+                                      TabChangeEvent(
+                                          tabIndex: 4,
+                                          tabLabel: Strings
+                                              .rConfirmedDriversDetails));
+                                } else {
+                                  Navigator.pushNamedAndRemoveUntil(context,
+                                      '/landingpage', (route) => false);
+                                  context.read<LandingBloc>().add(
+                                      TabChangeEvent(
+                                          tabIndex: 0,
+                                          tabLabel: Strings.rHome));
+                                }
+                              },
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    Strings.saveAndPark,
+                                    style: customTextStyle(14, FontWeight.w600,
+                                        AppColors.white, 1),
+                                  ),
+                                  const SizedBox(
+                                    width: 5,
+                                  ),
+                                  const Icon(
+                                    Icons.arrow_forward,
+                                    color: Colors.white,
+                                    size: 20,
+                                  )
+                                ],
+                              )),
                         ),
                       ),
                       SizedBox(
                         height: (h! * 0.02).ceilToDouble(),
                       ),
-                      if (vehicleDetailsFrom == Strings.createAccount)
-                        GestureDetector(
-                          onTap: () {},
-                          child: SizedBox(
-                            width: MediaQuery.of(context).size.width,
-                            child: Container(
-                              height: (h! * 0.06).ceilToDouble(),
-                              decoration: BoxDecoration(
-                                  borderRadius: const BorderRadius.all(
-                                      Radius.circular(12)),
-                                  border: Border.all(color: AppColors.black6)),
-                              child: Center(
-                                  child: Text(
-                                Strings.enterManually,
-                                style: customTextStyle(
-                                    16, FontWeight.w700, AppColors.black6, 1),
-                              )),
-                            ),
-                          ),
-                        ),
                     ]),
               ),
             )));

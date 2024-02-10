@@ -24,8 +24,10 @@ Widget customAppBarWidget(name) {
 }
 
 class LocationCards extends StatelessWidget {
-  const LocationCards({Key? key, required this.btnClick}) : super(key: key);
+  LocationCards({Key? key, required this.btnClick, required this.isParkAgain})
+      : super(key: key);
   final Function() btnClick;
+  final bool isParkAgain;
 
   @override
   Widget build(BuildContext context) {
@@ -107,7 +109,29 @@ class LocationCards extends StatelessWidget {
                   style: customTextStyle(
                       10.0, FontWeight.w600, AppColors.black3, 1.5)),
             ],
-          )
+          ),
+          if (isParkAgain)
+            SizedBox(
+              height: 10,
+            ),
+          if (isParkAgain)
+            Container(
+              padding: const EdgeInsets.all(13),
+              decoration: BoxDecoration(
+                  borderRadius: const BorderRadius.all(Radius.circular(12)),
+                  border: Border.all(color: AppColors.black6)),
+              child: Center(
+                child: Text(
+                  Strings.parkAgain,
+                  style:
+                      customTextStyle(14, FontWeight.w700, AppColors.black6, 0),
+                ),
+              ),
+            ),
+          if (isParkAgain)
+            SizedBox(
+              height: 10,
+            ),
         ],
       ),
     );
@@ -218,8 +242,238 @@ verticalSizedWidget10(height) {
     height: (height! * 0.012).ceilToDouble(),
   );
 }
+
 verticalSizedWidget5(height) {
   return SizedBox(
     height: (height! * 0.006).ceilToDouble(),
   );
 }
+
+Widget errorWidget(String errorMsg) {
+  return Align(
+    alignment: Alignment.centerLeft,
+    child: Padding(
+        padding: const EdgeInsets.only(top: 8),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Image.asset(
+              info,
+              color: AppColors.red1,
+            ),
+            SizedBox(
+              width: 5,
+            ),
+            Flexible(
+              child: Text(
+                errorMsg,
+                style: customTextStyle(12, FontWeight.w400, AppColors.red1, 1.2),
+              ),
+            ),
+          ],
+        )),
+  );
+}
+
+Widget passwordRegexHint() {
+  return Align(
+    alignment: Alignment.bottomLeft,
+    child: Padding(
+      padding: EdgeInsets.only(top: 8),
+      child: RichText(
+        text: TextSpan(
+          style: customTextStyle(12, FontWeight.w400, AppColors.black5, 1.2),
+          children: <TextSpan>[
+            TextSpan(text: Strings.passwordError),
+            TextSpan(
+              text: Strings.passwordError1,
+              style:
+                  customTextStyle(12, FontWeight.w600, AppColors.black5, 1.2),
+            ),
+          ],
+        ),
+      ),
+    ),
+  );
+}
+
+Widget successWidget(String msg) {
+  return Container(
+    padding: const EdgeInsets.all(16),
+    margin: const EdgeInsets.only(bottom: 16),
+    decoration: const BoxDecoration(
+        borderRadius: BorderRadius.all(Radius.circular(8)),
+        color: Color.fromRGBO(41, 170, 243, 0.1)),
+    child: Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
+      Image.asset(
+        info,
+        color: AppColors.black6,
+      ),
+      const SizedBox(
+        width: 4,
+      ),
+      Flexible(child: Text(msg))
+    ]),
+  );
+}
+
+commonWidget(String title, String subTitle) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const SizedBox(
+          height: 15,
+        ),
+        Text(
+          title,
+          style: customTextStyle(14, FontWeight.w400, AppColors.black6, 0),
+        ),
+        const SizedBox(
+          height: 10,
+        ),
+        Text(
+          subTitle,
+          style: customTextStyle(16, FontWeight.w600, AppColors.black6, 0),
+        ),
+      ],
+    );
+  }
+
+  commonWidget1(String title, String subTitle, String subTitle1) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const SizedBox(
+          height: 15,
+        ),
+        Text(
+          title,
+          style: customTextStyle(14, FontWeight.w400, AppColors.black6, 0),
+        ),
+        const SizedBox(
+          height: 10,
+        ),
+        Row(
+          children: [
+            Text(
+              subTitle,
+              style:
+                  customTextStyle(16, FontWeight.w600, AppColors.black6, 0),
+            ),
+            const SizedBox(
+              width: 5,
+            ),
+            Icon(
+              Icons.circle,
+              color: AppColors.black6,
+              size: 4,
+            ),
+            const SizedBox(
+              width: 5,
+            ),
+            Text(
+              subTitle1,
+              style:
+                  customTextStyle(16, FontWeight.w600, AppColors.black6, 0),
+            ),
+          ],
+        )
+      ],
+    );
+  }
+
+Widget customListRow(String icon, String title, String text1, bool isCircle,
+      String text2, bool isChangeble, Function() onChangeFunction, bool isCard) {
+    return Column(
+      children: [
+        Row(children: [
+          Image.asset(
+            icon,
+            color: AppColors.black6,
+          ),
+          const SizedBox(
+            width: 4,
+          ),
+          Flexible(
+              child: Text(
+            title,
+            style: customTextStyle(14, FontWeight.w400, AppColors.black6, 0),
+          ))
+        ]),
+        const SizedBox(
+          height: 4,
+        ),
+        Row(children: [
+          if(isCard)
+          Image.asset(
+            visa
+          ),
+          if(isCard)
+          const SizedBox(
+            width: 5,
+          ),
+          Text(
+            text1,
+            style: customTextStyle(16, FontWeight.w600, AppColors.black6, 0),
+          ),
+          const SizedBox(
+            width: 4,
+          ),
+          if (isCircle)
+            Row(
+              children: [
+                Icon(
+                  Icons.circle,
+                  color: AppColors.black6,
+                  size: 4,
+                ),
+                const SizedBox(
+                  width: 4,
+                ),
+                Text(
+                  text2,
+                  style:
+                      customTextStyle(16, FontWeight.w600, AppColors.black6, 0),
+                ),
+                const SizedBox(
+                  width: 4,
+                ),
+              ],
+            ),
+          if (isChangeble)
+            GestureDetector(
+              onTap: onChangeFunction,
+              child: Text(
+                Strings.change,
+                style: customTextStyle(16, FontWeight.w400, AppColors.blue1, 0),
+              ),
+            ),
+        ]),
+        const SizedBox(
+          height: 16,
+        )
+      ],
+    );
+  }
+
+  Widget customListRow1(String title, String text1) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          title,
+          style: customTextStyle(14, FontWeight.w400, AppColors.black6, 0),
+        ),
+        const SizedBox(
+          height: 5,
+        ),
+        Text(
+          text1,
+          style: customTextStyle(16, FontWeight.w600, AppColors.black6, 0),
+        ),
+        const SizedBox(
+          height: 16,
+        )
+      ],
+    );
+  }

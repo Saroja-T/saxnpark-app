@@ -3,12 +3,14 @@ import 'dart:async';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:saxnpark_app/utils/custom_widgets.dart';
 import 'package:saxnpark_app/utils/validations.dart';
 
 import '../../bloc/landing/landing_bloc.dart';
 import '../../commons/custom_app_bar.dart';
 import '../../utils/colors.dart';
 import '../../utils/constants.dart';
+import '../../utils/notification_banner.dart';
 import '../../utils/strings.dart';
 import '../../utils/styles.dart';
 
@@ -22,32 +24,26 @@ class _LoginState extends State<Login> {
   bool _showPassword = false;
   bool _numberValidationPassed = true;
   bool _passwordValidationPassed = true;
+  bool _emailValidationPassed = true;
 
   String tabLabel = "";
   final TextEditingController _phoneController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
   Validations validate = Validations();
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     initialTimer();
   }
 
-  validateFeilds() {
-    //phonenumber validation
-    if (_phoneController.text.isEmpty) {
-      _numberValidationPassed = false;
-    } else {
-      _numberValidationPassed = true;
-    }
-
-    //password validations
-    if (_passwordController.text.isEmpty) {
-      _passwordValidationPassed = false;
-    } else {
-      _passwordValidationPassed = true;
-    }
+  void validateFields() {
+    // Phone number validation
+    _numberValidationPassed = _phoneController.text.isNotEmpty;
+    // Password validation
+    _passwordValidationPassed = _passwordController.text.isNotEmpty;
+    // Email validation
+    _emailValidationPassed = validate.isValidEmail(_emailController.text);
   }
 
   @override
@@ -77,26 +73,74 @@ class _LoginState extends State<Login> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         if (Strings.passwordChanged)
-                          Container(
-                            height: 50,
-                            decoration: BoxDecoration(
-                                color: const Color.fromRGBO(36, 207, 125, 0.1),
-                                borderRadius: BorderRadius.circular(5)),
-                            child: Row(children: [
-                              const SizedBox(
-                                width: 15,
-                              ),
-                              const Icon(
-                                Icons.check_circle_outline,
-                                size: 16,
-                              ),
-                              const SizedBox(
-                                width: 10,
-                              ),
-                              Text(Strings.passwordUpdated)
-                            ]),
+                          NotificationBanner(
+                            message: Strings.passwordUpdated,
+                            isCancelAvailable: true,
+                            isErrorMsg: false,
+                            onCancel: () {
+                              setState(() {
+                                Strings.passwordChanged = false;
+                              });
+                            },
                           ),
-                        if (Strings.passwordChanged)
+                        if (Strings.accountLocked)
+                          Container(
+                            padding: const EdgeInsets.only(
+                                top: 15, bottom: 15, right: 15),
+                            decoration: BoxDecoration(
+                                color: const Color.fromRGBO(235, 77, 77, 0.1),
+                                borderRadius: BorderRadius.circular(5)),
+                            child: Align(
+                              alignment: Alignment.topCenter,
+                              child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    const SizedBox(
+                                      width: 15,
+                                    ),
+                                    Image.asset(
+                                      info,
+                                      color: AppColors.red1,
+                                    ),
+                                    const SizedBox(
+                                      width: 10,
+                                    ),
+                                    Flexible(
+                                      child: RichText(
+                                          textAlign: TextAlign.justify,
+                                          text: TextSpan(
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.w400,
+                                                  fontSize: 12.0,
+                                                  color: AppColors.black5,
+                                                  height: 1.5),
+                                              children: <TextSpan>[
+                                                TextSpan(
+                                                    text:
+                                                        '${Strings.securityAlert}\n',
+                                                    style: TextStyle(
+                                                      fontWeight:
+                                                          FontWeight.w700,
+                                                      fontSize: 12.0,
+                                                      color: AppColors.black5,
+                                                    )),
+                                                TextSpan(
+                                                    text:
+                                                        '${Strings.securityAlertMsg}\n\n'),
+                                                TextSpan(
+                                                    text:
+                                                        '${Strings.securityAlertMsg1}\n\n'),
+                                                TextSpan(
+                                                    text: Strings
+                                                        .securityAlertMsg2),
+                                              ])),
+                                    ),
+                                  ]),
+                            ),
+                          ),
+                        if (Strings.passwordChanged || Strings.accountLocked)
                           const SizedBox(
                             height: 30,
                           ),
@@ -150,7 +194,9 @@ class _LoginState extends State<Login> {
                                   controller: _phoneController,
                                   decoration: InputDecoration(
                                       border: InputBorder.none,
-                                      hintText: '908 612 422',
+                                      hintText: '908 612 421',
+                                      contentPadding:
+                                          const EdgeInsets.only(bottom: 5),
                                       hintStyle: TextStyle(
                                           fontSize: 14,
                                           color: AppColors.grey10)),
@@ -171,13 +217,50 @@ class _LoginState extends State<Login> {
                       ],
                     ),
                     if (!_numberValidationPassed)
-                      Padding(
-                          padding: const EdgeInsets.only(top: 8),
-                          child: Text(
-                            Strings.emptyNumberError,
-                            style: customTextStyle(
-                                12, FontWeight.w400, AppColors.red1, 1.2),
-                          )),
+                      errorWidget(Strings.emptyNumberError),
+                    const SizedBox(
+                      height: 24,
+                    ),
+                    Text(
+                      Strings.emailAddress,
+                      style: customTextStyle(
+                          16, FontWeight.w400, AppColors.black1, 1),
+                    ),
+                    const SizedBox(
+                      height: 8,
+                    ),
+                    Container(
+                      padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
+                      decoration: BoxDecoration(
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(4)),
+                          border: Border.all(color: AppColors.grey3)),
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: TextField(
+                              controller: _emailController,
+                              decoration: InputDecoration(
+                                  border: InputBorder.none,
+                                  hintText: Strings.enterEmailAddress,
+                                  hintStyle:
+                                      TextStyle(color: AppColors.grey10)),
+                              onChanged: (val) {
+                                setState(() {
+                                  if (_emailController.text.isNotEmpty) {
+                                    _emailValidationPassed = true;
+                                  } else {
+                                    _emailValidationPassed = false;
+                                  }
+                                });
+                              },
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    if (!_emailValidationPassed)
+                      errorWidget(Strings.emailError),
                     const SizedBox(
                       height: 24,
                     ),
@@ -236,16 +319,7 @@ class _LoginState extends State<Login> {
                   ],
                 ),
                 if (!_passwordValidationPassed)
-                  Align(
-                    alignment: Alignment.centerLeft,
-                    child: Padding(
-                        padding: const EdgeInsets.only(top: 8),
-                        child: Text(
-                          Strings.emptyPasswordError,
-                          style: customTextStyle(
-                              12, FontWeight.w400, AppColors.red1, 1.2),
-                        )),
-                  ),
+                  errorWidget(Strings.emptyPasswordError),
                 const SizedBox(
                   height: 12,
                 ),
@@ -258,7 +332,11 @@ class _LoginState extends State<Login> {
                         child: Text(
                           Strings.forgotPassword,
                           style: customTextStyleWithUnderline(
-                              16, FontWeight.w400, AppColors.blue1, 1),
+                              16,
+                              FontWeight.w400,
+                              AppColors.blue1,
+                              1,
+                              AppColors.blue1),
                         ))),
                 const SizedBox(
                   height: 24,
@@ -267,7 +345,7 @@ class _LoginState extends State<Login> {
                   style: registerBtnStyle,
                   onPressed: () {
                     setState(() {
-                      validateFeilds();
+                      validateFields();
                     });
                   },
                   child: Text(
@@ -356,7 +434,11 @@ class _LoginState extends State<Login> {
                       TextSpan(
                           text: Strings.register,
                           style: customTextStyleWithUnderline(
-                              16, FontWeight.w700, AppColors.black6, 1),
+                              16,
+                              FontWeight.w700,
+                              AppColors.black6,
+                              1,
+                              AppColors.black6),
                           recognizer: TapGestureRecognizer()
                             ..onTap = () {
                               Navigator.pushReplacementNamed(

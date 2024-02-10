@@ -146,56 +146,59 @@ class _LocationListState extends State<LocationList> {
             const SizedBox(height: 10.0),
             Padding(
               padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
-              child: Row(
-                children: [
-                  if (tabLabel == Strings.rNearMeList ||
-                      tabLabel == Strings.rNearMeMapList)
-                    Container(
-                      width: 80,
-                      height: 34,
-                      margin: const EdgeInsets.only(right: 12),
-                      decoration: BoxDecoration(
-                          color: AppColors.grey4,
-                          borderRadius:
-                              const BorderRadius.all(Radius.circular(10))),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          SizedBox(
-                            height: 40,
-                            width: 40,
-                            child: IconButton(
-                                onPressed: () {
-                                  context.read<LandingBloc>().add(
-                                      TabChangeEvent(
-                                          tabIndex: 0,
-                                          tabLabel: Strings.rNearMeMapList));
-                                },
-                                icon: Image.asset(
-                                  gridIcon,
-                                  width: 35,
-                                )),
-                          ),
-                          SizedBox(
-                            width: 35,
-                            height: 40,
-                            child: IconButton(
-                                onPressed: () {
-                                  print("cllcik");
-                                },
-                                icon: Image.asset(
-                                  tabLabel == Strings.rNearMeList
-                                      ? listSelectedIcon
-                                      : listIcon,
-                                  width: 24,
-                                )),
-                          ),
-                        ],
+              child: SizedBox(
+                height: 34.0,
+                child: ListView(
+                  shrinkWrap: true,
+                  scrollDirection: Axis.horizontal,
+                  children: [
+                    if (tabLabel == Strings.rNearMeList ||
+                        tabLabel == Strings.rNearMeMapList)
+                      Container(
+                        width: 80,
+                        height: 34,
+                        margin: const EdgeInsets.only(right: 12),
+                        decoration: BoxDecoration(
+                            color: AppColors.grey4,
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(10))),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            SizedBox(
+                              height: 40,
+                              width: 40,
+                              child: IconButton(
+                                  onPressed: () {
+                                    context.read<LandingBloc>().add(
+                                        TabChangeEvent(
+                                            tabIndex: 0,
+                                            tabLabel: Strings.rNearMeMapList));
+                                  },
+                                  icon: Image.asset(
+                                    gridIcon,
+                                    width: 35,
+                                  )),
+                            ),
+                            SizedBox(
+                              width: 35,
+                              height: 40,
+                              child: IconButton(
+                                  onPressed: () {
+                                    print("cllcik");
+                                  },
+                                  icon: Image.asset(
+                                    tabLabel == Strings.rNearMeList
+                                        ? listSelectedIcon
+                                        : listIcon,
+                                    width: 24,
+                                  )),
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                  Container(
-                    width: 91.0,
-                    height: 34.0,
+                    Container(
+                    width: w!*0.3,
                     margin: const EdgeInsets.only(right: 16),
                     child: TextButton.icon(
                       style: tabLabel == Strings.rNearMeList
@@ -225,8 +228,7 @@ class _LocationListState extends State<LocationList> {
                     ),
                   ),
                   Container(
-                    width: 100.0,
-                    height: 34.0,
+                    width: w!*0.25,
                     margin: const EdgeInsets.only(right: 16),
                     child: TextButton.icon(
                       style: tabLabel == Strings.rRecentList
@@ -255,9 +257,55 @@ class _LocationListState extends State<LocationList> {
                       ),
                     ),
                   ),
-                ],
+                    Container(
+                      width: w! * 0.45,
+                      margin: const EdgeInsets.only(right: 16),
+                      child: TextButton.icon(
+                        style: locationInActiveElatedBtnStyle,
+                        onPressed: () {
+                          print("recent clicked...!!");
+                          // context.read<LandingBloc>().add(TabChangeEvent(
+                          //     tabIndex: 0, tabLabel: Strings.rRecentList));
+                        },
+                        icon: Image.asset(disabledParking,
+                            width: 12.0, height: 12.0),
+                        label: Text(
+                          Strings.disabledParking,
+                          style: TextStyle(
+                              fontSize: 14.0,
+                              fontWeight: FontWeight.w400,
+                              color: AppColors.black5),
+                        ),
+                      ),
+                    ),
+                    Container(
+                      width: w! * 0.45,
+                      margin: const EdgeInsets.only(right: 16),
+                      child: TextButton.icon(
+                        style: locationInActiveElatedBtnStyle,
+                        onPressed: () {
+                          print("recent clicked...!!");
+                          // context.read<LandingBloc>().add(TabChangeEvent(
+                          //     tabIndex: 0, tabLabel: Strings.rRecentList));
+                        },
+                        icon: Image.asset(chargingStation,
+                            width: 12.0, height: 12.0),
+                        label: Text(
+                          Strings.chargingStation,
+                          style: TextStyle(
+                              fontSize: 14.0,
+                              fontWeight: FontWeight.w400,
+                              color: AppColors.black5),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
+
+            
+            
             if (tabLabel == Strings.rLocationList)
               Padding(
                 padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
@@ -315,6 +363,7 @@ class _LocationListState extends State<LocationList> {
                             btnClick: () {
                               showLocationBottomSheet(context, starSelected);
                             },
+                            isParkAgain: false
                           ));
                         },
                         separatorBuilder: (context, index) {

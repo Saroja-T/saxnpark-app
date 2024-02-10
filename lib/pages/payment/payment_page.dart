@@ -42,6 +42,7 @@ class _PaymentPageState extends State<PaymentPage> {
   @override
   Widget build(BuildContext context) {
     h = MediaQuery.of(context).size.height;
+    w = MediaQuery.of(context).size.width;
     tabLabel = context.watch<LandingBloc>().state.tabLabel;
     return Scaffold(
       appBar: CustomAppBarWithBack(

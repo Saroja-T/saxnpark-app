@@ -8,6 +8,7 @@ import '../../bloc/landing/landing_bloc.dart';
 import '../../commons/custom_app_bar.dart';
 import '../../utils/colors.dart';
 import '../../utils/constants.dart';
+import '../../utils/custom_widgets.dart';
 import '../../utils/strings.dart';
 import '../../utils/styles.dart';
 
@@ -32,7 +33,7 @@ class BookingConfirmationState extends State<BookingConfirmation> {
     return Scaffold(
       appBar: CustomAppBar(title: Strings.bookingConfirmation),
       body: Padding(
-        padding: const EdgeInsets.fromLTRB(16, 24, 16, 24),
+        padding: const EdgeInsets.fromLTRB(16, 24, 16, 0),
         child: SingleChildScrollView(
           child: Column(
             mainAxisSize: MainAxisSize.min,
@@ -125,30 +126,55 @@ class BookingConfirmationState extends State<BookingConfirmation> {
                     mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      customListRow(
+                      custoListRow(
                         home,
                         Strings.vehicle,
                         Strings.dummyCategory1,
                         true,
                         Strings.dummyvehicle1,
                       ),
-                      customListRow(clock, Strings.driveIn, Strings.today, true,
-                          Strings.dummyTime),
-                      customListRow(clock, Strings.driveOut, Strings.today,
-                          true, Strings.dummyTime1),
-                      customListRow(
+                      custoListRow(clock, Strings.validFrom, Strings.today,
+                          true, Strings.dummyTime),
+                      custoListRow(clock, Strings.validTo, Strings.today, true,
+                          Strings.dummyTime1),
+                      custoListRow(
                           duration,
                           Strings.duration,
                           "${Strings.dummyDuration} ${Strings.minutes}",
                           false,
                           ""),
-                      customListRow(duration, Strings.space, Strings.dummySpace,
+                      custoListRow(duration, Strings.space, Strings.dummySpace,
                           false, ""),
-                      customListRow(
-                          coins, Strings.cost, Strings.dummyCost, false, ""),
-                      customListRow(cardHolder, Strings.paymentMethod,
-                          Strings.dummyPaymentMethod, false, ""),
                     ]),
+              ),
+              Container(
+                width: double.infinity,
+                padding: const EdgeInsets.only(left: 16, top: 16, right: 16),
+                margin: const EdgeInsets.only(bottom: 16),
+                decoration: BoxDecoration(
+                    borderRadius: const BorderRadius.all(Radius.circular(8)),
+                    border: Border.all(color: AppColors.grey4)),
+                child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      customListRow1(Strings.parkingFee, "\$2.40"),
+                      customListRow1(Strings.taxes, "\$2.40"),
+                      customListRow1(Strings.serviceFee, "\$2.40"),
+                      customListRow1(Strings.total, "\$2.40"),
+                      customListRow(
+                          cardHolder,
+                          Strings.paymentMethod,
+                          Strings.dummyPaymentMethod,
+                          false,
+                          "",
+                          true,
+                          paymentChange,
+                          true),
+                    ]),
+              ),
+              const SizedBox(
+                height: 5,
               ),
               SizedBox(
                 height: 51,
@@ -175,6 +201,9 @@ class BookingConfirmationState extends State<BookingConfirmation> {
                       )),
                 ),
               ),
+              const SizedBox(
+                height: 20,
+              ),
             ],
           ),
         ),
@@ -182,7 +211,7 @@ class BookingConfirmationState extends State<BookingConfirmation> {
     );
   }
 
-  Widget customListRow(
+  Widget custoListRow(
     String icon,
     String title,
     String text1,
@@ -244,4 +273,6 @@ class BookingConfirmationState extends State<BookingConfirmation> {
       ],
     );
   }
+
+  paymentChange() {}
 }

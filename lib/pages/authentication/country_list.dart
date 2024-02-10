@@ -102,7 +102,7 @@ class CountryListState extends State<CountryList> {
                                   child: TextField(
                                     controller: searchController,
                                     decoration: InputDecoration(
-                                      contentPadding: const EdgeInsets.all(10.0),
+                                      contentPadding: const EdgeInsets.only(bottom:1.0),
                                       border: OutlineInputBorder(
                                           borderRadius:
                                               BorderRadius.circular(24.0),

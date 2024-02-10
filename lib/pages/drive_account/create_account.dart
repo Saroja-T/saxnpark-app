@@ -27,30 +27,13 @@ class _CreateAccountState extends State<CreateAccount> {
   //validations varialbles
   bool isNameEntered = false;
   bool isNameWithinLimit = false;
-  bool hasSelectedCountry = false;
-  bool hasSelectedState = false;
 
   List<String> titleList = ["Mr", "Mrs", "Ms", "Miss"];
-  List<String> countryList = [
-    "United States",
-    "United Kingtom",
-    "United Arab Emirates",
-    "Country",
-    "Country",
-    "Country",
-    "Country",
-    "Country",
-    "Country",
-    "Country"
-  ];
   String selectedTitle = "";
-  String selectedCountry = "";
-  String selectedState = "";
 
   @override
   void initState() {
     selectedTitle = titleList[0];
-    selectedCountry = countryList[0];
     super.initState();
   }
 
@@ -252,89 +235,89 @@ class _CreateAccountState extends State<CreateAccount> {
                           ],
                         ),
                       ),
-                      driverAccountCreationLabel(Strings.country, h),
-                      InkWell(
-                        onTap: () async {
-                          showSearchBottomSheet(context);
-                        },
-                        child: Container(
-                          height: (h! * 0.062).ceil().toDouble(),
-                          padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
-                          decoration: BoxDecoration(
-                              borderRadius:
-                                  const BorderRadius.all(Radius.circular(4)),
-                              border: Border.all(color: AppColors.grey3)),
-                          child: Row(
-                            children: [
-                              countryImageIcon(usIcon),
-                              SizedBox(
-                                width: w! * 0.03,
-                              ),
-                              Text(
-                                selectedCountry==""?Strings.selectCountry:selectedCountry,
-                                style: customTextStyle(
-                                    14, FontWeight.w400, selectedCountry==""?AppColors.grey10:AppColors.black6, 1),
-                              ),
-                              const Spacer(),
-                              arrowDownIcon(),
-                            ],
-                          ),
-                        ),
-                      ),
-                      if (hasSelectedCountry)
-                        Column(
-                          children: [
-                            const SizedBox(
-                              height: 5,
-                            ),
-                            Text(
-                              Strings.errorCountry,
-                              style: customTextStyle(
-                                  12, FontWeight.w400, AppColors.red1, 1),
-                            ),
-                          ],
-                        ),
-                      driverAccountCreationLabel(Strings.state, h),
-                      InkWell(
-                        onTap: () {
-                           showStateSearchBottomSheet(context);
-                        },
-                        child: Container(
-                          height: (h! * 0.062).ceil().toDouble(),
-                          padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
-                          decoration: BoxDecoration(
-                              borderRadius:
-                                  const BorderRadius.all(Radius.circular(4)),
-                              border: Border.all(color: AppColors.grey3)),
-                          child: Row(
-                            children: [
-                              SizedBox(
-                                width: (w! * 0.01).ceil().toDouble(),
-                              ),
-                              Text(
-                                selectedState==""?Strings.selectState:selectedState,
-                                style: customTextStyle(
-                                    14, FontWeight.w400, selectedState==""?AppColors.grey10:AppColors.black6, 1),
-                              ),
-                              const Spacer(),
-                              arrowDownIcon(),
-                            ],
-                          ),
-                        ),
-                      ),
-                      if (hasSelectedState)
-                        Column(
-                          children: [
-                            const SizedBox(
-                              height: 5,
-                            ),
-                            Text(
-                              Strings.errorState,
-                              style: customTextStyle(
-                                  12, FontWeight.w400, AppColors.red1, 1),
-                            ),
-                          ],
-                        ),
+                      // driverAccountCreationLabel(Strings.country, h),
+                      // InkWell(
+                      //   onTap: () async {
+                      //     showSearchBottomSheet(context);
+                      //   },
+                      //   child: Container(
+                      //     height: (h! * 0.062).ceil().toDouble(),
+                      //     padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
+                      //     decoration: BoxDecoration(
+                      //         borderRadius:
+                      //             const BorderRadius.all(Radius.circular(4)),
+                      //         border: Border.all(color: AppColors.grey3)),
+                      //     child: Row(
+                      //       children: [
+                      //         countryImageIcon(usIcon),
+                      //         SizedBox(
+                      //           width: w! * 0.03,
+                      //         ),
+                      //         Text(
+                      //           selectedCountry==""?Strings.selectCountry:selectedCountry,
+                      //           style: customTextStyle(
+                      //               14, FontWeight.w400, selectedCountry==""?AppColors.grey10:AppColors.black6, 1),
+                      //         ),
+                      //         const Spacer(),
+                      //         arrowDownIcon(),
+                      //       ],
+                      //     ),
+                      //   ),
+                      // ),
+                      // if (hasSelectedCountry)
+                      //   Column(
+                      //     children: [
+                      //       const SizedBox(
+                      //         height: 5,
+                      //       ),
+                      //       Text(
+                      //         Strings.errorCountry,
+                      //         style: customTextStyle(
+                      //             12, FontWeight.w400, AppColors.red1, 1),
+                      //       ),
+                      //     ],
+                      //   ),
+                      // driverAccountCreationLabel(Strings.state, h),
+                      // InkWell(
+                      //   onTap: () {
+                      //      showStateSearchBottomSheet(context);
+                      //   },
+                      //   child: Container(
+                      //     height: (h! * 0.062).ceil().toDouble(),
+                      //     padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
+                      //     decoration: BoxDecoration(
+                      //         borderRadius:
+                      //             const BorderRadius.all(Radius.circular(4)),
+                      //         border: Border.all(color: AppColors.grey3)),
+                      //     child: Row(
+                      //       children: [
+                      //         SizedBox(
+                      //           width: (w! * 0.01).ceil().toDouble(),
+                      //         ),
+                      //         Text(
+                      //           selectedState==""?Strings.selectState:selectedState,
+                      //           style: customTextStyle(
+                      //               14, FontWeight.w400, selectedState==""?AppColors.grey10:AppColors.black6, 1),
+                      //         ),
+                      //         const Spacer(),
+                      //         arrowDownIcon(),
+                      //       ],
+                      //     ),
+                      //   ),
+                      // ),
+                      // if (hasSelectedState)
+                      //   Column(
+                      //     children: [
+                      //       const SizedBox(
+                      //         height: 5,
+                      //       ),
+                      //       Text(
+                      //         Strings.errorState,
+                      //         style: customTextStyle(
+                      //             12, FontWeight.w400, AppColors.red1, 1),
+                      //       ),
+                      //     ],
+                      //   ),
                       SizedBox(
                         height: (h! * 0.03).ceilToDouble(),
                       ),
@@ -360,66 +343,12 @@ class _CreateAccountState extends State<CreateAccount> {
     );
   }
 
-  void showSearchBottomSheet(BuildContext context) {
-    showModalBottomSheet(
-      isScrollControlled: true,
-      context: context,
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(20.0), // Adjust the radius as needed
-          topRight: Radius.circular(20.0), // Adjust the radius as needed
-        ),
-      ),
-      builder: (BuildContext context) {
-        return SearchBottomSheet(
-          selectedItem: selectedCountry,
-          dataList: countryList,
-          title: Strings.country,
-          hint: Strings.searchCountry,
-          onItemSelected: (item) {
-            setState(() {
-              selectedCountry =
-                  item; // Update the selected item in the main widget
-            });
-          },
-        );
-      },
-    );
-  }
-
-  void showStateSearchBottomSheet(BuildContext context) {
-    showModalBottomSheet(
-      isScrollControlled: true,
-      context: context,
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(20.0), // Adjust the radius as needed
-          topRight: Radius.circular(20.0), // Adjust the radius as needed
-        ),
-      ),
-      builder: (BuildContext context) {
-        return SearchBottomSheet(
-          selectedItem: selectedState,
-          dataList: countryList,
-          title: Strings.state,
-          hint: Strings.searchState,
-          onItemSelected: (item) {
-            setState(() {
-              selectedState =
-                  item; // Update the selected item in the main widget
-            });
-          },
-        );
-      },
-    );
-  }
+  
 
   void validation() {
-    if (driverNameController.text.isNotEmpty &&
-        selectedCountry.isNotEmpty &&
-        selectedState.isNotEmpty) {
+    if (driverNameController.text.isNotEmpty) {
       if (driverNameController.text.length >= 3 && driverNameController.text.length <= 70) {
-        Navigator.pushNamed(context, '/vehicleNumberSearch');
+        Navigator.pushNamed(context, '/vehicleDetails');
       } else {
         setState(() {
           isNameWithinLimit = true;
@@ -428,8 +357,6 @@ class _CreateAccountState extends State<CreateAccount> {
     } else {
       setState(() {
         isNameEntered = driverNameController.text.isEmpty;
-        hasSelectedState = selectedCountry.isNotEmpty;
-        hasSelectedCountry = selectedState.isNotEmpty;
         print(isNameEntered);
       });
     }

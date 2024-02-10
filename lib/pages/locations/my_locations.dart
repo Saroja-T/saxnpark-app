@@ -175,8 +175,9 @@ class MyLocationState extends State<MyLocation> {
                                       btnClick: () {
                                         showLocationBottomSheet(
                                             context, starSelected);
-                                      },
-                                    ));
+                                      }, isParkAgain: true,
+                                    )
+                                    );
                                   },
                                   separatorBuilder: (context, index) {
                                     return const Divider();

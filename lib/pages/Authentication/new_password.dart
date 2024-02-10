@@ -7,6 +7,7 @@ import '../../bloc/landing/landing_bloc.dart';
 import '../../commons/custom_app_bar.dart';
 import '../../utils/colors.dart';
 import '../../utils/constants.dart';
+import '../../utils/custom_widgets.dart';
 import '../../utils/strings.dart';
 import '../../utils/styles.dart';
 
@@ -18,14 +19,15 @@ class NewPassword extends StatefulWidget {
 
 class NewPasswordState extends State<NewPassword> {
   bool _showPassword = false;
+  bool _showOldPassword = false;
   bool _showConfirmPassword = false;
   bool _passwordValidationPassed = true;
   bool _confirmPasswordValidationPassed = true;
+  bool _oldPasswordValidation = true;
   bool? _initialScreen;
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     _initialScreen = true;
   }
@@ -56,6 +58,7 @@ class NewPasswordState extends State<NewPassword> {
 
   String tabLabel = "";
   final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _oldPasswordController = TextEditingController();
   final TextEditingController _confirmPasswordController =
       TextEditingController();
   Validations validate = Validations();
@@ -65,9 +68,12 @@ class NewPasswordState extends State<NewPassword> {
     h = MediaQuery.of(context).size.height;
     w = MediaQuery.of(context).size.width;
     tabLabel = context.watch<LandingBloc>().state.tabLabel;
+
     return Scaffold(
         appBar: CustomAppBarWithBack(
-            title: Strings.passwordReset, backText: Strings.back),
+            title: (!Strings.hasOldPassword)?Strings.passwordReset:Strings.password, 
+            backText: Strings.back,
+            ),
         body: SingleChildScrollView(
             child: Padding(
           padding: const EdgeInsets.fromLTRB(16, 24, 16, 24),
@@ -84,18 +90,81 @@ class NewPasswordState extends State<NewPassword> {
                       customTextStyle(20, FontWeight.w500, AppColors.black1, 1),
                 ),
                 const SizedBox(
-                  height: 6,
+                  height: 10,
                 ),
                 Text(
                   Strings.enterNewPassword,
                   style: customTextStyle(
                       16, FontWeight.w400, AppColors.black5, 1.2),
                 ),
+                if(!Strings.hasOldPassword)
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const SizedBox(
+                      height: 25,
+                    ),
+                    Text(
+                      Strings.oldPassword,
+                      style: customTextStyle(
+                          16, FontWeight.w400, AppColors.black1, 1),
+                    ),
+                    const SizedBox(
+                      height: 8,
+                    ),
+                    Container(
+                      padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
+                      decoration: BoxDecoration(
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(4)),
+                          border: Border.all(color: AppColors.grey3)),
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: TextField(
+                              controller: _oldPasswordController,
+                              decoration: InputDecoration(
+                                  border: InputBorder.none,
+                                  hintText: Strings.enterPassword,
+                                  hintStyle: TextStyle(
+                                      fontSize: 14, color: AppColors.grey10)),
+                              obscureText: !_showOldPassword,
+                              onChanged: (val) {
+                                setState(() {
+                                  if (_oldPasswordController.text.isNotEmpty) {
+                                    _oldPasswordValidation = true;
+                                  } else {
+                                    _oldPasswordValidation = false;
+                                  }
+                                });
+                              },
+                            ),
+                          ),
+                          InkWell(
+                              onTap: () {
+                                setState(() {
+                                  _showOldPassword = !_showOldPassword;
+                                });
+                              },
+                              child: Icon(
+                                _showOldPassword
+                                    ? Icons.visibility_outlined
+                                    : Icons.visibility_off_outlined,
+                                size: 18,
+                                color: AppColors.black5,
+                              ))
+                        ],
+                      ),
+                    ),
+                    if (!_oldPasswordValidation)
+                      errorWidget(Strings.passwordIncorrect),
+                  ],
+                ),
                 const SizedBox(
-                  height: 26,
+                  height: 25,
                 ),
                 Text(
-                  Strings.password,
+                  (!Strings.hasOldPassword)?Strings.password:'New ${Strings.password}',
                   style:
                       customTextStyle(16, FontWeight.w400, AppColors.black1, 1),
                 ),
@@ -150,25 +219,9 @@ class NewPasswordState extends State<NewPassword> {
                 ),
               ],
             ),
-            Padding(
-                padding: const EdgeInsets.only(top: 8),
-                child: Align(
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    _initialScreen!
-                        ? Strings.passwordError
-                        : (_passwordController.text.isEmpty
-                            ? Strings.emptyPasswordError
-                            : Strings.passwordError),
-                    style: customTextStyle(
-                        12,
-                        FontWeight.w400,
-                        !_passwordValidationPassed
-                            ? AppColors.red1
-                            : AppColors.black5,
-                        1.2),
-                  ),
-                )),
+            passwordRegexHint(),
+            if (!_passwordValidationPassed)
+              errorWidget(Strings.emptyPasswordError),
             const SizedBox(
               height: 24,
             ),
@@ -230,18 +283,7 @@ class NewPasswordState extends State<NewPassword> {
               ],
             ),
             if (!_confirmPasswordValidationPassed)
-              Align(
-                alignment: Alignment.centerLeft,
-                child: Padding(
-                    padding: const EdgeInsets.only(top: 8),
-                    child: Text(
-                      _passwordController.text.isEmpty
-                          ? Strings.emptyPasswordError
-                          : Strings.confirmPasswordError,
-                      style: customTextStyle(
-                          12, FontWeight.w400, AppColors.red1, 1.2),
-                    )),
-              ),
+              errorWidget(Strings.confirmPasswordError),
             const SizedBox(height: 24),
             ElevatedButton(
               style: registerBtnStyle,

@@ -63,44 +63,33 @@ class _MyDetailsState extends State<MyDetails> {
                       Container(
                         padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
                         decoration: BoxDecoration(
+                            color: AppColors.grey12,
                             borderRadius:
                                 const BorderRadius.all(Radius.circular(4)),
                             border: Border.all(color: AppColors.grey3)),
                         child: Row(
                           children: [
-                            GestureDetector(
-                              behavior: HitTestBehavior.translucent,
-                              onTap: () async {
-                                var result = await showListBottomSheet(context,
-                                    Strings.title, titleList, selectedTitle);
-                                if (result != null) {
-                                  setState(() {
-                                    selectedTitle = result;
-                                  });
-                                }
-                              },
-                              child: SizedBox(
-                                child: Row(
-                                  children: [
-                                    Text(
-                                      selectedTitle,
-                                      style: TextStyle(
-                                          fontSize: 14,
-                                          fontWeight: FontWeight.w700,
-                                          color: AppColors.black3),
-                                    ),
-                                    arrowDownIcon(),
-                                    Text(
-                                      "|",
-                                      style: TextStyle(
-                                          fontSize: 14,
-                                          color: AppColors.grey10),
-                                    ),
-                                    const SizedBox(
-                                      width: 4,
-                                    ),
-                                  ],
-                                ),
+                            SizedBox(
+                              child: Row(
+                                children: [
+                                  Text(
+                                    selectedTitle,
+                                    style: TextStyle(
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.w700,
+                                        color: AppColors.black3),
+                                  ),
+                                  arrowDownIcon(),
+                                  Text(
+                                    "|",
+                                    style: TextStyle(
+                                        fontSize: 14,
+                                        color: AppColors.grey10),
+                                  ),
+                                  const SizedBox(
+                                    width: 4,
+                                  ),
+                                ],
                               ),
                             ),
                             const SizedBox(
@@ -114,6 +103,7 @@ class _MyDetailsState extends State<MyDetails> {
                                   FilteringTextInputFormatter.allow(
                                       RegExp(r'[a-zA-Z\s]'))
                                 ],
+                                readOnly: true,
                                 keyboardType: TextInputType.text,
                                 decoration: InputDecoration(
                                   contentPadding: const EdgeInsets.fromLTRB(0, 0, 0, 3),
@@ -122,15 +112,7 @@ class _MyDetailsState extends State<MyDetails> {
                                     hintStyle: TextStyle(
                                         fontSize: 14, color: AppColors.grey10 )),
                                 onChanged: (val) {
-                                  if (driverNameController.text.isNotEmpty) {
-                                    setState(() {
-                                      isNameEntered = false;
-                                    });
-                                  } else {
-                                    setState(() {
-                                      isNameEntered = true;
-                                    });
-                                  }
+                                  
                                 },
                               ),
                             )
@@ -242,7 +224,7 @@ class _MyDetailsState extends State<MyDetails> {
                         style: registerBtnStyle,
                         onPressed: () {
                           setState(() {
-                            validation();
+                           // validation();
                           });
                         },
                         child: Text(
@@ -263,21 +245,21 @@ class _MyDetailsState extends State<MyDetails> {
   
 
   
-  void validation() {
-    if (driverNameController.text.isNotEmpty ) {
-      if (driverNameController.text.length >= 3 &&
-          driverNameController.text.length <= 70) {
-        Navigator.pushNamed(context, '/vehicleNumberSearch');
-      } else {
-        setState(() {
-          isNameWithinLimit = true;
-        });
-      }
-    } else {
-      setState(() {
-        isNameEntered = driverNameController.text.isEmpty;
-        print(isNameEntered);
-      });
-    }
-  }
+  // void validation() {
+  //   if (driverNameController.text.isNotEmpty ) {
+  //     if (driverNameController.text.length >= 3 &&
+  //         driverNameController.text.length <= 70) {
+  //       Navigator.pushNamed(context, '/vehicleNumberSearch');
+  //     } else {
+  //       setState(() {
+  //         isNameWithinLimit = true;
+  //       });
+  //     }
+  //   } else {
+  //     setState(() {
+  //       isNameEntered = driverNameController.text.isEmpty;
+  //       print(isNameEntered);
+  //     });
+  //   }
+  // }
 }

@@ -85,7 +85,7 @@ class _LocationPageState extends State<LocationPage> {
             Row(
               children: [
                 Container(
-                  width: 91.0,
+                  width: w!*0.3,
                   height: 34.0,
                   margin: const EdgeInsets.only(right: 16),
                   child: TextButton.icon(
@@ -105,7 +105,7 @@ class _LocationPageState extends State<LocationPage> {
                   ),
                 ),
                 Container(
-                  width: 100.0,
+                  width: w!*0.25,
                   height: 34.0,
                   margin: const EdgeInsets.only(right: 16),
                   child: TextButton.icon(
@@ -147,7 +147,7 @@ class _LocationPageState extends State<LocationPage> {
                     return GestureDetector(
                       onTap: () {
                         context.read<LandingBloc>().add(TabChangeEvent(
-                            tabIndex: 0, tabLabel: Strings.rNearMeMapList));
+                            tabIndex: 0, tabLabel: Strings.rLocationListWithoutSelection));
                       },
                       child: Container(
                         margin: const EdgeInsets.only(right: 16.0),

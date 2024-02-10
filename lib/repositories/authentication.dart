@@ -2,9 +2,17 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:saxnpark_app/models/login_model.dart';
+
+import '../exceptions/authentication_exception.dart';
+import '../models/custom_error.dart';
+import '../services/authentication_service.dart';
 
 class AuthRepository {
-  
+   final AuthenticationApiServices authenticationApiServices;
+  AuthRepository({
+    required this.authenticationApiServices,
+  });
 
   Future<void> signOutWithGoogle() async {
     try {
@@ -33,6 +41,20 @@ class AuthRepository {
       return user;
     } catch (e) {
       throw Exception(e.toString());
+    }
+  }
+
+  Future<LoginModel> logIn(String phoneNumber,String password) async {
+    try {
+     
+      final LoginModel weather = await authenticationApiServices.postLogin(phoneNumber,password);
+      print('weather: $weather');
+
+      return weather;
+    } on AuthenticationException catch (e) {
+      throw CustomError(errMsg: e.message);
+    } catch (e) {
+      throw CustomError(errMsg: e.toString());
     }
   }
 }

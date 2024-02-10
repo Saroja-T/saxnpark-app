@@ -127,12 +127,15 @@ class _LandingPageState extends State<LandingPage> {
 
   Widget contentWidget(int tabIndex, String tabLabel) {
     if (tabIndex == 0 && tabLabel == Strings.rHome) {
-      return const HomePage();
+      // return const HomePage();
+      return const AccountsPage();
     } else if (tabIndex == 0 && tabLabel == Strings.rLocationGridList) {
       return const LocationPage();
     } else if (tabIndex == 0 && tabLabel == Strings.rPark) {
       return const VehicleType();
-    } else if (tabIndex == 0 && (tabLabel == Strings.rLocationList ||
+    } else if (tabIndex == 0 && (
+            tabLabel == Strings.rLocationList ||
+            tabLabel == Strings.rLocationListWithoutSelection ||
             tabLabel == Strings.rNearMeList ||
             tabLabel == Strings.rRecentList ||
             tabLabel == Strings.rLocationSearchList)) {

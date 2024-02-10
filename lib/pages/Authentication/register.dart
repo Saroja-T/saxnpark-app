@@ -3,11 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:saxnpark_app/bloc/google/google_bloc.dart';
+import 'package:saxnpark_app/utils/custom_widgets.dart';
 
 import '../../bloc/landing/landing_bloc.dart';
 import '../../commons/custom_app_bar.dart';
 import '../../utils/colors.dart';
 import '../../utils/constants.dart';
+import '../../utils/notification_banner.dart';
 import '../../utils/strings.dart';
 import '../../utils/styles.dart';
 import '../../utils/validations.dart';
@@ -22,8 +24,10 @@ class _RegisterState extends State<Register> {
   bool _showPassword = false;
   bool _showConfirmPassword = false;
   bool _numberValidationPassed = true;
-  bool _passwordValidationPassed = true;
+  bool _emptyPasswordValidationPassed = false;
+  bool _passwordValidationPassed = false;
   bool _confirmPasswordValidationPassed = true;
+  bool _emptyConfirmPasswordValidation = false;
   bool? _initialScreen;
 
   String tabLabel = "";
@@ -40,35 +44,38 @@ class _RegisterState extends State<Register> {
     Strings.shouldRedirectToHome = false;
   }
 
-  validateFeilds() {
-//phonenumber validation
-    if (_phoneController.text.isEmpty) {
-      _numberValidationPassed = false;
-    } else {
-      _numberValidationPassed = true;
-    }
+  void validateFeilds() {
+    // Phone number validation
+    _numberValidationPassed = _phoneController.text.isNotEmpty;
 
-    //password validations
-    if (validate.validatePassword(_passwordController.text)) {
-      _passwordValidationPassed = true;
-      if (_confirmPasswordController.text == _passwordController.text) {
-        _confirmPasswordValidationPassed = true;
-        Strings.passwordChanged = true;
-        Navigator.pushReplacementNamed(context, '/otpVerification');
-      } else {
-        _confirmPasswordValidationPassed = false;
-      }
-    } else {
-      _confirmPasswordValidationPassed = true;
-      _passwordValidationPassed = false;
-    }
+    // Password validations
+    _emptyPasswordValidationPassed = _passwordController.text.isEmpty;
+    _emptyConfirmPasswordValidation = _confirmPasswordController.text.isEmpty;
+    _passwordValidationPassed = _passwordController.text.isNotEmpty &&
+        validate.validatePassword(_passwordController.text);
+    _confirmPasswordValidationPassed =
+        _passwordController.text == _confirmPasswordController.text;
 
-    //confirm password checking
-    if (_passwordController.text == _confirmPasswordController.text) {
-      _confirmPasswordValidationPassed = true;
+    // Check if all validations passed
+    bool allValidationsPassed = _numberValidationPassed &&
+        !_emptyPasswordValidationPassed &&
+        !_emptyConfirmPasswordValidation &&
+        _passwordValidationPassed &&
+        _confirmPasswordValidationPassed;
+
+    if (allValidationsPassed) {
+      // Call your API function here
+      callYourAPIFunction();
     } else {
-      _confirmPasswordValidationPassed = false;
+      // Handle the case where not all validations passed
+      // You may display an error message to the user or take appropriate action.
     }
+  }
+
+  void callYourAPIFunction() {
+    // Replace this with your actual API call implementation
+    print('Calling API...');
+    // Your API call logic goes here
   }
 
   @override
@@ -93,6 +100,21 @@ class _RegisterState extends State<Register> {
               child: Padding(
                 padding: const EdgeInsets.fromLTRB(0, 24, 0, 24),
                 child: Column(children: [
+                  if(Strings.isAccountDeleted)
+                  NotificationBanner(
+                    message: Strings.accountDeleted,
+                    isCancelAvailable:false,
+                    isErrorMsg: false,
+                    onCancel: () {
+                      setState(() {
+                        Strings.isAccountDeleted = false;
+                      });
+                    },
+                  ),
+                  if(Strings.isAccountDeleted)
+                  const SizedBox(
+                    height: 24,
+                  ),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -154,6 +176,8 @@ class _RegisterState extends State<Register> {
                                     decoration: InputDecoration(
                                         border: InputBorder.none,
                                         hintText: '908 612 422',
+                                        contentPadding:
+                                            const EdgeInsets.only(bottom: 5),
                                         hintStyle: TextStyle(
                                             fontSize: 14,
                                             color: AppColors.grey10)),
@@ -174,13 +198,7 @@ class _RegisterState extends State<Register> {
                         ],
                       ),
                       if (!_numberValidationPassed)
-                        Padding(
-                            padding: const EdgeInsets.only(top: 8),
-                            child: Text(
-                              Strings.emptyNumberError,
-                              style: customTextStyle(
-                                  12, FontWeight.w400, AppColors.red1, 1.2),
-                            )),
+                        errorWidget(Strings.emptyNumberError),
                       const SizedBox(
                         height: 24,
                       ),
@@ -241,26 +259,12 @@ class _RegisterState extends State<Register> {
                       ),
                     ],
                   ),
+                  passwordRegexHint(),
                   // if (!_passwordValidationPassed)
-                  Align(
-                    alignment: Alignment.bottomLeft,
-                    child: Padding(
-                        padding: const EdgeInsets.only(top: 8),
-                        child: Text(
-                          _initialScreen!
-                              ? Strings.passwordError
-                              : (_passwordController.text.isEmpty
-                                  ? Strings.emptyPasswordError
-                                  : Strings.passwordError),
-                          style: customTextStyle(
-                              12,
-                              FontWeight.w400,
-                              !_passwordValidationPassed
-                                  ? AppColors.red1
-                                  : AppColors.black5,
-                              1.2),
-                        )),
-                  ),
+                  if (_passwordValidationPassed)
+                    errorWidget(Strings.passwordIncorrect),
+                  if (_emptyPasswordValidationPassed)
+                    errorWidget(Strings.emptyPasswordError),
                   const SizedBox(
                     height: 24,
                   ),
@@ -324,18 +328,10 @@ class _RegisterState extends State<Register> {
                     ],
                   ),
                   if (!_confirmPasswordValidationPassed)
-                    Align(
-                      alignment: Alignment.centerLeft,
-                      child: Padding(
-                          padding: const EdgeInsets.only(top: 8),
-                          child: Text(
-                            _passwordController.text.isEmpty
-                                ? Strings.emptyPasswordError
-                                : Strings.confirmPasswordError,
-                            style: customTextStyle(
-                                12, FontWeight.w400, AppColors.red1, 1.2),
-                          )),
-                    ),
+                    errorWidget(Strings.confirmPasswordError),
+                  if (_emptyConfirmPasswordValidation)
+                    errorWidget(Strings.emptyPasswordError),
+
                   const SizedBox(height: 24),
                   termsAndConditionText(context),
                   const SizedBox(
@@ -440,7 +436,12 @@ class _RegisterState extends State<Register> {
                         TextSpan(
                             text: Strings.signin,
                             style: customTextStyleWithUnderline(
-                                16, FontWeight.w700, AppColors.black6, 1),
+                              16,
+                              FontWeight.w700,
+                              AppColors.black6,
+                              1,
+                              AppColors.black6,
+                            ),
                             recognizer: TapGestureRecognizer()
                               ..onTap = () {
                                 Navigator.pushReplacementNamed(
@@ -463,8 +464,8 @@ class _RegisterState extends State<Register> {
       AppColors.black5,
       1.2,
     );
-    TextStyle linkStyle =
-        customTextStyleWithUnderline(14, FontWeight.w400, AppColors.blue1, 1);
+    TextStyle linkStyle = customTextStyleWithUnderline(
+        14, FontWeight.w400, AppColors.blue1, 1, AppColors.blue1);
     return RichText(
       text: TextSpan(
         style: defaultStyle,

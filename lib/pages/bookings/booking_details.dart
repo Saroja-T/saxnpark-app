@@ -5,6 +5,8 @@ import '../../bloc/landing/landing_bloc.dart';
 import '../../commons/custom_app_bar.dart';
 import '../../utils/colors.dart';
 import '../../utils/constants.dart';
+import '../../utils/custom_widgets.dart';
+import '../../utils/notification_banner.dart';
 import '../../utils/strings.dart';
 import '../../utils/styles.dart';
 import '../payment/payment_page.dart';
@@ -25,12 +27,25 @@ class BookingPreviewState extends State<BookingPreview> {
     return Scaffold(
       appBar: CustomAppBar(title: Strings.bookingConfirmation),
       body: Padding(
-        padding: const EdgeInsets.fromLTRB(16, 24, 16, 24),
+        padding: const EdgeInsets.fromLTRB(16, 24, 16, 0),
         child: SingleChildScrollView(
           child: Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              if(Strings.isPaymentFailed)
+              NotificationBanner(
+                      message: Strings.paymentFailure,
+                      isCancelAvailable: true,
+                      isErrorMsg: true,
+                      onCancel: () {
+                        setState(() {
+                          Strings.isPaymentFailed = false;
+                        });
+                      },
+                    ),
+              if(Strings.isPaymentFailed)
+              const SizedBox(height: 15,),
               Text(
                 Strings.bookingConfirmationTitle,
                 style:
@@ -83,11 +98,12 @@ class BookingPreviewState extends State<BookingPreview> {
                           true,
                           Strings.dummyvehicle1,
                           true,
-                          vehicleTypeChange),
-                      customListRow(clock, Strings.driveIn, Strings.today, true,
-                          Strings.dummyTime, true, bookingTimeChange),
-                      customListRow(clock, Strings.driveOut, Strings.today,
-                          true, Strings.dummyTime, true, bookingTimeChange),
+                          vehicleTypeChange,
+                          false),
+                      customListRow(clock, Strings.validFrom, Strings.today,
+                          true, Strings.dummyTime, true, bookingTimeChange,false),
+                      customListRow(clock, Strings.validTo, Strings.today,
+                          true, Strings.dummyTime, true, bookingTimeChange,false),
                       customListRow(
                           duration,
                           Strings.duration,
@@ -95,9 +111,27 @@ class BookingPreviewState extends State<BookingPreview> {
                           false,
                           "",
                           true,
-                          bookingTimeChange),
-                      customListRow(coins, Strings.cost, Strings.dummyCost,
-                          false, "", false, bookingTimeChange),
+                          bookingTimeChange,false),
+                      
+                    ]),
+              ),
+              Container(
+                width: double.infinity,
+                padding: const EdgeInsets.only(left: 16, top: 16, right: 16),
+                margin: const EdgeInsets.only(bottom: 16),
+                decoration: BoxDecoration(
+                    borderRadius: const BorderRadius.all(Radius.circular(8)),
+                    border: Border.all(color: AppColors.grey4)),
+                child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      customListRow1(Strings.parkingFee, "\$2.40"),
+                      customListRow1(Strings.taxes, "\$2.40"),
+                      customListRow1(Strings.serviceFee, "\$2.40"),
+                      customListRow1(Strings.total, "\$2.40"),
+                       customListRow(cardHolder, Strings.paymentMethod,
+                          Strings.dummyPaymentMethod, false, "", true, bookingTimeChange,true),
                     ]),
               ),
               SizedBox(
@@ -133,6 +167,9 @@ class BookingPreviewState extends State<BookingPreview> {
                       )),
                 ),
               ),
+              const SizedBox(
+                height: 20,
+              ),
             ],
           ),
         ),
@@ -150,69 +187,5 @@ class BookingPreviewState extends State<BookingPreview> {
     //  context.read<LandingBloc>().add(TabChangeEvent(
     //                   tabIndex: 1, tabLabel: Strings.rVehicleType));
   }
-  Widget customListRow(String icon, String title, String text1, bool isCircle,
-      String text2, bool isChangeble, Function() onChangeFunction) {
-    return Column(
-      children: [
-        Row(children: [
-          Image.asset(
-            icon,
-            color: AppColors.black6,
-          ),
-          const SizedBox(
-            width: 4,
-          ),
-          Flexible(
-              child: Text(
-            title,
-            style: customTextStyle(14, FontWeight.w400, AppColors.black6, 0),
-          ))
-        ]),
-        const SizedBox(
-          height: 4,
-        ),
-        Row(children: [
-          Text(
-            text1,
-            style: customTextStyle(16, FontWeight.w600, AppColors.black6, 0),
-          ),
-          const SizedBox(
-            width: 4,
-          ),
-          if (isCircle)
-            Row(
-              children: [
-                Icon(
-                  Icons.circle,
-                  color: AppColors.black6,
-                  size: 4,
-                ),
-                const SizedBox(
-                  width: 4,
-                ),
-                Text(
-                  text2,
-                  style:
-                      customTextStyle(16, FontWeight.w600, AppColors.black6, 0),
-                ),
-                const SizedBox(
-                  width: 4,
-                ),
-              ],
-            ),
-          if (isChangeble)
-            GestureDetector(
-              onTap: onChangeFunction,
-              child: Text(
-                Strings.change,
-                style: customTextStyle(16, FontWeight.w400, AppColors.blue1, 0),
-              ),
-            ),
-        ]),
-        const SizedBox(
-          height: 16,
-        )
-      ],
-    );
-  }
+  
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:saxnpark_app/utils/custom_widgets.dart';
 
 import '../../bloc/landing/landing_bloc.dart';
 import '../../commons/custom_app_bar.dart';
@@ -16,13 +17,9 @@ class PasswordReset extends StatefulWidget {
 }
 
 class _PasswordResetState extends State<PasswordReset> {
-  bool _showPassword = false;
   bool _numberValidationPassed = true;
-  bool _passwordValidationPassed = true;
-
   String tabLabel = "";
   final TextEditingController _phoneController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
 
   @override
   void initState() {
@@ -126,6 +123,7 @@ class _PasswordResetState extends State<PasswordReset> {
                                   decoration: InputDecoration(
                                       border: InputBorder.none,
                                       hintText: '908 612 422',
+                                      contentPadding: const EdgeInsets.only(bottom: 5),
                                       hintStyle: TextStyle(
                                           fontSize: 14,
                                           color: AppColors.grey10)),
@@ -146,13 +144,7 @@ class _PasswordResetState extends State<PasswordReset> {
                       ],
                     ),
                      if (!_numberValidationPassed)
-                      Padding(
-                          padding: const EdgeInsets.only(top: 8),
-                          child: Text(
-                            Strings.emptyNumberError,
-                            style: customTextStyle(
-                                12, FontWeight.w400, AppColors.red1, 1.2),
-                          )),
+                      errorWidget(Strings.emptyNumberError),
                     const SizedBox(
                       height: 24,
                     )
@@ -211,7 +203,7 @@ class _PasswordResetState extends State<PasswordReset> {
                       TextSpan(
                           text: Strings.register,
                           style: customTextStyleWithUnderline(
-                              16, FontWeight.w700, AppColors.black6, 1),
+                              16, FontWeight.w700, AppColors.black6, 1, AppColors.black6),
                           recognizer: TapGestureRecognizer()
                             ..onTap = () {
                               Navigator.pushReplacementNamed(

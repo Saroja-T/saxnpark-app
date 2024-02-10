@@ -38,10 +38,12 @@ final ButtonStyle homeActiveElatedBtnStyle = ElevatedButton.styleFrom(
   ),
 );
 final ButtonStyle homeInActiveElatedBtnStyle = ElevatedButton.styleFrom(
-  backgroundColor: AppColors.grey3,
+  // backgroundColor: AppColors.white,
   shape: const RoundedRectangleBorder(
     borderRadius: BorderRadius.all(Radius.circular(100)),
+    side: BorderSide(color: Color.fromRGBO(235, 237, 238, 1)),
   ),
+
 );
 
 final ButtonStyle locationActiveElatedBtnStyle = ElevatedButton.styleFrom(
@@ -83,13 +85,14 @@ TextStyle customTextStyle(double size,FontWeight weight,Color color,double dHeig
     );
     return textStyle;
 }
-TextStyle customTextStyleWithUnderline(double size,FontWeight weight,Color color,double dHeight){
+TextStyle customTextStyleWithUnderline(double size,FontWeight weight,Color color,double dHeight,Color decorationColor){
     final TextStyle textStyle  = TextStyle(
       color: color,
       fontSize: size,
       fontWeight: weight,
       height: dHeight,
-      decoration: TextDecoration.underline
+      decoration: TextDecoration.underline,
+      decorationColor: decorationColor
     );
     return textStyle;
 }

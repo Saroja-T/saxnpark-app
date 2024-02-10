@@ -8,6 +8,7 @@ import 'package:share_plus/share_plus.dart';
 import '../../bloc/landing/landing_bloc.dart';
 import '../../commons/custom_app_bar.dart';
 import '../../utils/constants.dart';
+import '../../utils/notification_banner.dart';
 import '../../utils/strings.dart';
 import '../../utils/styles.dart';
 
@@ -40,6 +41,17 @@ class MyVehiclesState extends State<MyVehicles> {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            if(Strings.isVehicleDeleted==true)
+            NotificationBanner(
+              message: Strings.vehicleDeleted,
+              isCancelAvailable: true,
+              isErrorMsg: false,
+              onCancel: () {
+                setState(() {
+                  Strings.isVehicleDeleted = false;
+                });
+              },
+            ),
             const SizedBox(height: 16),
             Container(
               decoration: BoxDecoration(
@@ -92,46 +104,44 @@ class MyVehiclesState extends State<MyVehicles> {
   }
 
   vehiclesItem(String title, String category) {
-    return Expanded(
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          const SizedBox(
-            height: 24,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    title,
-                    style: customTextStyle(
-                        16, FontWeight.w400, AppColors.black6, 1),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Text(
-                    category,
-                    style: customTextStyle(
-                        16, FontWeight.w400, AppColors.grey6, 1),
-                  ),
-                ],
-              ),
-              Image.asset(rightArrow),
-            ],
-          ),
-          const SizedBox(
-            height: 24,
-          ),
-          Container(
-            color: AppColors.grey12,
-            height: 1,
-          ),
-        ],
-      ),
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        const SizedBox(
+          height: 24,
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  title,
+                  style:
+                      customTextStyle(16, FontWeight.w400, AppColors.black6, 1),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Text(
+                  category,
+                  style:
+                      customTextStyle(16, FontWeight.w400, AppColors.grey6, 1),
+                ),
+              ],
+            ),
+            Image.asset(rightArrow),
+          ],
+        ),
+        const SizedBox(
+          height: 24,
+        ),
+        Container(
+          color: AppColors.grey12,
+          height: 1,
+        ),
+      ],
     );
   }
 }

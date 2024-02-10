@@ -55,7 +55,7 @@ class CustomAppBarWithBackAndSkip extends StatelessWidget
         leading: Align(
             alignment: Alignment.centerLeft,
             child: Padding(
-              padding: const EdgeInsets.fromLTRB(6, 0, 0, 0),
+              padding: const EdgeInsets.fromLTRB(3, 0, 0, 0),
               child: TextButton(
                   onPressed: () {
                     if (title == Strings.signin ||
@@ -127,8 +127,8 @@ class CustomAppBarWithBack extends StatelessWidget
             child: TextButton(
               onPressed: (){
                 // print(context.watch<LandingBloc>().state.tabLabel);
-                if(Strings.register==title || Strings.passwordReset==title
-                 || Strings.signin==title || Strings.verification==title){
+                if(Strings.register==title || Strings.passwordReset==title ||Strings.password==title 
+                 || Strings.signin==title || Strings.verification==title||Strings.contactUs==title){
                   Navigator.pop(context);
                 }else{
                   context.read<LandingBloc>().add(TabChangeEvent(

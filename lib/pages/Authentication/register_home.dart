@@ -39,7 +39,7 @@ class _RegisterHomeState extends State<RegisterHome> {
               child: Image.asset(
                 loginBg,
                 fit: BoxFit.fill,
-               // opacity: const AlwaysStoppedAnimation(1),
+                // opacity: const AlwaysStoppedAnimation(1),
               ),
             ),
             Align(
@@ -77,19 +77,21 @@ class _RegisterHomeState extends State<RegisterHome> {
                       Text(
                         Strings.alreadyHaveAccount,
                         style: customTextStyle(
-                            16, FontWeight.w400, AppColors.white, 1),
-                      ),
-                      const SizedBox(
-                        width: 5,
+                            16, FontWeight.w400, AppColors.white, 0),
                       ),
                       TextButton(
-                        onPressed: (){
+                        onPressed: () {
                           Navigator.pushNamed(context, '/login');
                         },
                         child: Text(
                           Strings.signin,
-                          style: customTextStyleWithUnderline(
-                              16, FontWeight.w700, AppColors.white, 1),
+                          style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 16,
+                              fontWeight: FontWeight.w700,
+                              height: 1,
+                              decoration: TextDecoration.underline,
+                              decorationColor: Colors.white),
                         ),
                       )
                     ],

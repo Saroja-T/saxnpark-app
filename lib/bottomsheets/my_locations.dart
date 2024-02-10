@@ -64,7 +64,7 @@ showMylocationsBottomSheet(context) {
                                         Colors.white)),
                             onPressed: () {},
                             child: Text(
-                              "Recent",
+                              Strings.recent,
                               style: customTextStyle(
                                   14, FontWeight.w400, AppColors.black6, 1),
                             )),
@@ -100,6 +100,7 @@ showMylocationsBottomSheet(context) {
                           btnClick: () {
                             showLocationBottomSheet(context, starSelected);
                           },
+                          isParkAgain: false,
                         ));
                       },
                       separatorBuilder: (context, index) {

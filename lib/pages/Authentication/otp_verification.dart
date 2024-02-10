@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:saxnpark_app/utils/custom_widgets.dart';
 
 import '../../bloc/landing/landing_bloc.dart';
 import '../../commons/custom_app_bar.dart';
@@ -22,6 +23,7 @@ class OTPVerificationState extends State<OTPVerification> {
   bool enableResend = false;
   Timer? timer;
   bool isOtpEntered = false;
+  bool isOTPNotValid = false;
 
   @override
   initState() {
@@ -89,11 +91,22 @@ class OTPVerificationState extends State<OTPVerification> {
                         const SizedBox(
                           height: 16,
                         ),
-                        Text(
-                          Strings.verificationMessage +
-                              Strings.verificationMessage1,
-                          style: customTextStyle(
-                              16, FontWeight.w400, AppColors.black5, 1.2),
+                        RichText(
+                          text: TextSpan(
+                            style: customTextStyle(
+                                16, FontWeight.w400, AppColors.black5, 1.2),
+                            children: <TextSpan>[
+                              TextSpan(text: Strings.verificationMessage),
+                              TextSpan(
+                                text: "+44 7907 612422",
+                                style: customTextStyle(
+                                    16, FontWeight.w600, AppColors.black5, 1.2),
+                              ),
+                              TextSpan(
+                                text: Strings.verificationMessage1,
+                              ),
+                            ],
+                          ),
                         ),
                         const SizedBox(
                           height: 16,
@@ -105,7 +118,11 @@ class OTPVerificationState extends State<OTPVerification> {
                             child: Text(
                               Strings.editPhoneNumber,
                               style: customTextStyleWithUnderline(
-                                  16, FontWeight.w400, AppColors.blue1, 0),
+                                  16,
+                                  FontWeight.w400,
+                                  AppColors.blue1,
+                                  0,
+                                  AppColors.blue1),
                             )),
                         const SizedBox(
                           height: 8,
@@ -126,9 +143,9 @@ class OTPVerificationState extends State<OTPVerification> {
                             child: OTPTextField(
                               isVerified: (isAllFieldsFilled) {
                                 setState(() {
-                                   isOtpEntered = isAllFieldsFilled;
+                                  isOtpEntered = isAllFieldsFilled;
                                 });
-                               
+
                                 if (isAllFieldsFilled) {
                                   Timer.periodic(const Duration(seconds: 2),
                                       (timer) {
@@ -136,6 +153,9 @@ class OTPVerificationState extends State<OTPVerification> {
                                       Navigator.pushNamedAndRemoveUntil(context,
                                           '/generalHome', (route) => false);
                                     } else {
+                                      setState(() {
+                                        Strings.hasOldPassword = false;
+                                      });
                                       Navigator.pushReplacementNamed(
                                           context, '/newPassword');
                                     }
@@ -146,6 +166,8 @@ class OTPVerificationState extends State<OTPVerification> {
                         const SizedBox(
                           height: 8,
                         ),
+                        if (isOTPNotValid)
+                          errorWidget(Strings.verificationCodeError)
                       ],
                     ),
                     const SizedBox(

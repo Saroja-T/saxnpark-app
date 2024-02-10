@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:saxnpark_app/bottomsheets/article.dart';
 
 import '../bloc/home/home_bloc.dart';
 import '../bloc/landing/landing_bloc.dart';
@@ -52,7 +53,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
               children: [
                 SizedBox(height: h! / 100.0),
                 Center(
-                    child: Text(
+                  child: Text(
                   Strings.homeContent,
                   style: TextStyle(fontSize: 28.0, color: AppColors.black1),
                 )),
@@ -83,55 +84,63 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                     itemCount: 15,
                     itemBuilder: (BuildContext context, int index) => Container(
                       margin: const EdgeInsets.only(right: 16),
-                      child: Card(
-                        shape: const RoundedRectangleBorder(
-                          borderRadius: BorderRadius.only(
-                              bottomLeft: Radius.circular(4.0),
-                              bottomRight: Radius.circular(4.0)),
-                        ),
-                        child: SizedBox(
-                          width: 256.0,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              ClipRRect(
-                                borderRadius: const BorderRadius.only(
-                                    topLeft: Radius.circular(4.0),
-                                    topRight: Radius.circular(4.0)),
-                                child: Image.network(
-                                  'https://cdn.motor1.com/images/mgl/G33JZA/s3/bentley-mulliner-batur.jpg',
-                                  height: 96.0,
-                                  width: double.infinity,
-                                  fit: BoxFit.fill,
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(
-                                    left: 8.0, right: 8.0),
-                                child: Text(Strings.dummyText,
-                                    style: customTextStyle(14.0,
-                                        FontWeight.w500, AppColors.black3, 2)),
-                              ),
-                              Row(
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.only(
-                                        left: 8.0, right: 4.0, bottom: 3),
-                                    child: Text(Strings.findOut,
-                                        style: customTextStyle(
-                                            12.0,
-                                            FontWeight.w400,
-                                            AppColors.black3,
-                                            1)),
+                      child: GestureDetector(
+                        onTap: ()=>{
+                          if(index==1)
+                            showArticleBottomSheet(context,"",false)
+                          else
+                            showArticleBottomSheet(context,"",true)
+                        },
+                        child: Card(
+                          shape: const RoundedRectangleBorder(
+                            borderRadius: BorderRadius.only(
+                                bottomLeft: Radius.circular(4.0),
+                                bottomRight: Radius.circular(4.0)),
+                          ),
+                          child: SizedBox(
+                            width: 256.0,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                ClipRRect(
+                                  borderRadius: const BorderRadius.only(
+                                      topLeft: Radius.circular(4.0),
+                                      topRight: Radius.circular(4.0)),
+                                  child: Image.network(
+                                    'https://cdn.motor1.com/images/mgl/G33JZA/s3/bentley-mulliner-batur.jpg',
+                                    height: 96.0,
+                                    width: double.infinity,
+                                    fit: BoxFit.fill,
                                   ),
-                                  Icon(
-                                    Icons.arrow_outward_outlined,
-                                    size: 12.0,
-                                    color: AppColors.blue1,
-                                  )
-                                ],
-                              )
-                            ],
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                      left: 8.0, right: 8.0),
+                                  child: Text(Strings.dummyText,
+                                      style: customTextStyle(14.0,
+                                          FontWeight.w500, AppColors.black3, 2)),
+                                ),
+                                Row(
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.only(
+                                          left: 8.0, right: 4.0, bottom: 3),
+                                      child: Text(Strings.findOut,
+                                          style: customTextStyle(
+                                              12.0,
+                                              FontWeight.w400,
+                                              AppColors.black3,
+                                              1)),
+                                    ),
+                                    Icon(
+                                      Icons.arrow_outward_outlined,
+                                      size: 12.0,
+                                      color: AppColors.blue1,
+                                    )
+                                  ],
+                                )
+                              ],
+                            ),
                           ),
                         ),
                       ),
@@ -154,16 +163,24 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                   child: ListView.builder(
                     shrinkWrap: true,
                     scrollDirection: Axis.horizontal,
-                    itemCount: 15,
+                    itemCount: 2,
                     itemBuilder: (BuildContext context, int index) => Container(
                       margin: const EdgeInsets.only(right: 10.0),
-                      child: ElevatedButton(
+                      child:(index==0)
+                        ?ElevatedButton(
                         style: homeActiveElatedBtnStyle,
                         onPressed: () {},
                         child: Text(
-                          Strings.northAmerica,
+                          Strings.us,
                           style: customTextStyle(
-                              16.0, FontWeight.w600, AppColors.white, 0),
+                              14.0, FontWeight.w600, AppColors.white, 0),
+                        )):ElevatedButton(
+                        style: homeInActiveElatedBtnStyle,
+                        onPressed: () {},
+                        child: Text(
+                          Strings.canada,
+                          style: customTextStyle(
+                              14.0, FontWeight.w400, AppColors.black2, 0),
                         ),
                       ),
                     ),

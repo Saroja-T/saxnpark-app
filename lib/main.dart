@@ -8,6 +8,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:google_maps_flutter_android/google_maps_flutter_android.dart';
 import 'package:google_maps_flutter_platform_interface/google_maps_flutter_platform_interface.dart';
+import 'package:http/http.dart' as http;
 
 import 'package:saxnpark_app/bloc/landing/landing_bloc.dart';
 import 'package:saxnpark_app/bloc/location/location_bloc.dart';
@@ -15,6 +16,7 @@ import 'package:saxnpark_app/firebase_options.dart';
 import 'package:saxnpark_app/pages/Authentication/login.dart';
 import 'package:saxnpark_app/pages/Authentication/password_reset.dart';
 import 'package:saxnpark_app/pages/accounts/accounts_page.dart';
+import 'package:saxnpark_app/pages/accounts/contact_us.dart';
 import 'package:saxnpark_app/pages/accounts/faq.dart';
 import 'package:saxnpark_app/pages/accounts/help.dart';
 import 'package:saxnpark_app/pages/accounts/my_vehicles.dart';
@@ -41,6 +43,7 @@ import 'pages/drive_account/general_home.dart';
 import 'pages/drive_account/vehicle_details.dart';
 import 'pages/drive_account/vehicle_number_search.dart';
 import 'pages/permits/permit_home.dart';
+import 'services/authentication_service.dart';
 import 'utils/strings.dart';
 
 Future<void> main() async {
@@ -99,7 +102,9 @@ Future<AndroidMapRenderer?> initializeMapRenderer() async {
 }
 
 class MyApp extends StatelessWidget {
-  AuthRepository authRepository = AuthRepository();
+  AuthRepository authRepository = AuthRepository( authenticationApiServices: AuthenticationApiServices(
+          httpClient: http.Client(),
+        ),);
   MyApp({super.key});
 
   // This widget is the root of your application.
@@ -127,7 +132,7 @@ class MyApp extends StatelessWidget {
             primaryColor: AppColors.primary, fontFamily: 'PublicSans'),
         initialRoute: '/',
         onGenerateRoute: RoutesGenerator.generateRoute,
-        //home: const RegisterHome(),
+        // home: const ContactUs(),
         home: const LandingPage(),
       ),
     );

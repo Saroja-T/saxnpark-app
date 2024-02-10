@@ -9,8 +9,10 @@ import 'package:permission_handler/permission_handler.dart';
 
 import '../../bloc/landing/landing_bloc.dart';
 import '../../commons/custom_app_bar.dart';
+import '../../models/list_item.dart';
 import '../../utils/colors.dart';
 import '../../utils/constants.dart';
+import '../../utils/horizontal_listview_selector.dart';
 import '../../utils/strings.dart';
 import '../../utils/styles.dart';
 
@@ -32,8 +34,14 @@ class NearMePageWidget extends StatefulWidget {
 }
 
 class _NearMePageWidgetState extends State<NearMePageWidget> {
-List<MarkerDetails> markersList = [MarkerDetails(markerID: "1", lat: 34.19213557530695, long: -116.53385992677454),MarkerDetails(markerID: "2", lat: 34.1811301832486, long:-116.54183980580939)];
-  LatLng initialLocation = const LatLng(34.19213557530695, -116.53385992677454);  Set<Marker> markerSet = Set();
+  List<MarkerDetails> markersList = [
+    MarkerDetails(
+        markerID: "1", lat: 34.19213557530695, long: -116.53385992677454),
+    MarkerDetails(
+        markerID: "2", lat: 34.1811301832486, long: -116.54183980580939)
+  ];
+  LatLng initialLocation = const LatLng(34.19213557530695, -116.53385992677454);
+  Set<Marker> markerSet = Set();
 
   TextEditingController searchController = TextEditingController();
   String tabLabel = "";
@@ -48,55 +56,48 @@ List<MarkerDetails> markersList = [MarkerDetails(markerID: "1", lat: 34.19213557
     addMarkers();
   }
 
-  getPermissions() async 
-  {
+  getPermissions() async {
     PermissionStatus status = await Permission.location.request();
     print(status);
-    if(status.isDenied)
-    {
-     status = await Permission.location.request();
-    } 
-    else if(status.isPermanentlyDenied)
-    {
+    if (status.isDenied) {
+      status = await Permission.location.request();
+    } else if (status.isPermanentlyDenied) {
       showLocationDisabledAlertDialog(context);
     }
   }
-  addMarkers(){
-    for(var marker in markersList)
-    {
-      Marker resultMarker = Marker(
-        markerId: MarkerId(marker.markerID!),
-        position: LatLng(marker.lat!, marker.long!), onTap: (){
 
-          setState(() {
+  addMarkers() {
+    for (var marker in markersList) {
+      Marker resultMarker = Marker(
+          markerId: MarkerId(marker.markerID!),
+          position: LatLng(marker.lat!, marker.long!),
+          onTap: () {
+            setState(() {
               showPlaceList = true;
+            });
           });
-        });
       markerSet.add(resultMarker);
     }
   }
 
   @override
-  Widget build(BuildContext context) 
-  {
+  Widget build(BuildContext context) {
     return Stack(
       //fit: StackFit.loose,
       fit: StackFit.expand,
       clipBehavior: Clip.none,
       children: [
         GoogleMap(
-          onTap: (LatLng) 
-          {
-            setState(() {
+            onTap: (LatLng) {
+              setState(() {
                 showPlaceList = false;
-            });
-          },
-          initialCameraPosition: CameraPosition(
-            target: initialLocation,
-            zoom: 14,
-          ),
-          markers: markerSet
-        ),
+              });
+            },
+            initialCameraPosition: CameraPosition(
+              target: initialLocation,
+              zoom: 14,
+            ),
+            markers: markerSet),
         Positioned(
           top: 24,
           left: 0,
@@ -121,9 +122,11 @@ List<MarkerDetails> markersList = [MarkerDetails(markerID: "1", lat: 34.19213557
                             child: SizedBox(
                               height: 36,
                               child: TextField(
+                                textAlign: TextAlign.left,
+                                textAlignVertical: TextAlignVertical.center,
                                 controller: searchController,
                                 decoration: InputDecoration(
-                                  contentPadding: const EdgeInsets.all(10.0),
+                                  contentPadding: EdgeInsets.only(left: 1),
                                   border: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(24.0),
                                       borderSide: BorderSide.none),
@@ -162,140 +165,81 @@ List<MarkerDetails> markersList = [MarkerDetails(markerID: "1", lat: 34.19213557
                     const SizedBox(
                       height: 10,
                     ),
-                    Row(
-                      children: [
-                        Container(
-                          width: 80,
-                          height: 34,
-                          margin: const EdgeInsets.only(right: 12),
-                          decoration: const BoxDecoration(
-                              color: Colors.white,
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(10))),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              SizedBox(
-                                height: 40,
-                                width: 40,
-                                child: IconButton(
-                                    onPressed: () {},
-                                    icon: Image.asset(
-                                      gridSelectedIcon,
-                                      width: 35,
-                                    )),
-                              ),
-                              GestureDetector(
-                                onTap: () {
-                                  context.read<LandingBloc>().add(
-                                      TabChangeEvent(
-                                          tabIndex: 0,
-                                          tabLabel: Strings.rNearMeList));
-                                },
-                                child: SizedBox(
-                                  width: 35,
-                                  height: 40,
-                                  child: IconButton(
-                                      onPressed: () {
-                                        context.read<LandingBloc>().add(
-                                            TabChangeEvent(
-                                                tabIndex: 0,
-                                                tabLabel: Strings.rNearMeList));
-                                      },
-                                      icon: Image.asset(
-                                        listIcon,
-                                        width: 24,
-                                      )),
-                                ),
-                              ),
-                            ],
-                          ),
+                    
+                    HorizontalListViewSelector(
+                      width: MediaQuery.of(context).size.width * 0.3,
+                      isGridSelected:true,
+                      items: [
+                        ListItem(
+                            icon: nearMe,
+                            label: Strings.nearMe,
+                            width: w! * 0.3,
+                            isSelected:true),
+                        ListItem(
+                          icon: recent,
+                          label: Strings.recent,
+                          width: w! * 0.25,
+                          isSelected:false
                         ),
-                        Container(
-                          width: 91.0,
-                          height: 34.0,
-                          margin: const EdgeInsets.only(right: 16),
-                          child: TextButton.icon(
-                            style: locationActiveElatedBtnStyle,
-                            onPressed: () {},
-                            icon: Image.asset(
-                              nearMe,
-                              width: 12.0,
-                              height: 12.0,
-                              color: AppColors.white,
-                            ),
-                            label: Text(
-                              Strings.nearMe,
-                              style: TextStyle(
-                                  fontSize: 14.0,
-                                  fontWeight: FontWeight.w400,
-                                  color: AppColors.white),
-                            ),
-                          ),
+                        ListItem(
+                          icon: disabledParking,
+                          label: Strings.disabledParking,
+                          width: w! * 0.45,
+                          isSelected:false
                         ),
-                        Container(
-                          width: 100.0,
-                          height: 34.0,
-                          margin: const EdgeInsets.only(right: 16),
-                          child: TextButton.icon(
-                            style: locationInActiveElatedBtnStyle,
-                            onPressed: () {
-                              print("recent clicked...!!");
-                              context.read<LandingBloc>().add(TabChangeEvent(
-                                  tabIndex: 0, tabLabel: Strings.rRecentList));
-                            },
-                            icon:
-                                Image.asset(recent, width: 12.0, height: 12.0),
-                            label: Text(
-                              Strings.recent,
-                              style: TextStyle(
-                                  fontSize: 14.0,
-                                  fontWeight: FontWeight.w400,
-                                  color: AppColors.black5),
-                            ),
-                          ),
+                        ListItem(
+                          icon: chargingStation,
+                          label: Strings.chargingStation,
+                          width: w! * 0.45,
+                          isSelected:false
                         ),
                       ],
-                    ),
+                      onSelect: (selectedItem) {
+                        // Handle the selected item here
+                        print('Selected item: $selectedItem');
+                      },
+                    )
                   ],
                 ),
-               if(showPlaceList)
-                SizedBox(
-                  height: 200,
-                  child: ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    itemCount: 10,
-                    itemBuilder: (BuildContext context, int index) {
-                      return Container(
-                        alignment: Alignment.bottomCenter,
-                        margin: const EdgeInsets.only(bottom: 20),
-                        padding: const EdgeInsets.only(
-                            // top: MediaQuery.of(context).size.height * .58,
-                            right: 8.0,
-                            left: 0.0),
-                        child: Card(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20),
+                if (showPlaceList)
+                  SizedBox(
+                    height: 200,
+                    child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: 10,
+                      itemBuilder: (BuildContext context, int index) {
+                        return Container(
+                          alignment: Alignment.bottomCenter,
+                          margin: const EdgeInsets.only(bottom: 20),
+                          padding: const EdgeInsets.only(
+                              // top: MediaQuery.of(context).size.height * .58,
+                              right: 8.0,
+                              left: 0.0),
+                          child: Card(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                            color: Colors.white,
+                            elevation: 4.0,
+                            child: Padding(
+                              padding: const EdgeInsets.all(16.0),
+                              child: Container(
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.8,
+                                  height: 156,
+                                  child: Center(child: LocationCards(
+                                    btnClick: () {
+                                      showLocationBottomSheet(
+                                          context, starSelected);
+                                    },
+                                    isParkAgain: false
+                                  ))),
+                            ),
                           ),
-                          color: Colors.white,
-                          elevation: 4.0,
-                          child: Padding(
-                            padding: const EdgeInsets.all(16.0),
-                            child: Container(
-                                width: MediaQuery.of(context).size.width * 0.8,
-                                height: 156,
-                                child: Center(child: LocationCards(
-                                  btnClick: () {
-                                    showLocationBottomSheet(
-                                        context, starSelected);
-                                  },
-                                ))),
-                          ),
-                        ),
-                      );
-                    },
-                  ),
-                )
+                        );
+                      },
+                    ),
+                  )
               ],
             ),
           ),
@@ -303,13 +247,13 @@ List<MarkerDetails> markersList = [MarkerDetails(markerID: "1", lat: 34.19213557
       ],
     );
   }
-
-
 }
-class MarkerDetails{
-String? markerID;
-double? lat;
-double? long;
 
-MarkerDetails({required this.markerID,required this.lat,required this.long});
+class MarkerDetails {
+  String? markerID;
+  double? lat;
+  double? long;
+
+  MarkerDetails(
+      {required this.markerID, required this.lat, required this.long});
 }

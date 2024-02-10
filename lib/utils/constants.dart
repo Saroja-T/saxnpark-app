@@ -3,13 +3,11 @@ import 'strings.dart';
 double? h;
 double? w;
 
-
 const String self = 'self';
 const String others = 'others';
 const bool searchResultNotAvailable = false;
 const bool isFromBookingPage = false;
 String vehicleDetailsFrom = Strings.createAccount;
-
 
 
 //assets-images
@@ -51,17 +49,20 @@ const String logo = 'assets/icons/logo.png';
 const String google = 'assets/icons/google.png';
 const String apple = 'assets/icons/apple.png';
 const String fb = 'assets/icons/facebook.png';
+const String disabledParking = 'assets/icons/disable_parking.png';
+const String chargingStation = 'assets/icons/charging_station.png';
+const String attachment = 'assets/icons/attachment.png';
+const String visa = 'assets/icons/visa.png';
 
 
 //Images
-
 const String groupX = 'assets/images/group_x.png';
-
-
 
 
 //Dummy Imags
 const String usIcon = 'assets/dummy/us.png';
+const String kHost = 'www.metaweather.com';
+
 
 
 

@@ -8,6 +8,7 @@ import '../../bottomsheets/list_view_bottom_sheet.dart';
 import '../../commons/custom_app_bar.dart';
 import '../../utils/colors.dart';
 import '../../utils/constants.dart';
+import '../../utils/curved_dialog.dart';
 import '../../utils/custom_widgets.dart';
 import '../../utils/strings.dart';
 import '../../utils/styles.dart';
@@ -58,7 +59,7 @@ class _DeleteVehicleState extends State<DeleteVehicle> {
               title: Strings.dummyvehicle1,
               backText: Strings.buttonCloseText,
               tabIndex: 4,
-              redirectionKey: Strings.rMyDetails,
+              redirectionKey: Strings.rAccount,
             ),
             body: SingleChildScrollView(
                 child: Padding(
@@ -264,15 +265,38 @@ class _DeleteVehicleState extends State<DeleteVehicle> {
                       SizedBox(
                         height: (h! * 0.04).ceilToDouble(),
                       ),
-                      SizedBox(
-                        width: double.infinity,
-                        child: Center(
-                          child: Text(
-                            Strings.deleteAccount,
-                            style: TextStyle(
-                                fontSize: 16.0,
-                                fontWeight: FontWeight.w700,
-                                color: AppColors.red1),
+                      GestureDetector(
+                        behavior: HitTestBehavior.translucent,
+                        onTap: () {
+                          showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return CurvedDialog(
+                                title: 'Delete vehicle',
+                                isTitleAvailable: true,
+                                content: 'Your are deleting vehicle with registration number LJ66 XOS.',
+                                yesBtnText: Strings.confirm,
+                                onYesPressed: () {
+                                  Navigator.pop(context); // Close dialog
+                                  // Add your action for 'Yes' button
+                                },
+                                onNoPressed: () {
+                                  Navigator.pop(context); // Close dialog
+                                },
+                              );
+                            },
+                          );
+                        },
+                        child: SizedBox(
+                          width: double.infinity,
+                          child: Center(
+                            child: Text(
+                              Strings.deleteVehicle,
+                              style: TextStyle(
+                                  fontSize: 16.0,
+                                  fontWeight: FontWeight.w700,
+                                  color: AppColors.red1),
+                            ),
                           ),
                         ),
                       ),

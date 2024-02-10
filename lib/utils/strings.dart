@@ -1,6 +1,17 @@
 class Strings {
   static String appName = "SaxnPark";
 
+  static bool passwordChanged = false;
+  static bool accountLocked = false;
+  static bool isVehicleDeleted = false;
+  static bool isAccountDeleted = false;
+  static bool isContactSuccess = false;
+  static bool hasOldPassword = false;
+  static bool isPermitSuccess = false;
+  static bool isMaxVehicle = false;
+  static bool isMinVehicle = false;
+  static bool isPaymentFailed = false;
+  static bool isPermitError = false;
 
   //Landing page
   static String account = "Account";
@@ -16,6 +27,8 @@ class Strings {
   static String locationHint = "Country, city or location number";
   static String nearMe = "Near me";
   static String recent = "Recent";
+  static String disabledParking = "Disabled parking";
+  static String chargingStation = "Charging station";
   static String cancel = "Cancel";
   static String attention = "Attention";
   static String openSettings = "Open Settings";
@@ -26,11 +39,13 @@ class Strings {
   static String passwordReset = "Password reset";
   static String register = " Register";
   static String login = "Login";
-  static String dontHaveAnAccount = "Dont have an account? ";
+  static String dontHaveAnAccount = "Don't have an account? ";
   static String phoneNumber = "Phone number";
   static String resetPassword = "Reset password";
   static String resetPasswordDescription =
       "Please enter your phone number and we will send instructions on how to reset your password";
+  static String resetPasswordDescription1 = 
+      "Please enter your phone number and we will send a code to reset your password";
   static String password = "Password";
   static String sendRestLink = "Send reset link";
   static String backtoSignIn = "Back to sign in";
@@ -44,18 +59,23 @@ class Strings {
   static String passwordUpdated = "Password successfully updated";
   static String verificationMessage = "We sent a code to ";
   static String verificationMessage1 =
-      "+44 7907 612422 please enter it below so we can verify you";
+      " please enter it below so we can verify you";
+  static String securityAlert = "Security alert: account locked";
+  static String securityAlertMsg = "We're sorry, it seems like there have been three unsuccessful attempts to access your account."; 
+  static String securityAlertMsg1 = "To ensure the security of your information, your account has been locked."; 
+  static String securityAlertMsg2 = "Click on the 'Forgot Password' link below to reset your password securely.";
 
+  static String oldPassword = "Old password";
   static String confirmPassword = "Confirm password";
   static String forgotPassword = "Forgot password?";
   static String registerWith = "or register with";
   static String loginWith = "or continue with";
-  static String enterPassword = "Enter the password";
+  static String enterPassword = "Enter password";
   static String termsAndConditionText =
       "By continuing, you are agreeing to our ";
-  static String termsAndConditions = "Terms and Conditions";
+  static String termsAndConditions = "Terms and conditions";
   static String and = " and ";
-  static String privacyPolicy = "Privacy Policy.";
+  static String privacyPolicy = "Privacy policy";
   static String addPhoneNumber = "Add Phone Number";
   static String emailId = "Email : ";
   static String continueBtn = "Continue";
@@ -65,13 +85,18 @@ class Strings {
       "Your mobile number plays a vital role in ensuring a secure and efficient experience. It is used for both account verification and as a means of account recovery when needed.";
 
   static String passwordError =
-      "Must include at least 8 characters, a capital letter, a number and a special character";
-  static String confirmPasswordError = "Both the passwords should be same";
+      "Must include at least ";
+  static String passwordError1 ="8 characters, a capital letter, a number and a special character";
+  static String confirmPasswordError = "Passwords don’t match";
   static String numberError = "Phone number should be minimum 10 numbers";
-  static String emptyPasswordError = "Password should not be empty";
-  static String emptyNumberError = "Number should not be empty";
+  static String emptyPasswordError = "Password can't be empty";
+  static String passwordIncorrect = "Password incorrect";
+  static String emptyNumberError = "Phone number incorrect. Please check and re-enter.";
+  static String emailError = "Email address incorrect. Please check and re-enter.";
+  static String verificationCodeError = "Verification code is invalid";
+  static String vehicleDeleted = "Vehicle has been successfully deleted.";
 
-  static bool passwordChanged = false;
+  
   /**  
      * After OTP verification,
      * false - redirect to general home 
@@ -97,8 +122,6 @@ class Strings {
   static String next = "Next";
   static String getDirections = "Get directions";
   static String vehicle = "Vehicle";
-  static String driveIn = "Drive-in date and time";
-  static String driveOut = "Drive-out date and time";
   static String duration = "Duration";
   static String location = "Location";
   static String change = "Change";
@@ -115,6 +138,8 @@ class Strings {
   static String goToBookings = "Go to bookings";
 
   static String rquestSentMessage = "Your parking request has been sent!";
+  static String paymentFailure = "Sorry, your payment has not been processed. Please check payment details and try again.";
+  static String signOutConfirmation = "Are you sure you want to sign out?";
 
   //Payment
   static String methodToPay="How would you like to pay?";
@@ -128,6 +153,7 @@ class Strings {
   static String rLocationGridList = "locationGridList";
   static String rLocationList = "locationList";
   static String rLocationSearchList = "locationSearchList";
+  static String rLocationListWithoutSelection = "locationListWithoutSelection";
   static String rNearMeList = "nearMeList";
   static String rNearMeMapList = "nearMeMapList";
   static String rRecentList = "recentList";
@@ -150,6 +176,9 @@ class Strings {
  static String rConfirmedDriversDetails = "confirmedDriversDetails";
  static String rVehicleDetails = "vehicleDetails";
  static String rUpdateDriverDetails = "updateDriverDetails";
+ static String filters = "Filters";
+ static String date = "Date";
+ static String status = "Status";
 
   // Booking
   static String rPurpose = "purpose";
@@ -173,7 +202,10 @@ class Strings {
   static String weekEndText = "Sundays";
   static String timeFrequencyText = "For every 5 minutes";
   static String oneHourText = "60 minutes";
+  static String oneWeek = "1 week";
+  static String oneMonth = "1 month";
 
+  static String twentyFour = "24 hours";
   static String temMinText = "10 minutes";
   static String thirtyMinText = "30 minutes";
   static String extentableText = "Up to maximum stay";
@@ -186,6 +218,7 @@ class Strings {
   static String carParkTitle = "Car park details";
   static String operatorTitle = "Operator";
   static String daysandTimesText = "Days and times";
+  static String rates = "Rates";
   static String notesText = "Notes";
   static String policiesText = "Policies";
   static String aboutLocation = "About location";
@@ -197,6 +230,10 @@ class Strings {
   static String depGap = "Departure gap";
   static String permittedVehicles = "Permitted vehicles";
   static String locType = "Location type";
+  static String parkingCapacity = "Parking capacity";
+  static String anyAdditionalInfo = "Any additional info";
+  static String emailPhone = "Email / phone number";
+  static String contactDetails = "Contact details";
 
   static String userIdNo = "User ID number";
   static String shareText = "Share";
@@ -204,11 +241,14 @@ class Strings {
   static String myVehicles = "My vehicles";
   static String myLocation = "My locations";
   static String parkingPermits = "Parking permits";
+  static String permitsAndReq = "Permits & requests";
   static String settings = "Settings";
   static String signOut = "Sign out";
   static String deleteAccount = "Delete account";
+  static String deleteVehicle = "Delete vehicle";
   static String help = "Help";
   static String back = "Back";
+  static String delete = "Delete";
 
   static String signInToContinue = "Sign in to continue";
   static String saveYourInfo = "Create an account and save your info in a few simple steps for faster parking in the future.";
@@ -225,11 +265,21 @@ class Strings {
   static String todayText = "Today";
   static String tomorrowText = "Tommorrow";
   static String slotUnavailableWarning =
-      "The car park will have limited availability at your selected date and time.";
+      "No availability for your selected time and date";
   static String viewPrices = "View prices";
   static String visitorTitle = "Who are you visiting?";
   static String dropDownHint = "Select host";
   static String hostText = "Host";
+  static String validFrom = "Valid from";
+  static String validUntil = "Valid until";
+  static String validTo = "Valid to";
+  static String price = "Price";
+  static String parkingFee = "Parking fee";
+  static String serviceFee = "Service fee";
+  static String total = "Total";
+  static String taxes = "Taxes";
+  static String maxVehicle = "You can add a maximum of 2 vehicles. To add a new vehicle, please delete one from your account.";
+  static String minVehicle = "You must add a vehicle to continue.";
 
   //Authentication
   static String countryCode = "Country code";
@@ -328,6 +378,7 @@ class Strings {
   static String sessionTransferMsg = "You are transferring the remaining time on your permit to another Saxnpark user.";
   static String sendingParking = "User 8176392 is sending you their parking session at Heathrow Airport - Terminal 1.";
   static String updateDriverDetailsMsg = "Your details have been submitted. We will notify you when your request has been approved.";
+  static String permitError = "There is an error with your permit, please contact the code issuer.";
 
 //Permits
   static String permits = "Permits";
@@ -335,7 +386,9 @@ class Strings {
   static String noActivePermits = "You have no parking permits";
   static String expiredPermits = "Expired permits";
   static String expires = "Expires";
+  static String expired = "Expired";
   static String active = "Active";
+  static String past = "Past";
   static String addPermit = "Add parking permit";
   static String permitAccount = "You are about to add a aprking permit";
   static String permitAccount1 = "to your account";
@@ -349,9 +402,13 @@ class Strings {
   static String theseRCorrect = "Yes, these are correct";
   static String driversName = "Driver's name";
   static String contactNumber = "Contact number";
-  static String vehicleRegistration = "Vehicle registration";
+  static String vehicleRegistration = "Vehicle registration number";
   static String confirm = "Confirm";
   static String noMakeChanges = "No, I need to make changes";
+  static String parkingPermit = "Parking Permit";
+  static String parkingRequest = "Parking Request";
+  static String activate = "Activate";
+  static String pendingActivation = "Pending activation";
 
 //Dummy Text
   static String dummyText = "Saxnpark for carpark owners";
@@ -361,6 +418,7 @@ class Strings {
   static String newYork = "New York";
   static String countryCount = "204 locations";
   static String us = "United States";
+  static String canada = "Canada";
   static String locationDetailTitle = "Heathrow Airport - Terminal 1";
   static String locationDetailAddress = "Hounslow, TW6 1EW, United Kingdom";
   static String operatorText = "Heathrow Airport";
@@ -393,12 +451,30 @@ class Strings {
   static String dummyVehicleMake = "Ford";
   static String dummyVehicleModel = "Fiesta";
   static String dummyVehicle = "Car";
+  static String dummyPrice = "\$.60";
 
   static String dummyBookingMsg =
       "Your space is 2B, Level 2, Aisle 6 at Heathrow Airport - Terminal 1";
   static String locationEnableMessage =
       "Kindly enable location to get information about your nearby parking spaces";
-  
+
+  // Contact Us
+
+  static String submit = "Submit";
+  static String errorSubject = "Subject is mandatory";
+  static String errorMessage = "Message is mandatory";
+  static String subject = "Subject (required)";
+  static String message = "Message (required)";
+  static String attachment = "Attachment";
+  static String selectFile = "Select file";
+  static String attachmentHint = "Upload a jpeg, png, pdf no larger than 100 MB";
+
+
+  // Messages
+  static String deleteAccountConfirmationMsg = "Are you sure you want to delete your account?";
+  static String accountDeleted = "Your account has been successfully deleted. To start using Saxnpark again you’ll need to create a new account.";
+  static String contactUsSuccess = "Thank you for contacting Saxnpark, we will get back to you shortly.";
+  static String permitSuccess = "Your permit has been added to your account.";
 
   
 

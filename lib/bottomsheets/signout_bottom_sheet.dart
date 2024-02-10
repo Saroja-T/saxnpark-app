@@ -106,7 +106,7 @@ class SignoutBottomSheet extends StatelessWidget {
                         TextSpan(
                             text: Strings.createAccount,
                             style: customTextStyleWithUnderline(
-                                16, FontWeight.w700, AppColors.black6, 1),
+                                16, FontWeight.w700, AppColors.black6, 1,AppColors.black6),
                             recognizer: TapGestureRecognizer()
                               ..onTap = () {
                                 Navigator.pushReplacementNamed(

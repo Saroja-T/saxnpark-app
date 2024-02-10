@@ -12,6 +12,7 @@ import 'package:share_plus/share_plus.dart';
 import '../../bloc/landing/landing_bloc.dart';
 import '../../commons/custom_app_bar.dart';
 import '../../utils/constants.dart';
+import '../../utils/notification_banner.dart';
 import '../../utils/strings.dart';
 import '../../utils/styles.dart';
 
@@ -52,10 +53,26 @@ class _VehicleTypeState extends State<VehicleType> {
         padding: const EdgeInsets.fromLTRB(16, 24, 16, 24),
         child: SingleChildScrollView(
           child: Column(
-            
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              if(Strings.isMaxVehicle || Strings.isMinVehicle)
+              NotificationBanner(
+                      message: Strings.isMaxVehicle?Strings.maxVehicle:Strings.minVehicle,
+                      isCancelAvailable: true,
+                      isErrorMsg: true,
+                      onCancel: () {
+                        setState(() {
+                          if(Strings.isMaxVehicle){
+                            Strings.isMaxVehicle = false;
+                          }else if(Strings.isMinVehicle){
+                            Strings.isMinVehicle = false;
+                          }
+                        });
+                      },
+                    ),
+              if(Strings.isMaxVehicle)
+              const SizedBox(height: 15,),
               Text(
                 Strings.visitVehicle,
                 style:
