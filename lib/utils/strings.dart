@@ -237,11 +237,15 @@ class Strings {
 
   static String userIdNo = "User ID number";
   static String shareText = "Share";
+  static String download = "Download";
   static String myDetails = "My details";
   static String myVehicles = "My vehicles";
   static String myLocation = "My locations";
   static String parkingPermits = "Parking permits";
   static String permitsAndReq = "Permits & requests";
+  static String visitRequest= "Visit Request";
+  static String hostRequest= "Host Request";
+  static String view= "View";
   static String settings = "Settings";
   static String signOut = "Sign out";
   static String deleteAccount = "Delete account";
@@ -255,6 +259,7 @@ class Strings {
 
   static String copiedMsg = "Copied Successfully";
   static String visitPurpose = "What’s the purpose of your visit?";
+  static String purposeOfVisit = "Purpose of visit";
   static String visitVehicle = "Which vehicle are you parking?";
   static String parkingTime = "When are you parking?";
   static String justParking = "I’m just parking";
@@ -273,6 +278,7 @@ class Strings {
   static String validFrom = "Valid from";
   static String validUntil = "Valid until";
   static String validTo = "Valid to";
+  static String parkingSpace = "Parking space";
   static String price = "Price";
   static String parkingFee = "Parking fee";
   static String serviceFee = "Service fee";
@@ -315,6 +321,7 @@ class Strings {
   static String selectVehicleMake = "Select vehicle make";
   static String selectVehicleModel = "Selct vehicle model";
   static String selectVehicleType = "Select vehicle type";
+  static String selectHost = "Select host";
   static String saveAndPark = "Save and park";
   static String enterManually = "Enter manually";
   static String enterManuallyMsg = "Sorry, we can’t find your vehicle. Please search again or enter manually.";
@@ -322,6 +329,7 @@ class Strings {
   static String searchVehicleType = "Search vehicle type";
   static String searchVehicleMake = "Search vehicle make";
   static String searchVehicleModel = "Search vehicle model";
+  static String searchHost = "Search host name";
   static String title = "Title";
   static String enterVehicleType = "Enter vehicle type";
   static String enterVehicleNumber = "Enter vehicle number";
@@ -364,6 +372,10 @@ class Strings {
   static String noPastSessions = "You have no past sessions";
   static String parkAgain = "Park again";
   static String getReceipt = "Get receipt";
+  static String cancelBooking = "Cancel booking";
+  static String reasonForCancellation = "Reason for cancellation";
+  static String sessionDetails = "Session details";
+  static String amountPaid = "Amount paid";
   static String viewMore = "View more";
   static String timeLeft = "Time left";
   static String transferSession = "Transfer session";
@@ -409,6 +421,15 @@ class Strings {
   static String parkingRequest = "Parking Request";
   static String activate = "Activate";
   static String pendingActivation = "Pending activation";
+  static String rejected = "Rejected";
+  static String reject = "Reject";
+  static String accept = "Accept";
+  static String send = "Send";
+  static String reasonForRejection = "Reason for rejection";
+  static String yourParking = "Your parking request has been approved.";
+  static String requestRejected = "Sorry, your parking request has been rejected.";
+  static String noParking = "Sorry, there is no parking available at your selected time. Please choose another time/date.";
+
 
 //Dummy Text
   static String dummyText = "Saxnpark for carpark owners";
@@ -434,10 +455,12 @@ class Strings {
   static String dummyvehicle2 = "Enzo";
   static String dummyCategory1 = "LJ64 XOS";
   static String dummyCategoey2 = "HA66 LNP";
+  static String dummySpace1 = "Level 1, B2";
   static String dummyBookingLocation = "Heathrow Airport - Terminal 1";
   static String dummyBookingLocation2 = "Heathrow Airport";
   static String dummyBookingLocation1 = "Hounslow, TW6 1EW, United Kingdom";
   static String dummyTime = "16:00";
+  static String dummyPurpose = "Interview";
   static String dummyTime1 = "17:00";
   static String dummyDate = "08/03/2023";
   static String dummyDate1 = "09/03/2023";

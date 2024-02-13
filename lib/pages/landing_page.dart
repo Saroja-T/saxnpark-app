@@ -7,6 +7,7 @@ import 'package:saxnpark_app/pages/authentication/signout.dart';
 import 'package:saxnpark_app/pages/bookings/visitor_booking_confirmation.dart';
 import 'package:saxnpark_app/pages/bookings/visitor_booking_details.dart';
 import 'package:saxnpark_app/pages/bookings/visitor_screen.dart';
+import 'package:saxnpark_app/pages/permits/visit_request.dart';
 
 import '../bloc/landing/landing_bloc.dart';
 import '../commons/bottom_icons.dart';
@@ -127,8 +128,8 @@ class _LandingPageState extends State<LandingPage> {
 
   Widget contentWidget(int tabIndex, String tabLabel) {
     if (tabIndex == 0 && tabLabel == Strings.rHome) {
-      // return const HomePage();
-      return const AccountsPage();
+      return const HomePage();
+      //return const VisitRequest();
     } else if (tabIndex == 0 && tabLabel == Strings.rLocationGridList) {
       return const LocationPage();
     } else if (tabIndex == 0 && tabLabel == Strings.rPark) {
@@ -185,8 +186,8 @@ class _LandingPageState extends State<LandingPage> {
     }else if(tabIndex == 2 && tabLabel == Strings.rSessionTransfer){
       return const SessionTransfer();
     }else if (tabIndex == 2 && tabLabel == Strings.rSession) {
-     // return const MySessions();
-      return const SignOut();
+     return const MySessions();
+     // return const SignOut();
     }else if(tabIndex == 3 && tabLabel == Strings.rPermit){
       return const MyPermits();
     }

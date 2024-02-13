@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:saxnpark_app/bottomsheets/article.dart';
+import 'package:saxnpark_app/utils/notification_banner_info.dart';
 
 import '../bloc/home/home_bloc.dart';
 import '../bloc/landing/landing_bloc.dart';
@@ -51,6 +52,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                // Container(
+                //   margin: EdgeInsets.only(right: 16),
+                //   child: NotificationBannerInfo(message: "You have 1 permit waiting to be activated.", buttonText: "Activate now", isCancelAvailable: true, onCancel: (){}, isErrorMsg: false)),
                 SizedBox(height: h! / 100.0),
                 Center(
                   child: Text(

@@ -211,68 +211,7 @@ class BookingConfirmationState extends State<BookingConfirmation> {
     );
   }
 
-  Widget custoListRow(
-    String icon,
-    String title,
-    String text1,
-    bool isCircle,
-    String text2,
-  ) {
-    return Column(
-      children: [
-        Row(children: [
-          Image.asset(
-            icon,
-            color: AppColors.black6,
-          ),
-          const SizedBox(
-            width: 4,
-          ),
-          Flexible(
-              child: Text(
-            title,
-            style: customTextStyle(14, FontWeight.w400, AppColors.black6, 0),
-          ))
-        ]),
-        const SizedBox(
-          height: 4,
-        ),
-        Row(children: [
-          Text(
-            text1,
-            style: customTextStyle(16, FontWeight.w600, AppColors.black6, 0),
-          ),
-          const SizedBox(
-            width: 4,
-          ),
-          if (isCircle)
-            Row(
-              children: [
-                Icon(
-                  Icons.circle,
-                  color: AppColors.black6,
-                  size: 4,
-                ),
-                const SizedBox(
-                  width: 4,
-                ),
-                Text(
-                  text2,
-                  style:
-                      customTextStyle(16, FontWeight.w600, AppColors.black6, 0),
-                ),
-                const SizedBox(
-                  width: 4,
-                ),
-              ],
-            ),
-        ]),
-        const SizedBox(
-          height: 16,
-        )
-      ],
-    );
-  }
+  
 
   paymentChange() {}
 }

@@ -176,7 +176,7 @@ class _ParkingTimeState extends State<ParkingTime> {
                 errorWidget(Strings.slotUnavailableWarning),
                 const SizedBox(height: 20,),
                 Text(
-                  Strings.validUntil,
+                  Strings.validTo,
                   style:
                       customTextStyle(16, FontWeight.w400, AppColors.black1, 1),
                 ),

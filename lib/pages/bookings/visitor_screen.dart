@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../bloc/landing/landing_bloc.dart';
+import '../../bottomsheets/search_bottom_sheet.dart';
 import '../../commons/custom_app_bar.dart';
 import '../../utils/colors.dart';
 import '../../utils/constants.dart';
+import '../../utils/custom_widgets.dart';
 import '../../utils/strings.dart';
 import '../../utils/styles.dart';
 
@@ -25,16 +27,25 @@ class _VisitorScreenState extends State<VisitorScreen> {
   List<String> titleList = [Strings.justParking, Strings.visiting];
   // Initial Selected Value
   String? dropdownvalue;
-
-  // List of items in our dropdown menu
-  var items = [
-    'Father',
-    'Mother',
-    'Friend',
-    'Brother',
-    'Sister',
+  final TextEditingController purposeOfVisitController =
+      TextEditingController();
+  String selectedHost = "";
+  List<String> hostList = [
+    "Full Name",
+    "Full Name",
+    "Full Name",
+    "Option",
+    "Option",
+    "Option",
+    "Option",
+    "Option",
+    "Option",
+    "Option",
+    "Option",
+    "Option",
   ];
 
+ 
   @override
   Widget build(BuildContext context) {
     h = MediaQuery.of(context).size.height;
@@ -46,101 +57,158 @@ class _VisitorScreenState extends State<VisitorScreen> {
         tabIndex: 0,
         redirectionKey: Strings.rHome,
       ),
-      body: Container(
-        child: Padding(
-          padding: EdgeInsets.fromLTRB(16, 24, 16, 24),
-          child: SingleChildScrollView(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  Strings.visitorTitle,
-                  style:
-                      customTextStyle(20, FontWeight.w500, AppColors.black1, 1),
-                ),
-                const SizedBox(height: 16),
-                Text(
-                  Strings.hostText,
-                  style:
-                      customTextStyle(16, FontWeight.w400, AppColors.black6, 1),
-                ),
-                const SizedBox(height: 8),
-                Container(
-                  height: 55,
-                  padding: EdgeInsets.all(16),
-                  margin: const EdgeInsets.only(bottom: 16),
+      body: Padding(
+        padding: const EdgeInsets.fromLTRB(16, 24, 16, 24),
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                Strings.visitorTitle,
+                style:
+                    customTextStyle(20, FontWeight.w500, AppColors.black1, 1),
+              ),
+              const SizedBox(height: 16),
+              Text(
+                Strings.hostText,
+                style:
+                    customTextStyle(16, FontWeight.w400, AppColors.black6, 1),
+              ),
+              const SizedBox(height: 8),
+              InkWell(
+                onTap: () {
+                  showSearchHostMakeBottomSheet(context);
+                },
+                child: Container(
+                  height: (h! * 0.062).ceil().toDouble(),
+                  padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
                   decoration: BoxDecoration(
-                      borderRadius: const BorderRadius.all(Radius.circular(8)),
-                      border: Border.all(color: AppColors.grey4)),
-                  child: SizedBox.expand(
-                      child: DropdownButtonHideUnderline(
-                          child: DropdownButton(
-                    hint: Text(
-                      Strings.dropDownHint,
-                      style: customTextStyle(
-                          14, FontWeight.w400, AppColors.grey10, 0),
-                    ),
-                    value: dropdownvalue,
-                    onChanged: (String? newValue) {
-                      setState(() {
-                        dropdownvalue = newValue;
-                      });
-                    },
-                    items: items.map<DropdownMenuItem<String>>((String value) {
-                      return DropdownMenuItem<String>(
-                        value: value,
-                        child: Text(value),
-                      );
-                    }).toList(),
-                  ))),
-                ),
-                Container(
-                  height: 51,
-                  child: SizedBox.expand(
-                    child: ElevatedButton(
-                        style: ButtonStyle(
-                            backgroundColor: MaterialStateProperty.all<Color>(
-                                AppColors.black6),
-                            shape: MaterialStateProperty.all<
-                                RoundedRectangleBorder>(RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(12.0),
-                            ))),
-                        onPressed: () {
-                          context.read<LandingBloc>().add(TabChangeEvent(
-                              tabIndex: 1, tabLabel: Strings.rVehicleType));
-                        },
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              Strings.next,
-                              style: customTextStyle(
-                                  14, FontWeight.w600, AppColors.white, 1),
-                            ),
-                            const Icon(
-                              Icons.arrow_forward,
-                              color: Colors.white,
-                              size: 20,
-                            )
-                          ],
-                        )),
+                      borderRadius:
+                          const BorderRadius.all(Radius.circular(4)),
+                      border: Border.all(color: AppColors.grey3)),
+                  child: Row(
+                    children: [
+                      SizedBox(
+                        width: (w! * 0.01).ceil().toDouble(),
+                      ),
+                      Text(
+                        selectedHost == ""
+                            ? Strings.selectHost
+                            : selectedHost,
+                        style: customTextStyle(
+                            14,
+                            FontWeight.w400,
+                            selectedHost == ""
+                                ? AppColors.grey10
+                                : AppColors.black5,
+                            1),
+                      ),
+                      const Spacer(),
+                      arrowDownIcon(),
+                    ],
                   ),
                 ),
-              ],
-            ),
+              ),
+              SizedBox(
+                height: h! * 0.01,
+              ),
+              Text(
+                Strings.purposeOfVisit,
+                style:
+                    customTextStyle(16, FontWeight.w400, AppColors.black6, 0),
+              ),
+              SizedBox(
+                height: h! * 0.02,
+              ),
+              Container(
+                padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
+                decoration: BoxDecoration(
+                    borderRadius: const BorderRadius.all(Radius.circular(4)),
+                    border: Border.all(color: AppColors.grey3)),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: TextField(
+                        controller: purposeOfVisitController,
+                        keyboardType: TextInputType.emailAddress,
+                        decoration: const InputDecoration(
+                          border: InputBorder.none,
+                        ),
+                        onChanged: (val) {
+                          setState(() {});
+                        },
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: h! * 0.04,
+              ),
+              SizedBox(
+                height: 51,
+                child: SizedBox.expand(
+                  child: ElevatedButton(
+                      style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all<Color>(
+                              AppColors.black6),
+                          shape: MaterialStateProperty.all<
+                              RoundedRectangleBorder>(RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(12.0),
+                          ))),
+                      onPressed: () {
+                        context.read<LandingBloc>().add(TabChangeEvent(
+                            tabIndex: 1, tabLabel: Strings.rVehicleType));
+                      },
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            Strings.next,
+                            style: customTextStyle(
+                                14, FontWeight.w600, AppColors.white, 1),
+                          ),
+                          const Icon(
+                            Icons.arrow_forward,
+                            color: Colors.white,
+                            size: 20,
+                          )
+                        ],
+                      )),
+                ),
+              ),
+            ],
           ),
         ),
       ),
     );
   }
-}
 
-showBrandsBottomSheet() {
-  return Container(
-    height: 200,
-    width: double.infinity,
-    color: Colors.green,
-    child: Text("test"),
-  );
+  void showSearchHostMakeBottomSheet(BuildContext context) {
+    showModalBottomSheet(
+      isScrollControlled: true,
+      context: context,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(20.0), // Adjust the radius as needed
+          topRight: Radius.circular(20.0), // Adjust the radius as needed
+        ),
+      ),
+      builder: (BuildContext context) {
+        return SearchBottomSheet(
+          selectedItem: selectedHost,
+          dataList: hostList,
+          title: Strings.hostText,
+          hint: Strings.searchHost,
+          onItemSelected: (item) {
+            setState(() {
+              selectedHost =
+                  item; // Update the selected item in the main widget
+            });
+          },
+        );
+      },
+    );
+  }
 }

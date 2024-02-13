@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:saxnpark_app/pages/permits/pending/item_host_request.dart';
+import 'package:saxnpark_app/pages/permits/pending/item_parking_permit.dart';
+import 'package:saxnpark_app/pages/permits/pending/item_visit_request.dart';
 
+import '../../utils/buttons/custom_border_botton.dart';
+import '../../utils/buttons/custom_button.dart';
 import '../../utils/colors.dart';
 import '../../utils/constants.dart';
 import '../../utils/custom_widgets.dart';
@@ -62,103 +67,11 @@ class PendingPermitsState extends State<PendingPermits> {
               decoration: BoxDecoration(
                   borderRadius: const BorderRadius.all(Radius.circular(8)),
                   border: Border.all(color: AppColors.grey4)),
-              child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      children: [
-                        Container(
-                          padding: const EdgeInsets.all(8),
-                          decoration: const BoxDecoration(
-                            color: Color.fromRGBO
-                            (252, 217, 91, 0.4),
-                            borderRadius: BorderRadius.all(Radius.circular(20)),
-                          ),
-                          child: Text(
-                            Strings.pendingActivation,
-                            style: customTextStyle(
-                                10, FontWeight.w600, AppColors.black6, 0),
-                          ),
-                        ),
-                        const Spacer(),
-                        Container(
-                          padding: const EdgeInsets.all(6),
-                          decoration: BoxDecoration(
-                              borderRadius: const BorderRadius.all(
-                                Radius.circular(20),
-                              ),
-                              border: Border.all(color: AppColors.black6)),
-                          child: Text(
-                            Strings.parkingPermit,
-                            style: customTextStyle(
-                                10, FontWeight.w600, AppColors.black6, 0),
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    commonWidget(
-                        Strings.location, Strings.dummyBookingLocation),
-                    commonWidget1(
-                        Strings.validFrom, Strings.today,"16:00"),
-                    commonWidget1(
-                        Strings.validUntil, Strings.today,"17:00"),
-                    const SizedBox(height: 20,),
-                    Row(
-                      children: [
-                        Flexible(
-                          child: Container(
-                             padding: const EdgeInsets.all(14),
-                            decoration: BoxDecoration(
-                                borderRadius: const BorderRadius.all(
-                                    Radius.circular(12)),
-                                border:
-                                    Border.all(color: AppColors.black6)),
-                            child: Center(
-                              child: Text(
-                                Strings.cancel,
-                                style: customTextStyle(16, FontWeight.w700,
-                                    AppColors.black6, 0),
-                              ),
-                            ),
-                          ),
-                        ),
-                        const SizedBox(
-                          width: 15,
-                        ),
-                        Flexible(
-                          child: Container(
-                             padding: const EdgeInsets.all(15),
-                            decoration: BoxDecoration(
-                                borderRadius: const BorderRadius.all(
-                                    Radius.circular(12)),
-                                color: AppColors.black6),
-                           
-                            child: Center(
-                              child: Text(
-                                Strings.activate,
-                                style: customTextStyle(16, FontWeight.w700,
-                                    AppColors.white, 0),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 5,
-                    ),
-                  ]),
+              child:  const ItemHostRequest(),
             ),
           );
         }
       },
     );
   }
-
-  
-
 }

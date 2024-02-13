@@ -65,7 +65,8 @@ class SignOutState extends State<SignOut> {
       ],
       child: Scaffold(
           appBar: CustomAppBarWithBack(
-              title: Strings.account, backText: Strings.back),
+              title: Strings.account, backText: Strings.back,
+              tabIndex: 0,redirectionKey: Strings.rHome,),
           body: SingleChildScrollView(
               child: Padding(
             padding: const EdgeInsets.fromLTRB(16, 24, 16, 24),

@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:saxnpark_app/pages/payment/payment_page.dart';
 
 import '../../bloc/landing/landing_bloc.dart';
-import '../../bottomsheets/list_view_bottom_sheet.dart';
 import '../../commons/custom_app_bar.dart';
 import '../../utils/colors.dart';
 import '../../utils/constants.dart';

@@ -15,20 +15,22 @@ class VisitorBookingConfirmation extends StatefulWidget {
   const VisitorBookingConfirmation({super.key});
 
   @override
-  State<VisitorBookingConfirmation> createState() => VisitorBookingConfirmationState();
+  State<VisitorBookingConfirmation> createState() =>
+      VisitorBookingConfirmationState();
 }
 
-class VisitorBookingConfirmationState extends State<VisitorBookingConfirmation> {
+class VisitorBookingConfirmationState
+    extends State<VisitorBookingConfirmation> {
   String tabLabel = "";
   LatLng initialLocation = const LatLng(37.422131, -122.084801);
-  Map<MarkerId, Marker> markers = <MarkerId, Marker>{}; // CLASS MEMBER, MAP OF MARKS
-
+  Map<MarkerId, Marker> markers =
+      <MarkerId, Marker>{}; // CLASS MEMBER, MAP OF MARKS
 
   @override
   Widget build(BuildContext context) {
     h = MediaQuery.of(context).size.height;
     tabLabel = context.watch<LandingBloc>().state.tabLabel;
-    
+
     return Scaffold(
       appBar: CustomAppBar(title: Strings.requestConfirmation),
       body: Padding(
@@ -44,7 +46,11 @@ class VisitorBookingConfirmationState extends State<VisitorBookingConfirmation> 
                     customTextStyle(20, FontWeight.w500, AppColors.black1, 1),
               ),
               const SizedBox(height: 8),
-              Text(Strings.notificationMessage,style: customTextStyle(16, FontWeight.w400, AppColors.black5, 1.5),),
+              Text(
+                Strings.notificationMessage,
+                style:
+                    customTextStyle(16, FontWeight.w400, AppColors.black5, 1.5),
+              ),
               const SizedBox(height: 16),
               Container(
                 width: double.infinity,
@@ -71,8 +77,10 @@ class VisitorBookingConfirmationState extends State<VisitorBookingConfirmation> 
                             style: customTextStyle(
                                 16, FontWeight.w600, AppColors.black6, 0),
                           )),
-                          const SizedBox(height: 10,),
-                          Text(
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Text(
                         Strings.hostText,
                         style: customTextStyle(
                             14, FontWeight.w400, AppColors.black6, 0),
@@ -87,13 +95,17 @@ class VisitorBookingConfirmationState extends State<VisitorBookingConfirmation> 
                             style: customTextStyle(
                                 16, FontWeight.w600, AppColors.black6, 0),
                           )),
-                         const SizedBox(width: 4,)
+                      const SizedBox(
+                        width: 4,
+                      )
                     ]),
+              ),
+              SizedBox(
+                height: h! * 0.02,
               ),
               Container(
                 width: double.infinity,
                 padding: const EdgeInsets.only(left: 16, top: 16, right: 16),
-                margin: const EdgeInsets.only(bottom: 16),
                 decoration: BoxDecoration(
                     borderRadius: const BorderRadius.all(Radius.circular(8)),
                     border: Border.all(color: AppColors.grey4)),
@@ -111,6 +123,43 @@ class VisitorBookingConfirmationState extends State<VisitorBookingConfirmation> 
                     ]),
               ),
               SizedBox(
+                height: h! * 0.02,
+              ),
+              Container(
+                width: double.infinity,
+                padding: const EdgeInsets.only(left: 16, top: 16, right: 16),
+                margin: const EdgeInsets.only(bottom: 16),
+                decoration: BoxDecoration(
+                    borderRadius: const BorderRadius.all(Radius.circular(8)),
+                    border: Border.all(color: AppColors.grey4)),
+                child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        Strings.purposeOfVisit,
+                        style: customTextStyle(
+                            14, FontWeight.w400, AppColors.black6, 0),
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Flexible(
+                          fit: FlexFit.loose,
+                          child: Text(
+                            Strings.dummyPurpose,
+                            style: customTextStyle(
+                                16, FontWeight.w600, AppColors.black6, 0),
+                          )),
+                      SizedBox(
+                        height: h! * 0.02,
+                      ),
+                    ]),
+              ),
+              SizedBox(
+                height: h! * 0.02,
+              ),
+              SizedBox(
                 height: 51,
                 child: SizedBox.expand(
                   child: ElevatedButton(
@@ -123,9 +172,8 @@ class VisitorBookingConfirmationState extends State<VisitorBookingConfirmation> 
                             borderRadius: BorderRadius.circular(12.0),
                           ))),
                       onPressed: () {
-                         context.read<LandingBloc>().add(TabChangeEvent(
-                              tabIndex: 2,
-                              tabLabel: Strings.rSession));
+                        context.read<LandingBloc>().add(TabChangeEvent(
+                            tabIndex: 2, tabLabel: Strings.rSession));
                       },
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,

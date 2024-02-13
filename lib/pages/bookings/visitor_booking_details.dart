@@ -120,7 +120,6 @@ class VisitorBookingDetaillsState extends State<VisitorBookingDetaills> {
               Container(
                 width: double.infinity,
                 padding: const EdgeInsets.only(left: 16, top: 16, right: 16),
-                margin: const EdgeInsets.only(bottom: 16),
                 decoration: BoxDecoration(
                     borderRadius: const BorderRadius.all(Radius.circular(8)),
                     border: Border.all(color: AppColors.grey4)),
@@ -137,6 +136,55 @@ class VisitorBookingDetaillsState extends State<VisitorBookingDetaills> {
                           true,
                           vehicleTypeChange),
                     ]),
+              ),
+              SizedBox(height: h! * 0.02),
+              Container(
+                width: double.infinity,
+                padding: const EdgeInsets.only(left: 16, top: 16, right: 16),
+                decoration: BoxDecoration(
+                    borderRadius: const BorderRadius.all(Radius.circular(8)),
+                    border: Border.all(color: AppColors.grey4)),
+                child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        Strings.purposeOfVisit,
+                        style: customTextStyle(
+                            14, FontWeight.w400, AppColors.black6, 0),
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Row(
+                        children: [
+                          Flexible(
+                              fit: FlexFit.loose,
+                              child: Text(
+                                Strings.dummyPurpose,
+                                style: customTextStyle(
+                                    16, FontWeight.w600, AppColors.black6, 0),
+                              )),
+                          const SizedBox(
+                            width: 4,
+                          ),
+                          GestureDetector(
+                            onTap: vehicleTypeChange,
+                            child: Text(
+                              Strings.change,
+                              style: customTextStyle(
+                                  16, FontWeight.w400, AppColors.blue1, 0),
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: h! * 0.02,
+                      )
+                    ]),
+              ),
+              SizedBox(
+                height: h! * 0.04,
               ),
               SizedBox(
                 height: 51,

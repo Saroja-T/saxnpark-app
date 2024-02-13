@@ -225,11 +225,3 @@ class VehicleDetails {
   VehicleDetails({required this.vehicleName, required this.vehicleCategory});
 }
 
-showBrandsBottomSheet() {
-  return Container(
-    height: 200,
-    width: double.infinity,
-    color: Colors.green,
-    child: const Text("test"),
-  );
-}

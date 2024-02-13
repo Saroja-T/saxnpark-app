@@ -163,7 +163,6 @@ class _PurposeOfVisitState extends State<PurposeOfVisit> {
       ),
       builder: (BuildContext context) {
         return Container(
-          
           child: const SignoutBottomSheet());
       },
     );

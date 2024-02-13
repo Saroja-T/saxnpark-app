@@ -10,7 +10,6 @@ class CurvedDialog extends StatelessWidget {
   final String yesBtnText;
   final VoidCallback onYesPressed;
   final VoidCallback onNoPressed;
-
   const CurvedDialog({
     super.key,
     required this.title,
@@ -31,7 +30,7 @@ class CurvedDialog extends StatelessWidget {
       ),
       child: Material(
         color: Colors.white, // Set the background color to white
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(15),
         child: Container(
           width: dialogWidth,
           padding: const EdgeInsets.all(20),

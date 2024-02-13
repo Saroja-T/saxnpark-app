@@ -10,7 +10,6 @@ import '../../utils/colors.dart';
 import '../../utils/constants.dart';
 import '../../utils/notification_banner.dart';
 import '../../utils/strings.dart';
-import '../../utils/styles.dart';
 import 'pending_permits.dart';
 
 class MyPermits extends StatefulWidget {
@@ -220,6 +219,9 @@ class MyPermitsState extends State<MyPermits> with TickerProviderStateMixin {
                     )
                   ],
                 ),
+              ),
+              const SizedBox(
+                height: 15.0,
               ),
               // tab bar view here
               Expanded(
